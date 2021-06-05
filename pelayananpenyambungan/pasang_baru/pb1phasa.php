@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pelayanan Penyambungan</title>
+    <title>Pasang Baru 1 Phasa</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -59,7 +59,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- Link Pasang Baru -->
                         <h6 class="collapse-header">Pasang Baru</h6>
-                        <a class="collapse-item" href="pb1phasa.php">Pasang Baru 1 Phasa</a>
+                        <a class="collapse-item active" href="#">Pasang Baru 1 Phasa</a>
                         <a class="collapse-item" href="pb3phasa.php">Pasang Baru 3 Phasa</a>
 
                         <hr style="margin-left: 20px; margin-right: 20px;">
@@ -68,23 +68,6 @@
                         <h6 class="collapse-header">Perubahan Daya</h6>
                         <a class="collapse-item" href="../perubahan_daya/pd1phasa.php">Perubahan Daya 1 Phasa</a>
                         <a class="collapse-item" href="../perubahan_daya/pd3phasa.php">Perubahan Daya 3 Phasa</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
             </li>
@@ -165,7 +148,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Pasang Baru 1 Phasa</h1>
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Pasang Baru 1 Phasa</u></h1>
                     </div>
 
                     <div class="row">
