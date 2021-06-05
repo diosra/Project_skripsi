@@ -100,18 +100,42 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>Menu Cetak</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <!-- Link Cetak Menu Pasang Baru -->
+                        <h6 class="collapse-header">Cetak Pasang Baru</h6>
+                        <a class="collapse-item" href="../../laporancetak/pasang_baru/mcpb1phasa.php">Menu Cetak <br> Pasang Baru 1 Phasa</a>
+                        <a class="collapse-item" href="../../laporancetak/pasang_baru/mcpb3phasa.php">Menu Cetak <br> Pasang Baru 3 Phasa</a>
+
+                        <hr style="margin-left: 20px; margin-right: 20px;">
+
+                        <!-- Link Cetak Menu Perubahan Daya -->
+                        <h6 class="collapse-header">Cetak Perubahan Daya</h6>
+                        <a class="collapse-item" href="../../laporancetak/perubahan_daya/mcpd1phasa.php">Menu Cetak <br> Perubahan Daya 1 Phasa</a>
+                        <a class="collapse-item" href="../../laporancetak/perubahan_daya/mcpd3phasa.php">Menu Cetak <br> Perubahan Daya 3 Phasa</a>
+
+                        <hr style="margin-left: 20px; margin-right: 20px;">
+
+                        <!-- Link Cetak Menu Migrasi -->
+                        <h6 class="collapse-header">Cetak Migrasi</h6>
+                        <a class="collapse-item" href="../../laporancetak/migrasi/mcmigrasi1phasa.php">Menu Cetak <br> Migrasi 1 Phasa</a>
+                        <a class="collapse-item" href="../../laporancetak/migrasi/mcmigrasi3phasa.php">Menu Cetak <br> Migrasi 3 Phasa</a>
+
+                        <hr style="margin-left: 20px; margin-right: 20px;">
+
+                        <!-- Link Cetak Menu Multiguna -->
+                        <h6 class="collapse-header">Cetak Multiguna</h6>
+                        <a class="collapse-item" href="../../laporancetak/multiguna/mcmultiguna1phasa.php">Menu Cetak <br> Multiguna 1 Phasa</a>
+                        <a class="collapse-item" href="../../laporancetak/multiguna/mcmultiguna3phasa.php">Menu Cetak <br> Multiguna 3 Phasa</a>
+
+                        <hr style="margin-left: 20px; margin-right: 20px;">
+
+                        <!-- Link Cetak Menu P2TL -->
+                        <h6 class="collapse-header">Cetak P2TL</h6>
+                        <a class="collapse-item" href="../../laporancetak/p2tl/mcp2tl1phasa.php">Menu Cetak P2TL 1 Phasa</a>
+                        <a class="collapse-item" href="../../laporancetak/p2tl/mcp2tl3phasa.php">Menu Cetak P2TL 3 Phasa</a>
                     </div>
                 </div>
             </li>
