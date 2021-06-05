@@ -68,6 +68,27 @@
                         <h6 class="collapse-header">Perubahan Daya</h6>
                         <a class="collapse-item" href="../perubahan_daya/pd1phasa.php">Perubahan Daya 1 Phasa</a>
                         <a class="collapse-item" href="../perubahan_daya/pd3phasa.php">Perubahan Daya 3 Phasa</a>
+
+                        <hr style="margin-left: 20px; margin-right: 20px;">
+
+                        <!-- Link Migrasi -->
+                        <h6 class="collapse-header">Migrasi</h6>
+                        <a class="collapse-item" href="../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
+                        <a class="collapse-item" href="../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
+
+                        <hr style="margin-left: 20px; margin-right: 20px;">
+
+                        <!-- Link Multiguna -->
+                        <h6 class="collapse-header">Multiguna</h6>
+                        <a class="collapse-item" href="../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
+                        <a class="collapse-item" href="../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
+
+                        <hr style="margin-left: 20px; margin-right: 20px;">
+
+                        <!-- Link P2TL -->
+                        <h6 class="collapse-header">P2TL</h6>
+                        <a class="collapse-item" href="../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                        <a class="collapse-item" href="../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                     </div>
                 </div>
             </li>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Perubahan Daya 1 Phasa</title>
+    <title>P2TL 3 Phasa</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -66,14 +66,14 @@
 
                         <!-- Link Perubahan Daya -->
                         <h6 class="collapse-header">Perubahan Daya</h6>
-                        <a class="collapse-item active" href="#">Perubahan Daya 1 Phasa</a>
-                        <a class="collapse-item" href="pd3phasa.php">Perubahan Daya 3 Phasa</a>
+                        <a class="collapse-item" href="../perubahan_daya/pd1phasa.php">Perubahan Daya 1 Phasa</a>
+                        <a class="collapse-item" href="../perubahan_daya/pd3phasa.php">Perubahan Daya 3 Phasa</a>
 
                         <hr style="margin-left: 20px; margin-right: 20px;">
 
                         <!-- Link Migrasi -->
                         <h6 class="collapse-header">Migrasi</h6>
-                        <a class="collapse-item" href="../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
+                        <a class="collapse-item" href="../migrasi/migrasi3phs.php">Migrasi 1 Phasa</a>
                         <a class="collapse-item" href="../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
 
                         <hr style="margin-left: 20px; margin-right: 20px;">
@@ -87,8 +87,8 @@
 
                         <!-- Link P2TL -->
                         <h6 class="collapse-header">P2TL</h6>
-                        <a class="collapse-item" href="../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                        <a class="collapse-item" href="../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                        <a class="collapse-item" href="p2tl1phs.php">P2TL 1 Phasa</a>
+                        <a class="collapse-item active" href="#">P2TL 3 Phasa</a>
                     </div>
                 </div>
             </li>
@@ -169,7 +169,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Perubahan Daya 1 Phasa</u></h1>
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>P2TL 3 Phasa</u></h1>
                     </div>
 
                     <div class="row">
