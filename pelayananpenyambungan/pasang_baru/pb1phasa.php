@@ -57,10 +57,15 @@
                 </a>
                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: aqua;">
+                            Pasang Baru
+                        </a>
                         <!-- Link Pasang Baru -->
-                        <h6 class="collapse-header">Pasang Baru</h6>
-                        <a class="collapse-item active" href="#">Pasang Baru 1 Phasa</a>
-                        <a class="collapse-item" href="pb3phasa.php">Pasang Baru 3 Phasa</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!-- <h6 class="collapse-header">Pasang Baru</h6> -->
+                            <a class="dropdown-item" href="#">Pasang Baru 1 Phasa</a>
+                            <a class="dropdown-item" href="pb3phasa.php">Pasang Baru 3 Phasa</a>
+                        </div>
 
                         <hr style="margin-left: 20px; margin-right: 20px;">
 
