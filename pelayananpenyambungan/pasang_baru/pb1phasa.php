@@ -51,49 +51,39 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-bars"></i>
                     <span>Menu Pelayanan Penyambungan</span>
                 </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: aqua;">
-                            Pasang Baru
-                        </a>
-                        <!-- Link Pasang Baru -->
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <!-- <h6 class="collapse-header">Pasang Baru</h6> -->
-                            <a class="dropdown-item" href="#">Pasang Baru 1 Phasa</a>
-                            <a class="dropdown-item" href="pb3phasa.php">Pasang Baru 3 Phasa</a>
-                        </div>
+                        <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Pasang Baru</span>
+                                </a>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item active font-weight-bold" href="#">Pasang Baru 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Perubahan Daya</span>
+                                </a>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
-
-                        <!-- Link Perubahan Daya -->
-                        <h6 class="collapse-header">Perubahan Daya</h6>
-                        <a class="collapse-item" href="../perubahan_daya/pd1phasa.php">Perubahan Daya 1 Phasa</a>
-                        <a class="collapse-item" href="../perubahan_daya/pd3phasa.php">Perubahan Daya 3 Phasa</a>
-
-                        <hr style="margin-left: 20px; margin-right: 20px;">
-
-                        <!-- Link Migrasi -->
-                        <h6 class="collapse-header">Migrasi</h6>
-                        <a class="collapse-item" href="../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
-                        <a class="collapse-item" href="../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
-
-                        <hr style="margin-left: 20px; margin-right: 20px;">
-
-                        <!-- Link Multiguna -->
-                        <h6 class="collapse-header">Multiguna</h6>
-                        <a class="collapse-item" href="../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
-                        <a class="collapse-item" href="../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
-
-                        <hr style="margin-left: 20px; margin-right: 20px;">
-
-                        <!-- Link P2TL -->
-                        <h6 class="collapse-header">P2TL</h6>
-                        <a class="collapse-item" href="../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                        <a class="collapse-item" href="../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                     </div>
                 </div>
             </li>
