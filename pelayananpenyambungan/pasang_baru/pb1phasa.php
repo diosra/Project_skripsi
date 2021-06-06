@@ -49,15 +49,16 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pelayanan Penyambungan -->
             <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-list-ul"></i>
                     <span>Menu Pelayanan Penyambungan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                            <!-- Link Menu Halaman Pasang Baru -->
                             <li class="nav-item">
                                 <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                                     <i class="fas fa-chevron-circle-right"></i>
@@ -70,6 +71,10 @@
                                     </div>
                                 </div>
                             </li>
+
+                            <hr style="margin-left: 20px; margin-right: 20px;">
+
+                            <!-- Link Menu Halaman Perubahan Daya -->
                             <li class="nav-item">
                                 <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                                     <i class="fas fa-chevron-circle-right"></i>
@@ -82,8 +87,55 @@
                                     </div>
                                 </div>
                             </li>
-                        </ul>
 
+                            <hr style="margin-left: 20px; margin-right: 20px;">
+
+                            <!-- Link Menu Halaman Migrasi -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Migrasi</span>
+                                </a>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <hr style="margin-left: 20px; margin-right: 20px;">
+
+                            <!-- Link Menu Halaman Multiguna -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Multiguna</span>
+                                </a>
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <hr style="margin-left: 20px; margin-right: 20px;">
+
+                            <!-- Link Menu Halaman P2TL -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">P2TL</span>
+                                </a>
+                                <div id="collapseSeven" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </li>
