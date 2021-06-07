@@ -12,11 +12,11 @@
     <title>P2TL 3 Phasa</title>
 
     <!-- Custom fonts for this template-->
-    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -28,33 +28,34 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
+            <!-- Sidebar - Logo -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">PLN</div>
             </a>
+            <!-- Logo end -->
 
-            <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item Sidebar - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="../../index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            <!-- Dashboard end -->
 
-            <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <!-- Nav Item Sidebar - Menu Pelayanan Penyambungan -->
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-list-ul"></i>
                     <span>Menu Pelayanan Penyambungan</span>
                 </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
                             <!-- Link Menu Halaman Pasang Baru -->
@@ -138,11 +139,11 @@
                     </div>
                 </div>
             </li>
+            <!-- Menu Pelayanan Penyambungan end -->
 
-            <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item Sidebar - Menu Cetak -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -185,14 +186,15 @@
                     </div>
                 </div>
             </li>
+            <!-- Menu Cetak end -->
 
-            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+            <!-- Sidebar Toggler end -->
 
         </ul>
         <!-- End of Sidebar -->
@@ -250,9 +252,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
                             </div>
                             <div class="card-body">
-                                The styling for this basic card example is created by using default Bootstrap
-                                utility classes. By using utility classes, the style of the card component can be
-                                easily modified with no need for any custom CSS!
+
                             </div>
                         </div>
 
@@ -305,14 +305,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../js/sb-admin-2.min.js"></script>
+    <script src="../js/sb-admin-2.min.js"></script>
 
 </body>
 
