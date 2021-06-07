@@ -263,7 +263,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Navigasi</h6>
                             </div>
                             <div class="card-body">
-                                <button type="submit" class="btn btn-primary">Tambah Data</button>
+                                <a class="btn btn-primary" href="../../CRUD/pasang_baru/pb1fasa_input.php">Tambah Data</a>
                                 <a href="#" class="btn btn-success">Cetak Data</a>
                             </div>
                         </div>
