@@ -318,10 +318,10 @@
                                                     <td><?php echo $row['fasa_baru']; ?></td>
                                                     <td class="row text-center">
                                                         <div class="col">
-                                                            <a href="" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                                            <a href="../../CRUD/pasang_baru/pb1fasa_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                                         </div>
                                                         <div class="col">
-                                                            <a href="" class="btn btn-danger"><i class="fas fa-user-minus"></i> Hapus</a>
+                                                            <a href="../../CRUD/pasang_baru/hapus.php?hapus=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-danger"><i class="fas fa-user-minus"></i> Hapus</a>
                                                         </div>
                                                     </td>
                                                 </tr>
