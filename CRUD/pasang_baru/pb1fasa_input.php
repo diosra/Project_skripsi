@@ -255,9 +255,8 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Input Data Pelanggan Pasang Baru</h6>
                         </div>
+                        <!-- Form Utama -->
                         <div class="card-body">
-
-                            <!-- Form Utama -->
                             <form action="pb1fasa_input.php" method="post" name="form1">
 
                                 <?php
@@ -337,7 +336,7 @@
                                 if ($query) {
                                     echo '<script type="text/javascript">
                                             bootbox.alert({
-                                                message: `<div class="alert alert-success"><i class="fas fa-check"></i> Sukses</div>`,
+                                                message: `<div class="alert alert-success"><i class="fas fa-check"></i> Sukses melakukan Tambah Data Pelanggan Pasang Baru</div>`,
                                                 backdrop: true,
                                                 centerVertical: true,
                                                 size: `small`,
@@ -350,6 +349,7 @@
                             }
                             ?>
                         </div>
+                        <!-- Form Utama end -->
                     </div>
 
                 </div>
@@ -397,9 +397,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-
 
     <!-- Core plugin JavaScript-->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>

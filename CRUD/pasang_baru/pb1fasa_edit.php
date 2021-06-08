@@ -21,6 +21,9 @@
     <?php
     include '../../koneksi.php';
     ?>
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -247,12 +250,14 @@
                         <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Form Ubah Data Pasang Baru</u></h1>
                     </div>
 
-                    <!-- Basic Card Example -->
+                    <!-- Card untuk Form -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Edit Data Pelanggan Pasang Baru</h6>
                         </div>
+                        <!-- Form Utama -->
                         <div class="card-body">
+                            <!-- PHP - Query Tombol Ubah dan Bootbox -->
                             <?php
                             if (isset($_POST['ubah'])) {
                                 $id = $_POST['id_pasang_baru'];
@@ -261,12 +266,27 @@
                                 $daya_baru = $_POST['daya_baru'];
                                 $fasa_baru = $_POST['fasa_baru'];
 
-                                $mysqli->query("UPDATE tb_pasang_baru SET tgl_mohon='$tgl_mohon',
-                                tarif_baru='$tarif_baru', daya_baru='$daya_baru', fasa_baru='$fasa_baru' WHERE id_pasang_baru=$id") or die($mysqli->error);
+                                $update = "UPDATE tb_pasang_baru SET tgl_mohon='$tgl_mohon',
+                                tarif_baru='$tarif_baru', daya_baru='$daya_baru', fasa_baru='$fasa_baru' WHERE id_pasang_baru=$id";
+                                $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
 
-                                echo '<script>window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php" </script>';
+                                if ($query) {
+                                    echo '<script type="text/javascript">
+                                            bootbox.alert({
+                                                message: `<div class="alert alert-success"><i class="fas fa-check"></i> Sukses melakukan Ubah Data Pelanggan Pasang Baru</div>`,
+                                                backdrop: true,
+                                                centerVertical: true,
+                                                size: `small`,
+                                                callback: function () {
+                                                    window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
+                                                }
+                                            })
+                                    </script>';
+                                }
                             }
                             ?>
+
+                            <!-- PHP - Query Select untuk data ditampilkan di form -->
                             <?php
                             $id_pelanggan = '';
                             $jenis_transaksi = '';
@@ -291,8 +311,7 @@
                             }
                             ?>
 
-
-                            <form action="pb1fasa_edit.php" method="post" name="form1">
+                            <form action="pb1fasa_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" method="post" name="form1">
                                 <input type="hidden" name="id_pasang_baru" value="<?php echo $id; ?>">
                                 <?php
                                 $pelanggan = '';
@@ -352,7 +371,6 @@
                                 <div class="form-group row float-right">
                                     <div class="col">
                                         <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
-
                                         <button type="submit" class="btn btn-primary" name="ubah"><i class="fas fa-save"></i> Ubah</button>
                                     </div>
                                 </div>
@@ -360,6 +378,7 @@
 
 
                         </div>
+                        <!-- Form Utama end -->
                     </div>
 
                 </div>
@@ -407,10 +426,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
