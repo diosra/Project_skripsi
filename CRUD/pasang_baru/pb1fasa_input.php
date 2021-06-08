@@ -21,6 +21,9 @@
     <?php
     include '../../koneksi.php';
     ?>
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -247,12 +250,14 @@
                         <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Form Tambah Data Pasang Baru</u></h1>
                     </div>
 
-                    <!-- Basic Card Example -->
+                    <!-- Card untuk Form -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Input Data Pelanggan Pasang Baru</h6>
                         </div>
                         <div class="card-body">
+
+                            <!-- Form Utama -->
                             <form action="pb1fasa_input.php" method="post" name="form1">
 
                                 <?php
@@ -312,11 +317,12 @@
                                     <div class="col">
                                         <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
 
-                                        <button type="submit" class="btn btn-primary" name="save"><i class="fas fa-save"></i> Simpan</button>
+                                        <button type="submit" class="btn btn-primary tesboot" name="save"><i class="fas fa-save"></i> Simpan</button>
                                     </div>
                                 </div>
                             </form>
 
+                            <!-- PHP - Query Tombol Save dan Bootbox -->
                             <?php
                             if (isset($_POST['save'])) {
                                 $id_pelanggan = $_POST['id_pelanggan'];
@@ -327,6 +333,14 @@
 
                                 $insert = "INSERT INTO tb_pasang_baru (id_pelanggan, jenis_transaksi,tgl_mohon, tarif_baru, daya_baru, fasa_baru) VALUES ('$id_pelanggan', 'Pasang Baru', '$tgl_mohon', '$tarif_baru','$daya_baru', '$fasa_baru')";
                                 $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
+
+                                if ($query) {
+                                    echo '<script type="text/javascript">
+                                            bootbox.alert("Berhasil Melakukan Tambah Data Pelanggan Pasang Baru", function() {
+                                                window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
+                                        });
+                                    </script>';
+                                }
                             }
                             ?>
                         </div>
@@ -379,8 +393,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Core plugin JavaScript-->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
