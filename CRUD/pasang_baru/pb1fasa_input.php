@@ -336,9 +336,15 @@
 
                                 if ($query) {
                                     echo '<script type="text/javascript">
-                                            bootbox.alert("Berhasil Melakukan Tambah Data Pelanggan Pasang Baru", function() {
-                                                window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
-                                        });
+                                            bootbox.alert({
+                                                message: `<div class="alert alert-success"><i class="fas fa-check"></i> Sukses</div>`,
+                                                backdrop: true,
+                                                centerVertical: true,
+                                                size: `small`,
+                                                callback: function () {
+                                                    window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
+                                                }
+                                            })
                                     </script>';
                                 }
                             }
