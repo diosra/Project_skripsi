@@ -260,7 +260,7 @@
                             </div>
                             <div class="card-body">
                                 <a class="btn btn-primary" href="../../CRUD/pasang_baru/pb1fasa_input.php">Tambah Data</a>
-                                <a href="#" class="btn btn-success">Detail Biaya</a>
+                                <a href="detail/detailpb1phasa.php" class="btn btn-success">Detail Biaya</a>
                             </div>
                         </div>
                     </div>

@@ -9,21 +9,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Input Pasang Baru</title>
+    <title>Pasang Baru 1 Phasa</title>
 
     <!-- Custom fonts for this template-->
-    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <?php
-    include '../../koneksi.php';
+    include '../../../koneksi.php';
     ?>
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+    <script src="../../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -34,30 +37,30 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Logo -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.html">
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../../index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">PLN</div>
             </a>
-            <!-- Logo end -->
 
+            <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item Sidebar - Dashboard -->
+            <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="../../index.html">
+                <a class="nav-link" href="../../../index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-            <!-- Dashboard end -->
 
+            <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item Sidebar - Menu Pelayanan Penyambungan -->
+            <!-- Nav Item - Pelayanan Penyambungan -->
             <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-list-ul"></i>
                     <span>Menu Pelayanan Penyambungan</span>
                 </a>
@@ -72,8 +75,8 @@
                                 </a>
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/pasang_baru/pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/pasang_baru/pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
+                                        <a class="collapse-item active font-weight-bold" href="../pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -88,8 +91,8 @@
                                 </a>
                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -104,8 +107,8 @@
                                 </a>
                                 <div id="collapseFive" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -120,8 +123,8 @@
                                 </a>
                                 <div id="collapseSix" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -136,8 +139,8 @@
                                 </a>
                                 <div id="collapseSeven" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -145,11 +148,11 @@
                     </div>
                 </div>
             </li>
-            <!-- Menu Pelayanan Penyambungan end -->
 
+            <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item Sidebar - Menu Cetak -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -192,15 +195,14 @@
                     </div>
                 </div>
             </li>
-            <!-- Menu Cetak end -->
 
+            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-            <!-- Sidebar Toggler end -->
 
         </ul>
         <!-- End of Sidebar -->
@@ -219,14 +221,14 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Navbar - User Information top right -->
+                    <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="../../img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="../../../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -242,88 +244,90 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
+                <!-- Begin Page Content - konten halaman -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Form Tambah Data Pasang Baru</u></h1>
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Detail Biaya Pelanggan Pasang Baru 1 Phasa</u></h1>
                     </div>
 
-                    <!-- Card untuk Form -->
+                    <!-- Tabel Utama -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Input Data Pelanggan Pasang Baru</h6>
-                        </div>
-                        <!-- Form Utama -->
                         <div class="card-body">
-                            <form action="pb1fasa_input.php" method="post" name="form1">
-
-                                <?php
-                                $pelanggan = '';
-                                $query = "SELECT id_pelanggan, no_registrasi FROM tb_pelanggan GROUP BY id_pelanggan ORDER BY id_pelanggan ASC";
-                                $result = mysqli_query($mysqli, $query);
-                                while ($row = mysqli_fetch_array($result)) {
-                                    $pelanggan .= '<option value="' . $row["id_pelanggan"] . ' ' . $row["no_registrasi"] . '"> ' . $row["no_registrasi"] . '</option>';
-                                }
-                                ?>
-
-                                <div class="form-group row">
-                                    <div class="col">
-                                        <label for="">Nomor Registrasi Pelanggan</label>
-                                        <select name="id_pelanggan" id="id_pelanggan" class="action form-control" required>
-                                            <option value="<?php echo $id_pelanggan ?>" disabled selected> Pilih </option>
-                                            <?php echo $pelanggan ?>
-                                        </select>
-                                    </div>
-                                    <div class="col">
-                                        <label for="">Nama Pelanggan</label>
-                                        <p name="nama" id="nama"></p>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Jenis Transaksi</label>
-                                    <input type="text" name="jenis_transaksi" class="form-control" value="Pasang Baru" disabled>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Tanggal Mohon</label>
-                                    <input type="date" name="tgl_mohon" class="form-control" value="tgl_mohon" required>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col">
-                                        <label for="">Tarif Baru</label>
-                                        <input type="text" name="tarif_baru" class="form-control" value="" placeholder="Masukkan Tarif Baru Pelanggan" required>
-                                    </div>
-                                    <div class="col">
-                                        <label for="">Daya Baru</label>
-                                        <input type="text" name="daya_baru" class="form-control" value="" placeholder="Masukkan Daya Baru Pelanggan" required>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Fasa Baru</label>
-                                    <select name="fasa_baru" class="form-control" required>
-                                        <option value="" disabled selected>Pilih</option>
-                                        <option>1 FASA</option>
-                                        <option>3 FASA</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group row float-right">
-                                    <div class="col">
-                                        <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
-
-                                        <button type="submit" class="btn btn-primary tesboot" name="save"><i class="fas fa-save"></i> Simpan</button>
-                                    </div>
-                                </div>
-                            </form>
-
-
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>No Registrasi</th>
+                                            <th>Nama Pelanggan</th>
+                                            <th>Pekerjaan RAB</th>
+                                            <th>Detail 1</th>
+                                            <th>Detail 2</th>
+                                            <th>Detail 3</th>
+                                            <th>Detail 4</th>
+                                            <th>Detail 5</th>
+                                            <th>Detail 6</th>
+                                            <th>Detail 7</th>
+                                            <th>Detail 8</th>
+                                            <th>Detail 9</th>
+                                            <th>Detail 10</th>
+                                            <th>Detail 11</th>
+                                            <th>Total Biaya</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>No Registrasi</th>
+                                            <th>Nama Pelanggan</th>
+                                            <th>Pekerjaan RAB</th>
+                                            <th>Detail 1</th>
+                                            <th>Detail 2</th>
+                                            <th>Detail 3</th>
+                                            <th>Detail 4</th>
+                                            <th>Detail 5</th>
+                                            <th>Detail 6</th>
+                                            <th>Detail 7</th>
+                                            <th>Detail 8</th>
+                                            <th>Detail 9</th>
+                                            <th>Detail 10</th>
+                                            <th>Detail 11</th>
+                                            <th>Total Biaya</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <?php
+                                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_hasil_perhitungan_pb_1phs c ON a.id_pasang_baru = c.id_pasang_baru JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_baru = '1 FASA'");
+                                        $no = 1;
+                                        $hitungrow = mysqli_num_rows($data);
+                                        if ($hitungrow > 0) {
+                                            while ($row = $data->fetch_assoc()) { ?>
+                                                <tr>
+                                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                                    <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['kwh_meter_prabayar_fase_tunggal'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['nfa_2X'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['segel_plastik'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['cco_1T1'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['cco_3T1'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['isolasi_scotch'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['service_wedge_clamp_1phs'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['pasang_kwh_meter_satu_phasa_wiring'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['penarikan_sr_1_phasa'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['pengepresan_cco'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['survey'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <!-- Form Utama end -->
                     </div>
 
                 </div>
@@ -366,83 +370,26 @@
                 <div class="modal-body">Klik Tombol "Logout" dibawah untuk kembali ke menu login</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="../../login.html">Logout</a>
+                    <a class="btn btn-primary" href="../../../login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Core plugin JavaScript-->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../js/sb-admin-2.min.js"></script>
+    <script src="../../../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="../../../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../../../js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        $(document).ready(function() {
-            $('.action').change(function() {
-                if ($(this).val() != '') {
-                    var action = $(this).attr("id");
-                    var query = $(this).val();
-                    var result = '';
-                    if (action == "id_pelanggan") {
-                        result = 'nama';
-                    } else {
-                        result = 'tidak ada';
-                    }
-                    $.ajax({
-                        url: "fetch.php",
-                        method: "POST",
-                        data: {
-                            action: action,
-                            query: query
-                        },
-                        success: function(data) {
-                            $('#' + result).html(data);
-                        }
-                    })
-                }
-            });
-        });
-    </script>
-
-    <!-- PHP - Query Tombol Save dan SweetAlert -->
-    <?php
-    if (isset($_POST['save'])) {
-        $id_pelanggan = $_POST['id_pelanggan'];
-        $tgl_mohon = $_POST['tgl_mohon'];
-        $tarif_baru = $_POST['tarif_baru'];
-        $daya_baru = $_POST['daya_baru'];
-        $fasa_baru = $_POST['fasa_baru'];
-
-        $insert = "INSERT INTO tb_pasang_baru (id_pelanggan, jenis_transaksi,tgl_mohon, tarif_baru, daya_baru, fasa_baru) VALUES ('$id_pelanggan', 'Pasang Baru', '$tgl_mohon', '$tarif_baru','$daya_baru', '$fasa_baru')";
-        $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-
-        if ($fasa_baru == "1 FASA") {
-            $ambil = "PB 1 FASA";
-        }
-        if ($query) {
-            $insert2 = "INSERT INTO tb_hasil_perhitungan_pb_1phs (id_pasang_baru, pekerjaan_rab, kwh_meter_prabayar_fase_tunggal, nfa_2X, segel_plastik, 
-        cco_1T1, cco_3T1, isolasi_scotch, service_wedge_clamp_1phs, pasang_kwh_meter_satu_phasa_wiring, penarikan_sr_1_phasa,
-        pengepresan_cco, survey, total_biaya)
-        VALUES 
-        ('" . mysqli_insert_id($mysqli) . "', '$ambil', '243040', '4210', '2724','6895', '9358','5615', '3842', '41008', '33625', '22982', '20856', '394155')";
-            $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
-    ?>
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sukses.',
-                    text: 'Sukses Menambahkan Data Pelanggan Pasang Baru'
-                }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
-                })
-            </script>
-    <?php
-        }
-    }
-    ?>
 </body>
 
 </html>
