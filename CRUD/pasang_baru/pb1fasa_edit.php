@@ -23,7 +23,7 @@
     ?>
     <script src="../../vendor/jquery/jquery.min.js"></script>
     <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body id="page-top">
@@ -257,7 +257,7 @@
                         </div>
                         <!-- Form Utama -->
                         <div class="card-body">
-                            <!-- PHP - Query Tombol Ubah dan Bootbox -->
+                            <!-- PHP - Query Tombol Ubah dan SweetAlert -->
                             <?php
                             if (isset($_POST['ubah'])) {
                                 $id = $_POST['id_pasang_baru'];
@@ -270,18 +270,17 @@
                                 tarif_baru='$tarif_baru', daya_baru='$daya_baru', fasa_baru='$fasa_baru' WHERE id_pasang_baru=$id";
                                 $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
 
-                                if ($query) {
-                                    echo '<script type="text/javascript">
-                                            bootbox.alert({
-                                                message: `<div class="alert alert-success"><i class="fas fa-check"></i> Sukses melakukan Ubah Data Pelanggan Pasang Baru</div>`,
-                                                backdrop: true,
-                                                centerVertical: true,
-                                                size: `small`,
-                                                callback: function () {
-                                                    window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
-                                                }
-                                            })
-                                    </script>';
+                                if ($query) { ?>
+                                    <script>
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Sukses.',
+                                            text: 'Sukses Mengubah Data'
+                                        }).then((result) => {
+                                            window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
+                                        })
+                                    </script>
+                            <?php
                                 }
                             }
                             ?>

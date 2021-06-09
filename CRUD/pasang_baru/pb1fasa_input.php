@@ -321,33 +321,7 @@
                                 </div>
                             </form>
 
-                            <!-- PHP - Query Tombol Save dan Bootbox -->
-                            <?php
-                            if (isset($_POST['save'])) {
-                                $id_pelanggan = $_POST['id_pelanggan'];
-                                $tgl_mohon = $_POST['tgl_mohon'];
-                                $tarif_baru = $_POST['tarif_baru'];
-                                $daya_baru = $_POST['daya_baru'];
-                                $fasa_baru = $_POST['fasa_baru'];
 
-                                $insert = "INSERT INTO tb_pasang_baru (id_pelanggan, jenis_transaksi,tgl_mohon, tarif_baru, daya_baru, fasa_baru) VALUES ('$id_pelanggan', 'Pasang Baru', '$tgl_mohon', '$tarif_baru','$daya_baru', '$fasa_baru')";
-                                $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-
-                                if ($query) {
-                                    echo '<script type="text/javascript">
-                                            bootbox.alert({
-                                                message: `<div class="alert alert-success"><i class="fas fa-check"></i> Sukses melakukan Tambah Data Pelanggan Pasang Baru</div>`,
-                                                backdrop: true,
-                                                centerVertical: true,
-                                                size: `small`,
-                                                callback: function () {
-                                                    window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
-                                                }
-                                            })
-                                    </script>';
-                                }
-                            }
-                            ?>
                         </div>
                         <!-- Form Utama end -->
                     </div>
@@ -403,6 +377,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="../../js/sb-admin-2.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(document).ready(function() {
@@ -432,6 +407,32 @@
         });
     </script>
 
+    <!-- PHP - Query Tombol Save dan SweetAlert -->
+    <?php
+    if (isset($_POST['save'])) {
+        $id_pelanggan = $_POST['id_pelanggan'];
+        $tgl_mohon = $_POST['tgl_mohon'];
+        $tarif_baru = $_POST['tarif_baru'];
+        $daya_baru = $_POST['daya_baru'];
+        $fasa_baru = $_POST['fasa_baru'];
+
+        $insert = "INSERT INTO tb_pasang_baru (id_pelanggan, jenis_transaksi,tgl_mohon, tarif_baru, daya_baru, fasa_baru) VALUES ('$id_pelanggan', 'Pasang Baru', '$tgl_mohon', '$tarif_baru','$daya_baru', '$fasa_baru')";
+        $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
+
+        if ($query) { ?>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses.',
+                    text: 'Sukses Menambahkan Data Pelanggan Pasang Baru'
+                }).then((result) => {
+                    window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
+                })
+            </script>
+    <?php
+        }
+    }
+    ?>
 </body>
 
 </html>
