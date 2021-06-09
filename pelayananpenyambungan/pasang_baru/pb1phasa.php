@@ -25,6 +25,8 @@
     <?php
     include '../../koneksi.php';
     ?>
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -321,7 +323,7 @@
                                                             <a href="../../CRUD/pasang_baru/pb1fasa_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                                                         </div>
                                                         <div class="col">
-                                                            <a href="../../CRUD/pasang_baru/hapus.php?hapus=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-danger"><i class="fas fa-user-minus"></i> Hapus</a>
+                                                            <a href="../../CRUD/pasang_baru/hapus.php?hapus=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-danger" id="remove"><i class="fas fa-user-minus"></i> Hapus</a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -379,10 +381,6 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Core plugin JavaScript-->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -395,6 +393,29 @@
 
     <!-- Page level custom scripts -->
     <script src="../../js/demo/datatables-demo.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        $(document).on('click', '#remove', function(e) {
+            e.preventDefault();
+            var link = $(this).attr('href');
+            Swal.fire({
+                title: 'Apakah anda yakin ingin menghapus data ini?',
+                text: "Penghapusan data akan terjadi",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#00a65a',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = link;
+                }
+            })
+        })
+    </script>
+
+
 </body>
 
 </html>
