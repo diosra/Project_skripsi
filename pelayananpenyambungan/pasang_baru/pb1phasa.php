@@ -254,22 +254,13 @@
 
                     <!-- Tombol-tombol -->
                     <div class="row">
-                        <div class="card shadow ml-2 mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Filter Data</h6>
-                            </div>
-                            <div class="card-body">
-                                <button type="submit" class="btn btn-info">Tampilkan</button>
-                                <a href="#" class="btn btn-warning">Reset Filter</a>
-                            </div>
-                        </div>
-                        <div class="card shadow ml-4 mb-4">
+                        <div class="card shadow ml-3 mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Navigasi</h6>
                             </div>
                             <div class="card-body">
                                 <a class="btn btn-primary" href="../../CRUD/pasang_baru/pb1fasa_input.php">Tambah Data</a>
-                                <a href="#" class="btn btn-success">Cetak Data</a>
+                                <a href="#" class="btn btn-success">Detail Biaya</a>
                             </div>
                         </div>
                     </div>
@@ -320,10 +311,10 @@
                                                     <td><?php echo $row['fasa_baru']; ?></td>
                                                     <td class="row text-center">
                                                         <div class="col">
-                                                            <a href="../../CRUD/pasang_baru/pb1fasa_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                                            <a href="../../CRUD/pasang_baru/pb1fasa_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                                         </div>
                                                         <div class="col">
-                                                            <a href="../../CRUD/pasang_baru/hapus.php?hapus=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-danger" id="remove"><i class="fas fa-user-minus"></i> Hapus</a>
+                                                            <a href="../../CRUD/pasang_baru/hapus.php?hapus=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -395,13 +386,14 @@
     <script src="../../js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Script buat SweetAlert Confirm Hapus -->
     <script>
         $(document).on('click', '#remove', function(e) {
             e.preventDefault();
             var link = $(this).attr('href');
             Swal.fire({
-                title: 'Apakah anda yakin ingin menghapus data ini?',
-                text: "Penghapusan data akan terjadi",
+                title: 'Apakah anda yakin?',
+                text: "Data ini akan dihapus",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#00a65a',
@@ -414,6 +406,7 @@
             })
         })
     </script>
+
 
 
 </body>
