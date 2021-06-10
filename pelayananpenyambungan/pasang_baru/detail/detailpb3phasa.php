@@ -12,20 +12,21 @@
     <title>Pasang Baru 3 Phasa</title>
 
     <!-- Custom fonts for this template-->
-    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <?php
-    include '../../koneksi.php';
+    include '../../../koneksi.php';
     ?>
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -37,7 +38,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../../index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -49,7 +50,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="../../index.html">
+                <a class="nav-link" href="../../../index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -59,11 +60,11 @@
 
             <!-- Nav Item - Pelayanan Penyambungan -->
             <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-list-ul"></i>
                     <span>Menu Pelayanan Penyambungan</span>
                 </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
                             <!-- Link Menu Halaman Pasang Baru -->
@@ -74,8 +75,8 @@
                                 </a>
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
-                                        <a class="collapse-item active font-weight-bold" href="#">Pasang Baru 3 <br> Phasa</a>
+                                        <a class="collapse-item active font-weight-bold" href="../pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -90,8 +91,8 @@
                                 </a>
                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -106,8 +107,8 @@
                                 </a>
                                 <div id="collapseFive" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -122,8 +123,8 @@
                                 </a>
                                 <div id="collapseSix" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -138,8 +139,8 @@
                                 </a>
                                 <div id="collapseSeven" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -227,7 +228,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="../../img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="../../../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -248,54 +249,65 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Pasang Baru 3 Phasa</u></h1>
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Detail Biaya Pelanggan Pasang Baru 3 Phasa</u></h1>
                     </div>
 
                     <!-- Tabel Utama -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex">
-                            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-                            <a class="btn btn-primary p-2 mr-2" href="../../CRUD/pasang_baru/pb_input.php"><i class="fas fa-plus-circle"></i> Tambah</a>
-                            <a class="btn btn-success p-2" href="detail/detailpb3phasa.php"><i class="fas fa-file-alt"></i> Detail Biaya</a>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">No</th>
-                                            <th class="text-center">No Registrasi</th>
-                                            <th class="text-center">Jenis Transaksi</th>
-                                            <th class="text-center">Tanggal Mohon</th>
-                                            <th class="text-center">Tarif Baru</th>
-                                            <th class="text-center">Daya Baru</th>
-                                            <th class="text-center">Fasa Baru</th>
-                                            <th class="text-center">Action</th>
+                                            <th rowspan="2">No</th>
+                                            <th rowspan="2">No Registrasi</th>
+                                            <th rowspan="2">Nama Pelanggan</th>
+                                            <th rowspan="2">Pekerjaan RAB</th>
+                                            <th colspan="13" class="text-center">Detail Biaya</th>
+                                            <th rowspan="2">Total Biaya</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Detail 1 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="kWh Meter 3 Phase Pengukuran langsung kelas 1"></i></th>
+                                            <th class="text-center">Detail 2 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Box APP 1 Pintu Pengukuran Langsung"></i></th>
+                                            <th class="text-center">Detail 3 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Segel Plastik"></i></th>
+                                            <th class="text-center">Detail 4 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="NFA2X-T;3X35+1X35;0,6/1kV;OH"></i></th>
+                                            <th class="text-center">Detail 5 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="NFA2X;4X16mm2;0,6/1kV;OH"></i></th>
+                                            <th class="text-center">Detail 6 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Service Wedge Clamp 3 Phasa ; Type SWC 625 ; 6, 10, 16, 25 sqmm"></i></th>
+                                            <th class="text-center">Detail 7 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="CCO 3T3 (16/35 sqmm - 16/35 sqmm)"></i></th>
+                                            <th class="text-center">Detail 8 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="SKAT 3 ( 35 sqmm ) ; L1"></i></th>
+                                            <th class="text-center">Detail 9 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Isolasi Scotch / Rubber Tape 1 KV ( Dimension : 19 mm x 20,1 m x 0.177 mm )"></i></th>
+                                            <th class="text-center">Detail 10 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Pemas. Kwh Meter Tiga Phase Tanpa Wiring"></i></th>
+                                            <th class="text-center">Detail 11 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Penarikan SR 3 Phase"></i></th>
+                                            <th class="text-center">Detail 12 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Pengepresan CCO / Connector 30-70 mm²"></i></th>
+                                            <th class="text-center">Detail 13 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Survey"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $data = mysqli_query($mysqli, "SELECT a.no_registrasi ,b.id_pasang_baru, b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_pasang_baru b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_baru = '3 FASA'");
+                                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_hasil_perhitungan_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_baru = '3 FASA'");
                                         $no = 1;
                                         $hitungrow = mysqli_num_rows($data);
                                         if ($hitungrow > 0) {
                                             while ($row = $data->fetch_assoc()) { ?>
                                                 <tr>
-                                                    <td><?php echo $no++ ?></td>
-                                                    <td><?php echo $row['no_registrasi']; ?></td>
-                                                    <td><?php echo $row['jenis_transaksi']; ?></td>
-                                                    <td><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
-                                                    <td><?php echo $row['tarif_baru']; ?></td>
-                                                    <td><?php echo $row['daya_baru']; ?></td>
-                                                    <td><?php echo $row['fasa_baru']; ?></td>
-                                                    <td class="row text-center">
-                                                        <div class="col">
-                                                            <a href="../../CRUD/pasang_baru/pb_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="../../CRUD/pasang_baru/pb_hapus.php?hapus=<?php echo $row['id_pasang_baru'] ?>&fasa_baru=<?php echo $row['fasa_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
-                                                        </div>
-                                                    </td>
+                                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                                    <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['kwh_meter_3phs_pengukuran_langsung'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['box_app_1_pintu_pengukuran_langsung'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['segel_plastik'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['nfa_2x_3x35'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['nfa_2x_4x16'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['service_wedge_clamp_3phs'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['cco_3T3'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['skat_3'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['isolasi_scotch'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['pemas_kwh_meter_3phs_tanpa_wiring'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['penarikan_sr_3phs'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['pengepresan_cco'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['survey'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
                                                 </tr>
                                             <?php } ?>
                                         <?php } ?>
@@ -304,11 +316,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
+            <a href="../pb3phasa.php" class="btn btn-danger" class="mb-2 ml-3"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -345,57 +356,40 @@
                 <div class="modal-body">Klik Tombol "Logout" dibawah untuk kembali ke menu login</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="../../login.html">Logout</a>
+                    <a class="btn btn-primary" href="../../../login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Core plugin JavaScript-->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../js/sb-admin-2.min.js"></script>
+    <script src="../../../js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../../vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../../js/demo/datatables-demo.js"></script>
+    <script src="../../../js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- Script buat SweetAlert Confirm Hapus -->
     <script>
-        $(document).on('click', '#remove', function(e) {
-            e.preventDefault();
-            var link = $(this).attr('href');
-            Swal.fire({
-                title: 'Apakah anda yakin?',
-                text: "Data ini akan dihapus",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#00a65a',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Hapus!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location = link;
-                }
-            })
+        $(function() {
+            $('[data-toggle="popover"]').popover()
         })
     </script>
 
-    <!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
     <script>
         $('#dataTable').DataTable({
             "columnDefs": [{
                 "orderable": false,
-                "targets": [2, 6, 7]
+                "targets": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
             }]
         });
     </script>
-
 </body>
 
 </html>

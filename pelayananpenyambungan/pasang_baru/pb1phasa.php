@@ -13,7 +13,6 @@
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -152,7 +151,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Menu Cetak -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
@@ -252,24 +251,11 @@
                         <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Pasang Baru 1 Phasa</u></h1>
                     </div>
 
-                    <!-- Tombol-tombol -->
-                    <!-- <div class="row">
-                        <div class="card shadow ml-3 mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Navigasi</h6>
-                            </div>
-                            <div class="card-body">
-                                <a class="btn btn-primary" href="../../CRUD/pasang_baru/pb1fasa_input.php">Tambah Data</a>
-                                <a href="detail/detailpb1phasa.php" class="btn btn-success">Detail Biaya</a>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <!-- Tabel Utama -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex">
                             <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-                            <a class="btn btn-primary p-2 mr-2" href="../../CRUD/pasang_baru/pb1fasa_input.php"><i class="fas fa-plus-circle"></i> Tambah</a>
+                            <a class="btn btn-primary p-2 mr-2" href="../../CRUD/pasang_baru/pb_input.php"><i class="fas fa-plus-circle"></i> Tambah</a>
                             <a class="btn btn-success p-2" href="detail/detailpb1phasa.php"><i class="fas fa-file-alt"></i> Detail Biaya</a>
                         </div>
                         <div class="card-body">
@@ -304,10 +290,10 @@
                                                     <td><?php echo $row['fasa_baru']; ?></td>
                                                     <td class="row text-center">
                                                         <div class="col">
-                                                            <a href="../../CRUD/pasang_baru/pb1fasa_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                                            <a href="../../CRUD/pasang_baru/pb_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                                         </div>
                                                         <div class="col">
-                                                            <a href="../../CRUD/pasang_baru/hapus.php?hapus=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                                            <a href="../../CRUD/pasang_baru/pb_hapus.php?hapus=<?php echo $row['id_pasang_baru'] ?>&fasa_baru=<?php echo $row['fasa_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -400,6 +386,7 @@
         })
     </script>
 
+    <!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
     <script>
         $('#dataTable').DataTable({
             "columnDefs": [{
