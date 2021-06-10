@@ -253,7 +253,7 @@
                     </div>
 
                     <!-- Tombol-tombol -->
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="card shadow ml-3 mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Navigasi</h6>
@@ -263,37 +263,30 @@
                                 <a href="detail/detailpb1phasa.php" class="btn btn-success">Detail Biaya</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Tabel Utama -->
                     <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex">
+                            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
+                            <a class="btn btn-primary p-2 mr-2" href="../../CRUD/pasang_baru/pb1fasa_input.php"><i class="fas fa-plus-circle"></i> Tambah</a>
+                            <a class="btn btn-success p-2" href="detail/detailpb1phasa.php"><i class="fas fa-file-alt"></i> Detail Biaya</a>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>No Registrasi</th>
-                                            <th>Jenis Transaksi</th>
-                                            <th>Tanggal Mohon</th>
-                                            <th>Tarif Baru</th>
-                                            <th>Daya Baru</th>
-                                            <th>Fasa Baru</th>
-                                            <th>Action</th>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">No Registrasi</th>
+                                            <th class="text-center">Jenis Transaksi</th>
+                                            <th class="text-center">Tanggal Mohon</th>
+                                            <th class="text-center">Tarif Baru</th>
+                                            <th class="text-center">Daya Baru</th>
+                                            <th class="text-center">Fasa Baru</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>No Registrasi</th>
-                                            <th>Jenis Transaksi</th>
-                                            <th>Tanggal Mohon</th>
-                                            <th>Tarif Baru</th>
-                                            <th>Daya Baru</th>
-                                            <th>Fasa Baru</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         <?php
                                         $data = mysqli_query($mysqli, "SELECT a.no_registrasi ,b.id_pasang_baru, b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_pasang_baru b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_baru = '1 FASA'");
@@ -407,7 +400,14 @@
         })
     </script>
 
-
+    <script>
+        $('#dataTable').DataTable({
+            "columnDefs": [{
+                "orderable": false,
+                "targets": [2, 6, 7]
+            }]
+        });
+    </script>
 
 </body>
 
