@@ -259,44 +259,27 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>No Registrasi</th>
-                                            <th>Nama Pelanggan</th>
-                                            <th>Pekerjaan RAB</th>
-                                            <th>Detail 1</th>
-                                            <th>Detail 2</th>
-                                            <th>Detail 3</th>
-                                            <th>Detail 4</th>
-                                            <th>Detail 5</th>
-                                            <th>Detail 6</th>
-                                            <th>Detail 7</th>
-                                            <th>Detail 8</th>
-                                            <th>Detail 9</th>
-                                            <th>Detail 10</th>
-                                            <th>Detail 11</th>
-                                            <th>Total Biaya</th>
+                                            <th rowspan="2">No</th>
+                                            <th rowspan="2">No Registrasi</th>
+                                            <th rowspan="2">Nama Pelanggan</th>
+                                            <th rowspan="2">Pekerjaan RAB</th>
+                                            <th colspan="11" class="text-center">Detail Biaya</th>
+                                            <th rowspan="2">Total Biaya</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Detail 1 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="kWh Meter 3 Phase Pengukuran langsung kelas 1"></i></th>
+                                            <th class="text-center">Detail 2 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="NFA2X;2X10mm2;0,6/1kV;OH"></i></th>
+                                            <th class="text-center">Detail 3 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Segel Plastik"></i></th>
+                                            <th class="text-center">Detail 4 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="CCO 1T1 (10/16 sqmm - 10/16 sqmm)"></i></th>
+                                            <th class="text-center">Detail 5 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="CCO 3T1 (16/35 sqmm - 10/16 sqmm)"></i></th>
+                                            <th class="text-center">Detail 6 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Isolasi Scotch / Rubber Tape 1 KV ( Dimension : 19 mm x 20,1 m x 0.177 mm )"></i></th>
+                                            <th class="text-center">Detail 7 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Service Wedge Clamp 1 Phasa (Dua Sampit) ; Type SWC 616 ; 6. 10, 16 sqmm"></i></th>
+                                            <th class="text-center">Detail 8 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Pasang Kwh Meter Satu Phase + Wiring"></i></th>
+                                            <th class="text-center">Detail 9 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Penarikan SR 1 Phase"></i></th>
+                                            <th class="text-center">Detail 10 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Pengepresan CCO / Connector 10-25 mm²"></i></th>
+                                            <th class="text-center">Detail 11 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Survey"></i></th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>No Registrasi</th>
-                                            <th>Nama Pelanggan</th>
-                                            <th>Pekerjaan RAB</th>
-                                            <th>Detail 1</th>
-                                            <th>Detail 2</th>
-                                            <th>Detail 3</th>
-                                            <th>Detail 4</th>
-                                            <th>Detail 5</th>
-                                            <th>Detail 6</th>
-                                            <th>Detail 7</th>
-                                            <th>Detail 8</th>
-                                            <th>Detail 9</th>
-                                            <th>Detail 10</th>
-                                            <th>Detail 11</th>
-                                            <th>Total Biaya</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         <?php
                                         $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_hasil_perhitungan_pb_1phs c ON a.id_pasang_baru = c.id_pasang_baru JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_baru = '1 FASA'");
@@ -329,11 +312,10 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
+            <a href="../pb1phasa.php" class="btn btn-danger" class="mb-2 ml-3"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -390,6 +372,20 @@
     <script src="../../../js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script>
+        $(function() {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+
+    <script>
+        $('#dataTable').DataTable({
+            "columnDefs": [{
+                "orderable": false,
+                "targets": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+            }]
+        });
+    </script>
 </body>
 
 </html>
