@@ -372,12 +372,14 @@
     <script src="../../../js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Script untuk Menampilkan Popover -->
     <script>
         $(function() {
             $('[data-toggle="popover"]').popover()
         })
     </script>
 
+    <!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
     <script>
         $('#dataTable').DataTable({
             "columnDefs": [{

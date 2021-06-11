@@ -9,23 +9,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Perubahan Daya 1 Phasa</title>
+    <title>Perubahan Daya 3 Phasa</title>
 
     <!-- Custom fonts for this template-->
-    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <?php
-    include '../../koneksi.php';
+    include '../../../koneksi.php';
     ?>
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -37,7 +38,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../../index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -49,7 +50,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="../../index.html">
+                <a class="nav-link" href="../../../index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -74,8 +75,8 @@
                                 </a>
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../pasang_baru/pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../pasang_baru/pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
+                                        <a class="collapse-item active font-weight-bold" href="../pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -90,8 +91,8 @@
                                 </a>
                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item active font-weight-bold" href="#">Perubahan Daya 1 <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -106,8 +107,8 @@
                                 </a>
                                 <div id="collapseFive" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -122,8 +123,8 @@
                                 </a>
                                 <div id="collapseSix" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -138,8 +139,8 @@
                                 </a>
                                 <div id="collapseSeven" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -227,7 +228,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="../../img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="../../../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -246,43 +247,29 @@
                 <!-- Begin Page Content - konten halaman -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
+                    <!-- Page Heading 1 -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Perubahan Daya 1 Phasa</u></h1>
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Detail Biaya Pelanggan Perubahan Daya 3 Phasa</u></h1>
                     </div>
 
-                    <!-- Tabel Utama -->
+                    <!-- Tabel Utama 1 -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex">
-                            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-                            <a class="btn btn-primary p-2 mr-2" href="../../CRUD/perubahan_daya/pd_input.php"><i class="fas fa-plus-circle"></i> Tambah</a>
-                            <a class="btn btn-success p-2" href="detail/detailpd1phasa.php"><i class="fas fa-file-alt"></i> Detail Biaya</a>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="display table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th rowspan="2">No</th>
-                                            <th rowspan="2">No Registrasi</th>
-                                            <th rowspan="2">Jenis Transaksi</th>
-                                            <th rowspan="2">Tanggal Mohon</th>
-                                            <th colspan="2">Tarif & Daya Lama</th>
-                                            <th colspan="2">Tarif & Daya Baru</th>
-                                            <th rowspan="2">Fasa Lama</th>
-                                            <th rowspan="2">Fasa Baru</th>
-                                            <th rowspan="2">Action</th>
-                                        </tr>
-                                        <tr>
-                                            <th>Tarif</th>
-                                            <th>Daya</th>
-                                            <th>Tarif</th>
-                                            <th>Daya</th>
+                                            <th>No</th>
+                                            <th>No Registrasi</th>
+                                            <th>Nama Pelanggan</th>
+                                            <th>Pekerjaan RAB</th>
+                                            <th class="text-center">Detail 1 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Penggantian MCB / MCCB 3 Phasa"></i></th>
+                                            <th>Total Biaya</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $data = mysqli_query($mysqli, "SELECT a.no_registrasi, a.nama , b.* FROM tb_perubahan_daya b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_lama = '1 FASA'");
+                                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_hasil_perhitungan_pd_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_lama = '3 FASA'");
                                         $no = 1;
                                         $hitungrow = mysqli_num_rows($data);
                                         if ($hitungrow > 0) {
@@ -290,22 +277,10 @@
                                                 <tr>
                                                     <td style="text-align:center;"><?php echo $no++ ?></td>
                                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
-                                                    <td class="align-middle"><?php echo $row['jenis_transaksi']; ?></td>
-                                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
-                                                    <td class="align-middle"><?php echo $row['tarif_lama']; ?></td>
-                                                    <td class="align-middle"><?php echo $row['daya_lama']; ?></td>
-                                                    <td class="align-middle"><?php echo $row['tarif_baru']; ?></td>
-                                                    <td class="align-middle"><?php echo $row['daya_baru']; ?></td>
-                                                    <td class="align-middle"><?php echo $row['fasa_lama']; ?></td>
-                                                    <td class="align-middle"><?php echo $row['fasa_baru']; ?></td>
-                                                    <td class="row text-center">
-                                                        <div class="col">
-                                                            <a href="../../CRUD/perubahan_daya/pd_edit.php?edit=<?php echo $row['id_perubahan_daya'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                                        </div>
-                                                        <div class="col">
-                                                            <a href="../../CRUD/perubahan_daya/pd_hapus.php?hapus=<?php echo $row['id_perubahan_daya'] ?>&fasa_lama=<?php echo $row['fasa_lama'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
-                                                        </div>
-                                                    </td>
+                                                    <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['penggantian_mccb_3phs'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
                                                 </tr>
                                             <?php } ?>
                                         <?php } ?>
@@ -315,10 +290,79 @@
                         </div>
                     </div>
 
+                    <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+
+                    <!-- Page Heading 2 -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Detail Biaya Pelanggan Perubahan Daya 3 Phasa ke 1 Phasa</u></h1>
+                    </div>
+
+                    <!-- Tabel Utama 2 -->
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="display table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th rowspan="2">No</th>
+                                            <th rowspan="2">No Registrasi</th>
+                                            <th rowspan="2">Nama Pelanggan</th>
+                                            <th rowspan="2">Pekerjaan RAB</th>
+                                            <th colspan="12" class="text-center">Detail Biaya</th>
+                                            <th rowspan="2">Total Biaya</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-center">Detail 1 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="kWh Meter Prabayar Fase Tunggal"></i></th>
+                                            <th class="text-center">Detail 2 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="NFA2X;2X10mm2;0,6/1kV;OH"></i></th>
+                                            <th class="text-center">Detail 3 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Segel Plastik"></i></th>
+                                            <th class="text-center">Detail 4 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="CCO 1T1 (10/16 sqmm - 10/16 sqmm)"></i></th>
+                                            <th class="text-center">Detail 5 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="CCO 3T1 (16/35 sqmm - 10/16 sqmm)"></i></th>
+                                            <th class="text-center">Detail 6 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Isolasi Scotch / Rubber Tape 1 KV ( Dimension : 19 mm x 20,1 m x 0.177 mm )"></i></th>
+                                            <th class="text-center">Detail 7 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Service Wedge Clamp 1 Phasa (Dua Sampit) ; Type SWC 616 ; 6. 10, 16 sqmm"></i></th>
+                                            <th class="text-center">Detail 8 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Pasang Kwh Meter Satu Phase + Wiring"></i></th>
+                                            <th class="text-center">Detail 9 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Penarikan SR 1 Phase"></i></th>
+                                            <th class="text-center">Detail 10 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Pengepresan CCO / Connector 10-25 mm²"></i></th>
+                                            <th class="text-center">Detail 11 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Survey"></i></th>
+                                            <th class="text-center">Detail 12 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Bongkar Kwh Meter Tiga Phase Tanpa Wiring"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_hasil_perhitungan_pd_3phs_ke_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_lama = '3 FASA'");
+                                        $no = 1;
+                                        $hitungrow = mysqli_num_rows($data);
+                                        if ($hitungrow > 0) {
+                                            while ($row = $data->fetch_assoc()) { ?>
+                                                <tr>
+                                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                                    <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['kwh_meter_tunggal'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['nfa2x_2x10'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['segel_plastik'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['cco_1t1'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['cco_3t1'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['isolasi_scotch'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['service_wedge'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['pasang_kwh'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['penarikan_sr'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['pengepresan'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['survey'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['bongkar_kwh_meter'], 0, ',', '.') ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
+            <a href="../pd3phasa.php" class="btn btn-danger" class="mb-2 ml-3"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
             <!-- End of Main Content -->
 
             <!-- Footer -->
@@ -355,53 +399,56 @@
                 <div class="modal-body">Klik Tombol "Logout" dibawah untuk kembali ke menu login</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="../../login.html">Logout</a>
+                    <a class="btn btn-primary" href="../../../login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Core plugin JavaScript-->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../js/sb-admin-2.min.js"></script>
+    <script src="../../../js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../../vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../../js/demo/datatables-demo.js"></script>
+    <script src="../../../js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- Script buat SweetAlert Confirm Hapus -->
+    <!-- Script untuk Menampilkan 2 Tabel di 1 halaman -->
     <script>
-        $(document).on('click', '#remove', function(e) {
-            e.preventDefault();
-            var link = $(this).attr('href');
-            Swal.fire({
-                title: 'Apakah anda yakin?',
-                text: "Data ini akan dihapus",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#00a65a',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, Hapus!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location = link;
-                }
-            })
+        $(document).ready(function() {
+            $('table.display').DataTable();
+        });
+    </script>
+
+    <!-- Script untuk Menampilkan Popover -->
+    <script>
+        $(function() {
+            $('[data-toggle="popover"]').popover()
         })
     </script>
 
-    <!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
+    <!-- Script buat menghilangkan beberapa fitur sorting di datatables - Tabel 1 -->
     <script>
         $('#dataTable').DataTable({
             "columnDefs": [{
                 "orderable": false,
-                "targets": [2, 4, 5, 6, 7, 8, 10]
+                "targets": [3, 4, 5]
+            }]
+        });
+    </script>
+
+    <!-- Script buat menghilangkan beberapa fitur sorting di datatables - Tabel 2 -->
+    <script>
+        $('#dataTable2').DataTable({
+            "columnDefs": [{
+                "orderable": false,
+                "targets": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
             }]
         });
     </script>

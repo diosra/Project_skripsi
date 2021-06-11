@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Input Pasang Baru</title>
+    <title>Input Perubahan Daya</title>
 
     <!-- Custom fonts for this template-->
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -247,17 +247,17 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Form Tambah Data Pasang Baru</u></h1>
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Form Tambah Data Perubahan Daya</u></h1>
                     </div>
 
                     <!-- Card untuk Form -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Input Data Pelanggan Pasang Baru</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Input Data Pelanggan Perubahan Daya</h6>
                         </div>
                         <!-- Form Utama -->
                         <div class="card-body">
-                            <form action="pb_input.php" method="post" name="form1">
+                            <form action="pd_input.php" method="post" name="form1">
 
                                 <?php
                                 $pelanggan = '';
@@ -294,6 +294,17 @@
 
                                 <div class="form-group row">
                                     <div class="col">
+                                        <label for="">Tarif Lama</label>
+                                        <input type="text" name="tarif_lama" class="form-control" value="" placeholder="Masukkan Tarif Lama Pelanggan" required>
+                                    </div>
+                                    <div class="col">
+                                        <label for="">Daya Lama</label>
+                                        <input type="text" name="daya_lama" class="form-control" value="" placeholder="Masukkan Daya Lama Pelanggan" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col">
                                         <label for="">Tarif Baru</label>
                                         <input type="text" name="tarif_baru" class="form-control" value="" placeholder="Masukkan Tarif Baru Pelanggan" required>
                                     </div>
@@ -301,6 +312,15 @@
                                         <label for="">Daya Baru</label>
                                         <input type="text" name="daya_baru" class="form-control" value="" placeholder="Masukkan Daya Baru Pelanggan" required>
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Fasa Lama</label>
+                                    <select name="fasa_lama" class="form-control" required>
+                                        <option value="" disabled selected>Pilih</option>
+                                        <option>1 FASA</option>
+                                        <option>3 FASA</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -320,7 +340,6 @@
                                     </div>
                                 </div>
                             </form>
-
 
                         </div>
                         <!-- Form Utama end -->
@@ -412,53 +431,86 @@
     if (isset($_POST['save'])) {
         $id_pelanggan = $_POST['id_pelanggan'];
         $tgl_mohon = $_POST['tgl_mohon'];
+        $tarif_lama = $_POST['tarif_lama'];
+        $daya_lama = $_POST['daya_lama'];
         $tarif_baru = $_POST['tarif_baru'];
         $daya_baru = $_POST['daya_baru'];
+        $fasa_lama = $_POST['fasa_lama'];
         $fasa_baru = $_POST['fasa_baru'];
 
-        $insert = "INSERT INTO tb_pasang_baru (id_pelanggan, jenis_transaksi,tgl_mohon, tarif_baru, daya_baru, fasa_baru) VALUES ('$id_pelanggan', 'Pasang Baru', '$tgl_mohon', '$tarif_baru','$daya_baru', '$fasa_baru')";
+        $insert = "INSERT INTO tb_perubahan_daya (id_pelanggan, jenis_transaksi, tgl_mohon, tarif_lama, daya_lama, tarif_baru, daya_baru, fasa_lama, fasa_baru) 
+        VALUES ('$id_pelanggan', 'Perubahan Daya', '$tgl_mohon', '$tarif_lama','$daya_lama', '$tarif_baru','$daya_baru', '$fasa_lama', '$fasa_baru')";
         $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
-        if ($fasa_baru == "1 FASA") {
-            $ambil1 = "PB 1 FASA";
-        } elseif ($fasa_baru == "3 FASA") {
-            $ambil2 = "PB 3 FASA";
-        }
-
         if ($query) {
-            if ($fasa_baru == "1 FASA") {
-                $insert2 = "INSERT INTO tb_hasil_perhitungan_pb_1phs (id_pasang_baru, pekerjaan_rab, kwh_meter_prabayar_fase_tunggal, nfa_2X, segel_plastik, 
-                cco_1T1, cco_3T1, isolasi_scotch, service_wedge_clamp_1phs, pasang_kwh_meter_satu_phasa_wiring, penarikan_sr_1_phasa,
-                pengepresan_cco, survey, total_biaya)
-                VALUES 
-                ('" . mysqli_insert_id($mysqli) . "', '$ambil1', '243040', '4210', '2724','6895', '9358','5615', '3842', '41008', '33625', '22982', '20856', '394155')";
+            if (($fasa_lama == "1 FASA") && ($fasa_baru == "1 FASA")) {
+                $insert2 = "INSERT INTO tb_hasil_perhitungan_pd_1phs (id_perubahan_daya, pekerjaan_rab, MCB, segel_plastik, penggatian_mcb_1phs, total_biaya)
+                    VALUES 
+                    ('" . mysqli_insert_id($mysqli) . "', 'PD 1 FASA', '30840', '2724', '46706', '80270')";
                 $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
     ?>
                 <script>
                     Swal.fire({
                         icon: 'success',
                         title: 'Sukses.',
-                        text: 'Sukses Menambahkan Data Pelanggan Pasang Baru 1 Phasa'
+                        text: 'Sukses Menambahkan Data Pelanggan Perubahan Daya 1 Phasa dan Detail Biaya Pelanggan Perubahan Daya 1 Phasa'
                     }).then((result) => {
-                        window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
+                        window.location = "../../pelayananpenyambungan/perubahan_daya/pd1phasa.php";
                     })
                 </script>
             <?php
-            } elseif ($fasa_baru == "3 FASA") {
-                $insert2 = "INSERT INTO tb_hasil_perhitungan_pb_3phs (id_pasang_baru,pekerjaan_rab, kwh_meter_3phs_pengukuran_langsung, box_app_1_pintu_pengukuran_langsung,
-                segel_plastik, nfa_2x_3x35, nfa_2x_4x16, service_wedge_clamp_3phs, cco_3T3, skat_3, 
-                isolasi_scotch, pemas_kwh_meter_3phs_tanpa_wiring, penarikan_sr_3phs, pengepresan_cco, survey, total_biaya)
-                VALUES 
-                ('" . mysqli_insert_id($mysqli) . "', '$ambil2', '1348000', '2400000', '2724', '29360', '12110','4433', '11722', '39400', '5615', '46811', '3482', '31339', '20856', '3990852')";
+            } elseif (($fasa_lama == "1 FASA") && ($fasa_baru == "3 FASA")) {
+                $insert2 = "INSERT INTO tb_hasil_perhitungan_pd_1phs_ke_3phs (id_perubahan_daya, pekerjaan_rab, 
+                kwh_meter_3phs_pengukuran_langsung_kelas_1, segel_plastik, nfa2x_3x35, nfa2x_4x16, service_wedge_clamp, 
+                    cco_3t3, skat_3, isolasi_scotch, pemas_kwh_meter_3phs, penarikan_sr3phs, pengepresan, penggantian_mcb, 
+                    bongkar_kwh_meter_1phs, total_biaya)
+                    VALUES 
+                    ('" . mysqli_insert_id($mysqli) . "', 'PD 1 FASA KE 3 FASA', '1348000', '2724', '29360', '12110', '4433', '11722',
+                    '39400', '5615', '46811', '38482', '31339', '40800', '24606', '1635402')";
                 $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
             ?>
                 <script>
                     Swal.fire({
                         icon: 'success',
                         title: 'Sukses.',
-                        text: 'Sukses Menambahkan Data Pelanggan Pasang Baru 3 Phasa'
+                        text: 'Sukses Menambahkan Data Pelanggan Perubahan Daya 1 Phasa dan Detail Biaya Pelanggan Perubahan Daya 1 Phasa ke 3 Phasa'
                     }).then((result) => {
-                        window.location = "../../pelayananpenyambungan/pasang_baru/pb3phasa.php";
+                        window.location = "../../pelayananpenyambungan/perubahan_daya/pd1phasa.php";
+                    })
+                </script>
+            <?php
+            } elseif (($fasa_lama == "3 FASA") && ($fasa_baru == "3 FASA")) {
+                $insert2 = "INSERT INTO tb_hasil_perhitungan_pd_3phs (id_perubahan_daya,pekerjaan_rab, penggantian_mccb_3phs, total_biaya)
+                    VALUES 
+                    ('" . mysqli_insert_id($mysqli) . "','PD 3 FASA', '40800', '40800')";
+                $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
+            ?>
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses.',
+                        text: 'Sukses Menambahkan Data Pelanggan Perubahan Daya 3 Phasa dan Detail Biaya Pelanggan Perubahan Daya 3 Phasa'
+                    }).then((result) => {
+                        window.location = "../../pelayananpenyambungan/perubahan_daya/pd3phasa.php";
+                    })
+                </script>
+            <?php
+            } elseif (($fasa_lama == "3 FASA") && ($fasa_baru == "1 FASA")) {
+                $insert2 = "INSERT INTO tb_hasil_perhitungan_pd_3phs_ke_1phs (id_perubahan_daya, pekerjaan_rab,
+                    kwh_meter_tunggal,nfa2x_2x10,segel_plastik, cco_1t1, cco_3t1,isolasi_scotch,
+                    service_wedge, pasang_kwh, penarikan_sr, pengepresan, survey, bongkar_kwh_meter, total_biaya)
+                    VALUES 
+                    ('" . mysqli_insert_id($mysqli) . "', 'PD 3 FASA KE 1 FASA', '243040', '4210', '2724', '6895', '9358', 
+                    '5615', '3842', '41008', '33625', '22982', '20856', '28086', '422241')";
+                $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
+            ?>
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sukses.',
+                        text: 'Sukses Menambahkan Data Pelanggan Perubahan Daya 3 Phasa dan Detail Biaya Pelanggan Perubahan Daya 3 Phasa ke 1 Phasa'
+                    }).then((result) => {
+                        window.location = "../../pelayananpenyambungan/perubahan_daya/pd3phasa.php";
                     })
                 </script>
     <?php

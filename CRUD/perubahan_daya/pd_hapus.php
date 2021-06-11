@@ -19,31 +19,31 @@
 
     if (isset($_GET['hapus'])) {
         $id = $_GET['hapus'];
-        $fasabaru = $_GET['fasa_baru'];
-        $data = mysqli_query($mysqli, "SELECT a.no_registrasi, a.nama , b.* FROM tb_pasang_baru b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE id_pasang_baru = $id");
+        $fasalama = $_GET['fasa_lama'];
+        $data = mysqli_query($mysqli, "SELECT a.no_registrasi, a.nama , b.* FROM tb_perubahan_daya b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE id_perubahan_daya = $id");
         $row = $data->fetch_assoc();
-        $delete = "DELETE FROM tb_pasang_baru WHERE id_pasang_baru=$id";
+        $delete = "DELETE FROM tb_perubahan_daya WHERE id_perubahan_daya=$id";
         $query = mysqli_query($mysqli, $delete) or die(mysqli_error($mysqli));
 
-        if ($query && $fasabaru == "1 FASA") { ?>
+        if ($query && $fasalama == "1 FASA") { ?>
             <script>
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Data Pelanggan Pasang Baru 1 Phasa dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
+                    text: 'Data Pelanggan Perubahan Daya 1 Phasa dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
+                    window.location = "../../pelayananpenyambungan/perubahan_daya/pd1phasa.php";
                 })
             </script>
         <?php
-        } elseif ($query && $fasabaru == "3 FASA") { ?>
+        } elseif ($query && $fasalama == "3 FASA") { ?>
             <script>
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Data Pelanggan Pasang Baru 3 Phasa dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
+                    text: 'Data Pelanggan Perubahan Daya 3 Phasa dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/pasang_baru/pb3phasa.php";
+                    window.location = "../../pelayananpenyambungan/perubahan_daya/pd3phasa.php";
                 })
             </script>
     <?php
