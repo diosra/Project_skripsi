@@ -51,6 +51,13 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            <!-- Nav Item - Menu Pelanggan -->
+            <li class="nav-item">
+                <a class="nav-link" href="../../pelanggan/pelanggan.php">
+                    <i class="fas fa-user-friends"></i></i>
+                    <span>Menu Data Pelanggan</span></a>
+            </li>
+
             <!-- Nav Item - Pelayanan Penyambungan -->
             <li class="nav-item active">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">

@@ -9,23 +9,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pasang Baru 1 Phasa</title>
+    <title>Pelanggan</title>
 
     <!-- Custom fonts for this template-->
-    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <?php
-    include '../../koneksi.php';
+    include '../koneksi.php';
     ?>
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -49,7 +49,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="../../index.html">
+                <a class="nav-link" href="../index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -58,14 +58,14 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Menu Pelanggan -->
-            <li class="nav-item">
-                <a class="nav-link" href="../../pelanggan/pelanggan.php">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
                     <i class="fas fa-user-friends"></i></i>
                     <span>Menu Data Pelanggan</span></a>
             </li>
 
             <!-- Nav Item - Pelayanan Penyambungan -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-list-ul"></i>
                     <span>Menu Pelayanan Penyambungan</span>
@@ -81,8 +81,8 @@
                                 </a>
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item active font-weight-bold" href="#">Pasang Baru 1 <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/pasang_baru/pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/pasang_baru/pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -97,8 +97,8 @@
                                 </a>
                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -113,8 +113,8 @@
                                 </a>
                                 <div id="collapseFive" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -129,8 +129,8 @@
                                 </a>
                                 <div id="collapseSix" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -145,8 +145,8 @@
                                 </a>
                                 <div id="collapseSeven" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold" href="../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -234,7 +234,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="../../img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -255,15 +255,14 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Pasang Baru 1 Phasa</u></h1>
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Pelanggan</u></h1>
                     </div>
 
                     <!-- Tabel Utama -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex">
                             <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-                            <a class="btn btn-primary p-2 mr-2" href="../../CRUD/pasang_baru/pb_input.php"><i class="fas fa-plus-circle"></i> Tambah</a>
-                            <a class="btn btn-success p-2" href="detail/detailpb1phasa.php"><i class="fas fa-file-alt"></i> Detail Biaya</a>
+                            <a class="btn btn-primary p-2 mr-2" href="../CRUD/pelanggan/pel_input.php"><i class="fas fa-plus-circle"></i> Tambah</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -272,35 +271,31 @@
                                         <tr>
                                             <th class="text-center">No</th>
                                             <th class="text-center">No Registrasi</th>
-                                            <th class="text-center">Jenis Transaksi</th>
-                                            <th class="text-center">Tanggal Mohon</th>
-                                            <th class="text-center">Tarif Baru</th>
-                                            <th class="text-center">Daya Baru</th>
-                                            <th class="text-center">Fasa Baru</th>
+                                            <th class="text-center">Nama</th>
+                                            <th class="text-center">Alamat</th>
+                                            <th class="text-center">No Telp Pemohon</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $data = mysqli_query($mysqli, "SELECT a.no_registrasi ,b.id_pasang_baru, b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_pasang_baru b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_baru = '1 FASA'");
+                                        $data = mysqli_query($mysqli, "select * from tb_pelanggan");
                                         $no = 1;
                                         $hitungrow = mysqli_num_rows($data);
                                         if ($hitungrow > 0) {
                                             while ($row = $data->fetch_assoc()) { ?>
                                                 <tr>
-                                                    <td><?php echo $no++ ?></td>
-                                                    <td><?php echo $row['no_registrasi']; ?></td>
-                                                    <td><?php echo $row['jenis_transaksi']; ?></td>
-                                                    <td><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
-                                                    <td><?php echo $row['tarif_baru']; ?></td>
-                                                    <td><?php echo $row['daya_baru']; ?></td>
-                                                    <td><?php echo $row['fasa_baru']; ?></td>
+                                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                                    <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['no_telp']; ?></td>
                                                     <td class="row text-center">
                                                         <div class="col">
-                                                            <a href="../../CRUD/pasang_baru/pb_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                                            <a href="../CRUD/pelanggan/pel_edit.php?edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                                         </div>
                                                         <div class="col">
-                                                            <a href="../../CRUD/pasang_baru/pb_hapus.php?hapus=<?php echo $row['id_pasang_baru'] ?>&fasa_baru=<?php echo $row['fasa_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                                            <a href="../CRUD/pelanggan/pel_hapus.php?hapus=<?php echo $row['id_pelanggan'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -352,24 +347,24 @@
                 <div class="modal-body">Klik Tombol "Logout" dibawah untuk kembali ke menu login</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="../../login.html">Logout</a>
+                    <a class="btn btn-primary" href="../login.html">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Core plugin JavaScript-->
-    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../../js/sb-admin-2.min.js"></script>
+    <script src="../js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../../vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../../js/demo/datatables-demo.js"></script>
+    <script src="../js/demo/datatables-demo.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Script buat SweetAlert Confirm Hapus -->
@@ -398,7 +393,7 @@
         $('#dataTable').DataTable({
             "columnDefs": [{
                 "orderable": false,
-                "targets": [2, 6, 7]
+                "targets": [5]
             }]
         });
     </script>
