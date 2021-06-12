@@ -183,7 +183,7 @@
                                 </a>
                                 <div id="collapseB" class="collapse" aria-labelledby="headingThree">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold" href="#">Pasang Baru 1 Phasa</a>
+                                        <a class="collapse-item active font-weight-bold" href="#">Pasang Baru 1 Phasa</a>
                                         <a class="collapse-item font-weight-bold" href="mcpb3phasa.php">Pasang Baru 3 Phasa</a>
                                     </div>
                                 </div>
@@ -331,7 +331,7 @@
                                         $bulan = $_GET['bulan'];
                                         $tahun = $_GET['tahun'];
                                         ?>
-                                        <button type="submit" class="btn btn-primary"><a href="laporan/lpb1phasa.php?filter=1&bulan=<?= $_GET["bulan"] ?>&tahun=<?= $_GET["tahun"] ?>" style="color:white;"><i class="fas fa-print"></i> Cetak</a></button>
+                                        <a type="submit" href="laporan/lpb1phasa.php?filter=1&bulan=<?= $_GET["bulan"] ?>&tahun=<?= $_GET["tahun"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
                                     </form>
                                 <?php elseif ($filter == 2) : ?>
                                     <form action="POST">
@@ -339,12 +339,12 @@
                                         $bulan = $_GET['bulan'];
                                         $tahun = $_GET['tahun'];
                                         ?>
-                                        <button type="submit" class="btn btn-primary"><a href="laporan/lpb3phasa.php?filter=2&tahun=<?= $_GET["tahun"] ?>" style="color:white;"><i class="fas fa-print"></i> Cetak</a></button>
+                                        <a type="submit" href="laporan/lpb1phasa.php?filter=2&tahun=<?= $_GET["tahun"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
                                     </form>
                                 <?php endif ?>
                             <?php else : ?>
                                 <div>
-                                    <button type="submit" class="btn btn-primary"><a href="laporan/lpb1phasa.php" style="color:white;"><i class="fas fa-print"></i> Cetak</a></button>
+                                    <a type="submit" href="laporan/lpb1phasa.php" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
                                 </div>
                             <?php endif ?>
                             <!-- Kode PHP untuk mengirim link href sesuai Filter - End -->

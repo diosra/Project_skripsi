@@ -37,12 +37,11 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../../index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <!-- Sidebar - Logo -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-3" href="../../../index.html">
+                <div class="img-responsive">
+                    <img class="img-thumbnail" src="../../../img/logo.png">
                 </div>
-                <div class="sidebar-brand-text mx-3">PLN</div>
             </a>
 
             <!-- Divider -->
@@ -51,7 +50,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="../../../index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
 
@@ -161,44 +160,104 @@
 
             <!-- Nav Item - Menu Cetak -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
+                    <i class="fas fa-list-ul"></i>
                     <span>Menu Cetak</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseA" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- Link Cetak Menu Pasang Baru -->
-                        <h6 class="collapse-header">Cetak Pasang Baru</h6>
-                        <a class="collapse-item" href="../../laporancetak/pasang_baru/mcpb1phasa.php">Menu Cetak <br> Pasang Baru 1 Phasa</a>
-                        <a class="collapse-item" href="../../laporancetak/pasang_baru/mcpb3phasa.php">Menu Cetak <br> Pasang Baru 3 Phasa</a>
+                        <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                            <!-- Link Menu Halaman Cetak Pasang Baru -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseB" aria-expanded="true" aria-controls="collapseB">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Pasang Baru</span>
+                                </a>
+                                <div id="collapseB" class="collapse" aria-labelledby="headingThree">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/pasang_baru/mcpb1phasa.php">Pasang Baru 1
+                                            Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/pasang_baru/mcpb3phasa.php">Pasang Baru 3
+                                            Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Cetak Menu Perubahan Daya -->
-                        <h6 class="collapse-header">Cetak Perubahan Daya</h6>
-                        <a class="collapse-item" href="../../laporancetak/perubahan_daya/mcpd1phasa.php">Menu Cetak <br> Perubahan Daya 1 Phasa</a>
-                        <a class="collapse-item" href="../../laporancetak/perubahan_daya/mcpd3phasa.php">Menu Cetak <br> Perubahan Daya 3 Phasa</a>
+                            <!-- Link Menu Halaman Cetak Perubahan Daya -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseC" aria-expanded="true" aria-controls="collapseC">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Perubahan
+                                        Daya</span>
+                                </a>
+                                <div id="collapseC" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/perubahan_daya/mcpd1phasa.php">Perubahan
+                                            Daya 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/perubahan_daya/mcpd1ke3phasa.php">Perubahan
+                                            Daya 1 <br> Phasa ke 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/perubahan_daya/mcpd3phasa.php">Perubahan Daya 3 <br>
+                                            Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/perubahan_daya/mcpd3ke1phasa.php">Perubahan
+                                            Daya 3 <br> Phasa ke 1 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Cetak Menu Migrasi -->
-                        <h6 class="collapse-header">Cetak Migrasi</h6>
-                        <a class="collapse-item" href="../../laporancetak/migrasi/mcmigrasi1phasa.php">Menu Cetak <br> Migrasi 1 Phasa</a>
-                        <a class="collapse-item" href="../../laporancetak/migrasi/mcmigrasi3phasa.php">Menu Cetak <br> Migrasi 3 Phasa</a>
+                            <!-- Link Menu Halaman Cetak Migrasi -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseD" aria-expanded="true" aria-controls="collapseD">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Migrasi</span>
+                                </a>
+                                <div id="collapseD" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/migrasi/mcmigrasi1phasa.php">Migrasi 1
+                                            Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/migrasi/mcmigrasi3phasa.php">Migrasi 3
+                                            Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Cetak Menu Multiguna -->
-                        <h6 class="collapse-header">Cetak Multiguna</h6>
-                        <a class="collapse-item" href="../../laporancetak/multiguna/mcmultiguna1phasa.php">Menu Cetak <br> Multiguna 1 Phasa</a>
-                        <a class="collapse-item" href="../../laporancetak/multiguna/mcmultiguna3phasa.php">Menu Cetak <br> Multiguna 3 Phasa</a>
+                            <!-- Link Menu Halaman Cetak Multiguna -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseE" aria-expanded="true" aria-controls="collapseE">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Multiguna</span>
+                                </a>
+                                <div id="collapseE" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/multiguna/mcmultiguna1phasa.php">Multiguna 1
+                                            Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/multiguna/mcmultiguna3phasa.php">Multiguna 3
+                                            Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Cetak Menu P2TL -->
-                        <h6 class="collapse-header">Cetak P2TL</h6>
-                        <a class="collapse-item" href="../../laporancetak/p2tl/mcp2tl1phasa.php">Menu Cetak P2TL 1 Phasa</a>
-                        <a class="collapse-item" href="../../laporancetak/p2tl/mcp2tl3phasa.php">Menu Cetak P2TL 3 Phasa</a>
+                            <!-- Link Menu Halaman Cetak P2TL -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseF" aria-expanded="true" aria-controls="collapseF">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> P2TL</span>
+                                </a>
+                                <div id="collapseF" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/p2tl/mcp2tl1phasa.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../../laporancetak/p2tl/mcp2tl3phasa.php">P2TL 3 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </li>
