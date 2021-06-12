@@ -21,6 +21,12 @@
     <!-- Custom styles for this page -->
     <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <?php
+    include '../../koneksi.php';
+    ?>
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -31,12 +37,11 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../../index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <!-- Sidebar - Logo -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-3" href="../../index.html">
+                <div class="img-responsive">
+                    <img class="img-thumbnail" src="../../img/logo.png">
                 </div>
-                <div class="sidebar-brand-text mx-3">PLN</div>
             </a>
 
             <!-- Divider -->
@@ -45,61 +50,115 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="../../index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Menu Pelanggan -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
+                <a class="nav-link" href="../../pelanggan/pelanggan.php">
+                    <i class="fas fa-user-friends"></i></i>
+                    <span>Menu Data Pelanggan</span></a>
+            </li>
+
+            <!-- Nav Item - Menu Pelayanan Penyambungan -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-list-ul"></i>
                     <span>Menu Pelayanan Penyambungan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- Link Pasang Baru -->
-                        <h6 class="collapse-header">Pasang Baru</h6>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/pasang_baru/pb1phasa.php">Pasang Baru 1
-                            Phasa</a>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/pasang_baru/pb3phasa.php">Pasang Baru 3
-                            Phasa</a>
+                        <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                            <!-- Link Menu Halaman Pasang Baru -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Pasang Baru</span>
+                                </a>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/pasang_baru/pb1phasa.php">Pasang Baru 1
+                                            <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/pasang_baru/pb3phasa.php">Pasang Baru 3
+                                            <br> Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Perubahan Daya -->
-                        <h6 class="collapse-header">Perubahan Daya</h6>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/perubahan_daya/pd1phasa.php">Perubahan Daya
-                            1 Phasa</a>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/perubahan_daya/pd3phasa.php">Perubahan Daya
-                            3 Phasa</a>
+                            <!-- Link Menu Halaman Perubahan Daya -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Perubahan Daya</span>
+                                </a>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/perubahan_daya/pd1phasa.php">Perubahan
+                                            Daya 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/perubahan_daya/pd3phasa.php">Perubahan
+                                            Daya 3 <br> Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Migrasi -->
-                        <h6 class="collapse-header">Migrasi</h6>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/migrasi/migrasi1phs.php">Migrasi 1
-                            Phasa</a>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/migrasi/migrasi3phs.php">Migrasi 3
-                            Phasa</a>
+                            <!-- Link Menu Halaman Migrasi -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Migrasi</span>
+                                </a>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/migrasi/migrasi1phs.php">Migrasi 1
+                                            Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/migrasi/migrasi3phs.php">Migrasi 3
+                                            Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Multiguna -->
-                        <h6 class="collapse-header">Multiguna</h6>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/multiguna/multiguna1phs.php">Multiguna 1
-                            Phasa</a>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/multiguna/multiguna3phs.php">Multiguna 3
-                            Phasa</a>
+                            <!-- Link Menu Halaman Multiguna -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Multiguna</span>
+                                </a>
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/multiguna/multiguna1phs.php">Multiguna 1
+                                            Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/multiguna/multiguna3phs.php">Multiguna 3
+                                            Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link P2TL -->
-                        <h6 class="collapse-header">P2TL</h6>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                        <a class="collapse-item" href="../../pelayananpenyambungan/p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                            <!-- Link Menu Halaman P2TL -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">P2TL</span>
+                                </a>
+                                <div id="collapseSeven" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </li>
@@ -107,46 +166,94 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
+            <!-- Nav Item - Menu Cetak -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
+                    <i class="fas fa-list-ul"></i>
                     <span>Menu Cetak</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseA" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- Link Cetak Menu Pasang Baru -->
-                        <h6 class="collapse-header">Cetak Pasang Baru</h6>
-                        <a class="collapse-item active" href="#">Menu Cetak <br> Pasang Baru 1 Phasa</a>
-                        <a class="collapse-item" href="mcpb3phasa.php">Menu Cetak <br> Pasang Baru 3 Phasa</a>
+                        <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                            <!-- Link Menu Halaman Cetak Pasang Baru -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseB" aria-expanded="true" aria-controls="collapseB">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Pasang Baru</span>
+                                </a>
+                                <div id="collapseB" class="collapse" aria-labelledby="headingThree">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="#">Pasang Baru 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="mcpb3phasa.php">Pasang Baru 3 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Cetak Menu Perubahan Daya -->
-                        <h6 class="collapse-header">Cetak Perubahan Daya</h6>
-                        <a class="collapse-item" href="../perubahan_daya/mcpd1phasa.php">Menu Cetak <br> Perubahan Daya 1 Phasa</a>
-                        <a class="collapse-item" href="../perubahan_daya/mcpd3phasa.php">Menu Cetak <br> Perubahan Daya 3 Phasa</a>
+                            <!-- Link Menu Halaman Cetak Perubahan Daya -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseC" aria-expanded="true" aria-controls="collapseC">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Perubahan
+                                        Daya</span>
+                                </a>
+                                <div id="collapseC" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../perubahan_daya/mcpd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../perubahan_daya/mcpd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Cetak Menu Migrasi -->
-                        <h6 class="collapse-header">Cetak Migrasi</h6>
-                        <a class="collapse-item" href="../migrasi/mcmigrasi1phasa.php">Menu Cetak <br> Migrasi 1 Phasa</a>
-                        <a class="collapse-item" href="../migrasi/mcmigrasi3phasa.php">Menu Cetak <br> Migrasi 3 Phasa</a>
+                            <!-- Link Menu Halaman Cetak Migrasi -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseD" aria-expanded="true" aria-controls="collapseD">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Migrasi</span>
+                                </a>
+                                <div id="collapseD" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../migrasi/mcmigrasi1phasa.php">Migrasi 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../migrasi/mcmigrasi3phasa.php">Migrasi 3 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Cetak Menu Multiguna -->
-                        <h6 class="collapse-header">Cetak Multiguna</h6>
-                        <a class="collapse-item" href="../multiguna/mcmultiguna1phasa.php">Menu Cetak <br> Multiguna 1 Phasa</a>
-                        <a class="collapse-item" href="../multiguna/mcmultiguna3phasa.php">Menu Cetak <br> Multiguna 3 Phasa</a>
+                            <!-- Link Menu Halaman Cetak Multiguna -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseE" aria-expanded="true" aria-controls="collapseE">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Multiguna</span>
+                                </a>
+                                <div id="collapseE" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../multiguna/mcmultiguna1phasa.php">Multiguna 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../multiguna/mcmultiguna3phasa.php">Multiguna 3 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <hr style="margin-left: 20px; margin-right: 20px;">
+                            <hr style="margin-left: 20px; margin-right: 20px;">
 
-                        <!-- Link Cetak Menu P2TL -->
-                        <h6 class="collapse-header">Cetak P2TL</h6>
-                        <a class="collapse-item" href="../p2tl/mcp2tl1phasa.php">Menu Cetak P2TL 1 Phasa</a>
-                        <a class="collapse-item" href="../p2tl/mcp2tl3phasa.php">Menu Cetak P2TL 3 Phasa</a>
+                            <!-- Link Menu Halaman Cetak P2TL -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseF" aria-expanded="true" aria-controls="collapseF">
+                                    <i class="fas fa-chevron-circle-right"></i>
+                                    <span class="font-weight-bolder text-capitalize">Menu Cetak <br> P2TL</span>
+                                </a>
+                                <div id="collapseF" class="collapse" aria-labelledby="headingFour">
+                                    <div class="bg-light py-2 collapse-inner rounded">
+                                        <a class="collapse-item font-weight-bold" href="../p2tl/mcp2tl1phasa.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="../p2tl/mcp2tl3phasa.php">P2TL 3 Phasa</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </li>
@@ -205,490 +312,99 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800 font-weight-bold"><u>Menu Cetak Data Pasang Baru 1 Phasa</u></h1>
+                    <h1 class="h3 mb-2 text-gray-800 font-weight-bold"><u>Menu Cetak Data Detail Pelanggan Pasang Baru 1 Phasa</u></h1>
 
-                    <!-- DataTales Example -->
+                    <!-- Tabel Utama -->
                     <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex">
+                            <h4 class="m-0 font-weight-bold text-primary mr-2">Navigasi</h4>
+                            <button class="btn btn-secondary p-2 mr-1" data-toggle="modal" data-target="#modalku"><i class="fas fa-filter"></i></i> Filter</button>
+                            <a class="btn btn-warning p-2 mr-auto" href="mcpb1phasa.php"><i class="fas fa-redo-alt"></i></a>
+
+                            <!-- Kode PHP untuk mengirim link href sesuai Filter - Start -->
+                            <?php
+                            if (isset($_GET['filter']) && !empty($_GET['filter'])) :
+                                $filter = $_GET['filter'];
+                                if ($filter == 1) : ?>
+                                    <form action="POST">
+                                        <?php
+                                        $bulan = $_GET['bulan'];
+                                        $tahun = $_GET['tahun'];
+                                        ?>
+                                        <button type="submit" class="btn btn-primary"><a href="laporan/lpb1phasa.php?filter=1&bulan=<?= $_GET["bulan"] ?>&tahun=<?= $_GET["tahun"] ?>" style="color:white;"><i class="fas fa-print"></i> Cetak</a></button>
+                                    </form>
+                                <?php elseif ($filter == 2) : ?>
+                                    <form action="POST">
+                                        <?php
+                                        $bulan = $_GET['bulan'];
+                                        $tahun = $_GET['tahun'];
+                                        ?>
+                                        <button type="submit" class="btn btn-primary"><a href="laporan/lpb3phasa.php?filter=2&tahun=<?= $_GET["tahun"] ?>" style="color:white;"><i class="fas fa-print"></i> Cetak</a></button>
+                                    </form>
+                                <?php endif ?>
+                            <?php else : ?>
+                                <div>
+                                    <button type="submit" class="btn btn-primary"><a href="laporan/lpb1phasa.php" style="color:white;"><i class="fas fa-print"></i> Cetak</a></button>
+                                </div>
+                            <?php endif ?>
+                            <!-- Kode PHP untuk mengirim link href sesuai Filter - End -->
+
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th class="text-center">No</th>
+                                            <th class="text-center">No.Registrasi</th>
+                                            <th class="text-center">Nama</th>
+                                            <th class="text-center">Jenis Transaksi</th>
+                                            <th class="text-center">Tanggal Mohon</th>
+                                            <th class="text-center">Tarif Baru</th>
+                                            <th class="text-center">Daya Baru</th>
+                                            <th class="text-center">Fasa Baru</th>
+                                            <th class="text-center">Pekerjaan RAB</th>
+                                            <th class="text-center">Total Biaya</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>59</td>
-                                            <td>2012/08/06</td>
-                                            <td>$137,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>55</td>
-                                            <td>2010/10/14</td>
-                                            <td>$327,900</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Colleen Hurst</td>
-                                            <td>Javascript Developer</td>
-                                            <td>San Francisco</td>
-                                            <td>39</td>
-                                            <td>2009/09/15</td>
-                                            <td>$205,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sonya Frost</td>
-                                            <td>Software Engineer</td>
-                                            <td>Edinburgh</td>
-                                            <td>23</td>
-                                            <td>2008/12/13</td>
-                                            <td>$103,600</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jena Gaines</td>
-                                            <td>Office Manager</td>
-                                            <td>London</td>
-                                            <td>30</td>
-                                            <td>2008/12/19</td>
-                                            <td>$90,560</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quinn Flynn</td>
-                                            <td>Support Lead</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2013/03/03</td>
-                                            <td>$342,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Charde Marshall</td>
-                                            <td>Regional Director</td>
-                                            <td>San Francisco</td>
-                                            <td>36</td>
-                                            <td>2008/10/16</td>
-                                            <td>$470,600</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Haley Kennedy</td>
-                                            <td>Senior Marketing Designer</td>
-                                            <td>London</td>
-                                            <td>43</td>
-                                            <td>2012/12/18</td>
-                                            <td>$313,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tatyana Fitzpatrick</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>19</td>
-                                            <td>2010/03/17</td>
-                                            <td>$385,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Michael Silva</td>
-                                            <td>Marketing Designer</td>
-                                            <td>London</td>
-                                            <td>66</td>
-                                            <td>2012/11/27</td>
-                                            <td>$198,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Paul Byrd</td>
-                                            <td>Chief Financial Officer (CFO)</td>
-                                            <td>New York</td>
-                                            <td>64</td>
-                                            <td>2010/06/09</td>
-                                            <td>$725,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gloria Little</td>
-                                            <td>Systems Administrator</td>
-                                            <td>New York</td>
-                                            <td>59</td>
-                                            <td>2009/04/10</td>
-                                            <td>$237,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bradley Greer</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>41</td>
-                                            <td>2012/10/13</td>
-                                            <td>$132,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dai Rios</td>
-                                            <td>Personnel Lead</td>
-                                            <td>Edinburgh</td>
-                                            <td>35</td>
-                                            <td>2012/09/26</td>
-                                            <td>$217,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jenette Caldwell</td>
-                                            <td>Development Lead</td>
-                                            <td>New York</td>
-                                            <td>30</td>
-                                            <td>2011/09/03</td>
-                                            <td>$345,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Yuri Berry</td>
-                                            <td>Chief Marketing Officer (CMO)</td>
-                                            <td>New York</td>
-                                            <td>40</td>
-                                            <td>2009/06/25</td>
-                                            <td>$675,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Caesar Vance</td>
-                                            <td>Pre-Sales Support</td>
-                                            <td>New York</td>
-                                            <td>21</td>
-                                            <td>2011/12/12</td>
-                                            <td>$106,450</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Doris Wilder</td>
-                                            <td>Sales Assistant</td>
-                                            <td>Sidney</td>
-                                            <td>23</td>
-                                            <td>2010/09/20</td>
-                                            <td>$85,600</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Angelica Ramos</td>
-                                            <td>Chief Executive Officer (CEO)</td>
-                                            <td>London</td>
-                                            <td>47</td>
-                                            <td>2009/10/09</td>
-                                            <td>$1,200,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gavin Joyce</td>
-                                            <td>Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>42</td>
-                                            <td>2010/12/22</td>
-                                            <td>$92,575</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jennifer Chang</td>
-                                            <td>Regional Director</td>
-                                            <td>Singapore</td>
-                                            <td>28</td>
-                                            <td>2010/11/14</td>
-                                            <td>$357,650</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brenden Wagner</td>
-                                            <td>Software Engineer</td>
-                                            <td>San Francisco</td>
-                                            <td>28</td>
-                                            <td>2011/06/07</td>
-                                            <td>$206,850</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fiona Green</td>
-                                            <td>Chief Operating Officer (COO)</td>
-                                            <td>San Francisco</td>
-                                            <td>48</td>
-                                            <td>2010/03/11</td>
-                                            <td>$850,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Shou Itou</td>
-                                            <td>Regional Marketing</td>
-                                            <td>Tokyo</td>
-                                            <td>20</td>
-                                            <td>2011/08/14</td>
-                                            <td>$163,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Michelle House</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Sidney</td>
-                                            <td>37</td>
-                                            <td>2011/06/02</td>
-                                            <td>$95,400</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Suki Burks</td>
-                                            <td>Developer</td>
-                                            <td>London</td>
-                                            <td>53</td>
-                                            <td>2009/10/22</td>
-                                            <td>$114,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prescott Bartlett</td>
-                                            <td>Technical Author</td>
-                                            <td>London</td>
-                                            <td>27</td>
-                                            <td>2011/05/07</td>
-                                            <td>$145,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Gavin Cortez</td>
-                                            <td>Team Leader</td>
-                                            <td>San Francisco</td>
-                                            <td>22</td>
-                                            <td>2008/10/26</td>
-                                            <td>$235,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Martena Mccray</td>
-                                            <td>Post-Sales support</td>
-                                            <td>Edinburgh</td>
-                                            <td>46</td>
-                                            <td>2011/03/09</td>
-                                            <td>$324,050</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Unity Butler</td>
-                                            <td>Marketing Designer</td>
-                                            <td>San Francisco</td>
-                                            <td>47</td>
-                                            <td>2009/12/09</td>
-                                            <td>$85,675</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Howard Hatfield</td>
-                                            <td>Office Manager</td>
-                                            <td>San Francisco</td>
-                                            <td>51</td>
-                                            <td>2008/12/16</td>
-                                            <td>$164,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hope Fuentes</td>
-                                            <td>Secretary</td>
-                                            <td>San Francisco</td>
-                                            <td>41</td>
-                                            <td>2010/02/12</td>
-                                            <td>$109,850</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vivian Harrell</td>
-                                            <td>Financial Controller</td>
-                                            <td>San Francisco</td>
-                                            <td>62</td>
-                                            <td>2009/02/14</td>
-                                            <td>$452,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Timothy Mooney</td>
-                                            <td>Office Manager</td>
-                                            <td>London</td>
-                                            <td>37</td>
-                                            <td>2008/12/11</td>
-                                            <td>$136,200</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jackson Bradshaw</td>
-                                            <td>Director</td>
-                                            <td>New York</td>
-                                            <td>65</td>
-                                            <td>2008/09/26</td>
-                                            <td>$645,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Olivia Liang</td>
-                                            <td>Support Engineer</td>
-                                            <td>Singapore</td>
-                                            <td>64</td>
-                                            <td>2011/02/03</td>
-                                            <td>$234,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bruno Nash</td>
-                                            <td>Software Engineer</td>
-                                            <td>London</td>
-                                            <td>38</td>
-                                            <td>2011/05/03</td>
-                                            <td>$163,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sakura Yamamoto</td>
-                                            <td>Support Engineer</td>
-                                            <td>Tokyo</td>
-                                            <td>37</td>
-                                            <td>2009/08/19</td>
-                                            <td>$139,575</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Thor Walton</td>
-                                            <td>Developer</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2013/08/11</td>
-                                            <td>$98,540</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Finn Camacho</td>
-                                            <td>Support Engineer</td>
-                                            <td>San Francisco</td>
-                                            <td>47</td>
-                                            <td>2009/07/07</td>
-                                            <td>$87,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Serge Baldwin</td>
-                                            <td>Data Coordinator</td>
-                                            <td>Singapore</td>
-                                            <td>64</td>
-                                            <td>2012/04/09</td>
-                                            <td>$138,575</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Zenaida Frank</td>
-                                            <td>Software Engineer</td>
-                                            <td>New York</td>
-                                            <td>63</td>
-                                            <td>2010/01/04</td>
-                                            <td>$125,250</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Zorita Serrano</td>
-                                            <td>Software Engineer</td>
-                                            <td>San Francisco</td>
-                                            <td>56</td>
-                                            <td>2012/06/01</td>
-                                            <td>$115,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jennifer Acosta</td>
-                                            <td>Junior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>43</td>
-                                            <td>2013/02/01</td>
-                                            <td>$75,650</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cara Stevens</td>
-                                            <td>Sales Assistant</td>
-                                            <td>New York</td>
-                                            <td>46</td>
-                                            <td>2011/12/06</td>
-                                            <td>$145,600</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hermione Butler</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>47</td>
-                                            <td>2011/03/21</td>
-                                            <td>$356,250</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lael Greer</td>
-                                            <td>Systems Administrator</td>
-                                            <td>London</td>
-                                            <td>21</td>
-                                            <td>2009/02/27</td>
-                                            <td>$103,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jonas Alexander</td>
-                                            <td>Developer</td>
-                                            <td>San Francisco</td>
-                                            <td>30</td>
-                                            <td>2010/07/14</td>
-                                            <td>$86,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Shad Decker</td>
-                                            <td>Regional Director</td>
-                                            <td>Edinburgh</td>
-                                            <td>51</td>
-                                            <td>2008/11/13</td>
-                                            <td>$183,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Michael Bruce</td>
-                                            <td>Javascript Developer</td>
-                                            <td>Singapore</td>
-                                            <td>29</td>
-                                            <td>2011/06/27</td>
-                                            <td>$183,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>2011/01/25</td>
-                                            <td>$112,000</td>
-                                        </tr>
+                                        <?php
+
+                                        // Kode untuk isi Filter - Start
+                                        if (isset($_GET['filter']) && !empty($_GET['filter'])) {
+                                            $filter = $_GET['filter'];
+                                            if ($filter == '1') {
+                                                echo '<a href="mcpb1phasa.php?filter=1&bulan=' . $_GET['bulan'] . '&tahun=' . $_GET['tahun'] . '"></a>';
+                                                $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+                                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_1phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '1 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                                            } else {
+                                                echo '<a href="mcpb1phasa.php.php?filter=2&tahun=' . $_GET['tahun'] . '"></a>';
+                                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_1phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '1 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                                            }
+                                        } else {
+                                            echo '<a href="mcpb1phasa.php"></a>';
+                                            $result = $mysqli->query("SELECT b.no_registrasi, b.nama, a.tgl_mohon, a.tarif_baru, a.daya_baru, a.fasa_baru, c.pekerjaan_rab, c.total_biaya FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_1phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '1 FASA'") or die($mysqli->error);
+                                        }
+                                        // kode untuk isi Filter - END
+
+                                        $no = 1;
+                                        $hitungrow = mysqli_num_rows($result);
+                                        if ($hitungrow > 0) {
+                                            while ($row = $result->fetch_assoc()) { ?>
+                                                <tr>
+                                                    <td class="align-middle"><?php echo $no++ ?></td>
+                                                    <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                                    <td class="align-middle">Pasang Baru</td>
+                                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
+                                                    <td class="align-middle"><?php echo $row['tarif_baru']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['daya_baru']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['fasa_baru']; ?></td>
+                                                    <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
+                                                    <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -741,9 +457,66 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Modal untuk Filter -->
+    <div class="modal fade" id="modalku" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="get" action="">
+                        <label>Filter Berdasarkan</label><br>
+                        <select name="filter" id="filter" class="form-control">
+                            <option value="" disabled selected>
+                                <-- Pilih -->
+                            </option>
+                            <option value="1">Per Bulan</option>
+                            <option value="2">Per Tahun</option>
+                        </select> <br>
+
+                        <div id="form-bulan">
+                            <label>Bulan</label><br>
+                            <select name="bulan" class="form-control">
+                                <option value="">Pilih</option>
+                                <option value="1">Januari</option>
+                                <option value="2">Februari</option>
+                                <option value="3">Maret</option>
+                                <option value="4">April</option>
+                                <option value="5">Mei</option>
+                                <option value="6">Juni</option>
+                                <option value="7">Juli</option>
+                                <option value="8">Agustus</option>
+                                <option value="9">September</option>
+                                <option value="10">Oktober</option>
+                                <option value="11">November</option>
+                                <option value="12">Desember</option>
+                            </select>
+                        </div>
+
+                        <div id="form-tahun">
+                            <label>Tahun</label><br>
+                            <select name="tahun" class="form-control">
+                                <option value="">Pilih</option>
+                                <?php
+                                $query = "SELECT YEAR(tgl_mohon) AS tahun FROM tb_pasang_baru WHERE fasa_baru = '1 FASA' GROUP BY YEAR(tgl_mohon)"; // Tampilkan tahun sesuai di tabel transaksi
+                                $sql = mysqli_query($mysqli, $query); // Eksekusi/Jalankan query dari variabel $query
+                                while ($data = mysqli_fetch_array($sql)) { // Ambil semua data dari hasil eksekusi $sql
+                                    echo '<option value="' . $data['tahun'] . '">' . $data['tahun'] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary float-right"><i class="fas fa-search"></i> Tampilkan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Core plugin JavaScript-->
     <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -757,6 +530,33 @@
 
     <!-- Page level custom scripts -->
     <script src="../../js/demo/datatables-demo.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
+    <script>
+        $('#dataTable').DataTable({
+            "columnDefs": [{
+                "orderable": false,
+                "targets": [3, 7, 8, 9]
+            }]
+        });
+    </script>
+
+    <!-- Script untuk filter toggle filter berdasarkan pilihan -->
+    <script>
+        $(document).ready(function() { // Ketika halaman selesai di load
+            $('#form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
+            $('#filter').change(function() { // Ketika user memilih filter
+                if ($(this).val() == '1') { // Jika filter nya 2 (per bulan)
+                    $('#form-bulan, #form-tahun').show(); // Tampilkan form bulan dan tahun
+                } else { // Jika filternya 3 (per tahun)
+                    $('#form-bulan').hide(); // Sembunyikan form tanggal dan bulan
+                    $('#form-tahun').show(); // Tampilkan form tahun
+                }
+                $('#form-bulan select, #form-tahun select').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
+            })
+        })
+    </script>
 
 </body>
 
