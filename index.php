@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -59,8 +57,7 @@
 
             <!-- Nav Item - Menu Pelayanan Penyambungan -->
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-                    aria-controls="collapseTwo">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-list-ul"></i>
                     <span>Menu Pelayanan Penyambungan</span>
                 </a>
@@ -69,18 +66,15 @@
                         <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
                             <!-- Link Menu Halaman Pasang Baru -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseThree"
-                                    aria-expanded="true" aria-controls="collapseThree">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">Pasang Baru</span>
                                 </a>
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/pasang_baru/pb1phasa.php">Pasang Baru 1
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/pasang_baru/pb1phasa.php">Pasang Baru 1
                                             <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/pasang_baru/pb3phasa.php">Pasang Baru 3
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/pasang_baru/pb3phasa.php">Pasang Baru 3
                                             <br> Phasa</a>
                                     </div>
                                 </div>
@@ -90,18 +84,15 @@
 
                             <!-- Link Menu Halaman Perubahan Daya -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFour"
-                                    aria-expanded="true" aria-controls="collapseFour">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">Perubahan Daya</span>
                                 </a>
                                 <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/perubahan_daya/pd1phasa.php">Perubahan
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/perubahan_daya/pd1phasa.php">Perubahan
                                             Daya 1 <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/perubahan_daya/pd3phasa.php">Perubahan
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/perubahan_daya/pd3phasa.php">Perubahan
                                             Daya 3 <br> Phasa</a>
                                     </div>
                                 </div>
@@ -111,18 +102,15 @@
 
                             <!-- Link Menu Halaman Migrasi -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFive"
-                                    aria-expanded="true" aria-controls="collapseFive">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">Migrasi</span>
                                 </a>
                                 <div id="collapseFive" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/migrasi/migrasi1phs.php">Migrasi 1
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/migrasi/migrasi1phs.php">Migrasi 1
                                             Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/migrasi/migrasi3phs.php">Migrasi 3
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/migrasi/migrasi3phs.php">Migrasi 3
                                             Phasa</a>
                                     </div>
                                 </div>
@@ -132,18 +120,15 @@
 
                             <!-- Link Menu Halaman Multiguna -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseSix"
-                                    aria-expanded="true" aria-controls="collapseSix">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">Multiguna</span>
                                 </a>
                                 <div id="collapseSix" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/multiguna/multiguna1phs.php">Multiguna 1
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/multiguna/multiguna1phs.php">Multiguna 1
                                             Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/multiguna/multiguna3phs.php">Multiguna 3
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/multiguna/multiguna3phs.php">Multiguna 3
                                             Phasa</a>
                                     </div>
                                 </div>
@@ -153,17 +138,14 @@
 
                             <!-- Link Menu Halaman P2TL -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseSeven"
-                                    aria-expanded="true" aria-controls="collapseSeven">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">P2TL</span>
                                 </a>
                                 <div id="collapseSeven" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="pelayananpenyambungan/p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -177,8 +159,7 @@
 
             <!-- Nav Item - Menu Cetak -->
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true"
-                    aria-controls="collapseA">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
                     <i class="fas fa-list-ul"></i>
                     <span>Menu Cetak</span>
                 </a>
@@ -187,18 +168,15 @@
                         <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
                             <!-- Link Menu Halaman Cetak Pasang Baru -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseB"
-                                    aria-expanded="true" aria-controls="collapseB">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseB" aria-expanded="true" aria-controls="collapseB">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Pasang Baru</span>
                                 </a>
                                 <div id="collapseB" class="collapse" aria-labelledby="headingThree">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/pasang_baru/mcpb1phasa.php">Pasang Baru 1
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/pasang_baru/mcpb1phasa.php">Pasang Baru 1
                                             Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/pasang_baru/mcpb3phasa.php">Pasang Baru 3
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/pasang_baru/mcpb3phasa.php">Pasang Baru 3
                                             Phasa</a>
                                     </div>
                                 </div>
@@ -208,25 +186,20 @@
 
                             <!-- Link Menu Halaman Cetak Perubahan Daya -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseC"
-                                    aria-expanded="true" aria-controls="collapseC">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseC" aria-expanded="true" aria-controls="collapseC">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Perubahan
                                         Daya</span>
                                 </a>
                                 <div id="collapseC" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/perubahan_daya/mcpd1phasa.php">Perubahan
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/perubahan_daya/mcpd1phasa.php">Perubahan
                                             Daya 1 <br> Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/perubahan_daya/mcpd1ke3phasa.php">Perubahan
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/perubahan_daya/mcpd1ke3phasa.php">Perubahan
                                             Daya 1 <br> Phasa ke 3 Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/perubahan_daya/mcpd3phasa.php">Perubahan Daya 3 <br>
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/perubahan_daya/mcpd3phasa.php">Perubahan Daya 3 <br>
                                             Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/perubahan_daya/mcpd3ke1phasa.php">Perubahan
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/perubahan_daya/mcpd3ke1phasa.php">Perubahan
                                             Daya 3 <br> Phasa ke 1 Phasa</a>
                                     </div>
                                 </div>
@@ -236,18 +209,15 @@
 
                             <!-- Link Menu Halaman Cetak Migrasi -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseD"
-                                    aria-expanded="true" aria-controls="collapseD">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseD" aria-expanded="true" aria-controls="collapseD">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Migrasi</span>
                                 </a>
                                 <div id="collapseD" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/migrasi/mcmigrasi1phasa.php">Migrasi 1
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/migrasi/mcmigrasi1phasa.php">Migrasi 1
                                             Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/migrasi/mcmigrasi3phasa.php">Migrasi 3
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/migrasi/mcmigrasi3phasa.php">Migrasi 3
                                             Phasa</a>
                                     </div>
                                 </div>
@@ -257,18 +227,15 @@
 
                             <!-- Link Menu Halaman Cetak Multiguna -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseE"
-                                    aria-expanded="true" aria-controls="collapseE">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseE" aria-expanded="true" aria-controls="collapseE">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Multiguna</span>
                                 </a>
                                 <div id="collapseE" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/multiguna/mcmultiguna1phasa.php">Multiguna 1
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/multiguna/mcmultiguna1phasa.php">Multiguna 1
                                             Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/multiguna/mcmultiguna3phasa.php">Multiguna 3
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/multiguna/mcmultiguna3phasa.php">Multiguna 3
                                             Phasa</a>
                                     </div>
                                 </div>
@@ -278,17 +245,14 @@
 
                             <!-- Link Menu Halaman Cetak P2TL -->
                             <li class="nav-item">
-                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseF"
-                                    aria-expanded="true" aria-controls="collapseF">
+                                <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseF" aria-expanded="true" aria-controls="collapseF">
                                     <i class="fas fa-chevron-circle-right"></i>
                                     <span class="font-weight-bolder text-capitalize">Menu Cetak <br> P2TL</span>
                                 </a>
                                 <div id="collapseF" class="collapse" aria-labelledby="headingFour">
                                     <div class="bg-light py-2 collapse-inner rounded">
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/p2tl/mcp2tl1phasa.php">P2TL 1 Phasa</a>
-                                        <a class="collapse-item font-weight-bold"
-                                            href="laporancetak/p2tl/mcp2tl3phasa.php">P2TL 3 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/p2tl/mcp2tl1phasa.php">P2TL 1 Phasa</a>
+                                        <a class="collapse-item font-weight-bold" href="laporancetak/p2tl/mcp2tl3phasa.php">P2TL 3 Phasa</a>
                                     </div>
                                 </div>
                             </li>
@@ -323,11 +287,9 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -341,18 +303,14 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -365,15 +323,13 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -416,15 +372,13 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
@@ -463,8 +417,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -481,14 +434,12 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -574,9 +525,7 @@
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -637,8 +586,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

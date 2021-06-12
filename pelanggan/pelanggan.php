@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Logo -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-3" href="../index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-3" href="../index.php">
                 <div class="img-responsive">
                     <img class="img-thumbnail" src="../img/logo.png">
                 </div>
@@ -48,7 +48,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="../index.html">
+                <a class="nav-link" href="../index.php">
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
