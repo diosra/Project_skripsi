@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pasang Baru 1 Phasa</title>
+    <title>Detail Pasang Baru 1 Phasa</title>
 
     <?php
     $pageSkr = 'pb1phasa';

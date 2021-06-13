@@ -79,12 +79,12 @@ if (!isset($_SESSION['username'])) {
                                             <a class="collapse-item font-weight-bold 
                                             <?php if ($pageSkr == 'pb1phasa') {
                                                 echo 'active';
-                                            } ?>" href="pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
+                                            } ?>" href="../pasang_baru/pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
 
                                             <a class="collapse-item font-weight-bold 
                                             <?php if ($pageSkr == 'pb3phasa') {
                                                 echo 'active';
-                                            } ?>" href="pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
+                                            } ?>" href="../pasang_baru/pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -99,8 +99,14 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="../perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="../perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
+                                            <a class="collapse-item font-weight-bold 
+                                            <?php if ($pageSkr == 'pd1phasa') {
+                                                echo 'active';
+                                            } ?>" href="../perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
+                                            <a class="collapse-item font-weight-bold 
+                                            <?php if ($pageSkr == 'pd3phasa') {
+                                                echo 'active';
+                                            } ?>" href="../perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -115,8 +121,14 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseFive" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
+                                            <a class="collapse-item font-weight-bold 
+                                            <?php if ($pageSkr == 'migrasi1phasa') {
+                                                echo 'active';
+                                            } ?>" href="../migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
+                                            <a class="collapse-item font-weight-bold 
+                                            <?php if ($pageSkr == 'migrasi3phasa') {
+                                                echo 'active';
+                                            } ?>" href="../migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -131,8 +143,14 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseSix" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
+                                            <a class="collapse-item font-weight-bold 
+                                            <?php if ($pageSkr == 'multiguna1phasa') {
+                                                echo 'active';
+                                            } ?>" href="../multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
+                                            <a class="collapse-item font-weight-bold 
+                                            <?php if ($pageSkr == 'multiguna3phasa') {
+                                                echo 'active';
+                                            } ?>" href="../multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -147,8 +165,14 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseSeven" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                                            <a class="collapse-item font-weight-bold 
+                                            <?php if ($pageSkr == 'p2tl1phasa') {
+                                                echo 'active';
+                                            } ?>" href="../p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                                            <a class="collapse-item font-weight-bold 
+                                            <?php if ($pageSkr == 'p2tl3phasa') {
+                                                echo 'active';
+                                            } ?>" href="../p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                                         </div>
                                     </div>
                                 </li>
