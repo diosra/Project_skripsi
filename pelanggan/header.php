@@ -24,6 +24,7 @@ if (!isset($_SESSION['username'])) {
 
         <script src="../vendor/jquery/jquery.min.js"></script>
         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
     <body id="page-top">
@@ -56,7 +57,7 @@ if (!isset($_SESSION['username'])) {
 
                 <!-- Nav Item - Menu Pelanggan -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="pelanggan.php">
                         <i class="fas fa-user-friends"></i></i>
                         <span>Menu Data Pelanggan</span></a>
                 </li>

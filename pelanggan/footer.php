@@ -50,7 +50,7 @@
 
 <!-- Page level custom scripts -->
 <script src="../js/demo/datatables-demo.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <!-- Script buat SweetAlert Confirm Hapus -->
 <script>
