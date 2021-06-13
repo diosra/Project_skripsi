@@ -3,24 +3,28 @@
 <html lang="en">
 
 <?php
-require 'koneksi.php';
+require '../koneksi.php';
 
 if (!isset($_SESSION['username'])) {
     echo "<script> alert('Silahkan login Terlebih dahulu');</script>";
-    echo "<meta http-equiv='refresh' content='0; url=login.php'>";
+    echo "<meta http-equiv='refresh' content='0; url=../login.php'>";
 } else {
 ?>
 
     <head>
         <!-- Custom fonts for this template-->
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
         <!-- Custom styles for this template-->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this page -->
+        <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     </head>
-
-
 
     <body id="page-top">
 
@@ -31,9 +35,9 @@ if (!isset($_SESSION['username'])) {
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Logo -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-3" href="index.php">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-3" href="../index.php">
                     <div class="img-responsive">
-                        <img src="img/logo.png" width="100%">
+                        <img src="../img/logo.png" width="100%">
                     </div>
                 </a>
 
@@ -41,8 +45,8 @@ if (!isset($_SESSION['username'])) {
                 <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.php">
                         <i class="fas fa-home"></i>
                         <span>Dashboard</span></a>
                 </li>
@@ -51,15 +55,15 @@ if (!isset($_SESSION['username'])) {
                 <hr class="sidebar-divider">
 
                 <!-- Nav Item - Menu Pelanggan -->
-                <li class="nav-item">
-                    <a class="nav-link" href="pelanggan/pelanggan.php">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
                         <i class="fas fa-user-friends"></i></i>
                         <span>Menu Data Pelanggan</span></a>
                 </li>
 
-                <!-- Nav Item - Menu Pelayanan Penyambungan -->
+                <!-- Nav Item - Pelayanan Penyambungan -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-list-ul"></i>
                         <span>Menu Pelayanan Penyambungan</span>
                     </a>
@@ -74,10 +78,8 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/pasang_baru/pb1phasa.php">Pasang Baru 1
-                                                <br> Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/pasang_baru/pb3phasa.php">Pasang Baru 3
-                                                <br> Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/pasang_baru/pb1phasa.php">Pasang Baru 1 <br> Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/pasang_baru/pb3phasa.php">Pasang Baru 3 <br> Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -92,10 +94,8 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseFour" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/perubahan_daya/pd1phasa.php">Perubahan
-                                                Daya 1 <br> Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/perubahan_daya/pd3phasa.php">Perubahan
-                                                Daya 3 <br> Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/perubahan_daya/pd1phasa.php">Perubahan Daya 1 <br> Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/perubahan_daya/pd3phasa.php">Perubahan Daya 3 <br> Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -110,10 +110,8 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseFive" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/migrasi/migrasi1phs.php">Migrasi 1
-                                                Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/migrasi/migrasi3phs.php">Migrasi 3
-                                                Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/migrasi/migrasi1phs.php">Migrasi 1 Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/migrasi/migrasi3phs.php">Migrasi 3 Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -128,10 +126,8 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseSix" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/multiguna/multiguna1phs.php">Multiguna 1
-                                                Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/multiguna/multiguna3phs.php">Multiguna 3
-                                                Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/multiguna/multiguna1phs.php">Multiguna 1 Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/multiguna/multiguna3phs.php">Multiguna 3 Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -146,8 +142,8 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseSeven" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="pelayananpenyambungan/p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/p2tl/p2tl1phs.php">P2TL 1 Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../pelayananpenyambungan/p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -176,9 +172,9 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseB" class="collapse" aria-labelledby="headingThree">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/pasang_baru/mcpb1phasa.php">Pasang Baru 1
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/pasang_baru/mcpb1phasa.php">Pasang Baru 1
                                                 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/pasang_baru/mcpb3phasa.php">Pasang Baru 3
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/pasang_baru/mcpb3phasa.php">Pasang Baru 3
                                                 Phasa</a>
                                         </div>
                                     </div>
@@ -195,13 +191,13 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseC" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/perubahan_daya/mcpd1phasa.php">Perubahan
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/perubahan_daya/mcpd1phasa.php">Perubahan
                                                 Daya 1 <br> Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/perubahan_daya/mcpd1ke3phasa.php">Perubahan
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/perubahan_daya/mcpd1ke3phasa.php">Perubahan
                                                 Daya 1 <br> Phasa ke 3 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/perubahan_daya/mcpd3phasa.php">Perubahan Daya 3 <br>
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/perubahan_daya/mcpd3phasa.php">Perubahan Daya 3 <br>
                                                 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/perubahan_daya/mcpd3ke1phasa.php">Perubahan
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/perubahan_daya/mcpd3ke1phasa.php">Perubahan
                                                 Daya 3 <br> Phasa ke 1 Phasa</a>
                                         </div>
                                     </div>
@@ -217,9 +213,9 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseD" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/migrasi/mcmigrasi1phasa.php">Migrasi 1
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/migrasi/mcmigrasi1phasa.php">Migrasi 1
                                                 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/migrasi/mcmigrasi3phasa.php">Migrasi 3
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/migrasi/mcmigrasi3phasa.php">Migrasi 3
                                                 Phasa</a>
                                         </div>
                                     </div>
@@ -235,9 +231,9 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseE" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/multiguna/mcmultiguna1phasa.php">Multiguna 1
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/multiguna/mcmultiguna1phasa.php">Multiguna 1
                                                 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/multiguna/mcmultiguna3phasa.php">Multiguna 3
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/multiguna/mcmultiguna3phasa.php">Multiguna 3
                                                 Phasa</a>
                                         </div>
                                     </div>
@@ -253,8 +249,8 @@ if (!isset($_SESSION['username'])) {
                                     </a>
                                     <div id="collapseF" class="collapse" aria-labelledby="headingFour">
                                         <div class="bg-light py-2 collapse-inner rounded">
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/p2tl/mcp2tl1phasa.php">P2TL 1 Phasa</a>
-                                            <a class="collapse-item font-weight-bold" href="laporancetak/p2tl/mcp2tl3phasa.php">P2TL 3 Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/p2tl/mcp2tl1phasa.php">P2TL 1 Phasa</a>
+                                            <a class="collapse-item font-weight-bold" href="../laporancetak/p2tl/mcp2tl3phasa.php">P2TL 3 Phasa</a>
                                         </div>
                                     </div>
                                 </li>
@@ -313,5 +309,6 @@ if (!isset($_SESSION['username'])) {
     </body>
 
 </html>
+
 
 <?php } ?>
