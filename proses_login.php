@@ -22,20 +22,20 @@ if (isset($_POST['log'])) {
   $user = $mysqli->real_escape_string($_POST['username']);
   $pass = $mysqli->real_escape_string($_POST['password']);
 
-  $query = $mysqli->query("SELECT * FROM datalogin WHERE username = '$user' AND password='$pass'");
+  $query = $mysqli->query("SELECT * FROM tb_data_user WHERE username = '$user' AND password='$pass'");
   $data = $query->fetch_array();
   $username = $data['username'];
   $password = $data['password'];
   $level = $data['level'];
 
-  $nama_asli = $data['nama_asli'];
+  $nama_asli = $data['nama'];
 
   if ($user == $username && $pass == $password) {
     $_SESSION['username'] = $username;
     $name = $_SESSION['username'];
     $_SESSION['level'] = $level;
 
-    $_SESSION['nama_asli'] = $nama_asli;
+    $_SESSION['nama'] = $nama_asli;
 
     if ($level == 1) {
 ?>

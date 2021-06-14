@@ -294,7 +294,7 @@ if (!isset($_SESSION['username'])) {
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-3 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['nama_asli'] ?></span>
+                                    <span class="mr-3 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['nama'] ?></span>
                                     <i class="fas fa-user-alt fa-2x"></i>
                                 </a>
                                 <!-- Dropdown - User Information -->
