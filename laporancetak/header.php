@@ -31,7 +31,7 @@ if (!isset($_SESSION['username'])) {
         <div id="wrapper">
 
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #1B6C89;">
 
                 <!-- Sidebar - Logo -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-3" href="../../index.php">
@@ -139,10 +139,10 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                 </li>
 
-                                <hr style="margin-left: 20px; margin-right: 20px;">
+                                <!-- <hr style="margin-left: 20px; margin-right: 20px;"> -->
 
                                 <!-- Link Menu Halaman P2TL -->
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
                                         <i class="fas fa-chevron-circle-right"></i>
                                         <span class="font-weight-bolder text-capitalize">P2TL</span>
@@ -153,7 +153,7 @@ if (!isset($_SESSION['username'])) {
                                             <a class="collapse-item font-weight-bold" href="../../pelayananpenyambungan/p2tl/p2tl3phs.php">P2TL 3 Phasa</a>
                                         </div>
                                     </div>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -266,10 +266,10 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                 </li>
 
-                                <hr style="margin-left: 20px; margin-right: 20px;">
+                                <!-- <hr style="margin-left: 20px; margin-right: 20px;"> -->
 
                                 <!-- Link Menu Halaman Cetak P2TL -->
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseF" aria-expanded="true" aria-controls="collapseF">
                                         <i class="fas fa-chevron-circle-right"></i>
                                         <span class="font-weight-bolder text-capitalize">Menu Cetak <br> P2TL</span>
@@ -286,7 +286,8 @@ if (!isset($_SESSION['username'])) {
                                             } ?>" href="../p2tl/mcp2tl3phasa.php">P2TL 3 Phasa</a>
                                         </div>
                                     </div>
-                                </li>
+                                </li> -->
+
                             </ul>
                         </div>
                     </div>

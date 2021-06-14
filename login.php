@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body style="background-color: #1B6C89;">
 
     <div class="container">
 
