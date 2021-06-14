@@ -184,7 +184,7 @@ if (!isset($_SESSION['username'])) {
                     <!-- Nav Item - Menu Cetak -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
-                            <i class="fas fa-list-ul"></i>
+                            <i class="fas fa-print"></i>
                             <span>Menu Cetak</span>
                         </a>
                         <div id="collapseA" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">

@@ -35,10 +35,10 @@
 
                 <?php
                 $pelanggan = '';
-                $query = "SELECT id_pelanggan, no_registrasi FROM tb_pelanggan GROUP BY id_pelanggan ORDER BY id_pelanggan ASC";
+                $query = "SELECT id_pelanggan, no_registrasi, nama FROM tb_pelanggan GROUP BY id_pelanggan ORDER BY id_pelanggan ASC";
                 $result = mysqli_query($mysqli, $query);
                 while ($row = mysqli_fetch_array($result)) {
-                    $pelanggan .= '<option value="' . $row["id_pelanggan"] . ' ' . $row["no_registrasi"] . '"> ' . $row["no_registrasi"] . '</option>';
+                    $pelanggan .= '<option value="' . $row["id_pelanggan"] . ' ' . $row["no_registrasi"] . '"> ' . $row["no_registrasi"] . ' - ' . $row["nama"] . '</option>';
                 }
                 ?>
 
