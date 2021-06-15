@@ -20,26 +20,29 @@
 
 </head>
 
-<body style="background-color: #1B6C89;">
+<body style="background-image: url(img/bg_login.jpg); background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;">
 
     <div class="container">
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-6 col-lg-12 col-md-9">
-                <br><br>
-
+            <div class="col-xl-6 col-lg-12 col-md-9 mt-5">
                 <div class="card o-hidden border-0 shadow-lg">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg">
-                                <div class="p-5">
+                                <div class="p-3">
                                     <div class="text-center">
-                                        <img src="img/logo.png" width="75%">
-                                        <h1 class="h4 text-gray-900 mb-4"></h1>
-                                        <h1 class="h4 text-gray-900 mb-4 font-weight-bold">Login</h1>
+                                        <div class="d-flex justify-content-center mb-4">
+                                            <img src="img/logo.png" width="35%" class="mr-4">
+                                            <div class="border-left mt-3">
+                                                <h5 class="text-gray-900 font-weight-bold ml-2">Aplikasi Pelayanan Penyambungan & Pengaduan</h5>
+                                            </div>
+                                        </div>
                                     </div>
                                     <form class="user" action="proses_login.php" method="POST">
                                         <div class="form-group">

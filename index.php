@@ -17,11 +17,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <div class="text-center mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Selamat Datang ke website PLN</h1>
-    </div>
-
     <!-- Card - Nampilkan Jumlah Data -->
     <div class="row">
         <!-- Jumlah Data Pelanggan -->
@@ -142,7 +137,6 @@
     <div class="text-center mb-4">
         <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Profil Perusahaan</h1>
     </div>
-    <img class="shadow mb-2 img-fluid" src="img/Dashboard.jpg" alt="">
 
     <div class="row mb-4">
         <div class="card shadow col mr-2">

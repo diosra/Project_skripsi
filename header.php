@@ -20,8 +20,6 @@ if (!isset($_SESSION['username'])) {
         <link href="css/sb-admin-2.min.css" rel="stylesheet">
     </head>
 
-
-
     <body id="page-top">
 
         <!-- Page Wrapper -->
@@ -30,12 +28,128 @@ if (!isset($_SESSION['username'])) {
             <!-- Sidebar -->
             <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #1B6C89;">
 
-                <!-- Sidebar - Logo -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center mt-2 mb-3" href="index.php">
-                    <div class="img-responsive">
-                        <img src="img/logo.png" width="100%">
+                <!-- Nav Item - Akun User -->
+                <?php
+                $level = $_SESSION['level'];
+                $tekcheck = $_SESSION['t_check'];
+
+                if ($level == 1) {
+                ?>
+                    <div class="nav-item text-center mt-3 mb-3">
+                        <button role="button" type="button" class="btn" data-toggle="dropdown">
+                            <i class="fas fa-user-alt fa-2x"></i> <br>
+                            <span>Akun</span>
+                        </button>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <span class="d-none d-lg-inline text-gray-600 small">
+                                <div class="text-center">
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
+                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Admin </p>
+                                </div>
+                            </span>
+                            <hr>
+                            <a style="color: red;" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                LOGOUT
+                            </a>
+                        </div>
                     </div>
-                </a>
+                <?php
+                } elseif ($level == 2) {
+                ?>
+                    <div class="nav-item text-center mt-3 mb-3">
+                        <button role="button" type="button" class="btn" data-toggle="dropdown">
+                            <i class="fas fa-user-alt fa-2x"></i> <br>
+                            <span>Akun</span>
+                        </button>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <span class="d-none d-lg-inline text-gray-600 small">
+                                <div class="text-center">
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
+                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Pegawai </p>
+                                </div>
+                            </span>
+                            <hr>
+                            <a style="color: red;" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                LOGOUT
+                            </a>
+                        </div>
+                    </div>
+                <?php
+                } elseif ($level == 3) {
+                ?>
+                    <div class="nav-item text-center mt-3 mb-3">
+                        <button role="button" type="button" class="btn" data-toggle="dropdown">
+                            <i class="fas fa-user-alt fa-2x"></i> <br>
+                            <span>Akun</span>
+                        </button>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <span class="d-none d-lg-inline text-gray-600 small">
+                                <div class="text-center">
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
+                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Operator </p>
+                                </div>
+                            </span>
+                            <hr>
+                            <a style="color: red;" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                LOGOUT
+                            </a>
+                        </div>
+                    </div>
+                <?php
+                } elseif ($level == 4 && $tekcheck == 1) {
+                ?>
+                    <div class="nav-item text-center mt-3 mb-3">
+                        <button role="button" type="button" class="btn" data-toggle="dropdown">
+                            <i class="fas fa-user-alt fa-2x"></i> <br>
+                            <span>Akun</span>
+                        </button>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <span class="d-none d-lg-inline text-gray-600 small">
+                                <div class="text-center">
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
+                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Teknisi Pelayanan <br> Penyambungan </p>
+                                </div>
+                            </span>
+                            <hr>
+                            <a style="color: red;" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                LOGOUT
+                            </a>
+                        </div>
+                    </div>
+                <?php
+                } elseif ($level == 4 && $tekcheck == 2) {
+                ?>
+                    <div class="nav-item text-center mt-3 mb-3">
+                        <button role="button" type="button" class="btn" data-toggle="dropdown">
+                            <i class="fas fa-user-alt fa-2x"></i> <br>
+                            <span>Akun</span>
+                        </button>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <span class="d-none d-lg-inline text-gray-600 small">
+                                <div class="text-center">
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
+                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Teknisi Pelayanan <br> Pengaduan </p>
+                                </div>
+                            </span>
+                            <hr>
+                            <a style="color: red;" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                LOGOUT
+                            </a>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
 
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
@@ -51,9 +165,6 @@ if (!isset($_SESSION['username'])) {
                 <hr class="sidebar-divider">
 
                 <?php
-                $level = $_SESSION['level'];
-                $tekcheck = $_SESSION['t_check'];
-
                 //Menu Hak akses Admin
                 if ($level == 1) {
                 ?>
@@ -278,7 +389,7 @@ if (!isset($_SESSION['username'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="pelanggan/pelanggan.php">
                             <i class="fas fa-user-friends"></i></i>
-                            <span>Menu Data User</span></a>
+                            <span>Manajemen User</span></a>
                     </li>
                 <?php
                     //Menu Hak akses Pegawai
@@ -559,23 +670,14 @@ if (!isset($_SESSION['username'])) {
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
 
-                            <!-- Nav Item - User Information -->
-                            <li class="nav-item dropdown no-arrow">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-3 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['nama'] ?></span>
-                                    <i class="fas fa-user-alt fa-2x"></i>
-                                </a>
-                                <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
-                                    </a>
+                            <div class="d-flex justify-content-center">
+                                <!-- Header - Logo & Judul -->
+                                <div class="img-responsive">
+                                    <h4 class="text-center mt-2 text-dark font-weight-bold text-sm-left text-md-left text-lg-left text-xl-left"><a href="index.php" class="border-right mr-3"><img src="img/logo.png" width="15%" class="mr-3"></a>Selamat Datang ke Aplikasi Pelayanan Penyambungan dan Pengaduan</h4>
                                 </div>
-                            </li>
+                            </div>
 
                         </ul>
-
                     </nav>
                     <!-- End of Topbar -->
     </body>
