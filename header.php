@@ -530,6 +530,7 @@ if (!isset($_SESSION['username'])) {
                 <?php
                 }
                 ?>
+
                 <!-- Divider -->
                 <hr class="sidebar-divider d-none d-md-block">
 
