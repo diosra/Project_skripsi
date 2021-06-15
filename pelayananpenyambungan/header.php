@@ -114,7 +114,7 @@ if (!isset($_SESSION['username'])) {
                                 <hr style="margin-left: 20px; margin-right: 20px;">
 
                                 <!-- Link Menu Halaman Migrasi -->
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
                                         <i class="fas fa-chevron-circle-right"></i>
                                         <span class="font-weight-bolder text-capitalize">Migrasi</span>
@@ -133,7 +133,7 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                 </li>
 
-                                <hr style="margin-left: 20px; margin-right: 20px;">
+                                <hr style="margin-left: 20px; margin-right: 20px;"> -->
 
                                 <!-- Link Menu Halaman Multiguna -->
                                 <li class="nav-item">
@@ -235,7 +235,7 @@ if (!isset($_SESSION['username'])) {
                                 <hr style="margin-left: 20px; margin-right: 20px;">
 
                                 <!-- Link Menu Halaman Cetak Migrasi -->
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseD" aria-expanded="true" aria-controls="collapseD">
                                         <i class="fas fa-chevron-circle-right"></i>
                                         <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Migrasi</span>
@@ -250,7 +250,7 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                 </li>
 
-                                <hr style="margin-left: 20px; margin-right: 20px;">
+                                <hr style="margin-left: 20px; margin-right: 20px;"> -->
 
                                 <!-- Link Menu Halaman Cetak Multiguna -->
                                 <li class="nav-item">
