@@ -20,7 +20,7 @@ if (!isset($_SESSION['username'])) {
         <link href="css/sb-admin-2.min.css" rel="stylesheet">
     </head>
 
-    <body id="page-top">
+    <body id="page-top" class="text-gray-900">
 
         <!-- Page Wrapper -->
         <div id="wrapper">
@@ -624,7 +624,7 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <!-- Nav Item - Menu Teknisi Yanbung -->
                     <li class="nav-item">
-                        <a class="nav-link" href="pelanggan/pelanggan.php">
+                        <a class="nav-link" href="teknisi/yanbung/form_laporan.php">
                             <i class="fas fa-user-friends"></i></i>
                             <span>Menu Data Teknisi Yanbung</span></a>
                     </li>
@@ -634,7 +634,7 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <!-- Nav Item - Menu Teknisi Pengaduan -->
                     <li class="nav-item">
-                        <a class="nav-link" href="pelanggan/pelanggan.php">
+                        <a class="nav-link" href="teknisi/pengaduan/form_laporan.php">
                             <i class="fas fa-user-friends"></i></i>
                             <span>Menu Data Pengaduan</span></a>
                     </li>

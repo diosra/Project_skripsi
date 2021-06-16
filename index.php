@@ -17,80 +17,85 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Card - Nampilkan Jumlah Data -->
-    <div class="row">
-        <!-- Jumlah Data Pelanggan -->
-        <?php
-        $data = mysqli_query($mysqli, "select * from tb_pelanggan");
-        $hitungrow = mysqli_num_rows($data);
-        ?>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Data Pelanggan</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $hitungrow ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user-friends fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Jumlah Data Pasang Baru -->
-        <?php
-        $data = mysqli_query($mysqli, "select * from tb_pasang_baru");
-        $hitungrow2 = mysqli_num_rows($data);
-        ?>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Data Pasang Baru</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $hitungrow2 ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-database fa-2x text-gray-300"></i>
+    <?php
+    $level = $_SESSION['level'];
+    $tekcheck = $_SESSION['t_check'];
+    if ($level == 1 || $level == 2) {
+    ?>
+        <!-- Card - Nampilkan Jumlah Data -->
+        <div class="row">
+            <!-- Jumlah Data Pelanggan -->
+            <?php
+            $data = mysqli_query($mysqli, "select * from tb_pelanggan");
+            $hitungrow = mysqli_num_rows($data);
+            ?>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Data Pelanggan</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $hitungrow ?></div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Jumlah Data Perubahan Daya -->
-        <?php
-        $data = mysqli_query($mysqli, "select * from tb_perubahan_daya");
-        $hitungrow3 = mysqli_num_rows($data);
-        ?>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Data Perubahan Daya</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $hitungrow3 ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-database fa-2x text-gray-300"></i>
+            <!-- Jumlah Data Pasang Baru -->
+            <?php
+            $data = mysqli_query($mysqli, "select * from tb_pasang_baru");
+            $hitungrow2 = mysqli_num_rows($data);
+            ?>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Pasang Baru</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $hitungrow2 ?></div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Jumlah Data Migrasi -->
-        <?php
-        $data = mysqli_query($mysqli, "select * from tb_migrasi");
-        $hitungrow3 = mysqli_num_rows($data);
-        ?>
-        <!-- <div class="col-xl-3 col-md-6 mb-4">
+            <!-- Jumlah Data Perubahan Daya -->
+            <?php
+            $data = mysqli_query($mysqli, "select * from tb_perubahan_daya");
+            $hitungrow3 = mysqli_num_rows($data);
+            ?>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Perubahan Daya</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $hitungrow3 ?></div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jumlah Data Migrasi -->
+            <?php
+            $data = mysqli_query($mysqli, "select * from tb_migrasi");
+            $hitungrow3 = mysqli_num_rows($data);
+            ?>
+            <!-- <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -107,38 +112,43 @@
             </div>
         </div> -->
 
-        <!-- Jumlah Data Multiguna -->
-        <?php
-        $data = mysqli_query($mysqli, "select * from tb_multiguna");
-        $hitungrow2 = mysqli_num_rows($data);
-        ?>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Data Multiguna</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $hitungrow2 ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-database fa-2x text-gray-300"></i>
+            <!-- Jumlah Data Multiguna -->
+            <?php
+            $data = mysqli_query($mysqli, "select * from tb_multiguna");
+            $hitungrow2 = mysqli_num_rows($data);
+            ?>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Multiguna</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $hitungrow2 ?></div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-
-    <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+        <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+    <?php
+    }
+    ?>
 
     <!-- Profil Perusahaan -->
     <div class="text-center mb-4">
         <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Profil Perusahaan</h1>
+        <img src="img/bg_login.jpg" width="50%" class="mt-2">
     </div>
 
-    <div class="row mb-4">
+    <div class="row">
+        <!-- Visi -->
         <div class="card shadow col mr-2">
             <div class="card-header py-3">
                 <h3 class="m-0 font-weight-bold text-primary text-center">Visi</h3>
@@ -148,6 +158,7 @@
             </div>
         </div>
 
+        <!-- Misi -->
         <div class="card shadow col">
             <div class="card-header py-3">
                 <h3 class="m-0 font-weight-bold text-primary text-center">Misi</h3>
@@ -171,7 +182,8 @@
         </div>
     </div>
 
-    <div class="card shadow mb-4 col">
+    <!-- Riwayat Singkat -->
+    <div class="card shadow mb-4 mt-3">
         <div class="card-header py-3">
             <h3 class="m-0 font-weight-bold text-primary text-center">Riwayat Singkat PLN</h3>
         </div>

@@ -53,7 +53,7 @@
                                             <label class="font-weight-bold">Password</label>
                                             <input type="password" class="form-control form-control-user" placeholder="Masukkan Password" name="password" required>
                                         </div>
-                                        <button class="btn btn-primary btn-user float-right mb-3 p-3" type="submit" name="log"><i class="fas fa-sign-in-alt mr-2"></i> Login</button>
+                                        <button class="btn btn-primary btn-user float-right mb-3 p-3" type="submit" name="log"><span class="text-black"><i class="fas fa-sign-in-alt mr-2"></i> <b>Login</b></span></button>
                                     </form>
                                 </div>
                             </div>
