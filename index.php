@@ -17,6 +17,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
+    <!-- Tampilan Card total data hanya untuk admin dan pegawai -->
     <?php
     $level = $_SESSION['level'];
     $tekcheck = $_SESSION['t_check'];
@@ -90,28 +91,6 @@
                 </div>
             </div>
 
-            <!-- Jumlah Data Migrasi -->
-            <?php
-            $data = mysqli_query($mysqli, "select * from tb_migrasi");
-            $hitungrow3 = mysqli_num_rows($data);
-            ?>
-            <!-- <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Data Migrasi</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $hitungrow3 ?></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-database fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
             <!-- Jumlah Data Multiguna -->
             <?php
             $data = mysqli_query($mysqli, "select * from tb_multiguna");
@@ -147,6 +126,7 @@
         <img src="img/bg_login.jpg" width="50%" class="mt-2">
     </div>
 
+    <!-- Visi dan Misi -->
     <div class="row">
         <!-- Visi -->
         <div class="card shadow col mr-2">

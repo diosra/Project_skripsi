@@ -45,7 +45,7 @@ if (isset($_POST['log'])) {
         Swal.fire({
           icon: 'success',
           title: 'Sukses.',
-          text: 'Login Admin Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
+          text: 'Login sebagai Admin Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
         }).then((result) => {
           window.location = "index.php";
         })
@@ -57,7 +57,7 @@ if (isset($_POST['log'])) {
         Swal.fire({
           icon: 'success',
           title: 'Sukses.',
-          text: 'Login Pegawai Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
+          text: 'Login sebagai Pegawai Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
         }).then((result) => {
           window.location = "index.php";
         })
@@ -69,7 +69,7 @@ if (isset($_POST['log'])) {
         Swal.fire({
           icon: 'success',
           title: 'Sukses.',
-          text: 'Login Operator Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
+          text: 'Login sebagai Operator Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
         }).then((result) => {
           window.location = "index.php";
         })
@@ -81,7 +81,7 @@ if (isset($_POST['log'])) {
         Swal.fire({
           icon: 'success',
           title: 'Sukses.',
-          text: 'Login Teknisi Pelayanan Penyambungan Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
+          text: 'Login sebagai Teknisi Pelayanan Penyambungan Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
         }).then((result) => {
           window.location = "index.php";
         })
@@ -93,7 +93,7 @@ if (isset($_POST['log'])) {
         Swal.fire({
           icon: 'success',
           title: 'Sukses.',
-          text: 'Login Teknisi Pelayanan Pengaduan Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
+          text: 'Login sebagai Teknisi Pelayanan Pengaduan Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
         }).then((result) => {
           window.location = "index.php";
         })

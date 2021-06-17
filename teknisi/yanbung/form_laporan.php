@@ -30,7 +30,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-            <a class="btn btn-primary p-2 mr-2" href="tyanbung_input.php"><i class="fas fa-plus-circle"></i> Tambah Laporan</a>
+            <a class="btn btn-primary p-2 mr-2" href="../../CRUD/teknisi_yanbung/tekyan_input.php"><i class="fas fa-plus-circle"></i> Tambah Laporan</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -47,7 +47,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.*, b.* FROM tb_laporan_teknisi a JOIN tb_pelanggan b ON b.id_pelanggan = a.id_pelanggan");
+                        $data = mysqli_query($mysqli, "SELECT a.* , b.* FROM tb_laporan_teknisi_yanbung a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
@@ -56,14 +56,16 @@
                                     <td style="text-align:center;"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
-                                    <td class="align-middle"><?php echo $row['no_telp']; ?></td>
+                                    <td class="text-center">
+                                        <a href="tekyan_lihat.php?lihat=<?php echo $row['id_laporan'] ?>" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Lihat Laporan"><i class="fas fa-sticky-note"></i></a>
+                                    </td>
+                                    <td class="align-middle"><?php echo $row['status']; ?></td>
                                     <td class="row text-center">
                                         <div class="col">
-                                            <a href="pel_edit.php?edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                            <a href="tekyan_lihat.php?edit=<?php echo $row['id_laporan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                         </div>
                                         <div class="col">
-                                            <a href="pel_hapus.php?hapus=<?php echo $row['id_pelanggan'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                            <a href="tekyan_lihat.php?hapus=<?php echo $row['id_laporan'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                         </div>
                                     </td>
                                 </tr>

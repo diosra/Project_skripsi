@@ -27,7 +27,7 @@
             <div class="modal-body">Klik Tombol "Logout" dibawah untuk kembali ke menu login</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="login.php">Logout</a>
+                <a class="btn btn-primary" href="logout.php">Logout</a>
             </div>
         </div>
     </div>

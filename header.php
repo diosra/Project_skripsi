@@ -2,6 +2,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
 <?php
 require 'koneksi.php';
 
@@ -10,15 +19,6 @@ if (!isset($_SESSION['username'])) {
     echo "<meta http-equiv='refresh' content='0; url=login.php'>";
 } else {
 ?>
-
-    <head>
-        <!-- Custom fonts for this template-->
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-        <!-- Custom styles for this template-->
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    </head>
 
     <body id="page-top" class="text-gray-900">
 
@@ -148,11 +148,20 @@ if (!isset($_SESSION['username'])) {
                         </div>
                     </div>
                 <?php
+                } else {
+                ?>
+                    <div class="nav-item text-center mt-3 mb-3">
+                        <button role="button" type="button" class="btn" data-toggle="dropdown">
+                            <i class="fas fa-user-alt fa-2x"></i> <br>
+                            <span>Login</span>
+                        </button>
+                    </div>
+                <?php
                 }
                 ?>
 
                 <!-- Divider -->
-                <hr class="sidebar-divider my-0">
+                <hr class=" sidebar-divider my-0">
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
