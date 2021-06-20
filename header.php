@@ -37,8 +37,8 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <i class="fas fa-user-alt fa-2x"></i> <br>
-                            <span>Akun</span>
+                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
+                            <span class="text-success">Akun</span>
                         </button>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -60,8 +60,8 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <i class="fas fa-user-alt fa-2x"></i> <br>
-                            <span>Akun</span>
+                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
+                            <span class="text-success">Akun</span>
                         </button>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -83,8 +83,8 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <i class="fas fa-user-alt fa-2x"></i> <br>
-                            <span>Akun</span>
+                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
+                            <span class="text-success">Akun</span>
                         </button>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -106,8 +106,8 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <i class="fas fa-user-alt fa-2x"></i> <br>
-                            <span>Akun</span>
+                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
+                            <span class="text-success">Akun</span>
                         </button>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -129,8 +129,8 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <i class="fas fa-user-alt fa-2x"></i> <br>
-                            <span>Akun</span>
+                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
+                            <span class="text-success">Akun</span>
                         </button>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -25,12 +25,10 @@
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #1B6C89;">
 
             <div class="nav-item text-center mt-3 mb-3">
-                <div class="nav-item text-center mt-3 mb-3">
-                    <a class="btn" href="login.php">
-                        <i class="fas fa-user-alt fa-2x"></i> <br>
-                        <span>Login</span>
-                    </a>
-                </div>
+                <a class="btn" href="login.php">
+                    <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
+                    <span class="text-success">Login</span>
+                </a>
             </div>
 
             <!-- Divider -->

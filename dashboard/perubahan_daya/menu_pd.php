@@ -33,8 +33,13 @@
         <div class="card-body">
             <form action="">
                 <div class="form-group">
-                    <label for="">No Registrasi</label>
+                    <!-- <label for="">Cari No Registrasi</label>
                     <input type="text" id="noreg" name="no_registrasi" class="form-control">
+                    <button type="button" id="btn-search" class="btn btn-primary mt-2">Cari</button>
+                    <a href="menu_pd.php" class="btn btn-warning mt-2">Reset</a> -->
+
+                    <label for="">Cari ID Pelanggan</label>
+                    <input type="text" id="id_pelanggan" name="id_pelanggan" class="form-control">
                     <button type="button" id="btn-search" class="btn btn-primary mt-2">Cari</button>
                     <a href="menu_pd.php" class="btn btn-warning mt-2">Reset</a>
                 </div>
@@ -68,62 +73,57 @@
                 </div> -->
 
                 <div class="form-group">
+                    <label for="">No Registrasi</label>
+                    <input type="text" id="noregtampil" name="no_registrasi" class="form-control" readonly disabled required>
+                </div>
+
+                <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" name="nama" id="nama" class="form-control" required>
+                    <input type="text" name="nama" id="nama" class="form-control" readonly disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="">Alamat</label>
-                    <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" required></textarea>
+                    <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" readonly disabled></textarea>
                 </div>
 
                 <div class="form-group row">
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. HP</label>
-                            <input type="number" name="tgl_mohon" id="nohp" class="form-control" value="" required>
+                            <input type="number" name="nohp" id="nohp" class="form-control" value="" readonly disabled>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. Telp</label>
-                            <input type="number" name="tgl_mohon" id="notelp" class="form-control" value="" required>
+                            <input type="number" name="notelp" id="notelp" class="form-control" value="" readonly disabled>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="">Email</label>
-                    <input type="email" name="tgl_mohon" class="form-control" id="email" required>
+                    <input type="email" name="email" class="form-control" id="email" readonly disabled>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Identitas</label>
-                    <input type="email" name="tgl_mohon" class="form-control" id="identitas" value="" required>
+                    <label for="">Daya Lama</label>
+                    <input type="text" name="daya_lama" id="daya" class="form-control" value="" readonly disabled>
                 </div>
 
-                <div class="form-group row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="">Tarif Lama</label>
-                            <input type="text" name="jenis_transaksi" id="tarif_lama" class="form-control" value="" required disabled>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="">Daya Lama</label>
-                            <input type="text" name="jenis_transaksi" id="daya" class="form-control" value="" required disabled>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="">Upload Foto / Scan KTP</label> <br>
+                    <input type="file" accept="image/*" name="foto">
                 </div>
 
                 <hr class="font-weight-bolder my-4">
 
-                <h3 class="mb-4"><u>Tarif / Daya Baru</u></h3>
+                <h3 class="mb-4"><u>Daya Baru</u></h3>
 
                 <div class="form-group">
                     <label for="">Produk Layanan</label>
-                    <select name="fasa_baru" class="form-control" required>
+                    <select name="produk" class="form-control" required>
                         <option value="" disabled selected>Pilih</option>
                         <option>PASCABAYAR</option>
                         <option>PRABAYAR</option>
@@ -132,7 +132,7 @@
 
                 <div class="form-group">
                     <label for="">Daya</label>
-                    <select name="fasa_baru" class="form-control" required>
+                    <select name="daya_baru" class="form-control" required>
                         <option value="" disabled selected>Pilih</option>
                         <option>450</option>
                         <option>900</option>
@@ -181,59 +181,60 @@ include_once '../footer.php';
 <!-- PHP - Query Tombol Save dan SweetAlert -->
 <?php
 if (isset($_POST['save'])) {
+    $no_registrasi = $_POST['no_registrasi'];
     $id_pelanggan = $_POST['id_pelanggan'];
-    $tgl_mohon = $_POST['tgl_mohon'];
-    $tarif_baru = $_POST['tarif_baru'];
-    $daya_baru = $_POST['daya_baru'];
-    $fasa_baru = $_POST['fasa_baru'];
+    $nama = $_POST['nama'];
+    $alamat = $_POST['alamat'];
+    $nohp = $_POST['nohp'];
+    $notelp = $_POST['notelp'];
+    $email = $_POST['email'];
+    $filename = $_FILES['identitas']['name'];
+    $produk_layanan = $_POST['produk_layanan'];
+    $daya = $_POST['daya'];
+    $getId = mysqli_fetch_row(mysqli_query($mysqli, "SELECT max(id_mohon) from tb_tes_input_pb"));
 
-    $insert = "INSERT INTO tb_pasang_baru (id_pelanggan, jenis_transaksi,tgl_mohon, tarif_baru, daya_baru, fasa_baru) VALUES ('$id_pelanggan', 'Pasang Baru', '$tgl_mohon', '$tarif_baru','$daya_baru', '$fasa_baru')";
-    $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-
-    if ($fasa_baru == "1 FASA") {
-        $ambil1 = "PB 1 FASA";
-    } elseif ($fasa_baru == "3 FASA") {
-        $ambil2 = "PB 3 FASA";
+    if (!empty($_FILES['foto']['tmp_name'])) {
+        $ext = strtolower(substr($_FILES['foto']['name'], -3));
+        if ($ext == 'gif') {
+            $ext = ".gif";
+        } elseif ($ext == 'jpg') {
+            $ext = ".jpg";
+        } elseif ($ext == 'jpeg') {
+            $ext = ".jpeg";
+        } else {
+            $ext = ".png";
+        }
+        // proses upload file ke folder gambar 
+        move_uploaded_file($_FILES['foto']['tmp_name'], "../../gambar/" . basename(($getId[0] + 1) . $ext));
     }
 
+    $insert = "INSERT INTO tb_tes_input_pb (no_registrasi, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya) VALUES ('$noRegistrasi', '$nama', '$alamat', '$nohp','$notelp', '$email','" . ($getId[0] + 1) . $ext . "','$produk_layanan','$daya')";
+    $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
+
     if ($query) {
-        if ($fasa_baru == "1 FASA") {
-            $insert2 = "INSERT INTO tb_hasil_perhitungan_pb_1phs (id_pasang_baru, pekerjaan_rab, kwh_meter_prabayar_fase_tunggal, nfa_2X, segel_plastik, 
-                cco_1T1, cco_3T1, isolasi_scotch, service_wedge_clamp_1phs, pasang_kwh_meter_satu_phasa_wiring, penarikan_sr_1_phasa,
-                pengepresan_cco, survey, total_biaya)
-                VALUES 
-                ('" . mysqli_insert_id($mysqli) . "', '$ambil1', '243040', '4210', '2724','6895', '9358','5615', '3842', '41008', '33625', '22982', '20856', '394155')";
-            $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
 ?>
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sukses.',
-                    text: 'Sukses Menambahkan Data Pelanggan Pasang Baru 1 Phasa'
-                }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
-                })
-            </script>
-        <?php
-        } elseif ($fasa_baru == "3 FASA") {
-            $insert2 = "INSERT INTO tb_hasil_perhitungan_pb_3phs (id_pasang_baru,pekerjaan_rab, kwh_meter_3phs_pengukuran_langsung, box_app_1_pintu_pengukuran_langsung,
-                segel_plastik, nfa_2x_3x35, nfa_2x_4x16, service_wedge_clamp_3phs, cco_3T3, skat_3, 
-                isolasi_scotch, pemas_kwh_meter_3phs_tanpa_wiring, penarikan_sr_3phs, pengepresan_cco, survey, total_biaya)
-                VALUES 
-                ('" . mysqli_insert_id($mysqli) . "', '$ambil2', '1348000', '2400000', '2724', '29360', '12110','4433', '11722', '39400', '5615', '46811', '3482', '31339', '20856', '3990852')";
-            $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
-        ?>
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sukses.',
-                    text: 'Sukses Menambahkan Data Pelanggan Pasang Baru 3 Phasa'
-                }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/pasang_baru/pb3phasa.php";
-                })
-            </script>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: 'Sukses Menambahkan Data Mohon Pasang Baru!'
+            }).then((result) => {
+                window.location = "menu_pb.php";
+            })
+        </script>
+    <?php
+    } else {
+    ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: 'Gagal Menambahkan Data Mohon Pasang Baru!'
+            }).then((result) => {
+                window.location = "menu_pb.php";
+            })
+        </script>
 <?php
-        }
     }
 }
 ?>
