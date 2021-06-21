@@ -37,7 +37,10 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="get" action="">
+                            <form method="GET" action="">
+
+                                <input type="hidden" name="page" value="cpb3phasa">
+
                                 <label>Filter Berdasarkan</label><br>
                                 <select name="filter" id="filter" class="form-control">
                                     <option value="" disabled selected>
@@ -71,7 +74,7 @@
                                     <select name="tahun" class="form-control">
                                         <option value="">Pilih</option>
                                         <?php
-                                        $query = "SELECT YEAR(tgl_mohon) AS tahun FROM tb_perubahan_daya WHERE fasa_lama = '3 FASA' GROUP BY YEAR(tgl_mohon)"; // Tampilkan tahun sesuai di tabel transaksi
+                                        $query = "SELECT YEAR(tgl_mohon) AS tahun FROM tb_pasang_baru WHERE fasa_baru = '1 FASA' GROUP BY YEAR(tgl_mohon)"; // Tampilkan tahun sesuai di tabel transaksi
                                         $sql = mysqli_query($mysqli, $query); // Eksekusi/Jalankan query dari variabel $query
                                         while ($data = mysqli_fetch_array($sql)) { // Ambil semua data dari hasil eksekusi $sql
                                             echo '<option value="' . $data['tahun'] . '">' . $data['tahun'] . '</option>';
@@ -86,7 +89,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Kode PHP untuk mengirim link href sesuai Filter - Start -->
             <?php
@@ -141,7 +143,7 @@
                         if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             $filter = $_GET['filter'];
                             if ($filter == '1') {
-                                echo '<a href="page=cpb3phasa&filter=1&bulan=' . $_GET['bulan'] . '&tahun=' . $_GET['tahun'] . '"></a>';
+                                echo '<a href="header.php?page=cpb3phasa&filter=1&bulan=' . $_GET['bulan'] . '&tahun=' . $_GET['tahun'] . '"></a>';
                                 $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
                                 $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
                             } else {

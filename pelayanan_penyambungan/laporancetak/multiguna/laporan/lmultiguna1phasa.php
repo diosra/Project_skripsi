@@ -1,5 +1,5 @@
 <?php
-include '../../../koneksi.php';
+include '../../../../koneksi.php';
 
 $no = 1;
 
@@ -44,7 +44,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 </script>
 
 <body>
-    <img src="../../../img/logopln.png" align="left" width="80">
+    <img src="../../../../img/logopln.png" align="left" width="80">
     <p align="center"><b>
             <font size="6">PT. PLN (PERSERO) UP3 CABANG BANJARMASIN</font> <br>
             <font size="4">Jl. Lambung Mangkurat No.12, Kertak Baru Ulu, Kec. Banjarmasin Tengah, Kota Banjarmasin, Kalimantan Selatan 70114</font><br>
@@ -87,7 +87,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                                     <td align="center"><?php echo $no++; ?></td>
                                     <td align="center"><?php echo $tampil['no_registrasi']; ?></td>
                                     <td align="center"><?php echo $tampil['nama']; ?></td>
-                                    <td align="center">Pasang Baru</td>
+                                    <td align="center">Penerangan Sementara</td>
                                     <td align="center"><?php echo $newdate ?></td>
                                     <td align="center"><?php echo $tampil['tarif_baru']; ?></td>
                                     <td align="center"><?php echo $tampil['daya_baru']; ?></td>

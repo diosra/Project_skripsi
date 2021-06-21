@@ -26,6 +26,70 @@
             <button class="btn btn-secondary p-2 mr-1" data-toggle="modal" data-target="#modalku"><i class="fas fa-filter"></i></i> Filter</button>
             <a class="btn btn-warning p-2 mr-auto" href="header.php?page=cpb1phasa"><i class="fas fa-redo-alt"></i></a>
 
+            <!-- Modal untuk Filter di Halaman Cetak -->
+            <div class="modal fade" id="modalku" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="GET" action="">
+
+                                <input type="hidden" name="page" value="cpb1phasa">
+
+                                <label>Filter Berdasarkan</label><br>
+                                <select name="filter" id="filter" class="form-control">
+                                    <option value="" disabled selected>
+                                        <-- Pilih -->
+                                    </option>
+                                    <option value="1">Per Bulan</option>
+                                    <option value="2">Per Tahun</option>
+                                </select> <br>
+
+                                <div id="form-bulan">
+                                    <label>Bulan</label><br>
+                                    <select name="bulan" class="form-control">
+                                        <option value="">Pilih</option>
+                                        <option value="1">Januari</option>
+                                        <option value="2">Februari</option>
+                                        <option value="3">Maret</option>
+                                        <option value="4">April</option>
+                                        <option value="5">Mei</option>
+                                        <option value="6">Juni</option>
+                                        <option value="7">Juli</option>
+                                        <option value="8">Agustus</option>
+                                        <option value="9">September</option>
+                                        <option value="10">Oktober</option>
+                                        <option value="11">November</option>
+                                        <option value="12">Desember</option>
+                                    </select>
+                                </div>
+
+                                <div id="form-tahun">
+                                    <label>Tahun</label><br>
+                                    <select name="tahun" class="form-control">
+                                        <option value="">Pilih</option>
+                                        <?php
+                                        $query = "SELECT YEAR(tgl_mohon) AS tahun FROM tb_pasang_baru WHERE fasa_baru = '1 FASA' GROUP BY YEAR(tgl_mohon)"; // Tampilkan tahun sesuai di tabel transaksi
+                                        $sql = mysqli_query($mysqli, $query); // Eksekusi/Jalankan query dari variabel $query
+                                        while ($data = mysqli_fetch_array($sql)) { // Ambil semua data dari hasil eksekusi $sql
+                                            echo '<option value="' . $data['tahun'] . '">' . $data['tahun'] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <br>
+                                <button type="submit" class="btn btn-primary float-right"><i class="fas fa-search"></i> Tampilkan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Kode PHP untuk mengirim link href sesuai Filter - Start -->
             <?php
             if (isset($_GET['filter']) && !empty($_GET['filter'])) :
@@ -36,7 +100,7 @@
                         $bulan = $_GET['bulan'];
                         $tahun = $_GET['tahun'];
                         ?>
-                        <a type="submit" href="pelayanan_penyambungan/laporancetak/laporan/lpb1phasa.php?filter=1&bulan=<?= $_GET["bulan"] ?>&tahun=<?= $_GET["tahun"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
+                        <a type="submit" href="pelayanan_penyambungan/laporancetak/pasang_baru/laporan/lpb1phasa.php?filter=1&bulan=<?= $_GET["bulan"] ?>&tahun=<?= $_GET["tahun"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
                     </form>
                 <?php elseif ($filter == 2) : ?>
                     <form action="POST">
@@ -44,7 +108,7 @@
                         $bulan = $_GET['bulan'];
                         $tahun = $_GET['tahun'];
                         ?>
-                        <a type="submit" href="pelayanan_penyambungan/laporancetak/laporan/lpb1phasa.php?filter=2&tahun=<?= $_GET["tahun"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
+                        <a type="submit" href="pelayanan_penyambungan/laporancetak/pasang_baru/laporan/lpb1phasa.php?filter=2&tahun=<?= $_GET["tahun"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
                     </form>
                 <?php endif ?>
             <?php else : ?>
@@ -152,66 +216,6 @@ include_once 'footer.php';
     })
 </script>
 
-<!-- Modal untuk Filter di Halaman Cetak -->
-<div class="modal fade" id="modalku" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="get" action="">
 
-                    <label>Filter Berdasarkan</label><br>
-                    <select name="filter" id="filter" class="form-control">
-                        <option value="" disabled selected>
-                            <-- Pilih -->
-                        </option>
-                        <option value="1">Per Bulan</option>
-                        <option value="2">Per Tahun</option>
-                    </select> <br>
-
-                    <div id="form-bulan">
-                        <label>Bulan</label><br>
-                        <select name="bulan" class="form-control">
-                            <option value="">Pilih</option>
-                            <option value="1">Januari</option>
-                            <option value="2">Februari</option>
-                            <option value="3">Maret</option>
-                            <option value="4">April</option>
-                            <option value="5">Mei</option>
-                            <option value="6">Juni</option>
-                            <option value="7">Juli</option>
-                            <option value="8">Agustus</option>
-                            <option value="9">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
-                        </select>
-                    </div>
-
-                    <div id="form-tahun">
-                        <label>Tahun</label><br>
-                        <select name="tahun" class="form-control">
-                            <option value="">Pilih</option>
-                            <?php
-                            $query = "SELECT YEAR(tgl_mohon) AS tahun FROM tb_perubahan_daya WHERE fasa_lama = '3 FASA' GROUP BY YEAR(tgl_mohon)"; // Tampilkan tahun sesuai di tabel transaksi
-                            $sql = mysqli_query($mysqli, $query); // Eksekusi/Jalankan query dari variabel $query
-                            while ($data = mysqli_fetch_array($sql)) { // Ambil semua data dari hasil eksekusi $sql
-                                echo '<option value="' . $data['tahun'] . '">' . $data['tahun'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary float-right"><i class="fas fa-search"></i> Tampilkan</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 </html>

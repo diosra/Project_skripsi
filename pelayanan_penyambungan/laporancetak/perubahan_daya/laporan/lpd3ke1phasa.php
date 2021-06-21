@@ -1,5 +1,5 @@
 <?php
-include '../../../koneksi.php';
+include '../../../../koneksi.php';
 
 $no = 1;
 // if (isset($_POST['cetak'])) {
@@ -51,7 +51,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 </script>
 
 <body>
-    <img src="../../../img/logopln.png" align="left" width="80">
+    <img src="../../../../img/logopln.png" align="left" width="80">
     <p align="center"><b>
             <font size="6">PT. PLN (PERSERO) UP3 CABANG BANJARMASIN</font> <br>
             <font size="4">Jl. Lambung Mangkurat No.12, Kertak Baru Ulu, Kec. Banjarmasin Tengah, Kota Banjarmasin, Kalimantan Selatan 70114</font><br>
