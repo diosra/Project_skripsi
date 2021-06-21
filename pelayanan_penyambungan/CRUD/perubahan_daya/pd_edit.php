@@ -161,7 +161,7 @@
             }
             ?>
 
-            <form action="pd_edit.php?edit=<?php echo $row['id_perubahan_daya'] ?>" method="post" name="form1">
+            <form action="header.php?page=editpd&edit=<?php echo $row['id_perubahan_daya'] ?>" method="post" name="form1">
                 <input type="hidden" name="id_perubahan_daya" value="<?php echo $id; ?>">
                 <?php
                 $pelanggan = '';

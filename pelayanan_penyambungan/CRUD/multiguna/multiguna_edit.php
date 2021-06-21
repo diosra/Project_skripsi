@@ -111,7 +111,7 @@
             }
             ?>
 
-            <form action="multiguna_edit.php?edit=<?php echo $row['id_mlta'] ?>" method="post" name="form1">
+            <form action="header.php?page=editmlta&edit=<?php echo $row['id_mlta'] ?>" method="post" name="form1">
                 <input type="hidden" name="id_mlta" value="<?php echo $id; ?>">
                 <?php
                 $pelanggan = '';

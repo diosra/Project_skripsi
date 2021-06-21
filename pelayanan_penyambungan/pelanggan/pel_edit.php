@@ -81,7 +81,7 @@
             }
             ?>
 
-            <form action="pel_edit.php?edit=<?php echo $row['id_pelanggan'] ?>" method="post" name="form1">
+            <form action="header.php?page=peledit&edit=<?php echo $row['id_pelanggan'] ?>" method="post" name="form1">
                 <input type="hidden" name="id_pelanggan" value="<?php echo $id; ?>">
 
                 <div class="form-group">

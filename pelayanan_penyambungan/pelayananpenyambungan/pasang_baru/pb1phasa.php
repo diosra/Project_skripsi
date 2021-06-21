@@ -83,11 +83,6 @@ include_once 'footer.php';
 </div>
 <!-- End of Main Content -->
 
-
-
-<?php
-?>
-
 <!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
 <script>
     $('#dataTable').DataTable({

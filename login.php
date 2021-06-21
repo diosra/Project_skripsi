@@ -53,10 +53,10 @@
                                             <label class="font-weight-bold">Password</label>
                                             <input type="password" class="form-control form-control-user" placeholder="Masukkan Password" name="password" required>
                                         </div>
-                                        <a class="btn btn-warning btn-user float-left mb-3 p-3 text-dark" href="dashboard.php">
+                                        <!-- <a class="btn btn-warning btn-user float-left mb-3 p-3 text-dark" href="dashboard.php">
                                             <i class="fas fa-arrow-circle-left"></i>
                                             Dashboard
-                                        </a>
+                                        </a> -->
                                         <button class="btn btn-primary btn-user float-right mb-3 p-3" type="submit" name="log"><i class="fas fa-sign-in-alt mr-2"></i> Login</button>
                                     </form>
                                 </div>

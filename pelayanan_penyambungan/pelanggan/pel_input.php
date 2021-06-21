@@ -28,7 +28,7 @@
         </div>
         <!-- Form Utama -->
         <div class="card-body">
-            <form action="pel_input.php" method="post" name="form1">
+            <form action="header.php?page=pelinput" method="post" name="form1">
 
                 <div class="form-group">
                     <label for="">Nomor Registrasi Pelanggan</label>

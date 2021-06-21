@@ -28,7 +28,7 @@
         </div>
         <!-- Form Utama -->
         <div class="card-body">
-            <form action="pd_input.php" method="post" name="form1">
+            <form action="header.php?page=inputpd" method="post" name="form1">
 
                 <?php
                 $pelanggan = '';

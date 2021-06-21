@@ -116,7 +116,7 @@
             }
             ?>
 
-            <form action="pb_edit.php?edit=<?php echo $row['id_pasang_baru'] ?>" method="post" name="form1">
+            <form action="header.php?page=editpb&edit=<?php echo $row['id_pasang_baru'] ?>" method="post" name="form1">
                 <input type="hidden" name="id_pasang_baru" value="<?php echo $id; ?>">
                 <?php
                 $pelanggan = '';
