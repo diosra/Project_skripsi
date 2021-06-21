@@ -24,8 +24,8 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-            <a class="btn btn-primary p-2 mr-2" href="../../CRUD/pasang_baru/pb_input.php"><i class="fas fa-plus-circle"></i> Tambah</a>
-            <a class="btn btn-success p-2" href="detailpb3phasa.php"><i class="fas fa-file-alt"></i> Detail Biaya</a>
+            <a class="btn btn-primary p-2 mr-2" href="header.php?page=inputpb"><i class="fas fa-plus-circle"></i> Tambah</a>
+            <a class="btn btn-success p-2" href="header.php?page=detailpb3"><i class="fas fa-file-alt"></i> Detail Biaya</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

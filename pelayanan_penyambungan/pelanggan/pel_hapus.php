@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-
-    <?php include '../koneksi.php'; ?>
 </head>
 
 <body>
@@ -31,7 +29,7 @@
                     title: 'Sukses.',
                     text: 'Data Pelanggan dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
                 }).then((result) => {
-                    window.location = "pelanggan.php";
+                    window.location = "header.php?page=pelanggan";
                 })
             </script>
     <?php

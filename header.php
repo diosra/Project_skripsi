@@ -157,6 +157,29 @@ if (!isset($_SESSION['username'])) {
                         </div>
                     </div>
                 <?php
+                } elseif ($level == 5) {
+                ?>
+                    <div class="nav-item text-center mt-3 mb-3">
+                        <button role="button" type="button" class="btn" data-toggle="dropdown">
+                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
+                            <span class="text-success">Akun</span>
+                        </button>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <span class="d-none d-lg-inline text-gray-600 small">
+                                <div class="text-center">
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
+                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Petugas Survey </p>
+                                </div>
+                            </span>
+                            <hr>
+                            <a style="color: red;" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                LOGOUT
+                            </a>
+                        </div>
+                    </div>
+                <?php
                 } else {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
@@ -562,6 +585,15 @@ if (!isset($_SESSION['username'])) {
                             <span>Menu Data Pengaduan</span></a>
                     </li>
                 <?php
+                } elseif ($level == 5) {
+                ?>
+                    <!-- Nav Item - Menu Teknisi Pengaduan -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=laporansurvey">
+                            <i class="fas fa-user-friends"></i></i>
+                            <span>Menu Data Survey</span></a>
+                    </li>
+                <?php
                 }
                 ?>
 
@@ -696,6 +728,69 @@ if (!isset($_SESSION['username'])) {
                                 include "teknisi/pengaduan/form_laporan.php";
                                 break;
 
+                                //case untuk halaman laporan Petugas Survey
+                            case 'laporansurvey':
+                                include "teknisi/survey/form_laporan.php";
+                                break;
+
+                                //case untuk halaman CRUD
+                            case 'pelinput':
+                                include "pelayanan_penyambungan/pelanggan/pel_input.php";
+                                break;
+                            case 'peledit':
+                                include "pelayanan_penyambungan/pelanggan/pel_edit.php";
+                                break;
+                            case 'pelhapus':
+                                include "pelayanan_penyambungan/pelanggan/pel_hapus.php";
+                                break;
+                            case 'inputpb':
+                                include "pelayanan_penyambungan/CRUD/pasang_baru/pb_input.php";
+                                break;
+                            case 'editpb':
+                                include "pelayanan_penyambungan/CRUD/pasang_baru/pb_edit.php";
+                                break;
+                            case 'hapuspb':
+                                include "pelayanan_penyambungan/CRUD/pasang_baru/pb_hapus.php";
+                                break;
+                            case 'inputpd':
+                                include "pelayanan_penyambungan/CRUD/perubahan_daya/pd_input.php";
+                                break;
+                            case 'editpd':
+                                include "pelayanan_penyambungan/CRUD/perubahan_daya/pd_edit.php";
+                                break;
+                            case 'hapuspd':
+                                include "pelayanan_penyambungan/CRUD/perubahan_daya/pd_hapus.php";
+                                break;
+                            case 'inputmlta':
+                                include "pelayanan_penyambungan/CRUD/multiguna/multiguna_input.php";
+                                break;
+                            case 'editmlta':
+                                include "pelayanan_penyambungan/CRUD/multiguna/multiguna_edit.php";
+                                break;
+                            case 'hapusmlta':
+                                include "pelayanan_penyambungan/CRUD/multiguna/multiguna_hapus.php";
+                                break;
+
+                                //case untuk detail biaya
+                            case 'detailpb1':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/pasang_baru/detailpb1phasa.php";
+                                break;
+                            case 'detailpb3':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/pasang_baru/detailpb3phasa.php";
+                                break;
+                            case 'detailpd1':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/perubahan_daya/detailpd1phasa.php";
+                                break;
+                            case 'detailpd3':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/perubahan_daya/detailpd3phasa.php";
+                                break;
+                            case 'detailmlta1':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/multiguna/detailmultiguna1phasa.php";
+                                break;
+                            case 'detailmlta3':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/multiguna/detailmultiguna3phasa.php";
+                                break;
+
                                 //Else dari switch
                             default:
                                 echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";
@@ -703,6 +798,7 @@ if (!isset($_SESSION['username'])) {
                         }
                     }
                     ?>
+
 
     </body>
 

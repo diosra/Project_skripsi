@@ -10,9 +10,6 @@
     <meta name="author" content="">
 
     <title>Edit Multiguna</title>
-    <?php
-    include_once '../header.php';
-    ?>
 </head>
 
 <!-- Begin Page Content -->
@@ -63,7 +60,7 @@
                                 title: 'Sukses.',
                                 text: 'Sukses Mengubah Data'
                             }).then((result) => {
-                                window.location = "../../pelayananpenyambungan/multiguna/multiguna3phs.php";
+                                window.location = "header.php?page=multiguna3phasa";
                             })
                         </script>
                     <?php
@@ -80,7 +77,7 @@
                                 title: 'Sukses.',
                                 text: 'Sukses Mengubah Data'
                             }).then((result) => {
-                                window.location = "../../pelayananpenyambungan/multiguna/multiguna1phs.php";
+                                window.location = "header.php?page=multiguna1phasa";
                             })
                         </script>
             <?php
@@ -191,7 +188,7 @@
 <!-- End of Main Content -->
 
 <?php
-include_once '../footer.php';
+include_once 'footer.php';
 ?>
 
 <script>

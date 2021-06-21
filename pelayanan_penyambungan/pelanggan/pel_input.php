@@ -11,10 +11,6 @@
 
     <title>Input Data Pelanggan</title>
 
-    <?php
-    include_once 'header.php'
-    ?>
-
 </head>
 
 <!-- Begin Page Content -->
@@ -97,7 +93,7 @@ if (isset($_POST['save'])) {
                 title: 'Sukses.',
                 text: 'Sukses Menambahkan Data Pelanggan'
             }).then((result) => {
-                window.location = "pelanggan.php";
+                window.location = "header.php?page=pelanggan";
             })
         </script>
 <?php

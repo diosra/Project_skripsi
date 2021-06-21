@@ -11,10 +11,6 @@
 
     <title>Detail Pasang Baru 1 Phasa</title>
 
-    <?php
-    $pageSkr = 'pb1phasa';
-    include_once '../header.php';
-    ?>
 </head>
 
 <!-- Begin Page Content - konten halaman -->
@@ -88,11 +84,11 @@
 </div>
 <!-- /.container-fluid -->
 </div>
-<a href="pb1phasa.php" class="btn btn-danger" class="mb-2 ml-3"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
+<a href="header.php?page=pb1phasa" class="btn btn-danger" class="mb-2 ml-3"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
 <!-- End of Main Content -->
 
 <?php
-include_once '../footer.php';
+include_once 'footer.php';
 ?>
 
 <!-- Script untuk Menampilkan Popover -->

@@ -2,7 +2,6 @@
 <html lang="en">
 
 <?php
-include '../../koneksi.php';
 if (!isset($_SESSION['username'])) {
     echo "<script> alert('Silahkan login Terlebih dahulu');</script>";
     echo "<meta http-equiv='refresh' content='0; url=../../login.php'>";
@@ -38,7 +37,7 @@ if (!isset($_SESSION['username'])) {
                         title: 'Sukses.',
                         text: 'Data Pelanggan Perubahan Daya 1 Phasa dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
                     }).then((result) => {
-                        window.location = "../../pelayananpenyambungan/perubahan_daya/pd1phasa.php";
+                        window.location = "header.php?page=pd1phasa";
                     })
                 </script>
             <?php
@@ -49,7 +48,7 @@ if (!isset($_SESSION['username'])) {
                         title: 'Sukses.',
                         text: 'Data Pelanggan Perubahan Daya 3 Phasa dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
                     }).then((result) => {
-                        window.location = "../../pelayananpenyambungan/perubahan_daya/pd3phasa.php";
+                        window.location = "header.php?page=pd3phasa";
                     })
                 </script>
         <?php

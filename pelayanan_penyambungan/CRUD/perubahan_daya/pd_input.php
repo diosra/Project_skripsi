@@ -11,9 +11,6 @@
 
     <title>Input Perubahan Daya</title>
 
-    <?php
-    include_once '../header.php';
-    ?>
 </head>
 
 <!-- Begin Page Content -->
@@ -126,7 +123,7 @@
 <!-- End of Main Content -->
 
 <?php
-include_once '../footer.php';
+include_once 'footer.php';
 ?>
 
 <script>
@@ -186,7 +183,7 @@ if (isset($_POST['save'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Data Pelanggan Perubahan Daya 1 Phasa dan Detail Biaya Pelanggan Perubahan Daya 1 Phasa'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/perubahan_daya/pd1phasa.php";
+                    window.location = "header.php?page=pd1phasa";
                 })
             </script>
         <?php
@@ -206,7 +203,7 @@ if (isset($_POST['save'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Data Pelanggan Perubahan Daya 1 Phasa dan Detail Biaya Pelanggan Perubahan Daya 1 Phasa ke 3 Phasa'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/perubahan_daya/pd1phasa.php";
+                    window.location = "header.php?page=pd1phasa";
                 })
             </script>
         <?php
@@ -222,7 +219,7 @@ if (isset($_POST['save'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Data Pelanggan Perubahan Daya 3 Phasa dan Detail Biaya Pelanggan Perubahan Daya 3 Phasa'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/perubahan_daya/pd3phasa.php";
+                    window.location = "header.php?page=pd3phasa";
                 })
             </script>
         <?php
@@ -241,7 +238,7 @@ if (isset($_POST['save'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Data Pelanggan Perubahan Daya 3 Phasa dan Detail Biaya Pelanggan Perubahan Daya 3 Phasa ke 1 Phasa'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/perubahan_daya/pd3phasa.php";
+                    window.location = "header.php?page=pd3phasa";
                 })
             </script>
 <?php

@@ -10,9 +10,7 @@
     <meta name="author" content="">
 
     <title>Edit Pasang Baru</title>
-    <?php
-    include_once '../header.php';
-    ?>
+
 </head>
 
 <!-- Begin Page Content -->
@@ -65,7 +63,7 @@
                                 title: 'Sukses.',
                                 text: 'Sukses Mengubah Data'
                             }).then((result) => {
-                                window.location = "../../pelayananpenyambungan/pasang_baru/pb3phasa.php";
+                                window.location = "header.php?page=pb3phasa";
                             })
                         </script>
                     <?php
@@ -84,7 +82,7 @@
                                 title: 'Sukses.',
                                 text: 'Sukses Mengubah Data'
                             }).then((result) => {
-                                window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
+                                window.location = "header.php?page=pb1phasa";
                             })
                         </script>
             <?php
@@ -195,7 +193,7 @@
 <!-- End of Main Content -->
 
 <?php
-include_once '../footer.php';
+include_once 'footer.php';
 ?>
 
 <script>

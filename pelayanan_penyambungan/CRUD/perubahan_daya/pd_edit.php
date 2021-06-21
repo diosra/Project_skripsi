@@ -11,9 +11,6 @@
 
     <title>Edit Pasang Baru</title>
 
-    <?php
-    include_once '../header.php';
-    ?>
 </head>
 
 <!-- Begin Page Content -->
@@ -64,7 +61,7 @@
                                 title: 'Sukses.',
                                 text: 'Data dengan Nomor Registrasi : <?php echo $ambilQuery['no_registrasi'] ?> di-update dengan pekerjaan RAB menjadi "PD 1 Phasa" dan berhasil di update!'
                             }).then((result) => {
-                                window.location = "../../pelayananpenyambungan/perubahan_daya/pd1phasa.php";
+                                window.location = "header.php?page=pd1phasa";
                             })
                         </script>
                     <?php
@@ -86,7 +83,7 @@
                                 title: 'Sukses.',
                                 text: 'Data dengan Nomor Registrasi : <?php echo $ambilQuery['no_registrasi'] ?> di-update dengan pekerjaan RAB menjadi "PD 1 Phasa ke 3 Phasa" dan berhasil di update!'
                             }).then((result) => {
-                                window.location = "../../pelayananpenyambungan/perubahan_daya/pd1phasa.php";
+                                window.location = "header.php?page=pd1phasa";
                             })
                         </script>
                     <?php
@@ -104,7 +101,7 @@
                                 title: 'Sukses.',
                                 text: 'Data dengan Nomor Registrasi : <?php echo $ambilQuery['no_registrasi'] ?> di-update dengan pekerjaan RAB menjadi "PD 3 Phasa" dan berhasil di update!'
                             }).then((result) => {
-                                window.location = "../../pelayananpenyambungan/perubahan_daya/pd3phasa.php";
+                                window.location = "header.php?page=pd3phasa";
                             })
                         </script>
                     <?php
@@ -124,7 +121,7 @@
                                 title: 'Sukses.',
                                 text: 'Data dengan Nomor Registrasi : <?php echo $ambilQuery['no_registrasi'] ?> di-update dengan pekerjaan RAB menjadi "PD 3 Phasa ke 1 Phasa" dan berhasil di update!'
                             }).then((result) => {
-                                window.location = "../../pelayananpenyambungan/perubahan_daya/pd3phasa.php";
+                                window.location = "header.php?page=pd3phasa";
                             })
                         </script>
             <?php
@@ -262,7 +259,7 @@
 <!-- End of Main Content -->
 
 <?php
-include_once '../footer.php';
+include_once 'footer.php';
 ?>
 
 <script>

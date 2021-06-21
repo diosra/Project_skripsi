@@ -11,10 +11,6 @@
 
     <title>Detail Multiguna 1 Phasa</title>
 
-    <?php
-    $pageSkr = 'multiguna1phasa';
-    include_once '../header.php';
-    ?>
 </head>
 
 <!-- Begin Page Content - konten halaman -->
@@ -72,11 +68,11 @@
 </div>
 <!-- /.container-fluid -->
 </div>
-<a href="multiguna1phs.php" class="btn btn-danger" class="mb-2 ml-3"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
+<a href="header.php?page=multiguna1phasa" class="btn btn-danger" class="mb-2 ml-3"><i class="fas fa-arrow-circle-left"></i> Kembali</a>
 <!-- End of Main Content -->
 
 <?php
-include_once '../footer.php';
+include_once 'footer.php';
 ?>
 
 <!-- Script untuk Menampilkan Popover -->

@@ -11,9 +11,6 @@
 
     <title>Input Multiguna</title>
 
-    <?php
-    include_once '../header.php';
-    ?>
 </head>
 
 <!-- Begin Page Content -->
@@ -107,7 +104,7 @@
 <!-- End of Main Content -->
 
 <?php
-include_once '../footer.php';
+include_once 'footer.php';
 ?>
 
 <!-- Script mengambil nama pelanggan sesuai nomor registrasi yang kita pilih -->
@@ -170,7 +167,7 @@ if (isset($_POST['save'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Data Pelanggan Multiguna 1 Phasa'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/multiguna/multiguna1phs.php";
+                    window.location = "header.php?page=multiguna1phasa";
                 })
             </script>
         <?php
@@ -186,7 +183,7 @@ if (isset($_POST['save'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Data Pelanggan Multiguna 3 Phasa'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/multiguna/multiguna3phs.php";
+                    window.location = "header.php?page=multiguna3phasa";
                 })
             </script>
 <?php

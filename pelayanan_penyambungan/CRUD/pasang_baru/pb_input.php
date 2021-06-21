@@ -11,9 +11,6 @@
 
     <title>Input Pasang Baru</title>
 
-    <?php
-    include_once '../header.php';
-    ?>
 </head>
 
 <!-- Begin Page Content -->
@@ -107,7 +104,7 @@
 <!-- End of Main Content -->
 
 <?php
-include_once '../footer.php';
+include_once 'footer.php';
 ?>
 
 <!-- Script mengambil nama pelanggan sesuai nomor registrasi yang kita pilih -->
@@ -172,7 +169,7 @@ if (isset($_POST['save'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Data Pelanggan Pasang Baru 1 Phasa'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/pasang_baru/pb1phasa.php";
+                    window.location = "header.php?page=pb1phasa";
                 })
             </script>
         <?php
@@ -190,7 +187,7 @@ if (isset($_POST['save'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Data Pelanggan Pasang Baru 3 Phasa'
                 }).then((result) => {
-                    window.location = "../../pelayananpenyambungan/pasang_baru/pb3phasa.php";
+                    window.location = "header.php?page=pb3phasa";
                 })
             </script>
 <?php

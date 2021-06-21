@@ -16,7 +16,7 @@
     include_once '../header.php';
 
     extract($_POST);
-    $queryambil = mysqli_query($mysqli, "SELECT max(no_registrasi) as RegTerbesar FROM tb_tes_input_pb");
+    $queryambil = mysqli_query($mysqli, "SELECT max(no_registrasi) as RegTerbesar FROM tb_mohon_pb");
     $dataambil = mysqli_fetch_array($queryambil);
     $noRegistrasi = @$dataambil['RegTerbesar'];
 
@@ -26,7 +26,7 @@
     $huruf = "NRG";
     $noRegistrasi = $huruf . sprintf("%03s", $urutan);
 
-    $queryambil2 = mysqli_query($mysqli, "SELECT max(id_pelanggan) as idPelangganmax FROM tb_tes_input_pb");
+    $queryambil2 = mysqli_query($mysqli, "SELECT max(id_pelanggan) as idPelangganmax FROM tb_mohon_pb");
     $dataambil2 = mysqli_fetch_array($queryambil2);
     $id_pelanggan = @$dataambil2['idPelangganmax'];
 
@@ -167,7 +167,7 @@ if (isset($_POST['save'])) {
     $filename = $_FILES['identitas']['name'];
     $produk_layanan = $_POST['produk_layanan'];
     $daya = $_POST['daya'];
-    $getId = mysqli_fetch_row(mysqli_query($mysqli, "SELECT max(id_mohon) from tb_tes_input_pb"));
+    $getId = mysqli_fetch_row(mysqli_query($mysqli, "SELECT max(id_mohon) from tb_mohon_pb"));
 
     if (!empty($_FILES['foto']['tmp_name'])) {
         $ext = strtolower(substr($_FILES['foto']['name'], -3));
@@ -184,10 +184,12 @@ if (isset($_POST['save'])) {
         move_uploaded_file($_FILES['foto']['tmp_name'], "../../gambar/" . basename(($getId[0] + 1) . $ext));
     }
 
-    $insert = "INSERT INTO tb_tes_input_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','" . ($getId[0] + 1) . $ext . "','$produk_layanan','$daya')";
+    $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','" . ($getId[0] + 1) . $ext . "','$produk_layanan','$daya')";
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
     if ($query) {
+        $insertpelanggan = "INSERT INTO tb_pelanggan (no_registrasi, nama, alamat, nohp, no_telp, email, identitas) VALUES ('$noRegistrasi', '$nama', '$alamat', '$nohp', '$notelp', '$email', '" . ($getId[0] + 1) . $ext . "')";
+        $querypelanggan = mysqli_query($mysqli, $insertpelanggan);
 ?>
         <script>
             Swal.fire({

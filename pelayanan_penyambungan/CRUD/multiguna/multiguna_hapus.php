@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-include '../../koneksi.php';
 if (!isset($_SESSION['username'])) {
     echo "<script> alert('Silahkan login Terlebih dahulu');</script>";
     echo "<meta http-equiv='refresh' content='0; url=../../login.php'>";
@@ -37,7 +36,7 @@ if (!isset($_SESSION['username'])) {
                         title: 'Sukses.',
                         text: 'Data Pelanggan Multiguna 1 Phasa dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
                     }).then((result) => {
-                        window.location = "../../pelayananpenyambungan/multiguna/multiguna1phs.php";
+                        window.location = "header.php?page=multiguna1phasa";
                     })
                 </script>
             <?php
@@ -48,7 +47,7 @@ if (!isset($_SESSION['username'])) {
                         title: 'Sukses.',
                         text: 'Data Pelanggan Multiguna 3 Phasa dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
                     }).then((result) => {
-                        window.location = "../../pelayananpenyambungan/multiguna/multiguna3phs.php";
+                        window.location = "header.php?page=multiguna3phasa";
                     })
                 </script>
         <?php

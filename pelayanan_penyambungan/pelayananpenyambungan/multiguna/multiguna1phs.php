@@ -26,8 +26,8 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-            <a class="btn btn-primary p-2 mr-2" href="../../CRUD/multiguna/multiguna_input.php"><i class="fas fa-plus-circle"></i> Tambah</a>
-            <a class="btn btn-success p-2" href="detailmultiguna1phasa.php"><i class="fas fa-file-alt"></i> Detail Biaya</a>
+            <a class="btn btn-primary p-2 mr-2" href="header.php?page=inputmlta"><i class="fas fa-plus-circle"></i> Tambah</a>
+            <a class="btn btn-success p-2" href="header.php?page=detailmlta1"><i class="fas fa-file-alt"></i> Detail Biaya</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -61,10 +61,10 @@
                                     <td><?php echo $row['fasa_baru']; ?></td>
                                     <td class="row text-center">
                                         <div class="col">
-                                            <a href="../../CRUD/multiguna/multiguna_edit.php?edit=<?php echo $row['id_mlta'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                            <a href="header.php?page=editmlta&edit=<?php echo $row['id_mlta'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                         </div>
                                         <div class="col">
-                                            <a href="../../CRUD/multiguna/multiguna_hapus.php?hapus=<?php echo $row['id_mlta'] ?>&fasa_baru=<?php echo $row['fasa_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                            <a href="header.php?page=hapusmlta&hapus=<?php echo $row['id_mlta'] ?>&fasa_baru=<?php echo $row['fasa_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                         </div>
                                     </td>
                                 </tr>

@@ -11,9 +11,6 @@
 
     <title>Edit Pasang Baru</title>
 
-    <?php
-    include_once 'header.php';
-    ?>
 </head>
 
 <!-- Begin Page Content -->
@@ -52,7 +49,7 @@
                             title: 'Sukses.',
                             text: 'Sukses Mengubah Data Pelanggan'
                         }).then((result) => {
-                            window.location = "pelanggan.php";
+                            window.location = "header.php?page=pelanggan";
                         })
                     </script>
             <?php

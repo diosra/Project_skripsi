@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pasang Baru</title>
+    <title>Perubahan Daya</title>
 
     <?php
     $pageSkr = 'pd';
@@ -74,47 +74,47 @@
 
                 <div class="form-group">
                     <label for="">No Registrasi</label>
-                    <input type="text" id="noregtampil" name="no_registrasi" class="form-control" readonly disabled required>
+                    <input type="text" id="noregtampil" name="no_registrasi" class="form-control" required readonly="readonly">
                 </div>
 
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" name="nama" id="nama" class="form-control" readonly disabled>
+                    <input type="text" name="nama" id="nama" class="form-control" readonly="readonly" required>
                 </div>
 
                 <div class="form-group">
                     <label for="">Alamat</label>
-                    <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" readonly disabled></textarea>
+                    <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" required readonly="readonly"></textarea>
                 </div>
 
                 <div class="form-group row">
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. HP</label>
-                            <input type="number" name="nohp" id="nohp" class="form-control" value="" readonly disabled>
+                            <input type="number" name="nohp" id="nohp" class="form-control" value="" required readonly="readonly">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. Telp</label>
-                            <input type="number" name="notelp" id="notelp" class="form-control" value="" readonly disabled>
+                            <input type="number" name="notelp" id="notelp" class="form-control" value="" required readonly="readonly">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" readonly disabled>
+                    <input type="email" name="email" class="form-control" id="email" required readonly="readonly">
                 </div>
 
                 <div class="form-group">
                     <label for="">Daya Lama</label>
-                    <input type="text" name="daya_lama" id="daya" class="form-control" value="" readonly disabled>
+                    <input type="text" name="daya_lama" id="daya" class="form-control" value="" required readonly="readonly">
                 </div>
 
                 <div class="form-group">
                     <label for="">Upload Foto / Scan KTP</label> <br>
-                    <input type="file" accept="image/*" name="foto">
+                    <input type="file" accept="image/*" name="foto" required>
                 </div>
 
                 <hr class="font-weight-bolder my-4">
@@ -182,16 +182,16 @@ include_once '../footer.php';
 <?php
 if (isset($_POST['save'])) {
     $no_registrasi = $_POST['no_registrasi'];
-    $id_pelanggan = $_POST['id_pelanggan'];
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
     $nohp = $_POST['nohp'];
     $notelp = $_POST['notelp'];
     $email = $_POST['email'];
+    $dayalama = $_POST['daya_lama'];
     $filename = $_FILES['identitas']['name'];
-    $produk_layanan = $_POST['produk_layanan'];
-    $daya = $_POST['daya'];
-    $getId = mysqli_fetch_row(mysqli_query($mysqli, "SELECT max(id_mohon) from tb_tes_input_pb"));
+    $produk_layanan = $_POST['produk'];
+    $daya = $_POST['daya_baru'];
+    $getId = mysqli_fetch_row(mysqli_query($mysqli, "SELECT max(id_mohon) from tb_mohon_pd"));
 
     if (!empty($_FILES['foto']['tmp_name'])) {
         $ext = strtolower(substr($_FILES['foto']['name'], -3));
@@ -208,7 +208,7 @@ if (isset($_POST['save'])) {
         move_uploaded_file($_FILES['foto']['tmp_name'], "../../gambar/" . basename(($getId[0] + 1) . $ext));
     }
 
-    $insert = "INSERT INTO tb_tes_input_pb (no_registrasi, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya) VALUES ('$noRegistrasi', '$nama', '$alamat', '$nohp','$notelp', '$email','" . ($getId[0] + 1) . $ext . "','$produk_layanan','$daya')";
+    $insert = "INSERT INTO tb_mohon_pd (no_registrasi, nama,alamat, nohp, notelp, email, daya_lama, identitas, produk, daya_baru) VALUES ('$no_registrasi', '$nama', '$alamat', '$nohp','$notelp', '$email', '$dayalama', '" . ($getId[0] + 1) . $ext . "','$produk_layanan','$daya')";
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
     if ($query) {
@@ -217,9 +217,9 @@ if (isset($_POST['save'])) {
             Swal.fire({
                 icon: 'success',
                 title: 'Sukses',
-                text: 'Sukses Menambahkan Data Mohon Pasang Baru!'
+                text: 'Sukses Menambahkan Data Mohon Perubahan Daya!'
             }).then((result) => {
-                window.location = "menu_pb.php";
+                window.location = "menu_pd.php";
             })
         </script>
     <?php
@@ -229,9 +229,9 @@ if (isset($_POST['save'])) {
             Swal.fire({
                 icon: 'error',
                 title: 'Gagal!',
-                text: 'Gagal Menambahkan Data Mohon Pasang Baru!'
+                text: 'Gagal Menambahkan Data Mohon Perubahan Daya!'
             }).then((result) => {
-                window.location = "menu_pb.php";
+                window.location = "menu_pd.php";
             })
         </script>
 <?php
