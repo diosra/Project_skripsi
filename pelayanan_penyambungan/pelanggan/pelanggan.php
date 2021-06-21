@@ -37,7 +37,9 @@
                             <th class="text-center">No Registrasi</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Alamat</th>
-                            <th class="text-center">No Telp Pemohon</th>
+                            <th class="text-center">No HP</th>
+                            <th class="text-center">No Telp</th>
+                            <th class="text-center">Email</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -49,11 +51,13 @@
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
-                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                    <td class="align-middle"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
+                                    <td class="align-middle"><?php echo $row['nohp']; ?></td>
                                     <td class="align-middle"><?php echo $row['no_telp']; ?></td>
+                                    <td class="align-middle"><?php echo $row['email']; ?></td>
                                     <td class="row text-center">
                                         <div class="col">
                                             <a href="header.php?page=peledit&edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>

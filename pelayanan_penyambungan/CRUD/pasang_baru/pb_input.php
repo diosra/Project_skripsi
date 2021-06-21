@@ -121,7 +121,7 @@ include_once 'footer.php';
                     result = 'tidak ada';
                 }
                 $.ajax({
-                    url: "fetch.php",
+                    url: "pelayanan_penyambungan/CRUD/pasang_baru/fetch.php",
                     method: "POST",
                     data: {
                         action: action,

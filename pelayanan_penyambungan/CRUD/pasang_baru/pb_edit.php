@@ -118,14 +118,6 @@
 
             <form action="header.php?page=editpb&edit=<?php echo $row['id_pasang_baru'] ?>" method="post" name="form1">
                 <input type="hidden" name="id_pasang_baru" value="<?php echo $id; ?>">
-                <?php
-                $pelanggan = '';
-                $query = "SELECT id_pelanggan, no_registrasi FROM tb_pelanggan GROUP BY id_pelanggan ORDER BY id_pelanggan ASC";
-                $result = mysqli_query($mysqli, $query);
-                while ($row = mysqli_fetch_array($result)) {
-                    $pelanggan .= '<option value="' . $row["id_pelanggan"] . ' ' . $row["no_registrasi"] . '"> ' . $row["no_registrasi"] . '</option>';
-                }
-                ?>
 
                 <div class="form-group row">
                     <div class="col">

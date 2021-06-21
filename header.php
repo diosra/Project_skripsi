@@ -639,6 +639,10 @@ if (!isset($_SESSION['username'])) {
                                 include "pelayanan_penyambungan/pelayananpenyambungan/multiguna/detailmultiguna3phasa.php";
                                 break;
 
+                            case 'fetchdata':
+                                include "pelayanan_penyambungan/CRUD/pasang_baru/fetch.php";
+                                break;
+
                                 //Else dari switch
                             default:
                                 echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";

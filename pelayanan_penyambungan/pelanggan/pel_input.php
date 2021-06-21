@@ -11,6 +11,20 @@
 
     <title>Input Data Pelanggan</title>
 
+    <?php
+    extract($_POST);
+    $queryambil = mysqli_query($mysqli, "SELECT max(no_registrasi) as RegTerbesar FROM tb_pelanggan");
+    $dataambil = mysqli_fetch_array($queryambil);
+    $noRegistrasi = @$dataambil['RegTerbesar'];
+
+    $urutan = (int) substr($noRegistrasi, 3, 3);
+    $urutan++;
+
+    $huruf = "NRG";
+    $noRegistrasi = $huruf . sprintf("%03s", $urutan);
+
+    ?>
+
 </head>
 
 <!-- Begin Page Content -->
@@ -31,8 +45,8 @@
             <form action="header.php?page=pelinput" method="post" name="form1">
 
                 <div class="form-group">
-                    <label for="">Nomor Registrasi Pelanggan</label>
-                    <input type="text" name="no_registrasi" class="form-control" placeholder="Masukkan Nomor Registrasi" required>
+                    <label for="">Nomor Registrasi</label>
+                    <input type="text" name="no_registrasi" class="form-control" value="<?php echo $noRegistrasi ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Nama Pelanggan</label>
@@ -44,10 +58,30 @@
                     <textarea name="alamat" placeholder="Masukkan alamat pelanggan" class="form-control" cols="10" rows="3" required></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="">Nomor Telpon Pelanggan</label>
-                    <input type="text" name="no_telpon" class="form-control" placeholder="Masukkan Nomor Telpon pelanggan" required>
+                <div class="form-group row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">No. HP</label>
+                            <input type="number" name="nohp" class="form-control" placeholder="Masukkan No Handphone" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">No. Telpon</label>
+                            <input type="text" name="no_telpon" class="form-control" placeholder="Masukkan Nomor Telpon pelanggan">
+                        </div>
+                    </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Masukkan Email" required>
+                </div>
+
+                <!-- <div class="form-group">
+                    <label for="">No. KTP</label>
+                    <input type="text" name="identitas" class="form-control" placeholder="Masukkan Nomor KTP" required>
+                </div> -->
 
                 <div class="form-group row float-right">
                     <div class="col">
@@ -76,13 +110,13 @@ include_once 'footer.php';
 <!-- PHP - Query Tombol Save dan SweetAlert -->
 <?php
 if (isset($_POST['save'])) {
-    $no_registrasi = $_POST['no_registrasi'];
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
-    $no_telpon = $_POST['no_telpon'];
+    $nohp = $_POST['nohp'];
+    $notelp = $_POST['notelp'];
+    $email = $_POST['email'];
 
-    $insert = "INSERT INTO tb_pelanggan (no_registrasi, nama, alamat, no_telp) 
-        VALUES ('$no_registrasi','$nama', '$alamat','$no_telpon')";
+    $insert = "INSERT INTO tb_pelanggan (no_registrasi, nama, alamat, nohp, no_telp,email) VALUES ('$noRegistrasi','$nama', '$alamat','$nohp','$no_telpon', '$email')";
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
     if ($query) {

@@ -34,11 +34,11 @@
                 $id = $_POST['id_pelanggan'];
                 $nama = $_POST['nama'];
                 $alamat = $_POST['alamat'];
+                $nohp = $_POST['nohp'];
                 $no_telpon = $_POST['no_telpon'];
+                $email = $_POST['email'];
 
-                $update = "UPDATE tb_pelanggan SET  
-                                nama='$nama', alamat='$alamat', no_telp='$no_telpon' 
-                                WHERE id_pelanggan=$id";
+                $update = "UPDATE tb_pelanggan SET nama='$nama', alamat='$alamat',nohp='$nohp', no_telp='$no_telpon', email='$email' WHERE id_pelanggan=$id";
                 $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
 
                 if ($query) {
@@ -60,12 +60,12 @@
             <!-- PHP - Query Select untuk data ditampilkan di form -->
             <?php
             $no_registrasi = '';
-            $tgl_mohon = '';
             $nama = '';
             $alamat = '';
+            $nohp = '';
             $no_telpon = '';
-            $asalmohon = '';
-            $nama = '';
+            $email = '';
+
             if (isset($_GET['edit'])) {
                 $id = $_GET['edit'];
                 $result =
@@ -76,7 +76,9 @@
                     $no_registrasi = $row['no_registrasi'];
                     $nama = $row['nama'];
                     $alamat = $row['alamat'];
+                    $nohp = $row['nohp'];
                     $no_telpon = $row['no_telp'];
+                    $email = $row['email'];
                 }
             }
             ?>
@@ -98,9 +100,20 @@
                     <textarea name="alamat" placeholder="Masukkan alamat pelanggan" class="form-control" cols="10" rows="3" value="<?php echo $alamat; ?>" required><?php echo $alamat; ?></textarea>
                 </div>
 
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="">No. HP</label>
+                        <input type="number" name="nohp" class="form-control" placeholder="Masukkan Nomor HP Pelanggan" value="<?php echo $nohp; ?>" required>
+                    </div>
+                    <div class="col">
+                        <label for="">No. Telpon</label>
+                        <input type="number" name="no_telpon" class="form-control" placeholder="Masukkan Nomor Telpon pelanggan" value="<?php echo $no_telpon; ?>">
+                    </div>
+                </div>
+
                 <div class="form-group">
-                    <label for="">Nomor Telpon Pelanggan</label>
-                    <input type="text" name="no_telpon" class="form-control" placeholder="Masukkan Nomor Telpon pelanggan" value="<?php echo $no_telpon; ?>" required>
+                    <label for="">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Masukkan Email Pelanggan" value="<?php echo $email; ?>" required>
                 </div>
 
                 <div class="form-group row float-right">
