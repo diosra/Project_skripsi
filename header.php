@@ -645,7 +645,7 @@ if (!isset($_SESSION['username'])) {
 
                                 //Else dari switch
                             default:
-                                echo "<center><h3>Maaf. Halaman tidak di temukan !</h3></center>";
+                                include "404.php";
                                 break;
                         }
                     }
