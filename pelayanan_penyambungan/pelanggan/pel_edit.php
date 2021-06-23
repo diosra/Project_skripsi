@@ -33,12 +33,13 @@
             if (isset($_POST['ubah'])) {
                 $id = $_POST['id_pelanggan'];
                 $nama = $_POST['nama'];
+                $identitas = $_POST['identitas'];
                 $alamat = $_POST['alamat'];
                 $nohp = $_POST['nohp'];
                 $no_telpon = $_POST['no_telpon'];
                 $email = $_POST['email'];
 
-                $update = "UPDATE tb_pelanggan SET nama='$nama', alamat='$alamat',nohp='$nohp', no_telp='$no_telpon', email='$email' WHERE id_pelanggan=$id";
+                $update = "UPDATE tb_pelanggan SET nama='$nama',identitas='$identitas',alamat='$alamat',nohp='$nohp', no_telp='$no_telpon', email='$email' WHERE id_pelanggan=$id";
                 $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
 
                 if ($query) {
@@ -60,6 +61,7 @@
             <!-- PHP - Query Select untuk data ditampilkan di form -->
             <?php
             $no_registrasi = '';
+            $identitas = '';
             $nama = '';
             $alamat = '';
             $nohp = '';
@@ -74,6 +76,7 @@
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
                     $no_registrasi = $row['no_registrasi'];
+                    $identitas = $row['identitas'];
                     $nama = $row['nama'];
                     $alamat = $row['alamat'];
                     $nohp = $row['nohp'];
@@ -90,6 +93,12 @@
                     <label for="">Nomor Registrasi Pelanggan</label>
                     <input type="text" name="no_registrasi" class="form-control" placeholder="Masukkan Nomor Registrasi" value="<?php echo $no_registrasi; ?>" required disabled>
                 </div>
+
+                <div class="form-group">
+                    <label for="">Identitas (KTP)</label>
+                    <input type="number" name="identitas" class="form-control" placeholder="Masukkan Nomor KTP" value="<?php echo $identitas; ?>" required>
+                </div>
+
                 <div class="form-group">
                     <label for="">Nama Pelanggan</label>
                     <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama Pelanggan" value="<?php echo $nama; ?>" required>

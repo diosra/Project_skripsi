@@ -36,14 +36,14 @@
                         <div class="row">
                             <div class="col-lg">
                                 <div class="p-3">
-                                    <div class="text-center">
-                                        <div class="d-flex justify-content-center mb-4">
-                                            <img src="img/logo.png" width="35%" class="mr-4">
-                                            <div class="border-left mt-3">
-                                                <h5 class="text-gray-900 font-weight-bold ml-2">Aplikasi Pelayanan Penyambungan & Pengaduan</h5>
-                                            </div>
+                                    <div class="d-flex justify-content-center mb-1">
+                                        <img src="img/logo.png" width="33%" height="100%" class="mr-2 mt-3">
+                                        <div class="border-left text-center ml-2">
+                                            <h5 class="text-gray-900 font-weight-bold">Aplikasi Pelayanan Penyambungan & Pengaduan PT.PLN (PERSERO) UP3 Cabang Banjarmasin</h5>
                                         </div>
                                     </div>
+                                    <p class="text-gray-900 mb-0 h6 text-center mb-3">Jl. Lambung Mangkurat No.12, Kertak Baru Ulu, Kec. Banjarmasin Tengah, Kota Banjarmasin, Kalimantan Selatan 70114</p>
+
                                     <form class="user" action="proses_login.php" method="POST">
                                         <div class="form-group">
                                             <label class="font-weight-bold">Username</label>
@@ -53,10 +53,10 @@
                                             <label class="font-weight-bold">Password</label>
                                             <input type="password" class="form-control form-control-user" placeholder="Masukkan Password" name="password" required>
                                         </div>
-                                        <!-- <a class="btn btn-warning btn-user float-left mb-3 p-3 text-dark" href="dashboard.php">
+                                        <a class="btn btn-warning btn-user float-left mb-3 p-3 text-dark" href="dashboard.php">
                                             <i class="fas fa-arrow-circle-left"></i>
                                             Dashboard
-                                        </a> -->
+                                        </a>
                                         <button class="btn btn-primary btn-user float-right mb-3 p-3" type="submit" name="log"><i class="fas fa-sign-in-alt mr-2"></i> Login</button>
                                     </form>
                                 </div>

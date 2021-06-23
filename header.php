@@ -642,6 +642,9 @@ if (!isset($_SESSION['username'])) {
                             case 'fetchdata':
                                 include "pelayanan_penyambungan/CRUD/pasang_baru/fetch.php";
                                 break;
+                            case 'prosescari':
+                                include "pelayanan_penyambungan/CRUD/process.js";
+                                break;
 
                                 //Else dari switch
                             default:

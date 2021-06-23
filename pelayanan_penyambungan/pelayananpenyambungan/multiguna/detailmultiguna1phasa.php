@@ -25,12 +25,14 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th rowspan="2">No</th>
                             <th rowspan="2">No Registrasi</th>
+                            <th rowspan="2">Identitas (KTP)</th>
                             <th rowspan="2">Nama Pelanggan</th>
+                            <th rowspan="2">Alamat</th>
                             <th rowspan="2">Pekerjaan RAB</th>
                             <th colspan="3" class="text-center">Detail Biaya</th>
                             <th rowspan="2">Total Biaya</th>
@@ -49,9 +51,11 @@
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
-                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                    <td class="align-middle text-center"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                    <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya1_mlta1'], 0, ',', '.') ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya2_mlta1'], 0, ',', '.') ?></td>
@@ -87,7 +91,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [3, 4, 5, 6, 7]
+            "targets": [5, 6, 7, 8, 9]
         }]
     });
 </script>

@@ -32,13 +32,16 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th rowspan="2">No</th>
                             <th rowspan="2">No Registrasi</th>
+                            <th rowspan="2">Identitas (KTP)</th>
+                            <th rowspan="2">Nama</th>
+                            <th rowspan="2">Alamat</th>
                             <th rowspan="2">Jenis Transaksi</th>
-                            <th rowspan="2">Tanggal Mohon</th>
+                            <th rowspan="2">Tanggal Permohonan</th>
                             <th colspan="2">Tarif & Daya Lama</th>
                             <th colspan="2">Tarif & Daya Baru</th>
                             <th rowspan="2">Fasa Lama</th>
@@ -47,21 +50,24 @@
                         </tr>
                         <tr>
                             <th>Tarif</th>
-                            <th>Daya</th>
+                            <th>Daya (VA)</th>
                             <th>Tarif</th>
-                            <th>Daya</th>
+                            <th>Daya (VA)</i></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.no_registrasi, a.nama , b.* FROM tb_perubahan_daya b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_lama = '1 FASA'");
+                        $data = mysqli_query($mysqli, "SELECT a.* , b.* FROM tb_perubahan_daya b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_lama = '1 FASA'");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
-                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                    <td class="align-middle text-center"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                    <td class="align-middle"><?php echo $row['identitas']; ?></td>
+                                    <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['jenis_transaksi']; ?></td>
                                     <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
                                     <td class="align-middle"><?php echo $row['tarif_lama']; ?></td>
@@ -102,10 +108,11 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [2, 4, 5, 6, 7, 8, 10]
+            "targets": [5, 6, 7, 8, 9, 10, 11, 13]
         }]
     });
 </script>
+
 
 
 </html>

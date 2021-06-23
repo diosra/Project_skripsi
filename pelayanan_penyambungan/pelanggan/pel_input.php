@@ -48,6 +48,12 @@
                     <label for="">Nomor Registrasi</label>
                     <input type="text" name="no_registrasi" class="form-control" value="<?php echo $noRegistrasi ?>" readonly>
                 </div>
+
+                <div class="form-group">
+                    <label for="">Identitas KTP</label>
+                    <input type="text" name="identitas" class="form-control" placeholder="Masukkan Nomor KTP" required>
+                </div>
+
                 <div class="form-group">
                     <label for="">Nama Pelanggan</label>
                     <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama Pelanggan" required>
@@ -78,11 +84,6 @@
                     <input type="email" name="email" class="form-control" placeholder="Masukkan Email" required>
                 </div>
 
-                <!-- <div class="form-group">
-                    <label for="">No. KTP</label>
-                    <input type="text" name="identitas" class="form-control" placeholder="Masukkan Nomor KTP" required>
-                </div> -->
-
                 <div class="form-group row float-right">
                     <div class="col">
                         <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
@@ -110,13 +111,14 @@ include_once 'footer.php';
 <!-- PHP - Query Tombol Save dan SweetAlert -->
 <?php
 if (isset($_POST['save'])) {
+    $identitas = $_POST['identitas'];
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
     $nohp = $_POST['nohp'];
-    $notelp = $_POST['notelp'];
+    $notelp = $_POST['no_telp'];
     $email = $_POST['email'];
 
-    $insert = "INSERT INTO tb_pelanggan (no_registrasi, nama, alamat, nohp, no_telp,email) VALUES ('$noRegistrasi','$nama', '$alamat','$nohp','$no_telpon', '$email')";
+    $insert = "INSERT INTO tb_pelanggan (no_registrasi,identitas, nama, alamat, nohp, no_telp,email) VALUES ('$noRegistrasi','$identitas','$nama', '$alamat','$nohp','$no_telpon', '$email')";
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
     if ($query) {

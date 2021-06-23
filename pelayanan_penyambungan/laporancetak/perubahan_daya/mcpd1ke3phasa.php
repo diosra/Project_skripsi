@@ -121,12 +121,14 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
                             <th class="text-center">No.Registrasi</th>
+                            <th class="text-center">Identitas (KTP)</th>
                             <th class="text-center">Nama</th>
+                            <th class="text-center">Alamat</th>
                             <th class="text-center">Jenis Transaksi</th>
                             <th class="text-center">Tanggal Mohon</th>
                             <th class="text-center">Tarif Lama</th>
@@ -155,7 +157,7 @@
                             }
                         } else {
                             echo '<a href="header.php?page=cpd1ke3phasa"></a>';
-                            $result = $mysqli->query("SELECT b.no_registrasi, b.nama,a.tgl_mohon, a.tarif_lama, a.daya_lama, a.tarif_baru, a.daya_baru, a.fasa_lama, a.fasa_baru, c.pekerjaan_rab, c.total_biaya FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pd_1phs_ke_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA'") or die($mysqli->error);
+                            $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pd_1phs_ke_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA'") or die($mysqli->error);
                         }
                         // kode untuk isi Filter - END
 
@@ -166,7 +168,9 @@
                                 <tr>
                                     <td class="align-middle"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                    <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle">Perubahan Daya</td>
                                     <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
                                     <td class="align-middle"><?php echo $row['tarif_lama']; ?></td>

@@ -25,12 +25,14 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th rowspan="2">No</th>
                             <th rowspan="2">No Registrasi</th>
+                            <th rowspan="2">Identitas (KTP)</th>
                             <th rowspan="2">Nama Pelanggan</th>
+                            <th rowspan="2">Alamat</th>
                             <th rowspan="2">Pekerjaan RAB</th>
                             <th colspan="13" class="text-center">Detail Biaya</th>
                             <th rowspan="2">Total Biaya</th>
@@ -59,9 +61,11 @@
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
-                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                    <td class="align-middle text-center"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                    <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['kwh_meter_3phs_pengukuran_langsung'], 0, ',', '.') ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['box_app_1_pintu_pengukuran_langsung'], 0, ',', '.') ?></td>

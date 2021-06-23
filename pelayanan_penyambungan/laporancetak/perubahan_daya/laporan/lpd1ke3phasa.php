@@ -43,7 +43,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 <html>
 
 <head>
-    <title>LAPORAN DATA DETAIL PELANGGAN PD 1 PHASA KE 3 PHASA</title>
+    <title>LAPORAN DATA DETAIL PELANGGAN PERUBAHAN DAYA 1 PHASA KE 3 PHASA</title>
 </head>
 
 <script type="text/javascript">
@@ -72,7 +72,9 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         <tr style="background-color: darkgrey" height="30px">
                             <th style="text-align: center; font-size: 18px;">No.</th>
                             <th style="text-align: center; font-size: 18px;">No Registrasi</th>
+                            <th style="text-align: center; font-size: 18px;">Identitas</th>
                             <th style="text-align: center; font-size: 18px;">Nama</th>
+                            <th style="text-align: center; font-size: 18px;">Alamat</th>
                             <th style="text-align: center; font-size: 18px;">Jenis Transaksi</th>
                             <th style="text-align: center; font-size: 18px;">Tanggal Mohon</th>
                             <th style="text-align: center; font-size: 18px;">Tarif Lama</th>
@@ -97,7 +99,9 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                                 <tr>
                                     <td align="center"><?php echo $no++; ?></td>
                                     <td align="center"><?php echo $tampil['no_registrasi']; ?></td>
+                                    <td align="center"><?php echo $tampil['identitas']; ?></td>
                                     <td align="center"><?php echo $tampil['nama']; ?></td>
+                                    <td align="center"><?php echo $tampil['alamat']; ?></td>
                                     <td align="center">Perubahan Daya</td>
                                     <td align="center"><?php echo $newdate ?></td>
                                     <td align="center"><?php echo $tampil['tarif_lama']; ?></td>
@@ -114,12 +118,12 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             }
                             ?>
                             <tr>
-                                <td colspan="12" align="right" style="font-size: 23px;"><b>Jumlah Total Biaya</b></td>
+                                <td colspan="14" align="right" style="font-size: 23px;"><b>Jumlah Total Biaya</b></td>
                                 <td align="center">Rp.<?php echo number_format($total, 0, ',', '.')  ?></td>
                             </tr>
                         <?php } else { ?>
                             <tr>
-                                <td colspan='13' align="center" style="text-transform: uppercase; font-size: 30px; background-color: lightblue;">Data dengan filter yang dipilih tidak ditemukan!</td>
+                                <td colspan='15' align="center" style="text-transform: uppercase; font-size: 30px; background-color: lightblue;">Data dengan filter yang dipilih tidak ditemukan!</td>
                             </tr>
                         <?php } ?>
 

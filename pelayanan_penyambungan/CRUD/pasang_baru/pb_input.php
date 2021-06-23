@@ -11,6 +11,8 @@
 
     <title>Input Pasang Baru</title>
 
+    <script src="pelayanan_penyambungan/CRUD/process.js"></script> <!-- Load file process.js -->
+
 </head>
 
 <!-- Begin Page Content -->
@@ -28,29 +30,39 @@
         </div>
         <!-- Form Utama -->
         <div class="card-body">
+
             <form action="header.php?page=inputpb" method="post" name="form1">
 
                 <?php
                 $pelanggan = '';
-                $query = "SELECT id_pelanggan, no_registrasi, nama FROM tb_pelanggan GROUP BY id_pelanggan ORDER BY id_pelanggan ASC";
+                $query = "SELECT id_pelanggan, no_registrasi, nama FROM tb_pelanggan";
                 $result = mysqli_query($mysqli, $query);
                 while ($row = mysqli_fetch_array($result)) {
-                    $pelanggan .= '<option value="' . $row["id_pelanggan"] . ' ' . $row["no_registrasi"] . '"> ' . $row["no_registrasi"] . ' - ' . $row["nama"] . '</option>';
+                    $pelanggan .= '<option value="' . $row["id_pelanggan"] . ' ' . $row["no_registrasi"] . '"> ' . $row["no_registrasi"] . '- ' . $row["nama"] . '</option>';
                 }
                 ?>
 
-                <div class="form-group row">
-                    <div class="col">
-                        <label for="">Nomor Registrasi Pelanggan</label>
-                        <select name="id_pelanggan" id="id_pelanggan" class="action form-control" required>
-                            <option value="<?php echo $id_pelanggan ?>" disabled selected> Pilih </option>
-                            <?php echo $pelanggan ?>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="">Nama Pelanggan</label>
-                        <p name="nama" id="nama"></p>
-                    </div>
+                <div class="form-group">
+                    <label for="">Cari No Registrasi</label>
+                    <input type="text" id="no_registrasi" name="id_pelanggan" class="form-control" required>
+                    <button type="button" id="btn-search" class="btn btn-primary mt-2">Cari</button>
+                </div>
+
+                <input type="text" id="no_reg" name="id_pelanggan" class="form-control" required hidden>
+
+                <div class="form-group">
+                    <label for="">Identitas (No. KTP)</label>
+                    <input type="text" id="identitas" name="identitas" class="form-control" required readonly="readonly" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nama</label>
+                    <input type="text" id="nama" name="nama" class="form-control" required readonly="readonly" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Alamat</label>
+                    <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" required readonly="readonly"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -59,8 +71,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="">Tanggal Mohon</label>
-                    <input type="date" name="tgl_mohon" class="form-control" value="tgl_mohon" required>
+                    <label for="">Tanggal Permohonan</label>
+                    <input type="date" name="tgl_mohon" class="form-control" required>
                 </div>
 
                 <div class="form-group row">

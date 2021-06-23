@@ -28,7 +28,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_multiguna a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_multiguna_1phs c ON a.id_mlta = c.id_mlta WHERE a.fasa_baru = '1 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
     }
 } else {
-    $result = $mysqli->query("SELECT b.no_registrasi, b.nama, a.tgl_mohon, a.tarif_baru, a.daya_baru, a.fasa_baru, c.pekerjaan_rab, c.total FROM tb_multiguna a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_multiguna_1phs c ON a.id_mlta = c.id_mlta WHERE a.fasa_baru = '1 FASA'") or die($mysqli->error);
+    $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_multiguna a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_multiguna_1phs c ON a.id_mlta = c.id_mlta WHERE a.fasa_baru = '1 FASA'") or die($mysqli->error);
 }
 ?>
 
@@ -65,7 +65,9 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                         <tr style="background-color: darkgrey" height="30px">
                             <th style="text-align: center; font-size: 18px;">No.</th>
                             <th style="text-align: center; font-size: 18px;">No.Registrasi</th>
+                            <th style="text-align: center; font-size: 18px;">Identitas</th>
                             <th style="text-align: center; font-size: 18px;">Nama</th>
+                            <th style="text-align: center; font-size: 18px;">Alamat</th>
                             <th style="text-align: center; font-size: 18px;">Jenis Transaksi</th>
                             <th style="text-align: center; font-size: 18px;">Tanggal Mohon</th>
                             <th style="text-align: center; font-size: 18px;">Tarif Baru</th>
@@ -86,7 +88,9 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                                 <tr>
                                     <td align="center"><?php echo $no++; ?></td>
                                     <td align="center"><?php echo $tampil['no_registrasi']; ?></td>
+                                    <td align="center"><?php echo $tampil['identitas']; ?></td>
                                     <td align="center"><?php echo $tampil['nama']; ?></td>
+                                    <td align="center"><?php echo $tampil['alamat']; ?></td>
                                     <td align="center">Penerangan Sementara</td>
                                     <td align="center"><?php echo $newdate ?></td>
                                     <td align="center"><?php echo $tampil['tarif_baru']; ?></td>
@@ -100,12 +104,12 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             }
                             ?>
                             <tr>
-                                <td colspan="9" align="right" style="font-size: 23px;"><b>Jumlah Total Biaya</b></td>
+                                <td colspan="11" align="right" style="font-size: 23px;"><b>Jumlah Total Biaya</b></td>
                                 <td align="center">Rp.<?php echo number_format($total, 0, ',', '.')  ?></td>
                             </tr>
                         <?php } else { ?>
                             <tr>
-                                <td colspan='10' align="center" style="text-transform: uppercase; font-size: 30px; background-color: lightblue;">Data dengan filter yang dipilih tidak ditemukan!</td>
+                                <td colspan='12' align="center" style="text-transform: uppercase; font-size: 30px; background-color: lightblue;">Data dengan filter yang dipilih tidak ditemukan!</td>
                             </tr>
                         <?php } ?>
 

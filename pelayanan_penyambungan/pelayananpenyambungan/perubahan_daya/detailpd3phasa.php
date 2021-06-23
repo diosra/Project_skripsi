@@ -25,12 +25,14 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="display table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="display table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>No Registrasi</th>
+                            <th>Identitas (KTP)</th>
                             <th>Nama Pelanggan</th>
+                            <th>Alamat</th>
                             <th>Pekerjaan RAB</th>
                             <th class="text-center">Detail 1 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="Penggantian MCB / MCCB 3 Phasa"></i></th>
                             <th>Total Biaya</th>
@@ -44,9 +46,11 @@
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
-                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                    <td class="align-middle text-center"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                    <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['penggantian_mccb_3phs'], 0, ',', '.') ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
@@ -70,12 +74,14 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="display table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                <table class="display table table-bordered text-gray-900" id="dataTable2" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th rowspan="2">No</th>
                             <th rowspan="2">No Registrasi</th>
+                            <th rowspan="2">Identitas (KTP)</th>
                             <th rowspan="2">Nama Pelanggan</th>
+                            <th rowspan="2">Alamat</th>
                             <th rowspan="2">Pekerjaan RAB</th>
                             <th colspan="12" class="text-center">Detail Biaya</th>
                             <th rowspan="2">Total Biaya</th>
@@ -103,9 +109,11 @@
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
-                                    <td style="text-align:center;"><?php echo $no++ ?></td>
+                                    <td class="align-middle text-center"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                    <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['kwh_meter_tunggal'], 0, ',', '.') ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['nfa2x_2x10'], 0, ',', '.') ?></td>
@@ -157,7 +165,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [3, 4, 5]
+            "targets": [5, 6, 7]
         }]
     });
 </script>
@@ -167,7 +175,7 @@ include_once 'footer.php';
     $('#dataTable2').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            "targets": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
         }]
     });
 </script>

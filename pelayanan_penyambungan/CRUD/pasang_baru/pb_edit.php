@@ -50,9 +50,7 @@
                 if ($query) {
                     if ($fasa_baru == "3 FASA") {
                         $hapusData = mysqli_query($mysqli, "DELETE FROM tb_hasil_perhitungan_pb_1phs WHERE id_pasang_baru=$id");
-                        $insertDataPerubahan = "INSERT INTO tb_hasil_perhitungan_pb_3phs (id_pasang_baru,pekerjaan_rab, kwh_meter_3phs_pengukuran_langsung, box_app_1_pintu_pengukuran_langsung,
-                                        segel_plastik, nfa_2x_3x35, nfa_2x_4x16, service_wedge_clamp_3phs, cco_3T3, skat_3, 
-                                        isolasi_scotch, pemas_kwh_meter_3phs_tanpa_wiring, penarikan_sr_3phs, pengepresan_cco, survey, total_biaya)
+                        $insertDataPerubahan = "INSERT INTO tb_hasil_perhitungan_pb_3phs (id_pasang_baru,pekerjaan_rab, kwh_meter_3phs_pengukuran_langsung, box_app_1_pintu_pengukuran_langsung,segel_plastik, nfa_2x_3x35, nfa_2x_4x16, service_wedge_clamp_3phs, cco_3T3, skat_3, isolasi_scotch, pemas_kwh_meter_3phs_tanpa_wiring, penarikan_sr_3phs, pengepresan_cco, survey, total_biaya)
                                         VALUES 
                                         ('$id', '$ambil2', '1348000', '2400000', '2724', '29360', '12110','4433', '11722', '39400', '5615', '46811', '3482', '31339', '20856', '3990852')";
                         $query2 = mysqli_query($mysqli, $insertDataPerubahan) or die(mysqli_error($mysqli));
@@ -102,11 +100,15 @@
             $nama = '';
             if (isset($_GET['edit'])) {
                 $id = $_GET['edit'];
-                $result = $mysqli->query("SELECT a.no_registrasi ,b.id_pasang_baru, b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_pasang_baru b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE id_pasang_baru=$id") or die($mysqli->error);
+                $result = $mysqli->query("SELECT a.no_registrasi, a.identitas, a.nama, a.alamat ,b.id_pasang_baru, b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_pasang_baru b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE id_pasang_baru=$id") or die($mysqli->error);
 
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
+                    $id_p = $row['id_pelanggan'];
                     $id_pelanggan = $row['no_registrasi'];
+                    $identitas = $row['identitas'];
+                    $nama = $row['nama'];
+                    $alamat = $row['alamat'];
                     $jenis_transaksi = $row['jenis_transaksi'];
                     $tgl_mohon = $row['tgl_mohon'];
                     $tarif_baru = $row['tarif_baru'];
@@ -125,7 +127,7 @@
                         <input type="text" name="id_pelanggan" id="id_pelanggan" class="form-control" value="<?php echo $id_pelanggan ?>" disabled>
                     </div>
                     <?php
-                    $ambilNama = $mysqli->query("SELECT nama FROM tb_pelanggan WHERE no_registrasi = $id_pelanggan") or die($mysqli->error);
+                    $ambilNama = $mysqli->query("SELECT nama FROM tb_pelanggan WHERE id_pelanggan = $id_p") or die($mysqli->error);
                     $hasilAmbil = $ambilNama->fetch_array();
                     ?>
                     <div class="col">
@@ -135,12 +137,21 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="">Identitas (Nomor KTP)</label>
+                    <input type="text" name="identitas" class="form-control" value="<?php echo $identitas ?>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="">Alamat</label>
+                    <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" required readonly="readonly"><?php echo $alamat ?></textarea>
+                </div>
+
+                <div class="form-group">
                     <label for="">Jenis Transaksi</label>
                     <input type="text" name="jenis_transaksi" class="form-control" value="Pasang Baru" disabled>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Tanggal Mohon</label>
+                    <label for="">Tanggal Permohonan</label>
                     <input type="date" name="tgl_mohon" class="form-control" value="<?php echo $tgl_mohon ?>" required>
                 </div>
 

@@ -31,34 +31,40 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
                             <th class="text-center">No Registrasi</th>
+                            <th class="text-center">Identitas (KTP)</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Alamat</th>
                             <th class="text-center">Jenis Transaksi</th>
-                            <th class="text-center">Tanggal Mohon</th>
+                            <th class="text-center">Tanggal Permohonan</th>
                             <th class="text-center">Tarif Baru</th>
-                            <th class="text-center">Daya Baru</th>
+                            <th class="text-center">Daya Baru (VA)</th>
                             <th class="text-center">Fasa Baru</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.no_registrasi ,b.id_mlta, b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_multiguna b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_baru = '3 FASA'");
+                        $data = mysqli_query($mysqli, "SELECT a.* ,b.id_mlta, b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_multiguna b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_baru = '3 FASA'");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
-                                    <td><?php echo $no++ ?></td>
-                                    <td><?php echo $row['no_registrasi']; ?></td>
-                                    <td><?php echo $row['jenis_transaksi']; ?></td>
-                                    <td><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
-                                    <td><?php echo $row['tarif_baru']; ?></td>
-                                    <td><?php echo $row['daya_baru']; ?></td>
-                                    <td><?php echo $row['fasa_baru']; ?></td>
+                                    <td class="align-middle text-center"><?php echo $no++ ?></td>
+                                    <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
+                                    <td class="align-middle"><?php echo $row['identitas']; ?></td>
+                                    <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
+                                    <td class="align-middle"><?php echo $row['jenis_transaksi']; ?></td>
+                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
+                                    <td class="align-middle"><?php echo $row['tarif_baru']; ?></td>
+                                    <td class="align-middle"><?php echo $row['daya_baru']; ?></td>
+                                    <td class="align-middle"><?php echo $row['fasa_baru']; ?></td>
                                     <td class="row text-center">
                                         <div class="col">
                                             <a href="header.php?page=editmlta&edit=<?php echo $row['id_mlta'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
@@ -91,7 +97,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [2, 6, 7]
+            "targets": [5, 6, 7, 8, 9, 10]
         }]
     });
 </script>

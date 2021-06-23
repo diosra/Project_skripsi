@@ -97,11 +97,15 @@
             $nama = '';
             if (isset($_GET['edit'])) {
                 $id = $_GET['edit'];
-                $result = $mysqli->query("SELECT a.no_registrasi ,b.id_mlta , b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_multiguna b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE id_mlta=$id") or die($mysqli->error);
+                $result = $mysqli->query("SELECT a.* ,b.id_mlta , b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_multiguna b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE id_mlta=$id") or die($mysqli->error);
 
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
+                    $id_p = $row['id_pelanggan'];
                     $id_pelanggan = $row['no_registrasi'];
+                    $identitas = $row['identitas'];
+                    $nama = $row['nama'];
+                    $alamat = $row['alamat'];
                     $jenis_transaksi = $row['jenis_transaksi'];
                     $tgl_mohon = $row['tgl_mohon'];
                     $tarif_baru = $row['tarif_baru'];
@@ -113,14 +117,6 @@
 
             <form action="header.php?page=editmlta&edit=<?php echo $row['id_mlta'] ?>" method="post" name="form1">
                 <input type="hidden" name="id_mlta" value="<?php echo $id; ?>">
-                <?php
-                $pelanggan = '';
-                $query = "SELECT id_pelanggan, no_registrasi FROM tb_pelanggan GROUP BY id_pelanggan ORDER BY id_pelanggan ASC";
-                $result = mysqli_query($mysqli, $query);
-                while ($row = mysqli_fetch_array($result)) {
-                    $pelanggan .= '<option value="' . $row["id_pelanggan"] . ' ' . $row["no_registrasi"] . '"> ' . $row["no_registrasi"] . '</option>';
-                }
-                ?>
 
                 <div class="form-group row">
                     <div class="col">
@@ -128,7 +124,7 @@
                         <input type="text" name="id_pelanggan" id="id_pelanggan" class="form-control" value="<?php echo $id_pelanggan ?>" disabled>
                     </div>
                     <?php
-                    $ambilNama = $mysqli->query("SELECT nama FROM tb_pelanggan WHERE no_registrasi = $id_pelanggan") or die($mysqli->error);
+                    $ambilNama = $mysqli->query("SELECT nama FROM tb_pelanggan WHERE id_pelanggan = $id_p") or die($mysqli->error);
                     $hasilAmbil = $ambilNama->fetch_array();
                     ?>
                     <div class="col">
@@ -138,12 +134,21 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="">Identitas (Nomor KTP)</label>
+                    <input type="text" name="identitas" class="form-control" value="<?php echo $identitas ?>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="">Alamat</label>
+                    <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" required readonly="readonly"><?php echo $alamat ?></textarea>
+                </div>
+
+                <div class="form-group">
                     <label for="">Jenis Transaksi</label>
                     <input type="text" name="jenis_transaksi" class="form-control" value="Penerangan Sementara" disabled>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Tanggal Mohon</label>
+                    <label for="">Tanggal Permohonan</label>
                     <input type="date" name="tgl_mohon" class="form-control" value="<?php echo $tgl_mohon ?>" required>
                 </div>
 
