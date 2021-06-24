@@ -42,20 +42,22 @@ if (!isset($_SESSION['username'])) {
                 <?php
                 $level = $_SESSION['level'];
                 $tekcheck = $_SESSION['t_check'];
+                // $jenis_kelamin = $_SESSION['jenis_kelamin'];
 
                 if ($level == 1) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
-                            <span class="text-success">Akun</span>
+                            <span>
+                                <img class="img-profile rounded-circle" width="50%" src="img/undraw_profile.svg">
+                            </span>
                         </button>
+                        <p class="text-success small font-weight-bold">Admin</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <span class="d-none d-lg-inline text-gray-600 small">
                                 <div class="text-center">
-                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
-                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Admin </p>
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
                             </span>
                             <hr>
@@ -70,15 +72,16 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
-                            <span class="text-success">Akun</span>
+                            <span>
+                                <img class="img-profile rounded-circle" width="50%" src="img/undraw_profile.svg">
+                            </span>
                         </button>
+                        <p class="text-success small font-weight-bold">Pegawai</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <span class="d-none d-lg-inline text-gray-600 small">
                                 <div class="text-center">
-                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
-                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Pegawai </p>
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
                             </span>
                             <hr>
@@ -93,15 +96,16 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
-                            <span class="text-success">Akun</span>
+                            <span>
+                                <img class="img-profile rounded-circle" width="50%" src="img/undraw_profile.svg">
+                            </span>
                         </button>
+                        <p class="text-success small font-weight-bold">Operator</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <span class="d-none d-lg-inline text-gray-600 small">
                                 <div class="text-center">
-                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
-                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Operator </p>
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
                             </span>
                             <hr>
@@ -116,15 +120,16 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
-                            <span class="text-success">Akun</span>
+                            <span>
+                                <img class="img-profile rounded-circle text-center" width="50%" src="img/undraw_profile.svg">
+                            </span>
                         </button>
+                        <p class="text-success small font-weight-bold">Teknisi Pelayanan Penyambungan</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <span class="d-none d-lg-inline text-gray-600 small">
+                            <span class="d-none d-lg-inline text-gray-00 small">
                                 <div class="text-center">
-                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
-                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Teknisi Pelayanan <br> Penyambungan </p>
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
                             </span>
                             <hr>
@@ -139,15 +144,16 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
-                            <span class="text-success">Akun</span>
+                            <span>
+                                <img class="img-profile rounded-circle text-center" width="50%" src="img/undraw_profile.svg">
+                            </span>
                         </button>
+                        <p class="text-success small font-weight-bold">Teknisi Pelayanan Pengaduan</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <span class="d-none d-lg-inline text-gray-600 small">
                                 <div class="text-center">
-                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
-                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Teknisi Pelayanan <br> Pengaduan </p>
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
                             </span>
                             <hr>
@@ -162,15 +168,16 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
-                            <span class="text-success">Akun</span>
+                            <span>
+                                <img class="img-profile rounded-circle" width="50%" src="img/undraw_profile.svg">
+                            </span>
                         </button>
+                        <p class="text-success small font-weight-bold">Petugas Survey</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <span class="d-none d-lg-inline text-gray-600 small">
                                 <div class="text-center">
-                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p> <br>
-                                    <p style="font-size: medium;"><b>Posisi</b> : <br> Petugas Survey </p>
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
                             </span>
                             <hr>
@@ -221,6 +228,13 @@ if (!isset($_SESSION['username'])) {
                         <a class="nav-link" href="header.php?page=user">
                             <i class="fas fa-user-friends"></i></i>
                             <span>Manajemen User</span></a>
+                    </li>
+
+                    <!-- Nav Item - Menu Data Teknisi Pelayanan Pengaduan -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=tekpen">
+                            <i class="fas fa-user-friends"></i></i>
+                            <span>Data Teknisi Pelayanan Pengaduan</span></a>
                     </li>
                 <?php
                     //Menu Hak akses Pegawai
@@ -394,7 +408,7 @@ if (!isset($_SESSION['username'])) {
                 ?>
                     <!-- Nav Item - Menu Operator -->
                     <li class="nav-item">
-                        <a class="nav-link" href="pelanggan/pelanggan.php">
+                        <a class="nav-link" href="header.php?page=pengaduan">
                             <i class="fas fa-user-friends"></i></i>
                             <span>Menu Data Operator</span></a>
                     </li>
@@ -574,6 +588,20 @@ if (!isset($_SESSION['username'])) {
                                 //case untuk halaman laporan teknisi pengaduan
                             case 'laporanpen':
                                 include "teknisi/pengaduan/form_laporan.php";
+                                break;
+
+                                //case untuk halaman laporan operator
+                            case 'pengaduan':
+                                include "pelayanan_pengaduan/pengaduan.php";
+                                break;
+                            case 'pengtambah':
+                                include "pelayanan_pengaduan/input.php";
+                                break;
+                            case 'pengedit':
+                                include "pelayanan_pengaduan/edit.php";
+                                break;
+                            case 'penghapus':
+                                include "pelayanan_pengaduan/hapus.php";
                                 break;
 
                                 //case untuk halaman laporan Petugas Survey

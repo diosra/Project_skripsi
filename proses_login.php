@@ -24,20 +24,21 @@ if (isset($_POST['log'])) {
 
   $query = $mysqli->query("SELECT * FROM tb_data_user WHERE username = '$user' AND password='$pass'");
   $data = $query->fetch_array();
+
   $username = $data['username'];
   $password = $data['password'];
   $level = $data['level'];
   $tekcheck = $data['t_check'];
-
   $nama_asli = $data['nama'];
+  $jenis_kelamin = $data['jenis_kelamin'];
 
   if ($user == $username && $pass == $password) {
     $_SESSION['username'] = $username;
     $name = $_SESSION['username'];
     $_SESSION['level'] = $level;
     $_SESSION['t_check'] = $tekcheck;
-
     $_SESSION['nama'] = $nama_asli;
+    $_SESSION['jenis_kelamin'] = $jenis_kelamin;
 
     if ($level == 1 && $tekcheck == 0) {
 ?>

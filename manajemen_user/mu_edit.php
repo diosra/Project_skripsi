@@ -10,6 +10,18 @@
     <meta name="author" content="">
 
     <title>Edit User</title>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#posisi").change(function() {
+                if ($(this).val() == "4") {
+                    $("#t_check").show();
+                } else {
+                    $("#t_check").hide();
+                }
+            });
+        });
+    </script>
 </head>
 
 <!-- Begin Page Content -->
@@ -82,6 +94,21 @@
                     $username = $row['username'];
                     $password = $row['password'];
                     $posisi = $row['level'];
+                    if ($row['level'] == 1) {
+                        $levelnya = "Admin";
+                    } elseif ($row['level'] == 2) {
+                        $levelnya = "Pegawai";
+                    } elseif ($row['level'] == 3) {
+                        $levelnya = "Operator";
+                    } elseif ($row['level'] == 4 && $row['t_check'] == 1) {
+                        $levelnya = "Teknisi";
+                        $levelnya2 = "Teknisi Pelayanan Penyambungan";
+                    } elseif ($row['level'] == 4 && $row['t_check'] == 2) {
+                        $levelnya = "Teknisi";
+                        $levelnya2 = "Teknisi Pelayanan Pengaduan";
+                    } elseif ($row['level'] == 5) {
+                        $levelnya = "Petugas Survey";
+                    }
                     $t_check = $row['t_check'];
                 }
             }
@@ -127,9 +154,9 @@
 
                 <div class="form-group">
                     <label for="">Posisi</label>
-                    <select name="posisi" class="form-control" required>
+                    <select name="posisi" id="posisi" class="form-control" required>
                         <option value="" disabled selected>Pilih</option>
-                        <option value="<?php echo $posisi; ?>" disabled>Pilihan Sebelum nya : <?php echo $posisi ?></option>
+                        <option value="<?php echo $posisi; ?>" disabled>Pilihan Sebelum nya : <?php echo $levelnya ?></option>
                         <option value="1">Admin</option>
                         <option value="2">Pegawai</option>
                         <option value="3">Operator</option>
@@ -138,12 +165,11 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="t_check" style="display: none;">
                     <label for="">Teknisi Check</label>
-                    <select name="t_check" class="form-control" required>
+                    <select name="t_check" class="form-control">
                         <option value="" disabled selected>Pilih</option>
-                        <option value="<?php echo $t_check; ?>" disabled>Pilihan Sebelum nya : <?php echo $t_check ?></option>
-                        <option value="0">Bukan Teknisi</option>
+                        <option value="<?php echo $t_check; ?>" disabled>Pilihan Sebelum nya : <?php echo $levelnya2 ?></option>
                         <option value="1">Teknisi Pelayanan Penyambungan</option>
                         <option value="2">Teknisi Pelayanan Pengaduan</option>
                     </select>
