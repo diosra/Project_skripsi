@@ -11,6 +11,7 @@ function search() {
         },
         success: function (response) {
             if (response.status == "success") {
+                $("#id_teknisi").val(response.id_teknisi);
                 $("#nama").val(response.nama);
             } else {
                 Swal.fire({

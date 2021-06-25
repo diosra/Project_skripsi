@@ -23,6 +23,20 @@
         });
     </script>
 
+    <?php
+    extract($_POST);
+    $queryambil = mysqli_query($mysqli, "SELECT max(no_teknisi) as TekTerbesar FROM tb_teknisi_pengaduan");
+    $dataambil = mysqli_fetch_array($queryambil);
+    $no_teknisi = @$dataambil['TekTerbesar'];
+
+    $urutan = (int) substr($no_teknisi, 3, 3);
+    $urutan++;
+
+    $huruf = "TPP";
+    $no_teknisi = $huruf . sprintf("%03s", $urutan);
+
+    ?>
+
 </head>
 
 <!-- Begin Page Content -->
@@ -48,6 +62,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="">Tanggal Lahir</label>
+                    <input type="date" name="tgl_lahir" class="form-control" placeholder="Masukkan Tanggal Lahir" required>
+                </div>
+
+                <div class="form-group">
                     <label for="">Alamat</label>
                     <textarea name="alamat" placeholder="Masukkan alamat" class="form-control" cols="10" rows="3" required></textarea>
                 </div>
@@ -66,14 +85,23 @@
                     <input type="email" name="email" class="form-control" placeholder="Masukkan Email User" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="">Username</label>
-                    <input type="text" name="username" class="form-control" placeholder="Masukkan Username" required>
-                </div>
+                <hr class="my-12 mt-5 mb-2" />
 
-                <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Masukkan Password" required>
+                <h3 class="mb-3"><u><b>Input Akun User</b></u></h3>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Masukkan Username" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Masukkan Password" required>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -105,8 +133,6 @@
                     </div>
                 </div>
             </form>
-
-
         </div>
         <!-- Form Utama end -->
     </div>
@@ -125,6 +151,7 @@ include_once 'footer.php';
 <?php
 if (isset($_POST['save'])) {
     $nama = $_POST['nama'];
+    $tgl_lahir = $_POST['tgl_lahir'];
     $alamat = $_POST['alamat'];
     $jenis_kelamin = $_POST['jenis_kelamin'];
     $email = $_POST['email'];
@@ -133,10 +160,14 @@ if (isset($_POST['save'])) {
     $level = $_POST['level'];
     $t_check = $_POST['t_check'];
 
-    $insert = "INSERT INTO tb_data_user (nama, alamat,jenis_kelamin, email, username, password, level, t_check) VALUES ('$nama', '$alamat', '$jenis_kelamin', '$email','$username', '$password', '$level', '$t_check')";
+    $insert = "INSERT INTO tb_data_user (nama, tgl_lahir, alamat,jenis_kelamin, email, username, password, level, t_check) VALUES ('$nama','$tgl_lahir' ,'$alamat', '$jenis_kelamin', '$email','$username', '$password', '$level', '$t_check')";
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
     if ($query) {
+        if ($level == 4 && $t_check == 2) {
+            $insert2 = "INSERT INTO tb_teknisi_pengaduan (id, no_teknisi,nama, alamat, tgl_lahir) VALUES ('" . mysqli_insert_id($mysqli) . "', '$no_teknisi', '$nama', '$alamat','$tgl_lahir')";
+            $query = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
+        }
 ?>
         <script>
             Swal.fire({

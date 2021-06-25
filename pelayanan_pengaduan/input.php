@@ -28,12 +28,13 @@
     if (isset($_POST['save'])) {
         $id = $_POST['id_pengaduan'];
         $nama = $_POST['nama'];
+        $id_teknisi = $_POST['id_teknisi'];
 
         $insert = "UPDATE tb_pengaduan SET teknisi='$nama', status='Dalam Proses' WHERE id_pengaduan = $id";
         $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
         if ($query) {
-            $update = "UPDATE tb_tekpen_lap_masuk SET op_acc='1' WHERE id_pengaduan = $id";
+            $update = "UPDATE tb_tekpen_lap_masuk SET id_teknisi='$id_teknisi', op_acc='1' WHERE id_pengaduan = $id";
             $query2 = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
     ?>
             <script>
@@ -42,7 +43,7 @@
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Teknisi'
                 }).then((result) => {
-                    window.location = "header.php?page=pengaduan";
+                    window.location = "header.php?page=pengaduanproses";
                 })
             </script>
     <?php
@@ -75,6 +76,8 @@
                     <input type="text" id="tekpen" class="form-control" required>
                     <button type="button" id="btn-search" class="btn btn-primary mt-2">Cari</button>
                 </div>
+
+                <input type="hidden" name="id_teknisi" id="id_teknisi">
 
                 <div class="form-group">
                     <label for="">Nama</label>

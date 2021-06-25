@@ -9,6 +9,7 @@ if ($row > 0) {
     // BUat sebuah array
     $callback = array(
         'status' => 'success',
+        'id_teknisi' => $data['id_teknisi'],
         'nama' => $data['nama'],
     );
 } else {

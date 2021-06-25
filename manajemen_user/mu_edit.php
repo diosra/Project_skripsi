@@ -22,6 +22,20 @@
             });
         });
     </script>
+
+    <?php
+    extract($_POST);
+    $queryambil = mysqli_query($mysqli, "SELECT max(no_teknisi) as TekTerbesar FROM tb_teknisi_pengaduan");
+    $dataambil = mysqli_fetch_array($queryambil);
+    $no_teknisi = @$dataambil['TekTerbesar'];
+
+    $urutan = (int) substr($no_teknisi, 3, 3);
+    $urutan++;
+
+    $huruf = "TPP";
+    $no_teknisi = $huruf . sprintf("%03s", $urutan);
+
+    ?>
 </head>
 
 <!-- Begin Page Content -->
@@ -42,8 +56,9 @@
             <!-- PHP - Query Tombol Ubah dan SweetAlert -->
             <?php
             if (isset($_POST['ubah'])) {
-                $id = $_POST['id'];
+                $id_u = $_POST['id'];
                 $nama = $_POST['nama'];
+                $tgl_lahir = $_POST['tgl_lahir'];
                 $alamat = $_POST['alamat'];
                 $jenis_kelamin = $_POST['jenis_kelamin'];
                 $email = $_POST['email'];
@@ -52,10 +67,17 @@
                 $posisi = $_POST['posisi'];
                 $t_check = $_POST['t_check'];
 
-                $update = "UPDATE tb_data_user SET nama='$nama', alamat='$alamat', jenis_kelamin='$jenis_kelamin', email='$email', username='$username', password='$password', level='$posisi', t_check='$t_check' WHERE id=$id";
+                $update = "UPDATE tb_data_user SET nama='$nama', tgl_lahir='$tgl_lahir', alamat='$alamat', jenis_kelamin='$jenis_kelamin', email='$email', username='$username', password='$password', level='$posisi', t_check='$t_check' WHERE id=$id_u";
                 $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
 
                 if ($query) {
+                    if ($posisi == 4 && $t_check == 2) {
+                        $insert2 = "INSERT INTO tb_teknisi_pengaduan (id, no_teknisi,nama, alamat, tgl_lahir) VALUES ('$id_u', '$no_teknisi', '$nama', '$alamat','$tgl_lahir')";
+                        $query = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
+                    } else {
+                        $delete1 = "DELETE FROM tb_teknisi_pengaduan WHERE id = $id_u";
+                        $query = mysqli_query($mysqli, $delete1) or die(mysqli_error($mysqli));
+                    }
             ?>
                     <script>
                         Swal.fire({
@@ -88,26 +110,31 @@
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
                     $nama = $row['nama'];
+                    $tgl_lahir = $row['tgl_lahir'];
                     $alamat = $row['alamat'];
                     $jenis_kelamin = $row['jenis_kelamin'];
                     $email = $row['email'];
                     $username = $row['username'];
                     $password = $row['password'];
                     $posisi = $row['level'];
-                    if ($row['level'] == 1) {
+                    if ($row['level'] == 1 && $row['t_check'] == 0) {
                         $levelnya = "Admin";
-                    } elseif ($row['level'] == 2) {
+                        $levelnya2 = "Bukan Teknisi";
+                    } elseif ($row['level'] == 2 && $row['t_check'] == 0) {
                         $levelnya = "Pegawai";
-                    } elseif ($row['level'] == 3) {
+                        $levelnya2 = "Bukan Teknisi";
+                    } elseif ($row['level'] == 3 && $row['t_check'] == 0) {
                         $levelnya = "Operator";
+                        $levelnya2 = "Bukan Teknisi";
                     } elseif ($row['level'] == 4 && $row['t_check'] == 1) {
                         $levelnya = "Teknisi";
                         $levelnya2 = "Teknisi Pelayanan Penyambungan";
                     } elseif ($row['level'] == 4 && $row['t_check'] == 2) {
                         $levelnya = "Teknisi";
                         $levelnya2 = "Teknisi Pelayanan Pengaduan";
-                    } elseif ($row['level'] == 5) {
+                    } elseif ($row['level'] == 5 && $row['t_check'] == 0) {
                         $levelnya = "Petugas Survey";
+                        $levelnya2 = "Bukan Teknisi";
                     }
                     $t_check = $row['t_check'];
                 }
@@ -120,6 +147,11 @@
                 <div class="form-group">
                     <label for="">Nama</label>
                     <input type="text" name="nama" class="form-control" value="<?php echo $nama ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Tanggal Lahir</label>
+                    <input type="date" name="tgl_lahir" value="<?php echo $tgl_lahir ?>" class="form-control" placeholder="Masukkan Tanggal Lahir" required>
                 </div>
 
                 <div class="form-group">

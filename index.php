@@ -144,6 +144,116 @@
 
         <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
     <?php
+    } elseif ($level == 4 && $tekcheck == 2) {
+    ?>
+        <!-- Jumlah Data Pengaduan Masuk untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_teknisi FROM tb_tekpen_lap_masuk a JOIN tb_pengaduan b ON a.id_pengaduan = b.id_pengaduan JOIN tb_teknisi_pengaduan c ON a.id_teknisi = c.id_teknisi  WHERE a.op_acc = 1 && c.nama = '$nama' && b.status = 'Dalam Proses'");
+        $hitungrow2 = mysqli_num_rows($data);
+        ?>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Data Pengaduan yang harus Diselesaikan
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo $hitungrow2 ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-database fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+    <?php
+    } elseif ($level == 3) {
+    ?>
+        <div class="row">
+            <!-- Jumlah Data Pengaduan Masuk -->
+            <?php
+            $data = mysqli_query($mysqli, "SELECT * FROM tb_pengaduan WHERE teknisi='' && status=''");
+            $hitungrow2 = mysqli_num_rows($data);
+            ?>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Laporan Pengaduan yang masuk
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow2 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jumlah Data Pengaduan Proses -->
+            <?php
+            $data = mysqli_query($mysqli, "select * from tb_pengaduan WHERE status='Dalam Proses'");
+            $hitungrow2 = mysqli_num_rows($data);
+            ?>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Laporan Pengaduan yang masih Dalam Proses
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow2 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jumlah Data Pengaduan Selesai -->
+            <?php
+            $data = mysqli_query($mysqli, "select * from tb_pengaduan WHERE status='selesai'");
+            $hitungrow2 = mysqli_num_rows($data);
+            ?>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Laporan Pengaduan yang Selesai
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow2 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+    <?php
     }
     ?>
 

@@ -231,11 +231,11 @@ if (!isset($_SESSION['username'])) {
                     </li>
 
                     <!-- Nav Item - Menu Data Teknisi Pelayanan Pengaduan -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="header.php?page=tekpen">
                             <i class="fas fa-user-friends"></i></i>
                             <span>Data Teknisi Pelayanan Pengaduan</span></a>
-                    </li>
+                    </li> -->
                 <?php
                     //Menu Hak akses Pegawai
                 } elseif ($level == 2) {
@@ -407,10 +407,51 @@ if (!isset($_SESSION['username'])) {
                 } elseif ($level == 3) {
                 ?>
                     <!-- Nav Item - Menu Operator -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="header.php?page=pengaduan">
                             <i class="fas fa-user-friends"></i></i>
-                            <span>Menu Data Operator</span></a>
+                            <span>Menu Data Pengaduan</span></a>
+                    </li> -->
+
+                    <!-- Nav Item - Menu Selesai -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Menu Data Pengaduan Masuk</span>
+                        </a>
+                        <div id="collapseA" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                                    <!-- Link Menu Data Pengaduan Masuk -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=pengaduanmasuk">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">Data Pengaduan <br> Masuk</span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <!-- Link Menu Data Pengaduan proses -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=pengaduanproses">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">Data Pengaduan <br> Proses
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <!-- Link Menu Data Pengaduan Selesai -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=pengaduanselesai">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">Data Pengaduan <br> Selesai
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </li>
                 <?php
                     //Menu Hak akses Teknisi Yanbung
@@ -426,11 +467,35 @@ if (!isset($_SESSION['username'])) {
                     //Menu Hak akses Teknisi Pelayanan Pengaduan
                 } elseif ($level == 4 && $tekcheck == 2) {
                 ?>
-                    <!-- Nav Item - Menu Teknisi Pengaduan -->
+                    <!-- Nav Item - Menu Selesai -->
                     <li class="nav-item">
-                        <a class="nav-link" href="header.php?page=laporanpen">
-                            <i class="fas fa-user-friends"></i></i>
-                            <span>Menu Data Pengaduan</span></a>
+                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Menu Pengaduan</span>
+                        </a>
+                        <div id="collapseA" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                                    <!-- Link Menu Data Pengaduan Masuk -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=laporanpen">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">Data Pengaduan <br> Masuk</span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <!-- Link Menu Data Pengaduan Selesai -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=laporanpenselesai">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">Data Pengaduan <br> Selesai
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </li>
                 <?php
                 } elseif ($level == 5) {
@@ -589,10 +654,22 @@ if (!isset($_SESSION['username'])) {
                             case 'laporanpen':
                                 include "teknisi/pengaduan/form_laporan.php";
                                 break;
+                            case 'progres':
+                                include "teknisi/pengaduan/form_input_progress.php";
+                                break;
+                            case 'laporanpenselesai':
+                                include "teknisi/pengaduan/form_laporan_selesai.php";
+                                break;
 
                                 //case untuk halaman laporan operator
-                            case 'pengaduan':
-                                include "pelayanan_pengaduan/pengaduan.php";
+                            case 'pengaduanmasuk':
+                                include "pelayanan_pengaduan/pengaduan_masuk.php";
+                                break;
+                            case 'pengaduanproses':
+                                include "pelayanan_pengaduan/pengaduan_proses.php";
+                                break;
+                            case 'pengaduanselesai':
+                                include "pelayanan_pengaduan/pengaduan_selesai.php";
                                 break;
                             case 'pengtambah':
                                 include "pelayanan_pengaduan/input.php";
