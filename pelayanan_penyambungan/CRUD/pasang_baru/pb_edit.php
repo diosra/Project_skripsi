@@ -49,10 +49,10 @@
 
                 if ($query) {
                     if ($fasa_baru == "3 FASA") {
-                        $hapusData = mysqli_query($mysqli, "DELETE FROM tb_hasil_perhitungan_pb_1phs WHERE id_pasang_baru=$id");
-                        $insertDataPerubahan = "INSERT INTO tb_hasil_perhitungan_pb_3phs (id_pasang_baru,pekerjaan_rab, kwh_meter_3phs_pengukuran_langsung, box_app_1_pintu_pengukuran_langsung,segel_plastik, nfa_2x_3x35, nfa_2x_4x16, service_wedge_clamp_3phs, cco_3T3, skat_3, isolasi_scotch, pemas_kwh_meter_3phs_tanpa_wiring, penarikan_sr_3phs, pengepresan_cco, survey, total_biaya)
-                                        VALUES 
-                                        ('$id', '$ambil2', '1348000', '2400000', '2724', '29360', '12110','4433', '11722', '39400', '5615', '46811', '3482', '31339', '20856', '3990852')";
+                        $hapusData = mysqli_query($mysqli, "DELETE FROM tb_detail_pb_1phs WHERE id_pasang_baru=$id");
+                        $insertDataPerubahan = "INSERT INTO tb_detail_pb_3phs (id_pasang_baru,pekerjaan_rab, uraianbiaya1_pb3,uraianbiaya2_pb3,uraianbiaya3_pb3,uraianbiaya4_pb3,uraianbiaya5_pb3,uraianbiaya6_pb3,uraianbiaya7_pb3,uraianbiaya8_pb3,uraianbiaya9_pb3,uraianbiaya10_pb3,uraianbiaya11_pb3,uraianbiaya12_pb3,uraianbiaya13_pb3 total_biaya)
+                        VALUES 
+                        ('$id', '$ambil2', '1348000', '2400000', '2724', '29360', '12110','4433', '11722', '39400', '5615', '46811', '3482', '31339', '20856', '3990852')";
                         $query2 = mysqli_query($mysqli, $insertDataPerubahan) or die(mysqli_error($mysqli));
             ?>
                         <script>
@@ -66,12 +66,10 @@
                         </script>
                     <?php
                     } elseif ($fasa_baru == "1 FASA") {
-                        $hapusData = mysqli_query($mysqli, "DELETE FROM tb_hasil_perhitungan_pb_3phs WHERE id_pasang_baru=$id");
-                        $insertDataPerubahan = "INSERT INTO tb_hasil_perhitungan_pb_1phs (id_pasang_baru, pekerjaan_rab, kwh_meter_prabayar_fase_tunggal, nfa_2X, segel_plastik, 
-                                        cco_1T1, cco_3T1, isolasi_scotch, service_wedge_clamp_1phs, pasang_kwh_meter_satu_phasa_wiring, penarikan_sr_1_phasa,
-                                        pengepresan_cco, survey, total_biaya)
-                                        VALUES 
-                                        ('$id', '$ambil1', '243040', '4210', '2724','6895', '9358','5615', '3842', '41008', '33625', '22982', '20856', '394155')";
+                        $hapusData = mysqli_query($mysqli, "DELETE FROM tb_detail_pb_3phs WHERE id_pasang_baru=$id");
+                        $insertDataPerubahan = "INSERT INTO tb_detail_pb_1phs (id_pasang_baru, pekerjaan_rab, uraianbiaya1_pb1,uraianbiaya2_pb1,uraianbiaya3_pb1,uraianbiaya4_pb1,uraianbiaya5_pb1,uraianbiaya5_pb1,uraianbiaya6_pb1,uraianbiaya7_pb1,uraianbiaya8_pb1,uraianbiaya9_pb1,uraianbiaya10_pb1,uraianbiaya11_pb1 total_biaya)
+                        VALUES 
+                        ('$id', '$ambil1', '243040', '4210', '2724','6895', '9358','5615', '3842', '41008', '33625', '22982', '20856', '394155')";
                         $query2 = mysqli_query($mysqli, $insertDataPerubahan) or die(mysqli_error($mysqli));
                     ?>
                         <script>

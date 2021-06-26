@@ -23,12 +23,12 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     if ($filter == '1') {
         $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
     } else {
-        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
     }
 } else {
-    $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA'") or die($mysqli->error);
+    $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA'") or die($mysqli->error);
 }
 ?>
 

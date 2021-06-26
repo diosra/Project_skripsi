@@ -150,14 +150,14 @@
                             if ($filter == '1') {
                                 echo '<a href="header.php?page=cpd1phasa&filter=1&bulan=' . $_GET['bulan'] . '&tahun=' . $_GET['tahun'] . '"></a>';
                                 $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
                             } else {
                                 echo '<a href="header.php?page=cpd1phasa&filter=2&tahun=' . $_GET['tahun'] . '"></a>';
-                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
                             }
                         } else {
                             echo '<a href="header.php?page=cpd1phasa"></a>';
-                            $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA'") or die($mysqli->error);
+                            $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA'") or die($mysqli->error);
                         }
                         // kode untuk isi Filter - END
 

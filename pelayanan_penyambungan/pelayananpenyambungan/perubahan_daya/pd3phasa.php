@@ -77,11 +77,11 @@
                                     <td class="align-middle"><?php echo $row['daya_baru']; ?></td>
                                     <td class="align-middle"><?php echo $row['fasa_lama']; ?></td>
                                     <td class="align-middle"><?php echo $row['fasa_baru']; ?></td>
-                                    <td class="row text-center">
+                                    <td class="text-center">
                                         <div class="col">
                                             <a href="header.php?page=editpd&edit=<?php echo $row['id_perubahan_daya'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                         </div>
-                                        <div class="col">
+                                        <div class="col mt-2">
                                             <a href="header.php?page=hapuspd&hapus=<?php echo $row['id_perubahan_daya'] ?>&fasa_lama=<?php echo $row['fasa_lama'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                         </div>
                                     </td>

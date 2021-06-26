@@ -45,7 +45,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_hasil_perhitungan_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan");
+                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_detail_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
@@ -57,9 +57,9 @@
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['MCB'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['segel_plastik'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['penggatian_mcb_1phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya1_pd1'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya2_pd1'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya3_pd1'], 0, ',', '.') ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
                                 </tr>
                             <?php } ?>
@@ -111,7 +111,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_hasil_perhitungan_pd_1phs_ke_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_lama = '1 FASA'");
+                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_detail_pd_1ke3phs c ON a.id_perubahan_daya = c.id_perubahan_daya JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_lama = '1 FASA'");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
@@ -123,19 +123,19 @@
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['kwh_meter_3phs_pengukuran_langsung_kelas_1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['segel_plastik'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['nfa2x_3x35'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['nfa2x_4x16'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['service_wedge_clamp'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['cco_3t3'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['skat_3'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['isolasi_scotch'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['pemas_kwh_meter_3phs'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['penarikan_sr3phs'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['pengepresan'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['penggantian_mcb'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['bongkar_kwh_meter_1phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya1_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya2_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya3_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya4_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya5_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya6_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya7_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya8_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya9_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya10_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya11_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya12_pd_1ke3phs'], 0, ',', '.') ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya13_pd_1ke3phs'], 0, ',', '.') ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
                                 </tr>
                             <?php } ?>

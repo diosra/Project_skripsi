@@ -63,12 +63,12 @@
                                     <td class="align-middle"><?php echo $row['tarif_baru']; ?></td>
                                     <td class="align-middle"><?php echo $row['daya_baru']; ?></td>
                                     <td class="align-middle"><?php echo $row['fasa_baru']; ?></td>
-                                    <td class="row text-center">
+                                    <td class="text-center">
                                         <div class="col">
                                             <a href="header.php?page=editpb&edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                         </div>
-                                        <div class="col">
-                                            <a href="header.php?page=editpb&hapus=<?php echo $row['id_pasang_baru'] ?>&fasa_baru=<?php echo $row['fasa_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                        <div class="col mt-2">
+                                            <a href="header.php?page=hapuspb&hapus=<?php echo $row['id_pasang_baru'] ?>&fasa_baru=<?php echo $row['fasa_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                         </div>
                                     </td>
                                 </tr>

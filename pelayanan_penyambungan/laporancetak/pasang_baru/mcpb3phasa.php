@@ -147,14 +147,14 @@
                             if ($filter == '1') {
                                 echo '<a href="header.php?page=cpb3phasa&filter=1&bulan=' . $_GET['bulan'] . '&tahun=' . $_GET['tahun'] . '"></a>';
                                 $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
                             } else {
                                 echo '<a href="header.php?page=cpb3phasa&filter=2&tahun=' . $_GET['tahun'] . '"></a>';
-                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
                             }
                         } else {
                             echo '<a href="header.php?page=cpb3phasa"></a>';
-                            $result = $mysqli->query("SELECT b.*, a.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA'") or die($mysqli->error);
+                            $result = $mysqli->query("SELECT b.*, a.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pb_3phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '3 FASA'") or die($mysqli->error);
                         }
                         // kode untuk isi Filter - END
 

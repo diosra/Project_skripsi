@@ -6,7 +6,7 @@ $no = 1;
 //     $tgl1 = $_POST['tgl1'];
 //     $tgl2 = $_POST['tgl2'];
 
-// $data = mysqli_query($mysqli, "SELECT b.no_registrasi, b.nama,a.tarif_lama, a.daya_lama, a.tarif_baru, a.daya_baru, a.fasa_lama, a.fasa_baru, c.pekerjaan_rab, c.total_biaya FROM tb_pd_1phs a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pd_1phs c ON a.id_pd_1phs = c.id_pd_1phs");
+// $data = mysqli_query($mysqli, "SELECT b.no_registrasi, b.nama,a.tarif_lama, a.daya_lama, a.tarif_baru, a.daya_baru, a.fasa_lama, a.fasa_baru, c.pekerjaan_rab, c.total_biaya FROM tb_pd_1phs a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1phs c ON a.id_pd_1phs = c.id_pd_1phs");
 // $jumlah = mysqli_num_rows($data);
 // }
 
@@ -30,12 +30,12 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     if ($filter == '1') {
         $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pd_1phs_ke_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1ke3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
     } else {
-        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pd_1phs_ke_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1ke3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
     }
 } else {
-    $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_hasil_perhitungan_pd_1phs_ke_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA'") or die($mysqli->error);
+    $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1ke3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA'") or die($mysqli->error);
 }
 ?>
 
