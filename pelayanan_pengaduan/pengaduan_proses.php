@@ -30,7 +30,7 @@
                     <h4 class="modal-title">Deskripsi Laporan</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="deskripsi">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup Laporan</button>
@@ -147,7 +147,7 @@
                     id: $(this).attr('data-id')
                 },
                 function(html) {
-                    $(".modal-body").html(html);
+                    $("#deskripsi").html(html);
                 });
         });
     })

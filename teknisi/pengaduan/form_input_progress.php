@@ -47,34 +47,31 @@
         </div>
         <!-- Form Utama -->
         <div class="card-body">
-            <form name="form1">
-                <div class="form-group">
-                    <label for="">Nomor Laporan</label>
-                    <input type="text" name="no_laporan" class="form-control" value="<?php echo $no_laporan ?>" readonly>
-                </div>
+            <!-- TAG FORM DIHAPUS , APABILA ADA ERROR MAKA TAMBAHKAN TAG FORM DISINI -->
+            <div class="form-group">
+                <label for="">Nomor Laporan</label>
+                <input type="text" name="no_laporan" class="form-control" value="<?php echo $no_laporan ?>" readonly>
+            </div>
 
-                <div class="form-group">
-                    <label for="">Identitas KTP</label>
-                    <input type="text" name="identitas" value="<?php echo $identitas ?>" class="form-control" required readonly>
-                </div>
+            <div class="form-group">
+                <label for="">Identitas KTP</label>
+                <input type="text" name="identitas" value="<?php echo $identitas ?>" class="form-control" required readonly>
+            </div>
 
-                <div class="form-group">
-                    <label for="">Nama Pelanggan</label>
-                    <input type="text" name="nama" value="<?php echo $nama ?>" class="form-control" required readonly>
-                </div>
+            <div class="form-group">
+                <label for="">Nama Pelanggan</label>
+                <input type="text" name="nama" value="<?php echo $nama ?>" class="form-control" required readonly>
+            </div>
 
-                <div class="form-group">
-                    <label for="">Alamat</label>
-                    <textarea name="alamat" class="form-control" cols="10" rows="3" required readonly><?php echo $alamat ?></textarea>
-                </div>
+            <div class="form-group">
+                <label for="">Alamat</label>
+                <textarea name="alamat" class="form-control" cols="10" rows="3" required readonly><?php echo $alamat ?></textarea>
+            </div>
 
-                <div class="form-group">
-                    <label for="">Deskripsi Laporan Pelanggan</label>
-                    <textarea name="deskripsi" class="form-control" cols="10" rows="3" required readonly><?php echo $deskripsi ?></textarea>
-                </div>
-            </form>
-
-
+            <div class="form-group">
+                <label for="">Deskripsi Laporan Pelanggan</label>
+                <textarea name="deskripsi" class="form-control" cols="10" rows="3" required readonly><?php echo $deskripsi ?></textarea>
+            </div>
         </div>
         <!-- Form Utama end -->
     </div>
@@ -121,6 +118,8 @@
                     </div>
                 </div>
 
+
+
                 <div class="form-group row float-right">
                     <div class="col">
                         <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
@@ -155,7 +154,7 @@ if (isset($_POST['save'])) {
     $tgl_selesai = $_POST['tgl_selesai'];
     $status = $_POST['status'];
 
-    $insert = "INSERT INTO tb_laporan_tekpen (id_tekpenlap, laporan,tgl_mulai, tgl_selesai, status) VALUES ('$id_tekpenlap','$laporan','$tgl_mulai','$tgl_selesai', '$status')";
+    $insert = "INSERT INTO tb_laporan_tekpen (id_tekpenlap,id_pengaduan, laporan,tgl_mulai, tgl_selesai, status) VALUES ('$id_tekpenlap','$id_pen','$laporan','$tgl_mulai','$tgl_selesai', '$status')";
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
     if ($query && $status == "selesai") {

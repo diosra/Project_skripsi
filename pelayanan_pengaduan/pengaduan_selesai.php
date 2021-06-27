@@ -27,10 +27,27 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Deskripsi Laporan</h4>
+                    <h4 class="modal-title">Deskripsi Laporan Pengaduan</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="deskripsi">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup Laporan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal dialog untuk laporan -->
+    <div id="get-data2" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Deskripsi Laporan Teknisi</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="laporan">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup Laporan</button>
@@ -62,6 +79,7 @@
                             <th class="text-center">Deskripsi</th>
                             <th class="text-center">Tanggal Masuk</th>
                             <th class="text-center">Teknisi</th>
+                            <th class="text-center">Laporan Teknisi</th>
                             <th class="text-center">Status</th>
                         </tr>
                     </thead>
@@ -88,9 +106,13 @@
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
-                                    <!-- <i class='fas fa-sticky-note fa-2x'> -->
                                     <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_masuk_laporan'])); ?></td>
                                     <td class="align-middle"><?php echo $row['teknisi']; ?></td>
+                                    <td class="align-middle text-center">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_pengaduan'] ?>" class="open-modal2 btn btn-primary" href="#">
+                                            <i class='fas fa-sticky-note fa-2x'></i>
+                                        </a>
+                                    </td>
                                     <?php
                                     if ($row['status'] == "selesai") {
                                     ?>
@@ -147,7 +169,23 @@
                     id: $(this).attr('data-id')
                 },
                 function(html) {
-                    $(".modal-body").html(html);
+                    $("#deskripsi").html(html);
+                });
+        });
+    })
+</script>
+
+<!-- Script Modal Laporan -->
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal2', function(e) {
+            e.preventDefault();
+            $("#get-data2").modal('show');
+            $.post('teknisi/pengaduan/view_laporan.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#laporan").html(html);
                 });
         });
     })

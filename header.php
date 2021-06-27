@@ -413,7 +413,7 @@ if (!isset($_SESSION['username'])) {
                             <span>Menu Data Pengaduan</span></a>
                     </li> -->
 
-                    <!-- Nav Item - Menu Selesai -->
+                    <!-- Nav Item - Menu Pengaduan -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
                             <i class="fas fa-exclamation-triangle"></i>
@@ -453,6 +453,31 @@ if (!isset($_SESSION['username'])) {
                             </div>
                         </div>
                     </li>
+
+                    <!-- Divider -->
+                    <hr class="sidebar-divider">
+
+                    <!-- Nav Item - Menu Cetak -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseB" aria-expanded="true" aria-controls="collapseB">
+                            <i class="fas fa-print"></i>
+                            <span>Menu Cetak</span>
+                        </a>
+                        <div id="collapseB" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                                    <!-- Link Menu Data Pengaduan Masuk -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=cetakpengaduan">
+                                            <i class="fas fa-copy"></i>
+                                            <span class="font-weight-bolder text-capitalize">Cetak Laporan <br> Pengaduan</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
                 <?php
                     //Menu Hak akses Teknisi Yanbung
                 } elseif ($level == 4 && $tekcheck == 1) {
@@ -670,6 +695,9 @@ if (!isset($_SESSION['username'])) {
                                 break;
                             case 'pengaduanselesai':
                                 include "pelayanan_pengaduan/pengaduan_selesai.php";
+                                break;
+                            case 'cetakpengaduan':
+                                include "pelayanan_pengaduan/mcpengaduan.php";
                                 break;
                             case 'pengtambah':
                                 include "pelayanan_pengaduan/input.php";

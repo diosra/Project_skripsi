@@ -175,6 +175,7 @@ if (isset($_POST['save'])) {
                 title: 'Sukses.',
                 text: 'Sukses Menambahkan Data User'
             }).then((result) => {
+                x
                 window.location = "header.php?page=user";
             })
         </script>

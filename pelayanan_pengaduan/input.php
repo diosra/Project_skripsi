@@ -67,7 +67,6 @@
     <div class="card shadow mb-4">
         <!-- Form Utama -->
         <div class="card-body">
-
             <form action="header.php?page=pengtambah&id=<?php echo $row['id_pengaduan'] ?>" method="post" name="form1">
                 <input type="hidden" name="id_pengaduan" value="<?php echo $id; ?>">
 
@@ -92,8 +91,6 @@
                     </div>
                 </div>
             </form>
-
-
         </div>
         <!-- Form Utama end -->
     </div>
