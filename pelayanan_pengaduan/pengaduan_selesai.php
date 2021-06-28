@@ -72,6 +72,7 @@
                             <th class="text-center">Identitas (No. KTP)</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">No HP</th>
+                            <th class="text-center">Email Pelapor</th>
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Kabupaten</th>
                             <th class="text-center">Kecamatan</th>
@@ -97,6 +98,7 @@
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['nohp']; ?></td>
+                                    <td class="align-middle"><?php echo $row['email']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['kabupaten']; ?></td>
                                     <td class="align-middle"><?php echo $row['kecamatan']; ?></td>

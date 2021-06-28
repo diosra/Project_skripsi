@@ -9,9 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pilih Teknisi</title>
-
-    <script src="pelayanan_pengaduan/process.js"></script> <!-- Load file process.js -->
+    <title>Kirim Email</title>
 
 </head>
 
@@ -20,7 +18,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Form Pilih Teknisi</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Form Kirim Email</u></h1>
     </div>
 
     <!-- PHP - Query Select untuk data ditampilkan di form -->
@@ -36,41 +34,21 @@
     }
     ?>
 
-    <!-- Card untuk Form -->
     <div class="card shadow mb-4">
-        <!-- Form Utama -->
         <div class="card-body">
-            <form action="header.php?page=sendemail&id=<?php echo $row['id_pengaduan'] ?>" method="post" name="form1">
-                <input type="hidden" name="id_pengaduan" value="<?php echo $id; ?>">
+            <form action="header.php?page=sendemail" method="POST">
 
                 <div class="form-group">
-                    <label for="">Cari Data Petugas Teknisi</label>
-                    <input type="text" id="tekpen" class="form-control" required>
-                    <button type="button" id="btn-search" class="btn btn-primary mt-2">Cari</button>
-                </div>
-
-                <input type="hidden" name="id_teknisi" id="id_teknisi">
-
-                <div class="form-group">
-                    <label for="">Nama Teknisi</label>
-                    <input type="text" id="nama" name="nama" class="form-control" required readonly>
-                </div>
-
-                <hr class="my-3">
-                <h2 class="mb-3"><u>Kirim Pesan Email</u></h2>
-
-
-                <div class="form-group">
-                    <label>Email Pelanggan</label>
+                    <label>Kepada</label>
                     <input type="email" name="email_penerima" placeholder="Email Penerima" class="form-control" value="<?php echo $email ?>" readonly />
                 </div>
                 <div class="form-group">
                     <label>Subjek</label>
-                    <input type="text" name="subjek" placeholder="Isi Subjek" class="form-control" required />
+                    <input type="text" name="subjek" placeholder="Isi Subjek" class="form-control" />
                 </div>
                 <div class="form-group">
                     <label>Pesan</label>
-                    <textarea required name="pesan" placeholder="Isi Pesan" rows="8" class="form-control"></textarea>
+                    <textarea name="pesan" placeholder="Isi Pesan" rows="8" class="form-control"></textarea>
                 </div>
 
                 <div class="form-group row float-right">
@@ -82,9 +60,7 @@
                 </div>
             </form>
         </div>
-        <!-- Form Utama end -->
     </div>
-
 
 </div>
 <!-- /.container-fluid -->

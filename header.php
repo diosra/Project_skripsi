@@ -686,7 +686,7 @@ if (!isset($_SESSION['username'])) {
                                 include "teknisi/pengaduan/form_laporan_selesai.php";
                                 break;
 
-                                //case untuk halaman laporan operator
+                                //case untuk halaman operator
                             case 'pengaduanmasuk':
                                 include "pelayanan_pengaduan/pengaduan_masuk.php";
                                 break;
@@ -702,11 +702,11 @@ if (!isset($_SESSION['username'])) {
                             case 'pengtambah':
                                 include "pelayanan_pengaduan/input.php";
                                 break;
-                            case 'pengedit':
-                                include "pelayanan_pengaduan/edit.php";
+                            case 'kirimemail':
+                                include "pelayanan_pengaduan/kirimemail.php";
                                 break;
-                            case 'penghapus':
-                                include "pelayanan_pengaduan/hapus.php";
+                            case 'sendemail':
+                                include "pelayanan_pengaduan/send.php";
                                 break;
 
                                 //case untuk halaman laporan Petugas Survey

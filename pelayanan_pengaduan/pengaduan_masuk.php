@@ -55,6 +55,7 @@
                             <th class="text-center">Identitas (No. KTP)</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">No HP</th>
+                            <th class="text-center">Email Pelapor</th>
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Kabupaten</th>
                             <th class="text-center">Kecamatan</th>
@@ -78,6 +79,7 @@
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['nohp']; ?></td>
+                                    <td class="align-middle"><?php echo $row['email']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['kabupaten']; ?></td>
                                     <td class="align-middle"><?php echo $row['kecamatan']; ?></td>
@@ -90,19 +92,11 @@
                                     <!-- <i class='fas fa-sticky-note fa-2x'> -->
                                     <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_masuk_laporan'])); ?></td>
                                     <td class="align-middle text-center">
-                                        <div class="row">
-                                            <div class="col">
-                                                <a href="header.php?page=pengtambah&id=<?php echo $row['id_pengaduan'] ?>" class="btn btn-primary btn-block">
-                                                    <i class="fas fa-hard-hat"></i>
-                                                    Tambah Teknisi
-                                                </a>
-                                            </div>
-                                            <!-- <div class="col mt-2">
-                                                <a href="header.php?page=pengedit&edit=<?php echo $row['id_pengaduan'] ?>" class="btn btn-warning btn-block" data-toggle="tooltip" data-placement="top" title="Edit Data">Edit</a>
-                                            </div>
-                                            <div class="col mt-2">
-                                                <a href="header.php?page=penghapus&hapus=<?php echo $row['id_pengaduan'] ?>" class="btn btn-danger btn-block" id="remove">Hapus</a>
-                                            </div> -->
+                                        <div class="d-flex justify-content-center">
+                                            <a href="header.php?page=pengtambah&id=<?php echo $row['id_pengaduan'] ?>" class="btn btn-primary mr-2">
+                                                <i class="fas fa-hard-hat"></i>
+                                                Tambah Teknisi
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
