@@ -35,6 +35,7 @@
                             <th class="text-center">No Registrasi</th>
                             <th class="text-center">Identitas (KTP)</th>
                             <th class="text-center">Nama</th>
+                            <th class="text-center">Email Pelanggan</th>
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Jenis Transaksi</th>
                             <th class="text-center">Tanggal Permohonan</th>
@@ -46,7 +47,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.no_registrasi ,a.identitas, a.nama, a.alamat, b.id_pasang_baru, b.id_pelanggan, b.jenis_transaksi, b.tgl_mohon, b.tarif_baru, b.daya_baru, b.fasa_baru FROM tb_pasang_baru b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_baru = '1 FASA'");
+                        $data = mysqli_query($mysqli, "SELECT a.*, b.* FROM tb_pasang_baru b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_baru = '1 FASA'");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
@@ -56,6 +57,7 @@
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                    <td class="align-middle"><?php echo $row['email']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['jenis_transaksi']; ?></td>
                                     <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>

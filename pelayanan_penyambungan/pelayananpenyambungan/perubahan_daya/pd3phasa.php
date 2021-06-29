@@ -40,6 +40,7 @@
                             <th rowspan="2">No Registrasi</th>
                             <th rowspan="2">Identitas (KTP)</th>
                             <th rowspan="2">Nama</th>
+                            <th rowspan="2">Email Pelanggan</th>
                             <th rowspan="2">Alamat</th>
                             <th rowspan="2">Jenis Transaksi</th>
                             <th rowspan="2">Tanggal Permohonan</th>
@@ -68,6 +69,7 @@
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
+                                    <td class="align-middle"><?php echo $row['email']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['jenis_transaksi']; ?></td>
                                     <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>

@@ -183,7 +183,7 @@
         $(document).on('click', '.open-modal2', function(e) {
             e.preventDefault();
             $("#get-data2").modal('show');
-            $.post('teknisi/pengaduan/view_laporan.php', {
+            $.post('pelayanan_pengaduan/view_laporan.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {

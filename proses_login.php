@@ -31,6 +31,8 @@ if (isset($_POST['log'])) {
   $tekcheck = $data['t_check'];
   $nama_asli = $data['nama'];
   $jenis_kelamin = $data['jenis_kelamin'];
+  $foto = $data['foto'];
+  $id = $data['id'];
 
   if ($user == $username && $pass == $password) {
     $_SESSION['username'] = $username;
@@ -39,6 +41,8 @@ if (isset($_POST['log'])) {
     $_SESSION['t_check'] = $tekcheck;
     $_SESSION['nama'] = $nama_asli;
     $_SESSION['jenis_kelamin'] = $jenis_kelamin;
+    $_SESSION['foto'] = $foto;
+    $_SESSION['id'] = $id;
 
     if ($level == 1 && $tekcheck == 0) {
 ?>

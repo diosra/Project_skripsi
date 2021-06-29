@@ -30,18 +30,7 @@
         </div>
         <!-- Form Utama -->
         <div class="card-body">
-
-            <form action="header.php?page=inputpb" method="post" name="form1">
-
-                <?php
-                $pelanggan = '';
-                $query = "SELECT id_pelanggan, no_registrasi, nama FROM tb_pelanggan";
-                $result = mysqli_query($mysqli, $query);
-                while ($row = mysqli_fetch_array($result)) {
-                    $pelanggan .= '<option value="' . $row["id_pelanggan"] . ' ' . $row["no_registrasi"] . '"> ' . $row["no_registrasi"] . '- ' . $row["nama"] . '</option>';
-                }
-                ?>
-
+            <form action="header.php?page=sendcrud" method="post" name="form1">
                 <div class="form-group">
                     <label for="">Cari No Registrasi</label>
                     <input type="text" id="no_registrasi" name="id_pelanggan" class="form-control" required>
@@ -52,12 +41,12 @@
 
                 <div class="form-group">
                     <label for="">Identitas (No. KTP)</label>
-                    <input type="text" id="identitas" name="identitas" class="form-control" required readonly="readonly" required>
+                    <input type="text" id="identitas" name="identitas" class="form-control" readonly="readonly" required>
                 </div>
 
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" id="nama" name="nama" class="form-control" required readonly="readonly" required>
+                    <input type="text" id="nama" class="form-control" required readonly="readonly">
                 </div>
 
                 <div class="form-group">
@@ -95,114 +84,43 @@
                     </select>
                 </div>
 
+                <hr class="my-3">
+                <h3 class="mb-3"><u>Form Kirim Email</u></h3>
+
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" id="email" name="email_penerima" class="form-control" required readonly="readonly">
+                </div>
+
+                <div class="form-group">
+                    <label>Subjek</label>
+                    <input type="text" name="subjek" placeholder="Isi Subjek Email" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Pesan</label>
+                    <textarea name="pesan" required placeholder="Isi Pesan" rows="8" class="form-control"></textarea>
+                </div>
+
                 <div class="form-group row float-right">
                     <div class="col">
                         <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
 
-                        <button type="submit" class="btn btn-primary tesboot" name="save"><i class="fas fa-save"></i> Simpan</button>
+                        <button type="submit" class="btn btn-primary tesboot" name="savepb"><i class="fas fa-save"></i> Simpan</button>
                     </div>
                 </div>
             </form>
-
-
         </div>
         <!-- Form Utama end -->
     </div>
 
 </div>
 <!-- /.container-fluid -->
-
 </div>
 <!-- End of Main Content -->
 
 <?php
 include_once 'footer.php';
 ?>
-
-<!-- Script mengambil nama pelanggan sesuai nomor registrasi yang kita pilih -->
-<script>
-    $(document).ready(function() {
-        $('.action').change(function() {
-            if ($(this).val() != '') {
-                var action = $(this).attr("id");
-                var query = $(this).val();
-                var result = '';
-                if (action == "id_pelanggan") {
-                    result = 'nama';
-                } else {
-                    result = 'tidak ada';
-                }
-                $.ajax({
-                    url: "pelayanan_penyambungan/CRUD/pasang_baru/fetch.php",
-                    method: "POST",
-                    data: {
-                        action: action,
-                        query: query
-                    },
-                    success: function(data) {
-                        $('#' + result).html(data);
-                    }
-                })
-            }
-        });
-    });
-</script>
-
-<!-- PHP - Query Tombol Save dan SweetAlert -->
-<?php
-if (isset($_POST['save'])) {
-    $id_pelanggan = $_POST['id_pelanggan'];
-    $tgl_mohon = $_POST['tgl_mohon'];
-    $tarif_baru = $_POST['tarif_baru'];
-    $daya_baru = $_POST['daya_baru'];
-    $fasa_baru = $_POST['fasa_baru'];
-
-    $insert = "INSERT INTO tb_pasang_baru (id_pelanggan, jenis_transaksi,tgl_mohon, tarif_baru, daya_baru, fasa_baru) VALUES ('$id_pelanggan', 'Pasang Baru', '$tgl_mohon', '$tarif_baru','$daya_baru', '$fasa_baru')";
-    $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-
-    if ($fasa_baru == "1 FASA") {
-        $ambil1 = "PB 1 FASA";
-    } elseif ($fasa_baru == "3 FASA") {
-        $ambil2 = "PB 3 FASA";
-    }
-
-    if ($query) {
-        if ($fasa_baru == "1 FASA") {
-            $insert2 = "INSERT INTO tb_detail_pb_1phs (id_pasang_baru, pekerjaan_rab, uraianbiaya1_pb1,uraianbiaya2_pb1,uraianbiaya3_pb1,uraianbiaya4_pb1,uraianbiaya5_pb1,uraianbiaya6_pb1,uraianbiaya7_pb1,uraianbiaya8_pb1,uraianbiaya9_pb1,uraianbiaya10_pb1,uraianbiaya11_pb1,total_biaya)
-            VALUES 
-            ('" . mysqli_insert_id($mysqli) . "', '$ambil1', '243040','4210','2724','6985','9358','5615','3842','41008','33625','22982','20856','394245')";
-            $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
-?>
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sukses.',
-                    text: 'Sukses Menambahkan Data Pelanggan Pasang Baru 1 Phasa'
-                }).then((result) => {
-                    window.location = "header.php?page=pb1phasa";
-                })
-            </script>
-        <?php
-        } elseif ($fasa_baru == "3 FASA") {
-            $insert2 = "INSERT INTO tb_detail_pb_3phs (id_pasang_baru,pekerjaan_rab, uraianbiaya1_pb3,uraianbiaya2_pb3,uraianbiaya3_pb3,uraianbiaya4_pb3,uraianbiaya5_pb3,uraianbiaya6_pb3,uraianbiaya7_pb3,uraianbiaya8_pb3,uraianbiaya9_pb3,uraianbiaya10_pb3,uraianbiaya11_pb3,uraianbiaya12_pb3,uraianbiaya13_pb3,total_biaya)
-            VALUES 
-            ('" . mysqli_insert_id($mysqli) . "', '$ambil2', '1348000', '2400000', '2724', '29360', '12110','4433', '11722', '39400', '5615', '46811', '3482', '31339', '20856', '3990852')";
-            $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
-        ?>
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sukses.',
-                    text: 'Sukses Menambahkan Data Pelanggan Pasang Baru 3 Phasa'
-                }).then((result) => {
-                    window.location = "header.php?page=pb3phasa";
-                })
-            </script>
-<?php
-        }
-    }
-}
-?>
-
 
 </html>

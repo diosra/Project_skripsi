@@ -60,12 +60,14 @@
                                     <td class="align-middle"><?php echo $row['nohp']; ?></td>
                                     <td class="align-middle"><?php echo $row['no_telp']; ?></td>
                                     <td class="align-middle"><?php echo $row['email']; ?></td>
-                                    <td class="row text-center">
-                                        <div class="col">
-                                            <a href="header.php?page=peledit&edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                        </div>
-                                        <div class="col">
-                                            <a href="header.php?page=pelhapus&hapus=<?php echo $row['id_pelanggan'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                    <td class="align-middle text-center">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="header.php?page=peledit&edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                            </div>
+                                            <div class="col mt-2">
+                                                <a href="header.php?page=pelhapus&hapus=<?php echo $row['id_pelanggan'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>

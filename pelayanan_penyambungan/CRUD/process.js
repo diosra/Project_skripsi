@@ -9,13 +9,14 @@ function search() {
                 e.overrideMimeType("application/json;charset=UTF-8");
             }
         },
-        success: function (response) { // Ketika proses pengiriman berhasil
-            if (response.status == "success") { // Jika isi dari array status adalah success// set textbox dengan id nama // set textbox dengan id nama
-                $("#no_reg").val(response.id_pelanggan); // set textbox dengan id nama
-                $("#identitas").val(response.identitas); // set textbox dengan id nama
-                $("#nama").val(response.nama); // set textbox dengan id nama
-                $("#alamat").val(response.alamat); // set textbox dengan id jenis kelamin
-            } else { // Jika isi dari array status adalah failed
+        success: function (response) {
+            if (response.status == "success") {
+                $("#no_reg").val(response.id_pelanggan);
+                $("#identitas").val(response.identitas);
+                $("#nama").val(response.nama);
+                $("#alamat").val(response.alamat);
+                $("#email").val(response.email);
+            } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Gagal!',
@@ -32,6 +33,7 @@ $(document).ready(function () {
 
     $("#btn-search").click(function () { // Ketika user mengklik tombol Cari
         search(); // Panggil function search
+        console.log('=== DEBUG ===');
     });
 
     $("#id_pelanggan").keyup(function (event) { // Ketika user menekan tombol di keyboard

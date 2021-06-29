@@ -54,7 +54,7 @@
         </div>
         <!-- Form Utama -->
         <div class="card-body">
-            <form action="header.php?page=inputuser" method="post" name="form1">
+            <form action="header.php?page=inputuser" method="post" name="form1" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <label for="">Nama</label>
@@ -125,6 +125,11 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="">Upload Photo</label> <br>
+                    <input type="file" name="foto" accept="image/*" required>
+                </div>
+
                 <div class="form-group row float-right">
                     <div class="col">
                         <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
@@ -150,6 +155,8 @@ include_once 'footer.php';
 <!-- PHP - Query Tombol Save dan SweetAlert -->
 <?php
 if (isset($_POST['save'])) {
+
+
     $nama = $_POST['nama'];
     $tgl_lahir = $_POST['tgl_lahir'];
     $alamat = $_POST['alamat'];
@@ -159,8 +166,24 @@ if (isset($_POST['save'])) {
     $password = $_POST['password'];
     $level = $_POST['level'];
     $t_check = $_POST['t_check'];
+    $getId = mysqli_fetch_row(mysqli_query($mysqli, "SELECT max(id) from tb_data_user"));
 
-    $insert = "INSERT INTO tb_data_user (nama, tgl_lahir, alamat,jenis_kelamin, email, username, password, level, t_check) VALUES ('$nama','$tgl_lahir' ,'$alamat', '$jenis_kelamin', '$email','$username', '$password', '$level', '$t_check')";
+    if (!empty($_FILES['foto']['tmp_name'])) {
+        $ext = strtolower(substr($_FILES['foto']['name'], -3));
+        if ($ext == 'gif') {
+            $ext = ".gif";
+        } elseif ($ext == 'jpg') {
+            $ext = ".jpg";
+        } elseif ($ext == 'jpeg') {
+            $ext = ".jpeg";
+        } else {
+            $ext = ".png";
+        }
+        // proses upload file ke folder gambar 
+        move_uploaded_file($_FILES['foto']['tmp_name'], "gambar/" . basename(($getId[0] + 1) . $ext));
+    }
+
+    $insert = "INSERT INTO tb_data_user (nama, tgl_lahir, alamat,jenis_kelamin, email, username, password, level, t_check, foto) VALUES ('$nama','$tgl_lahir' ,'$alamat', '$jenis_kelamin', '$email','$username', '$password', '$level', '$t_check', '" . ($getId[0] + 1) . $ext . "')";
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
     if ($query) {

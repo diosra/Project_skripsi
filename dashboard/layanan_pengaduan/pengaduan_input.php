@@ -72,6 +72,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" id="email" name="email" class="form-control" required required>
+                </div>
+
+                <div class="form-group">
                     <label for="">No Handphone</label>
                     <input type="number" id="nohp" name="nohp" class="form-control" required required>
                 </div>
@@ -138,6 +143,7 @@ if (isset($_POST['save'])) {
     $identitas = $_POST['identitas'];
     $nama = $_POST['nama'];
     $nohp = $_POST['nohp'];
+    $email = $_POST['email'];
     $alamat = $_POST['alamat'];
     $kabupaten = $_POST['kabupaten'];
     $kecamatan = $_POST['kecamatan'];
@@ -145,7 +151,7 @@ if (isset($_POST['save'])) {
     $deskripsi = $_POST['deskripsi'];
     $tgl_masuk_laporan = $_POST['tgl_masuk_laporan'];
 
-    $insert = "INSERT INTO tb_pengaduan (gangguan,no_laporan,identitas, nama,nohp, alamat, kabupaten,kecamatan,kelurahan, deskripsi, tgl_masuk_laporan) VALUES ('$gangguan','$noLaporan','$identitas', '$nama', '$nohp', '$alamat','$kabupaten', '$kecamatan', '$kelurahan', '$deskripsi', '$tgl_masuk_laporan')";
+    $insert = "INSERT INTO tb_pengaduan (gangguan,no_laporan,identitas, nama,nohp,email, alamat, kabupaten,kecamatan,kelurahan, deskripsi, tgl_masuk_laporan) VALUES ('$gangguan','$noLaporan','$identitas', '$nama', '$nohp','$email', '$alamat','$kabupaten', '$kecamatan', '$kelurahan', '$deskripsi', '$tgl_masuk_laporan')";
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
 
     if ($query) {

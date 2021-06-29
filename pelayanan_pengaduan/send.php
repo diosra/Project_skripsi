@@ -8,31 +8,6 @@ include('phpmailer/Exception.php');
 include('phpmailer/PHPMailer.php');
 include('phpmailer/SMTP.php');
 
-if (isset($_POST['save'])) {
-    $id = $_POST['id_pengaduan'];
-    $nama = $_POST['nama'];
-    $id_teknisi = $_POST['id_teknisi'];
-
-    $insert = "UPDATE tb_pengaduan SET teknisi='$nama', status='Dalam Proses' WHERE id_pengaduan = $id";
-    $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-
-    if ($query) {
-        $update = "UPDATE tb_tekpen_lap_masuk SET id_teknisi='$id_teknisi', op_acc='1' WHERE id_pengaduan = $id";
-        $query2 = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
-?>
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Sukses.',
-                text: 'Sukses Menambahkan Teknisi'
-            }).then((result) => {
-                window.location = "header.php?page=pengaduanproses";
-            })
-        </script>
-    <?php
-    }
-}
-
 $email_pengirim = 'pln.up3.bjm@gmail.com'; // Isikan dengan email pengirim
 $nama_pengirim = 'pln up3'; // Isikan dengan nama pengirim
 $email_penerima = $_POST['email_penerima']; // Ambil email penerima dari inputan form
@@ -68,28 +43,27 @@ $mail->AddEmbeddedImage('img/logopln.png', 'logo_PLN', 'logopln.png'); // Aktifk
 
 $send = $mail->send();
 
-if ($send) { // Jika Email berhasil dikirim
-    ?>
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Sukses.',
-            text: 'Sukses Mengirimkan Email!'
-        }).then((result) => {
-            window.location = "header.php?page=pengaduanmasuk";
-        })
-    </script>
-<?php
-} else { // Jika Email gagal dikirim
+if (isset($_POST['save'])) {
+    $id = $_POST['id_pengaduan'];
+    $nama = $_POST['nama'];
+    $id_teknisi = $_POST['id_teknisi'];
+
+    $insert = "UPDATE tb_pengaduan SET teknisi='$nama', status='Dalam Proses' WHERE id_pengaduan = $id";
+    $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
+
+    if ($query && $send) {
+        $update = "UPDATE tb_tekpen_lap_masuk SET id_teknisi='$id_teknisi', op_acc='1' WHERE id_pengaduan = $id";
+        $query2 = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
 ?>
-    <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal.',
-            text: 'Gagal Mengirimkan Email!'
-        }).then((result) => {
-            window.location = "header.php?page=pengaduanmasuk";
-        })
-    </script>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses.',
+                text: 'Sukses Menambahkan Teknisi!'
+            }).then((result) => {
+                window.location = "header.php?page=pengaduanproses";
+            })
+        </script>
 <?php
+    }
 }

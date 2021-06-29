@@ -19,6 +19,36 @@ if (!isset($_SESSION)) {
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <?php
+    $level = $_SESSION['level'];
+    $tekcheck = $_SESSION['t_check'];
+    $foto = $_SESSION['foto'];
+    $jk = $_SESSION['jenis_kelamin'];
+
+    if ($jk == "Pria") {
+    ?>
+        <script>
+            function gambarerror(obj) {
+                var noimg = "img/undraw_profile.svg";
+                obj.src = noimg;
+            }
+        </script>
+    <?php
+    } else {
+    ?>
+        <script>
+            function gambarerror(obj) {
+                var noimg = "img/undraw_profile_3.svg";
+                obj.src = noimg;
+            }
+        </script>
+    <?php
+    }
+
+    ?>
+
+
 </head>
 
 <?php
@@ -40,22 +70,19 @@ if (!isset($_SESSION['username'])) {
 
                 <!-- Nav Item - Akun User -->
                 <?php
-                $level = $_SESSION['level'];
-                $tekcheck = $_SESSION['t_check'];
-                // $jenis_kelamin = $_SESSION['jenis_kelamin'];
-
+                $id = $_SESSION['id'];
                 if ($level == 1) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
                             <span>
-                                <img class="img-profile rounded-circle" width="50%" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" width="45%" src="gambar/<?php echo $_SESSION['foto']; ?>" onerror="this.onerror=null;gambarerror(this);">
                             </span>
                         </button>
                         <p class="text-success small font-weight-bold">Admin</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <span class="d-none d-lg-inline text-gray-600 small">
+                            <span class="d-none d-lg-inline text-gray-900 small">
                                 <div class="text-center">
                                     <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
@@ -73,21 +100,26 @@ if (!isset($_SESSION['username'])) {
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
                             <span>
-                                <img class="img-profile rounded-circle" width="50%" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" width="45%" src="gambar/<?php echo $_SESSION['foto']; ?>" onerror="this.onerror=null;gambarerror(this);">
                             </span>
                         </button>
                         <p class="text-success small font-weight-bold">Pegawai</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <span class="d-none d-lg-inline text-gray-600 small">
+                            <span class="d-none d-lg-inline text-gray-900 small">
                                 <div class="text-center">
                                     <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
                             </span>
+                            <!-- <hr>
+                            <a style="color: black;" class="dropdown-item text-center" href="header.php?page=foto&id=<?php echo $_SESSION['id'] ?>">
+                                <i class="fas fa-portrait mr-1 text-gray-900 fa-1x"></i>
+                                Foto Profile
+                            </a> -->
                             <hr>
-                            <a style="color: red;" class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                LOGOUT
+                            <a style="color: red;" class="dropdown-item text-center" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-1 text-gray-900 fa-1x"></i>
+                                Log Out
                             </a>
                         </div>
                     </div>
@@ -97,13 +129,13 @@ if (!isset($_SESSION['username'])) {
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
                             <span>
-                                <img class="img-profile rounded-circle" width="50%" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" width="45%" src="gambar/<?php echo $_SESSION['foto']; ?>" onerror="this.onerror=null;gambarerror(this);">
                             </span>
                         </button>
                         <p class="text-success small font-weight-bold">Operator</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <span class="d-none d-lg-inline text-gray-600 small">
+                            <span class="d-none d-lg-inline text-gray-900 small">
                                 <div class="text-center">
                                     <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
@@ -121,13 +153,13 @@ if (!isset($_SESSION['username'])) {
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
                             <span>
-                                <img class="img-profile rounded-circle text-center" width="50%" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle text-center" width="45%" src="gambar/<?php echo $_SESSION['foto']; ?>" onerror="this.onerror=null;gambarerror(this);">
                             </span>
                         </button>
                         <p class="text-success small font-weight-bold">Teknisi Pelayanan Penyambungan</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <span class="d-none d-lg-inline text-gray-00 small">
+                            <span class="d-none d-lg-inline text-gray-900 small">
                                 <div class="text-center">
                                     <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
@@ -145,13 +177,13 @@ if (!isset($_SESSION['username'])) {
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
                             <span>
-                                <img class="img-profile rounded-circle text-center" width="50%" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle text-center" width="45%" src="gambar/<?php echo $_SESSION['foto']; ?>" onerror="this.onerror=null;gambarerror(this);">
                             </span>
                         </button>
                         <p class="text-success small font-weight-bold">Teknisi Pelayanan Pengaduan</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <span class="d-none d-lg-inline text-gray-600 small">
+                            <span class="d-none d-lg-inline text-gray-900 small">
                                 <div class="text-center">
                                     <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
@@ -169,13 +201,13 @@ if (!isset($_SESSION['username'])) {
                     <div class="nav-item text-center mt-3 mb-3">
                         <button role="button" type="button" class="btn" data-toggle="dropdown">
                             <span>
-                                <img class="img-profile rounded-circle" width="50%" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" width="45%" src="gambar/<?php echo $_SESSION['foto']; ?>" onerror="this.onerror=null;gambarerror(this);">
                             </span>
                         </button>
                         <p class="text-success small font-weight-bold">Petugas Survey</p>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <span class="d-none d-lg-inline text-gray-600 small">
+                            <span class="d-none d-lg-inline text-gray-900 small">
                                 <div class="text-center">
                                     <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
                                 </div>
@@ -610,6 +642,10 @@ if (!isset($_SESSION['username'])) {
                                 include "pelayanan_penyambungan/pelanggan/pelanggan.php";
                                 break;
 
+                            case 'foto':
+                                include "manajemen_user/editfoto.php";
+                                break;
+
                                 // Case untuk halaman Manajemen User dan CRUD nya
                             case 'user':
                                 include "manajemen_user/mu_tabel.php";
@@ -726,6 +762,9 @@ if (!isset($_SESSION['username'])) {
                                 break;
                             case 'inputpb':
                                 include "pelayanan_penyambungan/CRUD/pasang_baru/pb_input.php";
+                                break;
+                            case 'sendcrud':
+                                include "pelayanan_penyambungan/CRUD/send.php";
                                 break;
                             case 'editpb':
                                 include "pelayanan_penyambungan/CRUD/pasang_baru/pb_edit.php";

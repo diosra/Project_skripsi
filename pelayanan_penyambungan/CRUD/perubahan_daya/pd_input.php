@@ -113,6 +113,24 @@
                     </select>
                 </div>
 
+                <hr class="my-3">
+                <h3 class="mb-3"><u>Form Kirim Email</u></h3>
+
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" id="email" name="email_penerima" class="form-control" required readonly="readonly">
+                </div>
+
+                <div class="form-group">
+                    <label>Subjek</label>
+                    <input type="text" name="subjek" placeholder="Isi Subjek Email" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Pesan</label>
+                    <textarea name="pesan" required placeholder="Isi Pesan" rows="8" class="form-control"></textarea>
+                </div>
+
                 <div class="form-group row float-right">
                     <div class="col">
                         <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
