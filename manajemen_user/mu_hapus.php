@@ -24,10 +24,17 @@ if (!isset($_SESSION['username'])) {
         if (isset($_GET['hapus'])) {
             $id = $_GET['hapus'];
 
+            $pilih = mysqli_query($mysqli, "SELECT * FROM tb_data_user WHERE id=$id");
+            $data = mysqli_fetch_array($pilih);
+            $deletefoto = $data['foto'];
+
+            unlink("gambar/" . $deletefoto);
+
             $delete = "DELETE FROM tb_data_user WHERE id=$id";
             $query = mysqli_query($mysqli, $delete) or die(mysqli_error($mysqli));
 
-            if ($query) { ?>
+            if ($query) {
+        ?>
                 <script>
                     Swal.fire({
                         icon: 'success',
