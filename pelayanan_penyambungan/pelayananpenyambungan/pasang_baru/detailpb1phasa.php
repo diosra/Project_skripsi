@@ -53,8 +53,20 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_detail_pb_1phs c ON a.id_pasang_baru = c.id_pasang_baru JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_baru = '1 FASA'");
+                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_detail_pb_1phs c ON a.id_pasang_baru = c.id_pasang_baru JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_baru = '1 FASA' ");
                         $no = 1;
+
+                        $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tabelharga WHERE KODE = 'PB 1 FASA'");
+                        $hargaB = "";
+                        $n = 0;
+                        while ($hargaambil = $harga->fetch_array()) {
+                            $hargaB = $hargaB . "<td class='align-middle'>Rp." . number_format($hargaambil[0], 0, ',', '.') . "</td>";
+                            $n = $n + $hargaambil[0];
+                        }
+
+                        $hargaB = $hargaB .
+                            "<td class='align-middle'>Rp." . number_format($n, 0, ',', '.') . "</td>";
+
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
@@ -65,18 +77,9 @@
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya1_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya2_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya3_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya4_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya5_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya6_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya7_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya8_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya9_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya10_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['uraianbiaya11_pb1'], 0, ',', '.') ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
+                                    <?php
+                                    echo $hargaB;
+                                    ?>
                                 </tr>
                             <?php } ?>
                         <?php } ?>

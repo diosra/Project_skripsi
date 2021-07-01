@@ -23,6 +23,13 @@
         });
     </script>
 
+    <script>
+        function gambarerror(obj) {
+            var noimg = "gambar/nogambar.png";
+            obj.src = noimg;
+        }
+    </script>
+
     <?php
     extract($_POST);
     $queryambil = mysqli_query($mysqli, "SELECT max(no_teknisi) as TekTerbesar FROM tb_teknisi_pengaduan");
@@ -66,6 +73,21 @@
                 $password = $_POST['password'];
                 $posisi = $_POST['posisi'];
                 $t_check = $_POST['t_check'];
+
+                // if (!empty($_FILES['foto']['tmp_name'])) {
+                //     $ext = strtolower(substr($_FILES['foto']['name'], -3));
+                //     if ($ext == 'gif') {
+                //         $ext = ".gif";
+                //     } elseif ($ext == 'jpg') {
+                //         $ext = ".jpg";
+                //     } elseif ($ext == 'jpeg') {
+                //         $ext = ".jpeg";
+                //     } else {
+                //         $ext = ".png";
+                //     }
+                //     // proses upload file ke folder gambar 
+                //     move_uploaded_file($_FILES['foto']['tmp_name'], "gambar/" . basename(($id_u) . $ext));
+                // }
 
                 $update = "UPDATE tb_data_user SET nama='$nama', tgl_lahir='$tgl_lahir', alamat='$alamat', jenis_kelamin='$jenis_kelamin', email='$email', username='$username', password='$password', level='$posisi', t_check='$t_check' WHERE id=$id_u";
                 $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
@@ -116,6 +138,7 @@
                     $email = $row['email'];
                     $username = $row['username'];
                     $password = $row['password'];
+                    $gambar = $row['foto'];
                     $posisi = $row['level'];
                     if ($row['level'] == 1 && $row['t_check'] == 0) {
                         $levelnya = "Admin";
@@ -174,14 +197,23 @@
                     <input type="text" name="email" class="form-control" value="<?php echo $email ?>" placeholder="Masukkan Email" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="">Username</label>
-                    <input type="text" name="username" class="form-control" value="<?php echo $username ?>" placeholder="Masukkan username" required>
-                </div>
+                <hr class="my-12 mt-5 mb-2" />
 
-                <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="text" name="password" class="form-control" value="<?php echo $password ?>" placeholder="Masukkan Password" required>
+                <h3 class="mb-3"><u><b>Edit Akun User</b></u></h3>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Username</label>
+                            <input type="text" name="username" class="form-control" value="<?php echo $username ?>" placeholder="Masukkan username" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input type="text" name="password" class="form-control" value="<?php echo $password ?>" placeholder="Masukkan Password" required>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -206,6 +238,12 @@
                         <option value="2">Teknisi Pelayanan Pengaduan</option>
                     </select>
                 </div>
+
+                <!-- <div class="form-group">
+                    <label for="">Upload Photo</label> <br>
+                    <input type="file" name="foto" accept="image/*" class="mb-2" required> <br>
+                    <img src="gambar/<?php echo $gambar ?>" onerror="this.onerror=null;gambarerror(this);" style="width: 120px;float: left;margin-bottom: 5px;">
+                </div> -->
 
                 <div class="form-group row float-right">
                     <div class="col">
