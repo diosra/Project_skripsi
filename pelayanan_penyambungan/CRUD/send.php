@@ -43,6 +43,7 @@ $mail->AddEmbeddedImage('img/logopln.png', 'logo_PLN', 'logopln.png'); // Aktifk
 
 $send = $mail->send();
 
+// Query Input Pasang Baru
 if (isset($_POST['savepb'])) {
     $id_pelanggan = $_POST['id_pelanggan'];
     $tgl_mohon = $_POST['tgl_mohon'];
@@ -61,9 +62,9 @@ if (isset($_POST['savepb'])) {
 
     if ($query && $send) {
         if ($fasa_baru == "1 FASA") {
-            $insert2 = "INSERT INTO tb_detail_pb_1phs (id_pasang_baru, pekerjaan_rab, uraianbiaya1_pb1,uraianbiaya2_pb1,uraianbiaya3_pb1,uraianbiaya4_pb1,uraianbiaya5_pb1,uraianbiaya6_pb1,uraianbiaya7_pb1,uraianbiaya8_pb1,uraianbiaya9_pb1,uraianbiaya10_pb1,uraianbiaya11_pb1,total_biaya)
+            $insert2 = "INSERT INTO tb_detail_pb_1phs (id_pasang_baru, pekerjaan_rab)
             VALUES 
-            ('" . mysqli_insert_id($mysqli) . "', '$ambil1', '243040','4210','2724','6985','9358','5615','3842','41008','33625','22982','20856','394245')";
+            ('" . mysqli_insert_id($mysqli) . "', '$ambil1')";
             $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
 ?>
             <script>
@@ -77,9 +78,9 @@ if (isset($_POST['savepb'])) {
             </script>
         <?php
         } elseif ($fasa_baru == "3 FASA") {
-            $insert2 = "INSERT INTO tb_detail_pb_3phs (id_pasang_baru,pekerjaan_rab, uraianbiaya1_pb3,uraianbiaya2_pb3,uraianbiaya3_pb3,uraianbiaya4_pb3,uraianbiaya5_pb3,uraianbiaya6_pb3,uraianbiaya7_pb3,uraianbiaya8_pb3,uraianbiaya9_pb3,uraianbiaya10_pb3,uraianbiaya11_pb3,uraianbiaya12_pb3,uraianbiaya13_pb3,total_biaya)
+            $insert2 = "INSERT INTO tb_detail_pb_3phs (id_pasang_baru,pekerjaan_rab)
             VALUES 
-            ('" . mysqli_insert_id($mysqli) . "', '$ambil2', '1348000', '2400000', '2724', '29360', '12110','4433', '11722', '39400', '5615', '46811', '3482', '31339', '20856', '3990852')";
+            ('" . mysqli_insert_id($mysqli) . "', '$ambil2')";
             $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
         ?>
             <script>

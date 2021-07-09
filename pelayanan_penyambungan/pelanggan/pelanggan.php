@@ -10,6 +10,14 @@
     <meta name="author" content="">
 
     <title>Pelanggan</title>
+
+    <!-- <style>
+        table#dataTable th:nth-child(8) {
+            width: 5px;
+            max-width: 5px;
+            word-wrap: break-word;
+        }
+    </style> -->
 </head>
 
 </html>
@@ -52,7 +60,7 @@
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
-                                    <td class="align-middle"><?php echo $no++ ?></td>
+                                    <td class="align-middle text-center"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
@@ -88,3 +96,13 @@
 <?php
 include_once 'footer.php';
 ?>
+
+<!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
+<script>
+    $('#dataTable').DataTable({
+        "columnDefs": [{
+            "orderable": false,
+            "targets": [2, 4, 5, 6, 7, 8],
+        }]
+    });
+</script>

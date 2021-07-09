@@ -56,7 +56,7 @@
                         $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_detail_pb_1phs c ON a.id_pasang_baru = c.id_pasang_baru JOIN tb_pelanggan b ON a.id_pelanggan=b.id_pelanggan WHERE a.fasa_baru = '1 FASA' ");
                         $no = 1;
 
-                        $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tabelharga WHERE KODE = 'PB 1 FASA'");
+                        $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tb_harga WHERE KODE = 'PB 1 FASA'");
                         $hargaB = "";
                         $n = 0;
                         while ($hargaambil = $harga->fetch_array()) {

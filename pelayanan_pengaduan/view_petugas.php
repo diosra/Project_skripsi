@@ -1,13 +1,13 @@
 <?php
 //memasukkan koneksi database
-require_once("../../koneksi.php");
+require_once("../koneksi.php");
 
 //jika berhasil/ada post['id'], jika tidak ada ya tidak dijalankan
 if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT * FROM tb_laporan_tekpen WHERE id_laporan ='$id'");
+    $view = $mysqli->query("SELECT teknisi FROM tb_pengaduan WHERE id_pengaduan ='$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -16,8 +16,8 @@ if ($_POST['id']) {
             //menampilkan data dengan table
             echo '
             <div class="form-group">
-                <label for="">Laporan Sementara Teknisi</label>
-                <textarea class="form-control" cols="10" rows="3" readonly>' . $row_view['laporan'] . '</textarea>
+                <label for="">Petugas Teknisi</label>
+                <input type="text" value="' . $row_view['teknisi'] . '" class="form-control" readonly>
             </div>
 		';
         }

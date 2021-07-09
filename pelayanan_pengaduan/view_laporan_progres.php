@@ -7,7 +7,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT a.*, b.* FROM tb_laporan_tekpen a JOIN tb_pengaduan b ON a.id_pengaduan = b.id_pengaduan WHERE a.id_pengaduan ='$id'");
+    $view = $mysqli->query("SELECT a.* , b.* FROM tb_laporan_tekpen a JOIN tb_pengaduan b ON a.id_pengaduan = b.id_pengaduan WHERE id_laporan ='$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -16,7 +16,7 @@ if ($_POST['id']) {
             //menampilkan data dengan table
             echo '
             <div class="form-group">
-                <label for="">Teknisi</label>
+                <label for="">Petugas Teknisi</label>
                 <input type="text" value="' . $row_view['teknisi'] . '" class="form-control" readonly>
             </div>
             <hr>
@@ -27,13 +27,7 @@ if ($_POST['id']) {
             </div>
             <hr>
             <div class="form-group">
-                <label for="">Tanggal Selesai Perbaikan</label>
-                <input type="text" value="' .
-                date('d-M-Y', strtotime($row_view['tgl_selesai'])) . '" class="form-control" readonly>
-            </div>
-            <hr>
-            <div class="form-group">
-                <label for="">Laporan</label>
+                <label for="">Laporan Petugas Teknisi</label>
                 <textarea class="form-control" cols="10" rows="3" readonly>' . $row_view['laporan'] . '</textarea>
             </div>
 		';

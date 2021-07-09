@@ -34,7 +34,7 @@
                             <th class="text-center">No</th>
                             <th class="text-center">No Registrasi</th>
                             <th class="text-center">Identitas (KTP)</th>
-                            <th class="text-center">Nama</th>
+                            <th class="text-center">Nama Pelanggan</th>
                             <th class="text-center">Email Pelanggan</th>
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Jenis Transaksi</th>
@@ -96,7 +96,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [5, 6, 9, 10]
+            "targets": [2, 4, 5, 6, 8, 9, 10, 11]
         }]
     });
 </script>

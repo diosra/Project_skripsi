@@ -20,6 +20,17 @@ if (!isset($_SESSION)) {
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <style>
+        /* table {
+            margin: 0 auto;
+            width: 100%;
+            clear: both;
+            border-collapse: collapse;
+            table-layout: fixed;
+            word-wrap: break-word;
+        } */
+    </style>
+
     <?php
     $level = $_SESSION['level'];
     $tekcheck = $_SESSION['t_check'];
@@ -543,6 +554,16 @@ if (!isset($_SESSION['username'])) {
 
                                     <hr style="margin-left: 20px; margin-right: 20px;">
 
+                                    <!-- Link Menu Data Pengaduan Masuk -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=laporanpenprogres">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">Data Pengaduan <br> Dalam Progres</span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
                                     <!-- Link Menu Data Pengaduan Selesai -->
                                     <li class="nav-item">
                                         <a class="collapse-item" href="header.php?page=laporanpenselesai">
@@ -717,6 +738,9 @@ if (!isset($_SESSION['username'])) {
                                 break;
                             case 'progres':
                                 include "teknisi/pengaduan/form_input_progress.php";
+                                break;
+                            case 'laporanpenprogres':
+                                include "teknisi/pengaduan/form_laporan_progres.php";
                                 break;
                             case 'laporanpenselesai':
                                 include "teknisi/pengaduan/form_laporan_selesai.php";

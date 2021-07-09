@@ -79,6 +79,16 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                     </thead>
                     <tbody>
                         <?php
+                        $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tb_harga WHERE KODE = 'PB 1 FASA'");
+                        $hargaB = "";
+                        $n = 0;
+                        $hargatotal = 0;
+                        while ($hargaambil = $harga->fetch_array()) {
+                            $n = $n + $hargaambil[0];
+                        }
+                        $hargaB = $hargaB .
+                            "<td align='center'>Rp." . number_format($n, 0, ',', '.') . "</td>";
+
                         $hitungrow = mysqli_num_rows($result);
                         $total = 0;
                         if ($hitungrow > 0) {
@@ -97,15 +107,17 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                                     <td align="center"><?php echo $tampil['daya_baru']; ?></td>
                                     <td align="center"><?php echo $tampil['fasa_baru']; ?></td>
                                     <td align="center"><?php echo $tampil['pekerjaan_rab']; ?></td>
-                                    <td align="center">Rp.<?php echo number_format($tampil['total_biaya'], 0, ',', '.') ?></td>
+                                    <?php
+                                    echo $hargaB;
+                                    ?>
                                 </tr>
                             <?php
-                                $total += $tampil['total_biaya'];
+                                $hargatotal += $n;
                             }
                             ?>
                             <tr>
                                 <td colspan="11" align="right" style="font-size: 23px;"><b>Jumlah Total Biaya</b></td>
-                                <td align="center">Rp.<?php echo number_format($total, 0, ',', '.')  ?></td>
+                                <td align="center">Rp.<?php echo number_format($hargatotal, 0, ',', '.')  ?></td>
                             </tr>
                         <?php } else { ?>
                             <tr>

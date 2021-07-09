@@ -24,7 +24,7 @@
 
     <!-- Modal dialog untuk deskripsi -->
     <div id="get-data" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Deskripsi Laporan</h4>
@@ -51,18 +51,11 @@
                         <tr>
                             <th class="text-center">No</th>
                             <th class="text-center">No Laporan Pengaduan</th>
-                            <th class="text-center">Gangguan</th>
                             <th class="text-center">Identitas (No. KTP)</th>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">No HP</th>
-                            <th class="text-center">Email Pelapor</th>
+                            <th class="text-center">Nama Pelapor</th>
                             <th class="text-center">Alamat</th>
-                            <th class="text-center">Kabupaten</th>
-                            <th class="text-center">Kecamatan</th>
-                            <th class="text-center">Kelurahan</th>
                             <th class="text-center">Deskripsi</th>
-                            <th class="text-center">Tanggal Masuk</th>
-                            <th class="text-center">Action</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,29 +66,20 @@
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
-                                    <td class="align-middle"><?php echo $no++ ?></td>
+                                    <td class="align-middle text-center"><?php echo $no++ ?></td>
                                     <td class="align-middle"><?php echo $row['no_laporan']; ?></td>
-                                    <td class="align-middle"><?php echo $row['gangguan']; ?></td>
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['nohp']; ?></td>
-                                    <td class="align-middle"><?php echo $row['email']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
-                                    <td class="align-middle"><?php echo $row['kabupaten']; ?></td>
-                                    <td class="align-middle"><?php echo $row['kecamatan']; ?></td>
-                                    <td class="align-middle"><?php echo $row['kelurahan']; ?></td>
                                     <td class="align-middle text-center">
                                         <a data-toggle="modal" data-id="<?php echo $row['id_pengaduan'] ?>" class="open-modal btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
-                                    <!-- <i class='fas fa-sticky-note fa-2x'> -->
-                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_masuk_laporan'])); ?></td>
                                     <td class="align-middle text-center">
                                         <div class="d-flex justify-content-center">
                                             <a href="header.php?page=pengtambah&id=<?php echo $row['id_pengaduan'] ?>" class="btn btn-primary mr-2">
-                                                <i class="fas fa-hard-hat"></i>
-                                                Tambah Teknisi
+                                                <span><i class="fas fa-hard-hat"></i> <br> Pilih Teknisi</span>
                                             </a>
                                         </div>
                                     </td>
@@ -132,3 +116,13 @@
 <?php
 include_once 'footer.php';
 ?>
+
+<!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
+<script>
+    $('#dataTable').DataTable({
+        "columnDefs": [{
+            "orderable": false,
+            "targets": [4, 5, 6]
+        }]
+    });
+</script>

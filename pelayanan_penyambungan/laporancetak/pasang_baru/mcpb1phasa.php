@@ -159,6 +159,16 @@
                         // kode untuk isi Filter - END
 
                         $no = 1;
+
+                        $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tb_harga WHERE KODE = 'PB 1 FASA'");
+                        $hargaB = "";
+                        $n = 0;
+                        while ($hargaambil = $harga->fetch_array()) {
+                            $n = $n + $hargaambil[0];
+                        }
+                        $hargaB = $hargaB .
+                            "<td class='align-middle'>Rp." . number_format($n, 0, ',', '.') . "</td>";
+
                         $hitungrow = mysqli_num_rows($result);
                         if ($hitungrow > 0) {
                             while ($row = $result->fetch_assoc()) { ?>
@@ -174,7 +184,9 @@
                                     <td class="align-middle"><?php echo $row['daya_baru']; ?></td>
                                     <td class="align-middle"><?php echo $row['fasa_baru']; ?></td>
                                     <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
+                                    <?php
+                                    echo $hargaB;
+                                    ?>
                                 </tr>
                             <?php } ?>
                         <?php } ?>

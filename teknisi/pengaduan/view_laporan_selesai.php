@@ -16,7 +16,19 @@ if ($_POST['id']) {
             //menampilkan data dengan table
             echo '
             <div class="form-group">
-                <label for="">Laporan Sementara Teknisi</label>
+                <label for="">Tanggal Mulai Perbaikan</label>
+                <input type="text" value="' .
+                date('d-M-Y', strtotime($row_view['tgl_mulai'])) . '" class="form-control" readonly>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="">Tanggal Selesai Perbaikan</label>
+                <input type="text" value="' .
+                date('d-M-Y', strtotime($row_view['tgl_selesai'])) . '" class="form-control" readonly>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="">Laporan</label>
                 <textarea class="form-control" cols="10" rows="3" readonly>' . $row_view['laporan'] . '</textarea>
             </div>
 		';

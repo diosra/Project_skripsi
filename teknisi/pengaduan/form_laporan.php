@@ -19,12 +19,12 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Laporan Pengaduan</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Laporan Pengaduan Masuk</u></h1>
     </div>
 
     <!-- Modal dialog untuk deskripsi -->
     <div id="get-data" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Deskripsi Laporan</h4>
@@ -52,13 +52,10 @@
                             <th class="text-center">No</th>
                             <th class="text-center">No Laporan</th>
                             <th class="text-center">Identitas</th>
-                            <th class="text-center">Nama Pelanggan</th>
+                            <th class="text-center">Nama Pelapor</th>
                             <th class="text-center">Alamat</th>
-                            <th class="text-center">No Handphone</th>
-                            <th class="text-center">Tanggal Masuk</th>
-                            <th class="text-center">Deskripsi Pengaduan</th>
-                            <th class="text-center">Progres</th>
-                            <th class="text-center">Action</th>
+                            <th class="text-center">Data dan Deskripsi Pengaduan Pelapor</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,10 +72,8 @@
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
-                                    <td class="align-middle"><?php echo $row['nohp']; ?></td>
-                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_masuk_laporan'])); ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row['id_pengaduan'] ?>" class="open-modal btn" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_pengaduan'] ?>" class="open-modal btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
@@ -86,28 +81,29 @@
                                     if ($row['status'] == "selesai") {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <p class="btn btn-success rounded">
-                                                <?php echo $row['status']; ?>
+                                            <p class="font-weight-bold btn btn-success rounded">
+                                                Selesai
                                             </p>
+                                        </td>
+                                    <?php
+                                    } elseif ($row['status'] == "belum selesai") {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <a href="header.php?page=progres&status=<?php echo $row['status'] ?>&id=<?php echo $row['id_tekpenlap'] ?>" class="text-dark font-weight-bold btn btn-warning rounded">
+                                                Belum Selesai
+                                            </a>
                                         </td>
                                     <?php
                                     } else {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <p class="btn btn-danger rounded">
-                                                <?php echo $row['status']; ?>
-                                            </p>
+                                            <a href="header.php?page=progres&status=<?php echo $row['status'] ?>&id=<?php echo $row['id_tekpenlap'] ?>" class="font-weight-bold btn btn-danger rounded">
+                                                Belum di Proses
+                                            </a>
                                         </td>
                                     <?php
                                     }
                                     ?>
-
-                                    <td class="align-middle text-center">
-                                        <div class="col">
-                                            <a href="header.php?page=progres&id=<?php echo $row['id_tekpenlap'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                        </div>
-                                    </td>
-
                                 </tr>
                             <?php } ?>
                         <?php } ?>
@@ -142,3 +138,13 @@
 <?php
 include_once 'footer.php';
 ?>
+
+<!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
+<script>
+    $('#dataTable').DataTable({
+        "columnDefs": [{
+            "orderable": false,
+            "targets": [4, 5, 6]
+        }]
+    });
+</script>
