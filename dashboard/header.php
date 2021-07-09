@@ -43,9 +43,48 @@ include '../../koneksi.php';
                     <span>Dashboard</span></a>
             </li>
 
+            <!-- Nav Item - Menu Pelayanan Penyambungan -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-list-ul"></i>
+                    <span>Menu Layanan Penyambungan</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+
+                            <!-- Link Menu Halaman Pasang Baru -->
+                            <li class="nav-item">
+                                <a class="collapse-item " href="../../dashboard/pasang_baru/menu_pb.php">
+                                    <span class="font-weight-bolder text-capitalize">Pasang Baru</span>
+                                </a>
+                            </li>
+
+                            <hr style="margin-left: 20px; margin-right: 20px;">
+
+                            <!-- Link Menu Halaman Perubahan Daya -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="../../dashboard/perubahan_daya/menu_pd.php">
+                                    <span class="font-weight-bolder text-capitalize">Perubahan Daya</span>
+                                </a>
+                            </li>
+
+                            <hr style="margin-left: 20px; margin-right: 20px;">
+
+                            <!-- Link Menu Halaman Multiguna -->
+                            <li class="nav-item">
+                                <a class="collapse-item" href="../../dashboard/multiguna/menu_mg.php">
+                                    <span class="font-weight-bolder text-capitalize">Multiguna</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
             <!-- Nav Item - Layanan Pengaduan -->
-            <li class="nav-item active">
-                <a class="nav-link" href="dashboard.php">
+            <li class="nav-item">
+                <a class="nav-link" href="../../dashboard/layanan_pengaduan/pengaduan_input.php">
                     <i class="fas fa-bolt"></i>
                     <span>Layanan Pengaduan</span></a>
             </li>
