@@ -36,6 +36,40 @@
     $huruf2 = "PLG";
     $id_pelanggan = $huruf2 . sprintf("%03s", $urutan2);
     ?>
+
+    <script type="text/javascript">
+        function prola() {
+            var tipe = document.getElementById('produk').value;
+            if (tipe == "PRABAYAR") {
+                document.getElementById('token').style.display = 'block';
+                document.getElementById("token_a").required = true;
+            } else if (tipe == "PASCABAYAR") {
+                document.getElementById('token').style.display = 'none';
+                document.getElementById("token_a").required = false;
+                document.getElementById('token').removeAttribute("selected");
+            }
+        }
+    </script>
+
+    <script>
+        function hanyaAngka(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+
+                return false;
+            return true;
+        }
+    </script>
+
+    <script>
+        function hanyaHuruf(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if ((charCode < 65 || charCode > 90) && (charCode < 97 || charCode > 122) && charCode > 32) {
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <!-- Begin Page Content -->
@@ -54,14 +88,11 @@
 
                 <h3 class="mb-4"><u>Data Pemohon</u></h3>
 
-                <div class="form-group">
-                    <label for="">No Registrasi</label>
-                    <input type="text" name="no_registrasi" value="<?php echo $noRegistrasi ?>" class="form-control" disabled readonly>
-                </div>
+                <input type="hidden" name="no_registrasi" value="<?php echo $noRegistrasi ?>" class="form-control" disabled readonly>
 
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" required>
+                    <input type="text" name="nama" placeholder="Masukkan Nama" class="form-control" onkeypress="return hanyaHuruf (event)" required>
                 </div>
 
                 <div class="form-group row">
@@ -77,13 +108,13 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. HP</label>
-                            <input type="number" name="nohp" class="form-control" placeholder="Masukkan No Handphone" required>
+                            <input type="text" name="nohp" class="form-control" placeholder="Masukkan No Handphone" onkeypress="return hanyaAngka (event)" maxlength="15" required>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. Telp</label>
-                            <input type="number" name="notelp" placeholder="Masukkan No Telpon" class="form-control">
+                            <input type="text" name="notelp" placeholder="Masukkan No Telpon" class="form-control" onkeypress="return hanyaAngka (event)" maxlength="15">
                         </div>
                     </div>
                 </div>
@@ -93,26 +124,46 @@
                     <input type="email" name="email" class="form-control" placeholder="Masukkan Email" required>
                 </div>
 
-                <!-- <div class="form-group">
-                    <label for="">Identitas (KTP)</label>
-                    <input type="text" name="identitas" class="form-control" placeholder="Masukkan Nomor KTP" required>
-                </div> -->
-
-                <div class="form-group mt-2">
-                    <label for="">Upload Foto / Scan KTP</label> <br>
-                    <input type="file" accept="image/*" name="foto">
+                <div class="form-group">
+                    <label for="">Identitas (Nomor KTP)</label>
+                    <input type="text" name="identitas" class="form-control" placeholder="Masukkan Nomor KTP" maxlength="16" onkeypress="return hanyaAngka (event)" required>
                 </div>
 
                 <hr class="font-weight-bolder my-4">
 
-                <h3 class="mb-4"><u>Daya Baru</u></h3>
+                <h3 class="mb-4"><u>Tarif/Daya Baru</u></h3>
 
                 <div class="form-group">
                     <label for="">Produk Layanan</label>
-                    <select name="produk_layanan" class="form-control" required>
+                    <select name="produk_layanan" id="produk" class="form-control" onchange="prola()" required>
                         <option disabled selected>Pilih</option>
-                        <option>PASCABAYAR</option>
-                        <option>PRABAYAR</option>
+                        <option value="PASCABAYAR">PASCABAYAR</option>
+                        <option value="PRABAYAR">PRABAYAR</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Peruntukan</label>
+                    <select name="peruntukan" class="form-control" required>
+                        <option disabled selected>Pilih</option>
+                        <option>Bisnis</option>
+                        <option>Industri</option>
+                        <option>Rumah Tangga</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="token" style="display: none;">
+                    <label for="">Token Perdana</label>
+                    <select name="token" id="token_a" class="form-control">
+                        <option disabled selected>Pilih</option>
+                        <option>5000</option>
+                        <option>20000</option>
+                        <option>40000</option>
+                        <option>50000</option>
+                        <option>100000</option>
+                        <option>200000</option>
+                        <option>500000</option>
+                        <option>1000000</option>
                     </select>
                 </div>
 
@@ -129,6 +180,12 @@
                         <option>5500</option>
                         <option>6600</option>
                         <option>7700</option>
+                        <option>10600</option>
+                        <option>11000</option>
+                        <option>13200</option>
+                        <option>16500</option>
+                        <option>23000</option>
+                        <option>33000</option>
                     </select>
                 </div>
 
@@ -164,31 +221,30 @@ if (isset($_POST['save'])) {
     $nohp = $_POST['nohp'];
     $notelp = $_POST['notelp'];
     $email = $_POST['email'];
-    $filename = $_FILES['identitas']['name'];
+    $identitas = $_POST['identitas'];
     $produk_layanan = $_POST['produk_layanan'];
     $daya = $_POST['daya'];
-    $getId = mysqli_fetch_row(mysqli_query($mysqli, "SELECT max(id_mohon) from tb_mohon_pb"));
+    $peruntukan = $_POST['peruntukan'];
 
-    if (!empty($_FILES['foto']['tmp_name'])) {
-        $ext = strtolower(substr($_FILES['foto']['name'], -3));
-        if ($ext == 'gif') {
-            $ext = ".gif";
-        } elseif ($ext == 'jpg') {
-            $ext = ".jpg";
-        } elseif ($ext == 'jpeg') {
-            $ext = ".jpeg";
-        } else {
-            $ext = ".png";
+    if ($produk_layanan == "PASCABAYAR") {
+        if ($daya <= "2200") {
+            $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya,tarif, peruntukan) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','$identitas','$produk_layanan','$daya','R-1', '$peruntukan')";
+            $query = mysqli_query($mysqli, $insert);
+        } elseif ($daya >= "3500" || $daya <= "5500") {
+            $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya,tarif, peruntukan) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','$identitas','$produk_layanan','$daya','R-2', '$peruntukan')";
+            $query = mysqli_query($mysqli, $insert);
+        } elseif ($daya >= "6600") {
+            $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya,tarif, peruntukan) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','$identitas','$produk_layanan','$daya','R-3', '$peruntukan')";
+            $query = mysqli_query($mysqli, $insert);
         }
-        // proses upload file ke folder gambar 
-        move_uploaded_file($_FILES['foto']['tmp_name'], "../../gambar/" . basename(($getId[0] + 1) . $ext));
+    } elseif ($produk_layanan == "PRABAYAR") {
+        $token = $_POST['token'];
+        $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya,token, peruntukan) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','$identitas','$produk_layanan','$daya','$token', '$peruntukan')";
+        $query = mysqli_query($mysqli, $insert);
     }
 
-    $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','" . ($getId[0] + 1) . $ext . "','$produk_layanan','$daya')";
-    $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-
     if ($query) {
-        $insertpelanggan = "INSERT INTO tb_pelanggan (no_registrasi, nama, alamat, nohp, no_telp, email, identitas) VALUES ('$noRegistrasi', '$nama', '$alamat', '$nohp', '$notelp', '$email', '" . ($getId[0] + 1) . $ext . "')";
+        $insertpelanggan = "INSERT INTO tb_pelanggan (id_mohon,idpel, no_registrasi, identitas, nama, alamat, nohp, no_telp, email) VALUES ('" . mysqli_insert_id($mysqli) . "','$id_pelanggan','$noRegistrasi','$identitas', '$nama', '$alamat', '$nohp', '$notelp', '$email')";
         $querypelanggan = mysqli_query($mysqli, $insertpelanggan);
 ?>
         <script>
@@ -202,12 +258,14 @@ if (isset($_POST['save'])) {
         </script>
     <?php
     } else {
+
+
     ?>
         <script>
             Swal.fire({
                 icon: 'error',
                 title: 'Gagal!',
-                text: 'Gagal Menambahkan Data Mohon Pasang Baru!'
+                text: 'Gagal Menambahkan Data Mohon Pasang Baru Karena Nomor Identitas sudah terdaftar!'
             }).then((result) => {
                 window.location = "menu_pb.php";
             })
@@ -216,6 +274,5 @@ if (isset($_POST['save'])) {
     }
 }
 ?>
-
 
 </html>

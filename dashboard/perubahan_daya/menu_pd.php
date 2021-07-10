@@ -33,11 +33,6 @@
         <div class="card-body">
             <form action="">
                 <div class="form-group">
-                    <!-- <label for="">Cari No Registrasi</label>
-                    <input type="text" id="noreg" name="no_registrasi" class="form-control">
-                    <button type="button" id="btn-search" class="btn btn-primary mt-2">Cari</button>
-                    <a href="menu_pd.php" class="btn btn-warning mt-2">Reset</a> -->
-
                     <label for="">Cari ID Pelanggan</label>
                     <input type="text" id="id_pelanggan" name="id_pelanggan" class="form-control">
                     <button type="button" id="btn-search" class="btn btn-primary mt-2">Cari</button>
@@ -55,26 +50,13 @@
                 <h3 class="mb-4"><u>Data Pemohon</u></h3>
 
                 <!-- <div class="form-group">
-                    <label for="">Nomor Registrasi</label>
-                    <select id="noreg" name="no_registrasi" class="form-control" onchange="changeValueNama(this.value)" required>
-                        <option disabled selected>Pilih</option>
-
-                        <?php
-                        // $query = "SELECT * FROM tb_tes_input_pb";
-                        // $result = mysqli_query($mysqli, $query);
-                        // $jsArray = "var prdName = new Array();\n";
-                        // while ($data = mysqli_fetch_array($result)) {
-                        //     echo '<option value="' . $data['no_registrasi'] . '">' . $data['no_registrasi'] . '</option> ';
-                        //     $jsArray .=
-                        //         "prdName['" . $data['no_registrasi'] . "'] = {nama:'" . addslashes($data['nama']) . "'};\n";
-                        // }
-                        ?>
-                    </select>
+                    <label for="">No Registrasi</label>
+                    <input type="text" id="noregtampil" name="no_registrasi" class="form-control" required readonly="readonly">
                 </div> -->
 
                 <div class="form-group">
-                    <label for="">No Registrasi</label>
-                    <input type="text" id="noregtampil" name="no_registrasi" class="form-control" required readonly="readonly">
+                    <label for="">Identitas (No KTP)</label> <br>
+                    <input type="text" class="form-control" value="" id="ktp" required readonly="readonly">
                 </div>
 
                 <div class="form-group">
@@ -110,11 +92,6 @@
                 <div class="form-group">
                     <label for="">Daya Lama</label>
                     <input type="text" name="daya_lama" id="daya" class="form-control" value="" required readonly="readonly">
-                </div>
-
-                <div class="form-group">
-                    <label for="">Upload Foto / Scan KTP</label> <br>
-                    <input type="file" accept="image/*" name="foto" required>
                 </div>
 
                 <hr class="font-weight-bolder my-4">

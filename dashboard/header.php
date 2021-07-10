@@ -16,6 +16,13 @@ include '../../koneksi.php';
     <script src="../../vendor/jquery/jquery.min.js"></script>
     <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        #dropdown_a {
+            max-height: 280px;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 
 <body id="page-top" class="text-gray-900">

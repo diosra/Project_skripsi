@@ -18,6 +18,7 @@ function search() {
                 $("#notelp").val(response.notelp);
                 $("#email").val(response.email);
                 $("#daya").val(response.daya);
+                $("#ktp").val(response.ktp);
             } else { // Jika isi dari array status adalah failed
                 Swal.fire({
                     icon: 'error',
