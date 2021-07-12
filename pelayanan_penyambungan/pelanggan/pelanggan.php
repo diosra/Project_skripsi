@@ -10,14 +10,6 @@
     <meta name="author" content="">
 
     <title>Pelanggan</title>
-
-    <!-- <style>
-        table#dataTable th:nth-child(8) {
-            width: 5px;
-            max-width: 5px;
-            word-wrap: break-word;
-        }
-    </style> -->
 </head>
 
 </html>
@@ -30,25 +22,39 @@
         <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Pelanggan</u></h1>
     </div>
 
+    <!-- Modal dialog untuk deskripsi -->
+    <div id="get-data" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Deskripsi Lengkap Pelanggan</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex">
+        <!-- <div class="card-header py-3 d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
             <a class="btn btn-primary p-2 mr-2" href="header.php?page=pelinput"><i class="fas fa-plus-circle"></i> Tambah</a>
-        </div>
+        </div> -->
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
-                            <th class="text-center">No Registrasi</th>
                             <th class="text-center">Identitas (KTP)</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Alamat</th>
-                            <th class="text-center">No HP</th>
-                            <th class="text-center">No Telp</th>
-                            <th class="text-center">Email</th>
+                            <th class="text-center">Deskripsi Lengkap</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -61,18 +67,19 @@
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
                                     <td class="align-middle text-center"><?php echo $no++ ?></td>
-                                    <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
-                                    <td class="align-middle"><?php echo $row['nohp']; ?></td>
-                                    <td class="align-middle"><?php echo $row['no_telp']; ?></td>
-                                    <td class="align-middle"><?php echo $row['email']; ?></td>
+                                    <td class="align-middle text-center">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_pelanggan'] ?>" class="open-modal btn btn-primary" href="#">
+                                            <i class='fas fa-sticky-note fa-2x'></i>
+                                        </a>
+                                    </td>
                                     <td class="align-middle text-center">
                                         <div class="row">
-                                            <div class="col">
+                                            <!-- <div class="col">
                                                 <a href="header.php?page=peledit&edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                            </div>
+                                            </div> -->
                                             <div class="col mt-2">
                                                 <a href="header.php?page=pelhapus&hapus=<?php echo $row['id_pelanggan'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                             </div>
@@ -93,6 +100,21 @@
 </div>
 <!-- End of Main Content -->
 
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal', function(e) {
+            e.preventDefault();
+            $("#get-data").modal('show');
+            $.post('pelayanan_penyambungan/pelanggan/view.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi").html(html);
+                });
+        });
+    })
+</script>
+
 <?php
 include_once 'footer.php';
 ?>
@@ -102,7 +124,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [2, 4, 5, 6, 7, 8],
+            "targets": [1, 3, 4, 5]
         }]
     });
 </script>

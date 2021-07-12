@@ -27,7 +27,7 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Data Pelanggan dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
+                    text: 'ID Pelanggan : <?php echo $row['idpel'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
                 }).then((result) => {
                     window.location = "header.php?page=pelanggan";
                 })

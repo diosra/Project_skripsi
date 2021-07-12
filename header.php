@@ -82,6 +82,7 @@ if (!isset($_SESSION['username'])) {
                 <!-- Nav Item - Akun User -->
                 <?php
                 $id = $_SESSION['id'];
+
                 if ($level == 1) {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
@@ -288,6 +289,16 @@ if (!isset($_SESSION['username'])) {
                         <a class="nav-link" href="header.php?page=pelanggan">
                             <i class="fas fa-user-friends"></i></i>
                             <span>Menu Data Pelanggan</span></a>
+                    </li>
+
+                    <!-- Divider -->
+                    <hr class="sidebar-divider">
+
+                    <!-- Nav Item - Menu Permohonan Pelayanan Penyambungan -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=mohonyanbung">
+                            <i class="fas fa-user-friends"></i></i>
+                            <span>Menu Data Permohonan <br> Pelayanan Penyambungan </span></a>
                     </li>
 
                     <!-- Nav Item - Menu Pelayanan Penyambungan -->
@@ -661,6 +672,16 @@ if (!isset($_SESSION['username'])) {
                                 // Case untuk halaman pelanggan
                             case 'pelanggan':
                                 include "pelayanan_penyambungan/pelanggan/pelanggan.php";
+                                break;
+
+                            case 'mohonyanbung':
+                                include "pelayanan_penyambungan/permohonan_yanbung/mohon.php";
+                                break;
+                            case 'hapusmohonyanbung':
+                                include "pelayanan_penyambungan/permohonan_yanbung/hapus.php";
+                                break;
+                            case 'up_pem':
+                                include "pelayanan_penyambungan/permohonan_yanbung/update.php";
                                 break;
 
                             case 'foto':
