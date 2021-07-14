@@ -2,14 +2,10 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Permohonan Pasang Baru</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Biaya RAB</title>
 </head>
 
 </html>
@@ -19,7 +15,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Permohonan Pelanggan mengajukan Pasang Baru</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Biaya RAB</u></h1>
     </div>
 
     <!-- Modal dialog untuk deskripsi -->
@@ -41,52 +37,47 @@
 
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
-        <!-- <div class="card-header py-3 d-flex">
+        <div class="card-header py-3 d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-            <a class="btn btn-primary p-2 mr-2" href="header.php?page=pelinput"><i class="fas fa-plus-circle"></i> Tambah</a>
-        </div> -->
+            <a class="btn btn-primary p-2 mr-2" href="header.php?page=inputharga"><i class="fas fa-plus-circle"></i> Tambah</a>
+        </div>
+
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
-                            <th class="text-center">No Registrasi</th>
-                            <th class="text-center">Identitas (KTP)</th>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">Alamat</th>
-                            <th class="text-center">Tanggal Masuk</th>
-                            <th class="text-center">Deskripsi Lengkap Data Pengajuan</th>
+                            <th class="text-center">Kode</th>
+                            <th class="text-center">Uraian</th>
+                            <!-- <th class="text-center">Tipe</th> -->
+                            <th class="text-center">Satuan</th>
+                            <th class="text-center">Harga Satuan</th>
+                            <!-- <th class="text-center">Status Petugas Survey</th>
+                            <th class="text-center">Status Petugas Teknisi</th> -->
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "select * from tb_mohon_pb");
+                        $data = mysqli_query($mysqli, "SELECT * FROM tb_harga");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
                                     <td class="align-middle text-center"><?php echo $no++ ?></td>
-                                    <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
-                                    <td class="align-middle"><?php echo $row['identitas']; ?></td>
-                                    <td class="align-middle"><?php echo $row['nama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['alamat']; ?></td>
-                                    <td class="align-middle"><?php echo date('d-M-Y', strtotime($row['tgl_masuk'])); ?></td>
+                                    <td class="align-middle"><?php echo $row['KODE']; ?></td>
+                                    <td class="align-middle"><?php echo $row['URAIAN']; ?></td>
+                                    <!-- <td class="align-middle"><?php echo $row['TIPE']; ?></td> -->
+                                    <td class="align-middle"><?php echo $row['SATUAN']; ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['HARGA_SATUAN'], 0, ',', '.') ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row['id_mohon'] ?>" class="open-modal btn btn-primary" href="#">
-                                            <i class='fas fa-sticky-note fa-2x'></i>
-                                        </a>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <div class="row">
-                                            <!-- <div class="col">
-                                                <a href="header.php?page=peledit&edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                            </div> -->
-                                            <div class="col mt-2">
-                                                <a href="header.php?page=hapusmohonyanbung&hapuspb=<?php echo $row['id_mohon'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
-                                            </div>
+                                        <div class="col">
+                                            <a href="header.php?page=editharga&edit=<?php echo $row['id_harga'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                        </div>
+                                        <div class="col mt-2">
+                                            <a href="header.php?page=hapusharga&hapus=<?php echo $row['id_harga'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -101,15 +92,12 @@
 </div>
 <!-- /.container-fluid -->
 
-</div>
-<!-- End of Main Content -->
-
 <script>
     $(function() {
         $(document).on('click', '.open-modal', function(e) {
             e.preventDefault();
             $("#get-data").modal('show');
-            $.post('pelayanan_penyambungan/permohonan_yanbung/view.php', {
+            $.post('pelayanan_penyambungan/pelayananpenyambungan/pasang_baru/view.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -119,16 +107,35 @@
     })
 </script>
 
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal2', function(e) {
+            e.preventDefault();
+            $("#get-data2").modal('show');
+            $.post('pelayanan_penyambungan/pelayananpenyambungan/pasang_baru/view_biaya.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi_biaya").html(html);
+                });
+        });
+    })
+</script>
+
 <?php
 include_once 'footer.php';
 ?>
+
+</div>
+<!-- End of Main Content -->
+
 
 <!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
 <script>
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [1, 3, 4, 6, 7]
+            "targets": [1, 2, 3, 4, 5]
         }]
     });
 </script>

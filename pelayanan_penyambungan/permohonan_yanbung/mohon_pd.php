@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Permohonan Pasang Baru</title>
+    <title>Permohonan Perubahan Daya</title>
 </head>
 
 </html>
@@ -19,7 +19,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Permohonan Pelanggan mengajukan Pasang Baru</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Permohonan Pelanggan mengajukan Perubahan Daya</u></h1>
     </div>
 
     <!-- Modal dialog untuk deskripsi -->
@@ -62,7 +62,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "select * from tb_mohon_pb");
+                        $data = mysqli_query($mysqli, "select a.*, b.idpel, b.identitas,b.nama,b.alamat from tb_mohon_pd a JOIN tb_pelanggan b ON a.id_pelanggan = b.idpel");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
@@ -85,7 +85,7 @@
                                                 <a href="header.php?page=peledit&edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                             </div> -->
                                             <div class="col mt-2">
-                                                <a href="header.php?page=hapusmohonyanbung&hapuspb=<?php echo $row['id_mohon'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                                <a href="header.php?page=hapusmohonyanbung&hapuspd=<?php echo $row['id_mohon'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                             </div>
                                         </div>
                                     </td>
@@ -109,7 +109,7 @@
         $(document).on('click', '.open-modal', function(e) {
             e.preventDefault();
             $("#get-data").modal('show');
-            $.post('pelayanan_penyambungan/permohonan_yanbung/view.php', {
+            $.post('pelayanan_penyambungan/permohonan_yanbung/view_pd.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {

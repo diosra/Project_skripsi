@@ -291,21 +291,75 @@ if (!isset($_SESSION['username'])) {
                             <span>Menu Data Pelanggan</span></a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=harga">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Menu Data Biaya RAB</span></a>
+                    </li>
+
                     <!-- Divider -->
                     <hr class="sidebar-divider">
 
                     <!-- Nav Item - Menu Permohonan Pelayanan Penyambungan -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="header.php?page=mohonyanbung">
                             <i class="fas fa-user-friends"></i></i>
                             <span>Menu Data Permohonan <br> Pelayanan Penyambungan </span></a>
+                    </li> -->
+
+                    <!-- Nav Item - Menu Data Permohonan Pelayanan Penyambungan -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                            <i class="fas fa-list-ul"></i>
+                            <span>Menu Permohonan Pelayanan Penyambungan</span>
+                        </a>
+                        <div id="collapse1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+
+                                    <!-- Link Menu Halaman Pasang Baru -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=mohonyanbungpb">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Menu Data <br> Permohonan Pasang <br> Baru
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <!-- Link Menu Halaman Perubahan Daya -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=mohonyanbungpd">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Menu Data <br> Permohonan Perubahan <br> Daya
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <!-- Link Menu Halaman Multiguna -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=mohonyanbungps">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Menu Data <br> Permohonan Penerangan <br> Sementara
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </li>
 
                     <!-- Nav Item - Menu Pelayanan Penyambungan -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                             <i class="fas fa-list-ul"></i>
-                            <span>Menu Pelayanan Penyambungan</span>
+                            <span>Menu Status Pelayanan Penyambungan</span>
                         </a>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
@@ -673,9 +727,27 @@ if (!isset($_SESSION['username'])) {
                             case 'pelanggan':
                                 include "pelayanan_penyambungan/pelanggan/pelanggan.php";
                                 break;
+                            case 'harga':
+                                include "pelayanan_penyambungan/hargaRAB/halamanharga.php";
+                                break;
+                            case 'inputharga':
+                                include "pelayanan_penyambungan/hargaRAB/tambah.php";
+                                break;
+                            case 'editharga':
+                                include "pelayanan_penyambungan/hargaRAB/edit.php";
+                                break;
+                            case 'hapusharga':
+                                include "pelayanan_penyambungan/hargaRAB/hapus.php";
+                                break;
 
-                            case 'mohonyanbung':
+                            case 'mohonyanbungpb':
                                 include "pelayanan_penyambungan/permohonan_yanbung/mohon.php";
+                                break;
+                            case 'mohonyanbungpd':
+                                include "pelayanan_penyambungan/permohonan_yanbung/mohon_pd.php";
+                                break;
+                            case 'mohonyanbungps':
+                                include "pelayanan_penyambungan/permohonan_yanbung/mohon_ps.php";
                                 break;
                             case 'hapusmohonyanbung':
                                 include "pelayanan_penyambungan/permohonan_yanbung/hapus.php";

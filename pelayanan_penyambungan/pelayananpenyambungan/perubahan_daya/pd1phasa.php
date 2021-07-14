@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,69 +22,146 @@
         <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Perubahan Daya 1 Phasa</u></h1>
     </div>
 
+    <!-- Modal dialog untuk deskripsi -->
+    <div id="get-data" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Deskripsi Lengkap Data Pengajuan</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal dialog untuk detail biaya -->
+    <div id="get-data2" class="modal fade" role="dialog">
+        <div class="modal-dialog mw-100 modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Detail Biaya RAB Perubahan Daya 1 Fasa dan Perubahan Daya 1 Fasa ke 3 Fasa</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi_biaya">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex">
-            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-            <a class="btn btn-primary p-2 mr-2" href="header.php?page=inputpd"><i class="fas fa-plus-circle"></i> Tambah</a>
-            <a class="btn btn-success p-2" href="header.php?page=detailpd1"><i class="fas fa-file-alt"></i> Detail Biaya</a>
-        </div>
+
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th rowspan="2">No</th>
-                            <th rowspan="2">No Registrasi</th>
-                            <th rowspan="2">Identitas (KTP)</th>
-                            <th rowspan="2">Nama</th>
-                            <th rowspan="2">Email Pelanggan</th>
-                            <th rowspan="2">Alamat</th>
-                            <th rowspan="2">Jenis Transaksi</th>
-                            <th rowspan="2">Tanggal Permohonan</th>
-                            <th colspan="2">Tarif & Daya Lama</th>
-                            <th colspan="2">Tarif & Daya Baru</th>
-                            <th rowspan="2">Fasa Lama</th>
-                            <th rowspan="2">Fasa Baru</th>
-                            <th rowspan="2">Action</th>
-                        </tr>
-                        <tr>
-                            <th>Tarif</th>
-                            <th>Daya (VA)</th>
-                            <th>Tarif</th>
-                            <th>Daya (VA)</i></th>
+                            <th>No</th>
+                            <th>Identitas (KTP)</th>
+                            <th>Nama Pelanggan</th>
+                            <th>Alamat</th>
+                            <th>Deskripsi</th>
+                            <th>Detail Biaya RAB</th>
+                            <th>Status Petugas Survey</th>
+                            <th>Status Petugas Teknisi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.* , b.* FROM tb_perubahan_daya b JOIN tb_pelanggan a ON b.id_pelanggan = a.id_pelanggan WHERE fasa_lama = '1 FASA'");
+                        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_perubahan_daya b JOIN tb_mohon_pd a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa_lama = '1 FASA' && a.status_pembayaran = '1'");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
                                     <td class="align-middle text-center"><?php echo $no++ ?></td>
-                                    <td class="align-middle"><?php echo $row['no_registrasi']; ?></td>
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['email']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
-                                    <td class="align-middle"><?php echo $row['jenis_transaksi']; ?></td>
-                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
-                                    <td class="align-middle"><?php echo $row['tarif_lama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['daya_lama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['tarif_baru']; ?></td>
-                                    <td class="align-middle"><?php echo $row['daya_baru']; ?></td>
-                                    <td class="align-middle"><?php echo $row['fasa_lama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['fasa_baru']; ?></td>
-                                    <td class="text-center">
-                                        <div class="col">
-                                            <a href="header.php?page=editpd&edit=<?php echo $row['id_perubahan_daya'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                        </div>
-                                        <div class="col mt-2">
-                                            <a href="header.php?page=hapuspd&hapus=<?php echo $row['id_perubahan_daya'] ?>&fasa_lama=<?php echo $row['fasa_lama'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
-                                        </div>
+                                    <td class="align-middle text-center">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_perubahan_daya'] ?>" class="open-modal btn btn-primary" href="#">
+                                            <i class='fas fa-sticky-note fa-2x'></i>
+                                        </a>
                                     </td>
+                                    <td class="align-middle text-center">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_perubahan_daya'] ?>" class="open-modal2 btn btn-primary" href="#">
+                                            <i class='fas fa-sticky-note fa-2x'></i>
+                                        </a>
+                                    </td>
+
+                                    <?php
+                                    if ($row['status_survey'] == "1") {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <a class="btn btn-warning rounded">
+                                                Dalam Proses
+                                            </a>
+                                        </td>
+                                    <?php
+                                    } elseif ($row['status_survey'] == "2") {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <a class="btn btn-success rounded">
+                                                Selesai
+                                            </a>
+                                        </td>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <a class="btn btn-danger rounded">
+                                                Pilih Petugas
+                                            </a>
+                                        </td>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <?php
+                                    if ($row['status_survey'] == "0" || $row['status_survey'] == "1") {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <button class="btn btn-secondary rounded" disabled>
+                                                Survey Belum selesai
+                                            </button>
+                                        </td>
+                                        <?php
+                                    } elseif ($row['status_survey'] == "2") {
+                                        if ($row['status_teknisi'] == "1") {
+                                        ?>
+                                            <td class="align-middle text-center">
+                                                <a class="btn btn-warning rounded">
+                                                    Dalam Proses
+                                                </a>
+                                            </td>
+                                        <?php
+                                        } elseif ($row['status_teknisi'] == "2") {
+                                        ?>
+                                            <td class="align-middle text-center">
+                                                <a class="btn btn-success rounded">
+                                                    Selesai
+                                                </a>
+                                            </td>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <td class="align-middle text-center">
+                                                <a class="btn btn-danger rounded">
+                                                    Pilih Petugas
+                                                </a>
+                                            </td>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </tr>
                             <?php } ?>
                         <?php } ?>
@@ -97,6 +173,36 @@
 
 </div>
 <!-- /.container-fluid -->
+
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal', function(e) {
+            e.preventDefault();
+            $("#get-data").modal('show');
+            $.post('pelayanan_penyambungan/pelayananpenyambungan/perubahan_daya/view.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi").html(html);
+                });
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal2', function(e) {
+            e.preventDefault();
+            $("#get-data2").modal('show');
+            $.post('pelayanan_penyambungan/pelayananpenyambungan/perubahan_daya/view_biaya.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi_biaya").html(html);
+                });
+        });
+    })
+</script>
 
 </div>
 <!-- End of Main Content -->
@@ -110,7 +216,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [5, 6, 7, 8, 9, 10, 11, 13]
+            "targets": [1, 3, 4, 5, 6, 7]
         }]
     });
 </script>

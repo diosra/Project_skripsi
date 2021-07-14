@@ -15,8 +15,8 @@
 
     <?php
 
-    if (isset($_GET['hapus'])) {
-        $id = $_GET['hapus'];
+    if (isset($_GET['hapuspb'])) {
+        $id = $_GET['hapuspb'];
         $data = mysqli_query($mysqli, "SELECT * FROM tb_mohon_pb WHERE id_mohon = $id");
         $row = $data->fetch_assoc();
         $delete = "DELETE FROM tb_mohon_pb WHERE id_mohon =$id";
@@ -27,14 +27,34 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Data Permohonan dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
+                    text: 'Data Permohonan Pasang Baru dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
                 }).then((result) => {
-                    window.location = "header.php?page=mohonyanbung";
+                    window.location = "header.php?page=mohonyanbungpb";
+                })
+            </script>
+        <?php
+        }
+    } elseif (isset($_GET['hapuspd'])) {
+        $id = $_GET['hapuspd'];
+        $data = mysqli_query($mysqli, "SELECT a.*,b.* FROM tb_mohon_pd a JOIN tb_pelanggan b ON a.id_pelanggan = b.idpel WHERE a.id_mohon = $id");
+        $row = $data->fetch_assoc();
+        $delete = "DELETE FROM tb_mohon_pd WHERE id_mohon =$id";
+        $query = mysqli_query($mysqli, $delete) or die(mysqli_error($mysqli));
+
+        if ($query) { ?>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses.',
+                    text: 'Data Permohonan Perubahan Daya dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
+                }).then((result) => {
+                    window.location = "header.php?page=mohonyanbungpd";
                 })
             </script>
     <?php
         }
-    } ?>
+    }
+    ?>
 </body>
 
 </html>

@@ -20,13 +20,13 @@
     $dataambil = mysqli_fetch_array($queryambil);
     $noRegistrasi = @$dataambil['RegTerbesar'];
 
-    $urutan = (int) substr($noRegistrasi, 3, 3);
+    $urutan = (int) substr($noRegistrasi, 7, 5);
     $urutan++;
 
-    $huruf = "NRG";
-    $noRegistrasi = $huruf . sprintf("%03s", $urutan);
+    $huruf = "NRG-PB-";
+    $noRegistrasi = $huruf . sprintf("%05s", $urutan);
 
-    $queryambil2 = mysqli_query($mysqli, "SELECT max(id_pelanggan) as idPelangganmax FROM tb_mohon_pb");
+    $queryambil2 = mysqli_query($mysqli, "SELECT max(idpel) as idPelangganmax FROM tb_pelanggan");
     $dataambil2 = mysqli_fetch_array($queryambil2);
     $id_pelanggan = @$dataambil2['idPelangganmax'];
 
@@ -89,6 +89,7 @@
                 <h3 class="mb-4"><u>Data Pemohon</u></h3>
 
                 <input type="hidden" name="no_registrasi" value="<?php echo $noRegistrasi ?>" class="form-control" disabled readonly>
+                <input type="hidden" name="no_registrasi" value="<?php echo $id_pelanggan ?>" class="form-control" disabled readonly>
 
                 <div class="form-group">
                     <label for="">Nama</label>
@@ -310,45 +311,61 @@ if (isset($_POST['save'])) {
         if ($daya <= "2200") {
             // $tarif = "R-1";
             $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya,tarif,total, peruntukan, tgl_masuk) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','$identitas','$produk_layanan','$daya','$tarif', '$totalBiaya', '$peruntukan', '$tgl_masuk')";
-            $query = mysqli_query($mysqli, $insert);
+            // $query = mysqli_query($mysqli, $insert);
             // var_dump($insert);
         } elseif ($daya == "3500" || $daya <= "5500") {
             // $tarif = "R-2";
             $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya,tarif, total, peruntukan, tgl_masuk) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','$identitas','$produk_layanan','$daya','$tarif', '$totalBiaya', '$peruntukan','$tgl_masuk')";
-            $query = mysqli_query($mysqli, $insert);
+            // $query = mysqli_query($mysqli, $insert);
             // var_dump($insert);
         } elseif ($daya >= "6600") {
             // $tarif = "R-3";
             $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya,tarif, total, peruntukan, tgl_masuk) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','$identitas','$produk_layanan','$daya','$tarif','$totalBiaya', '$peruntukan','$tgl_masuk')";
-            $query = mysqli_query($mysqli, $insert);
+            // $query = mysqli_query($mysqli, $insert);
             // var_dump($insert);
         }
     } elseif ($produk_layanan == "PRABAYAR") {
         $token = $_POST['token'];
         $t = "T";
         $insert = "INSERT INTO tb_mohon_pb (no_registrasi,id_pelanggan, nama,alamat, nohp, notelp, email,identitas,produk_layanan,daya,tarif,total, token, peruntukan, tgl_masuk) VALUES ('$noRegistrasi', '$id_pelanggan', '$nama', '$alamat', '$nohp','$notelp', '$email','$identitas','$produk_layanan','$daya','$tarif$t','$totalBiaya','$token', '$peruntukan','$tgl_masuk')";
-        $query = mysqli_query($mysqli, $insert);
-        // var_dump($insert);
+        // $query = mysqli_query($mysqli, $insert);
+
     }
+    $query = mysqli_query($mysqli, $insert);
+    // var_dump($insert);
 
     if ($query) {
-        $insert2 = "INSERT INTO tb_pelanggan (id_mohon,idpel, no_registrasi, identitas, nama, alamat, nohp, no_telp, email) VALUES ('" . mysqli_insert_id($mysqli) . "','$id_pelanggan','$noRegistrasi','$identitas', '$nama', '$alamat', '$nohp', '$notelp', '$email');";
-        // $query2 = mysqli_query($mysqli, $insert2);
-        // var_dump($insertpelanggan);
+        $insert2 = "INSERT INTO tb_pelanggan (id_mohon,idpel, identitas, nama, alamat, nohp, no_telp, email) VALUES ('" . mysqli_insert_id($mysqli) . "','$id_pelanggan','$identitas', '$nama', '$alamat', '$nohp', '$notelp', '$email');";
 
-        if ($daya <= "5500") {
-            $fasa = "1 Fasa";
-            $pekerjaanRAB = "PB 1 Fasa";
+        if ($produk_layanan == "PASCABAYAR") {
+            if ($daya <= "5500") {
+                $fasa = "1 Fasa";
+                $pekerjaanRAB = "PB 1 Fasa";
 
-            $insert2 .= "INSERT INTO tb_pasang_baru (id_mohon,jenis_transaksi, fasa_baru,pekerjaan_rab ) VALUES ('" . mysqli_insert_id($mysqli) . "','Pasang Baru','$fasa','$pekerjaanRAB')";
-        } elseif ($daya >= "6600") {
-            $fasa = "3 Fasa";
-            $pekerjaanRAB = "PB 3 Fasa";
+                $insert2 .= "INSERT INTO tb_pasang_baru (id_mohon,jenis_transaksi,daya,tarif, fasa_baru,pekerjaan_rab ) VALUES ('" . mysqli_insert_id($mysqli) . "','Pasang Baru','$daya','$tarif','$fasa','$pekerjaanRAB')";
+            } elseif ($daya >= "6600") {
+                $fasa = "3 Fasa";
+                $pekerjaanRAB = "PB 3 Fasa";
 
-            $insert2 .= "INSERT INTO tb_pasang_baru (id_mohon,jenis_transaksi, fasa_baru,pekerjaan_rab ) VALUES ('" . mysqli_insert_id($mysqli) . "','Pasang Baru','$fasa','$pekerjaanRAB')";
+                $insert2 .= "INSERT INTO tb_pasang_baru (id_mohon,jenis_transaksi,daya,tarif, fasa_baru,pekerjaan_rab ) VALUES ('" . mysqli_insert_id($mysqli) . "','Pasang Baru','$daya','$tarif','$fasa','$pekerjaanRAB')";
+            }
+        } elseif ($produk_layanan == "PRABAYAR") {
+            $t = "T";
+            if ($daya <= "5500") {
+                $fasa = "1 Fasa";
+                $pekerjaanRAB = "PB 1 Fasa";
+
+                $insert2 .= "INSERT INTO tb_pasang_baru (id_mohon,jenis_transaksi,daya,tarif, fasa_baru,pekerjaan_rab ) VALUES ('" . mysqli_insert_id($mysqli) . "','Pasang Baru','$daya','$tarif$t','$fasa','$pekerjaanRAB')";
+            } elseif ($daya >= "6600") {
+                $fasa = "3 Fasa";
+                $pekerjaanRAB = "PB 3 Fasa";
+
+                $insert2 .= "INSERT INTO tb_pasang_baru (id_mohon,jenis_transaksi,daya,tarif, fasa_baru,pekerjaan_rab ) VALUES ('" . mysqli_insert_id($mysqli) . "','Pasang Baru','$daya','$tarif$t','$fasa','$pekerjaanRAB')";
+            }
         }
         // var_dump($insert2);
         $query2 = mysqli_multi_query($mysqli, $insert2);
+
 ?>
         <script>
             Swal.fire({

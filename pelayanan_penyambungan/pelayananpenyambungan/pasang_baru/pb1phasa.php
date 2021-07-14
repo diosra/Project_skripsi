@@ -71,7 +71,9 @@
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Deskripsi</th>
                             <th class="text-center">Detail Biaya RAB</th>
-                            <th class="text-center">Action</th>
+                            <th class="text-center">Status Petugas Survey</th>
+                            <th class="text-center">Status Petugas Teknisi</th>
+                            <!-- <th class="text-center">Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -97,14 +99,80 @@
                                         </a>
                                     </td>
 
-                                    <td class="text-center">
+                                    <?php
+                                    if ($row['status_survey'] == "1") {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <a class="btn btn-warning rounded">
+                                                Dalam Proses
+                                            </a>
+                                        </td>
+                                    <?php
+                                    } elseif ($row['status_survey'] == "2") {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <a class="btn btn-success rounded">
+                                                Selesai
+                                            </a>
+                                        </td>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <a class="btn btn-danger rounded">
+                                                Pilih Petugas
+                                            </a>
+                                        </td>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <?php
+                                    if ($row['status_survey'] == "0" || $row['status_survey'] == "1") {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <button class="btn btn-secondary rounded" disabled>
+                                                Survey Belum selesai
+                                            </button>
+                                        </td>
+                                        <?php
+                                    } elseif ($row['status_survey'] == "2") {
+                                        if ($row['status_teknisi'] == "1") {
+                                        ?>
+                                            <td class="align-middle text-center">
+                                                <a class="btn btn-warning rounded">
+                                                    Dalam Proses
+                                                </a>
+                                            </td>
+                                        <?php
+                                        } elseif ($row['status_teknisi'] == "2") {
+                                        ?>
+                                            <td class="align-middle text-center">
+                                                <a class="btn btn-success rounded">
+                                                    Selesai
+                                                </a>
+                                            </td>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <td class="align-middle text-center">
+                                                <a class="btn btn-danger rounded">
+                                                    Pilih Petugas
+                                                </a>
+                                            </td>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+
+                                    <!-- <td class="align-middle text-center">
                                         <div class="col">
                                             <a href="header.php?page=editpb&edit=<?php echo $row['id_pasang_baru'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                         </div>
                                         <div class="col mt-2">
                                             <a href="header.php?page=hapuspb&hapus=<?php echo $row['id_pasang_baru'] ?>&fasa_baru=<?php echo $row['fasa_baru'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                         </div>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             <?php } ?>
                         <?php } ?>
@@ -160,7 +228,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [1, 3, 4, 5, 6]
+            "targets": [1, 3, 4, 5, 6, 7]
         }]
     });
 </script>

@@ -7,7 +7,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT a.*, b.* FROM tb_pasang_baru a JOIN tb_mohon_pb b ON a.id_mohon = b.id_mohon WHERE id_pasang_baru = $id");
+    $view = $mysqli->query("SELECT a.*, b.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon WHERE id_perubahan_daya = $id");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -32,12 +32,24 @@ if ($_POST['id']) {
                 <input type="text" value="' . $row_view['jenis_transaksi'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
-                <label for="">Daya</label>
-                <input type="text" value="' . $row_view['daya'] . '" class="form-control" readonly>
+                <label for="">Daya Lama</label>
+                <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
-                <label for="">Tarif</label>
-                <input type="text" value="' . $row_view['tarif'] . '" class="form-control" readonly>
+                <label for="">Tarif Lama</label>
+                <input type="text" value="' . $row_view['tarif_lama'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Daya Baru</label>
+                <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Tarif Baru</label>
+                <input type="text" value="' . $row_view['tarif_baru'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Fasa Lama</label>
+                <input type="text" value="' . $row_view['fasa_lama'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
                 <label for="">Fasa Baru</label>

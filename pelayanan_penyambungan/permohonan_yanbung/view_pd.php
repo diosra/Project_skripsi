@@ -6,7 +6,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT * FROM tb_mohon_pb WHERE id_mohon ='$id'");
+    $view = $mysqli->query("SELECT * FROM tb_mohon_pd WHERE id_mohon ='$id'");
     //jika ada datanya
 
     if ($view) {
@@ -52,7 +52,7 @@ if ($_POST['id']) {
                                         <input type="date" name="tgl" class="form-control">
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary" name="savepb"><i class="fas fa-save"></i> Ubah</button>
+                                    <button type="submit" class="btn btn-primary" name="savepd"><i class="fas fa-save"></i> Ubah</button>
                                 </form>
                             </div>
                         </div>
@@ -107,12 +107,20 @@ if ($_POST['id']) {
                 <input type="text" value="' . $row_view['peruntukan'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
-                <label for="">Daya</label>
-                <input type="text" value="' . $row_view['daya'] . '" class="form-control" readonly>
+                <label for="">Daya Lama</label>
+                <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
-                <label for="">Tarif</label>
-                <input type="text" value="' . $row_view['tarif'] . '" class="form-control" readonly>
+                <label for="">Tarif Lama</label>
+                <input type="text" value="' . $row_view['tarif_lama'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Daya Baru</label>
+                <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Tarif Baru</label>
+                <input type="text" value="' . $row_view['tarif_baru'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
                 <label for="">Total Biaya</label>
@@ -134,13 +142,21 @@ if ($_POST['id']) {
                 <label for="">Peruntukan</label>
                 <input type="text" value="' . $row_view['peruntukan'] . '" class="form-control" readonly>
             </div>
-            <div class="form-group">
-                <label for="">Daya</label>
-                <input type="text" value="' . $row_view['daya'] . '" class="form-control" readonly>
+                        <div class="form-group">
+                <label for="">Daya Lama</label>
+                <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
-                <label for="">Tarif</label>
-                <input type="text" value="' . $row_view['tarif'] . '" class="form-control" readonly>
+                <label for="">Tarif Lama</label>
+                <input type="text" value="' . $row_view['tarif_lama'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Daya Baru</label>
+                <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Tarif Baru</label>
+                <input type="text" value="' . $row_view['tarif_baru'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
                 <label for="">Token</label>
