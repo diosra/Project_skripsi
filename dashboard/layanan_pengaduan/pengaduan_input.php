@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Input Pasang Baru</title>
+    <title>Pelayanan Pengaduan</title>
     <?php
     include_once '../header.php';
     ?>
@@ -29,6 +29,8 @@
 
     ?>
 
+
+    <script src="process.js"></script> <!-- Load file process.js -->
 </head>
 
 <!-- Begin Page Content -->
@@ -41,6 +43,19 @@
 
     <!-- Card untuk Form -->
     <div class="card shadow mb-4">
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="">Cari ID Pelanggan</label>
+                    <input type="text" id="id_pelanggan" name="id_pelanggan" class="form-control">
+                    <button type="button" id="btn-search" class="btn btn-primary mt-2">Cari</button>
+                    <!-- <a href="menu_mg.php" class="btn btn-warning mt-2">Reset</a> -->
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Input Data Pengaduan</h6>
         </div>
@@ -52,38 +67,28 @@
                 <input type="text" name="no_registrasi" class="form-control" value="<?php echo $noLaporan ?>" hidden readonly>
 
                 <div class="form-group">
-                    <label for="">Jenis Gangguan</label>
-                    <select name="gangguan" class="form-control" required>
-                        <option value="" disabled selected>Pilih</option>
-                        <option>Tetangga Turut Padam</option>
-                        <option>Tetangga Tidak Turut Padam</option>
-                        <option>Tidak Tahu Tetangga Padam atau Tidak</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
                     <label for="">No KTP</label>
-                    <input type="text" id="nama" name="identitas" class="form-control" required required>
+                    <input type="text" id="ktp" name="identitas" class="form-control" required readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" id="nama" name="nama" class="form-control" required required>
+                    <input type="text" id="nama" name="nama" class="form-control" required readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="">Email</label>
-                    <input type="text" id="email" name="email" class="form-control" required required>
+                    <input type="text" id="email" name="email" class="form-control" required readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="">No Handphone</label>
-                    <input type="number" id="nohp" name="nohp" class="form-control" required required>
+                    <input type="number" id="nohp" name="nohp" class="form-control" required readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="">Alamat Lengkap</label>
-                    <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" required></textarea>
+                    <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" required readonly></textarea>
                 </div>
 
                 <div class="row form-group">
@@ -105,6 +110,16 @@
                             <input type="text" name="kelurahan" class="form-control" required required>
                         </div>
                     </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Jenis Gangguan</label>
+                    <select name="gangguan" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option>Tetangga Turut Padam</option>
+                        <option>Tetangga Tidak Turut Padam</option>
+                        <option>Tidak Tahu Tetangga Padam atau Tidak</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

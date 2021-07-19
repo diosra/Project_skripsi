@@ -12,11 +12,9 @@ function search() {
         success: function (response) {
             if (response.status == "success") {
                 $("#ktp").val(response.ktp);
-                $("#idpelanggan").val(response.idpel);
                 $("#nama").val(response.nama);
                 $("#alamat").val(response.alamat);
                 $("#nohp").val(response.nohp);
-                $("#notelp").val(response.notelp);
                 $("#email").val(response.email);
             } else {
                 Swal.fire({

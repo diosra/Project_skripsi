@@ -65,7 +65,7 @@
                                     <td><?php echo $row['email']; ?></td>
                                     <td><?php echo $row['username']; ?></td>
                                     <td><?php echo $posisi ?></td>
-                                    <td class="row text-center">
+                                    <td class="text-center">
                                         <div class="col">
                                             <a href="header.php?page=edituser&edit=<?php echo $row['id'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                         </div>
@@ -97,7 +97,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [6]
+            "targets": [2, 3, 6]
         }]
     });
 </script>

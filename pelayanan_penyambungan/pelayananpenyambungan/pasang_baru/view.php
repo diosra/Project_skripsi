@@ -24,10 +24,6 @@ if ($_POST['id']) {
                 <input type="text" value="' . $row_view['id_pelanggan'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
-                <label for="">Tanggal Permohonan</label>
-                <input type="text" value="' . date("d-M-Y", strtotime($row_view['tgl_masuk'])) . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
                 <label for="">Jenis Transaksi</label>
                 <input type="text" value="' . $row_view['jenis_transaksi'] . '" class="form-control" readonly>
             </div>

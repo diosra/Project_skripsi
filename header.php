@@ -29,6 +29,19 @@ if (!isset($_SESSION)) {
             table-layout: fixed;
             word-wrap: break-word;
         } */
+
+        table.table-bordered {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+
+        table.table-bordered>thead>tr>th {
+            border: 1px solid black;
+        }
+
+        table.table-bordered>tbody>tr>td {
+            border: 1px solid black;
+        }
     </style>
 
     <?php

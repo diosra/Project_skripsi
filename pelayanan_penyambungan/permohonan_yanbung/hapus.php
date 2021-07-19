@@ -51,6 +51,25 @@
                     window.location = "header.php?page=mohonyanbungpd";
                 })
             </script>
+        <?php
+        }
+    } elseif (isset($_GET['hapusps'])) {
+        $id = $_GET['hapusps'];
+        $data = mysqli_query($mysqli, "SELECT a.*,b.* FROM tb_mohon_multiguna a JOIN tb_pelanggan b ON a.id_pelanggan = b.idpel WHERE a.id_mohon = $id");
+        $row = $data->fetch_assoc();
+        $delete = "DELETE FROM tb_mohon_multiguna WHERE id_mohon =$id";
+        $query = mysqli_query($mysqli, $delete) or die(mysqli_error($mysqli));
+
+        if ($query) { ?>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses.',
+                    text: 'Data Permohonan Penyambungan Sementara dengan No.Registrasi : <?php echo $row['no_registrasi'] ?> & Nama : <?php echo $row['nama'] ?> berhasil dihapus!'
+                }).then((result) => {
+                    window.location = "header.php?page=mohonyanbungps";
+                })
+            </script>
     <?php
         }
     }

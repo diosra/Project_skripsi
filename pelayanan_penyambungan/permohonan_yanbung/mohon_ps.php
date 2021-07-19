@@ -62,7 +62,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "select a.*, b.* from tb_mohon_multiguna a JOIN tb_pelanggan b ON id_pelanggan = idpel");
+                        $data = mysqli_query($mysqli, "select a.*, b.idpel, b.identitas,b.nama,b.alamat from tb_mohon_multiguna a JOIN tb_pelanggan b ON a.id_pelanggan = b.idpel");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
@@ -85,7 +85,7 @@
                                                 <a href="header.php?page=peledit&edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                             </div> -->
                                             <div class="col mt-2">
-                                                <a href="header.php?page=hapusmohonyanbung&hapus=<?php echo $row['id_mohon'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                                <a href="header.php?page=hapusmohonyanbung&hapusps=<?php echo $row['id_mohon'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                             </div>
                                         </div>
                                     </td>
@@ -109,7 +109,7 @@
         $(document).on('click', '.open-modal', function(e) {
             e.preventDefault();
             $("#get-data").modal('show');
-            $.post('pelayanan_penyambungan/permohonan_yanbung/view.php', {
+            $.post('pelayanan_penyambungan/permohonan_yanbung/view_ps.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {

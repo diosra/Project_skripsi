@@ -64,14 +64,15 @@
                 <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Identitas (KTP)</th>
-                            <th>Nama Pelanggan</th>
-                            <th>Alamat</th>
-                            <th>Deskripsi</th>
-                            <th>Detail Biaya RAB</th>
-                            <th>Status Petugas Survey</th>
-                            <th>Status Petugas Teknisi</th>
+                            <th class="text-center">No</th>
+                            <th class="text-center">Identitas (KTP)</th>
+                            <th class="text-center">Nama Pelanggan</th>
+                            <th class="text-center">Alamat</th>
+                            <th class="text-center">Tanggal Permohonan Masuk</th>
+                            <th class="text-center">Deskripsi</th>
+                            <th class="text-center">Detail Biaya RAB</th>
+                            <th class="text-center">Status Petugas Survey</th>
+                            <th class="text-center">Status Petugas Teknisi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -86,6 +87,7 @@
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
+                                    <td class="align-middle"><?php echo date('d-M-Y', strtotime($row['tgl_masuk'])); ?></td>
                                     <td class="align-middle text-center">
                                         <a data-toggle="modal" data-id="<?php echo $row['id_perubahan_daya'] ?>" class="open-modal btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
@@ -216,7 +218,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [1, 3, 4, 5, 6, 7]
+            "targets": [1, 3, 5, 6, 7, 8]
         }]
     });
 </script>

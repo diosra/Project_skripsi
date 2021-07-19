@@ -63,7 +63,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
@@ -71,6 +71,7 @@
                             <th class="text-center">Identitas</th>
                             <th class="text-center">Nama Pelapor</th>
                             <th class="text-center">Alamat</th>
+                            <th class="text-center">Tanggal Pengaduan Masuk</th>
                             <th class="text-center">Data dan Deskripsi Pengaduan Pelapor</th>
                             <th class="text-center">Laporan Teknisi</th>
                             <th class="text-center">Progres</th>
@@ -90,6 +91,7 @@
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
+                                    <td class="align-middle"><?php echo date('d-M-Y', strtotime($row['tgl_masuk_laporan'])); ?></td>
                                     <td class="align-middle text-center">
                                         <a data-toggle="modal" data-id="<?php echo $row['id_pengaduan'] ?>" class="open-modal btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
@@ -177,7 +179,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [4, 5, 6, 7]
+            "targets": [4, 6, 7, 8]
         }]
     });
 </script>

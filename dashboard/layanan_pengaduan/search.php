@@ -12,10 +12,8 @@ if ($row > 0) { // Jika data lebih dari 0
         'nama' => $data['nama'],
         'alamat' => $data['alamat'],
         'nohp' => $data['nohp'],
-        'notelp' => $data['no_telp'],
         'email' => $data['email'],
         'ktp' => $data['identitas'],
-        'idpel' => $data['idpel'],
     );
 } else {
     $callback = array('status' => 'failed'); // set array status dengan failed

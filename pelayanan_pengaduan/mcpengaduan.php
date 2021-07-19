@@ -89,7 +89,7 @@
                                     <select name="gangguan" class="form-control">
                                         <option value="">Pilih</option>
                                         <option value="TETANGGA TURUT PADAM">Tetangga Turut Padam</option>
-                                        <option value="TETANGGA TIDAK TURUT PADAMN">Tetangga Tidak Turut Padam</option>
+                                        <option value="TETANGGA TIDAK TURUT PADAM">Tetangga Tidak Turut Padam</option>
                                         <option value="TIDAK TAHU TETANGGA PADAM ATAU TIDAK">Tidak Tahu Tetangga Padam atau Tidak</option>
                                     </select>
                                 </div>

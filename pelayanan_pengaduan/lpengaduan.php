@@ -22,14 +22,14 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     $filter = $_GET['filter'];
 
     if ($filter == '1') {
-        $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
+        $nama_bulan = array('', 'JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEMBER');
         $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND MONTH(tgl_masuk_laporan)='" . $_GET['bulan'] . "' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
 
         $bulanA = $_GET['bulan'];
         $tahunA = $_GET['tahun'];
 
         $jumlah = mysqli_num_rows($result);
-        $mulaitgl = $bln[date('m', strtotime($bulanA))] . ' ' . date('Y', strtotime($tahunA));
+        $mulaitgl = $nama_bulan[$_GET['bulan']] . ' ' . date('Y', strtotime($tahunA));
     } elseif ($filter == '2') {
         $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
 
@@ -54,7 +54,9 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 <html>
 
 <head>
-    <title>LAPORAN PENGADUAN PELANGGAN</title>
+    <title>
+        LAPORAN PENGADUAN PELANGGAN
+    </title>
 </head>
 
 <script type="text/javascript">
@@ -72,23 +74,27 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     <h3>
         <center>
-            LAPORAN PENGADUAN PELANGGAN
-            <!-- <?php
-                    if ($filter == 1) {
-                    ?>
-                DALAM BULAN <?php echo $mulaitgl ?>
+            <!-- LAPORAN PENGADUAN PELANGGAN -->
+            <?php
+            if ($filter == 1) {
+            ?>
+                LAPORAN PENGADUAN PELANGGAN <br>
+                BULAN <?php echo $mulaitgl ?>
 
             <?php
-                    } elseif ($filter == 2) {
+            } elseif ($filter == 2) {
             ?>
-                DALAM TAHUN <?php echo $mulaitgl ?>
+                LAPORAN PENGADUAN PELANGGAN <br>
+                TAHUN <?php echo $mulaitgl ?>
             <?php
-                    } elseif ($filter == 3) {
+            } elseif ($filter == 3) {
             ?>
-                <?php echo $gangguanA ?>
+                LAPORAN PENGADUAN PELANGGAN <br>
+                DENGAN JENIS GANGGUAN : <br>
+                "<?php echo $gangguanA ?>"
             <?php
-                    }
-            ?> -->
+            }
+            ?>
             <br>
         </center>
     </h3>
