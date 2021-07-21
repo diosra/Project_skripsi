@@ -17,6 +17,11 @@
 
     if (isset($_GET['hapuspb'])) {
         $id = $_GET['hapuspb'];
+        $noreg = $_GET['noreg'];
+
+        $noreg_exp = explode("-", $noreg);
+        $noreg_imp = implode("", $noreg_exp);
+
         $data = mysqli_query($mysqli, "SELECT * FROM tb_mohon_pb WHERE id_mohon = $id");
         $row = $data->fetch_assoc();
         $delete = "DELETE FROM tb_mohon_pb WHERE id_mohon =$id";
@@ -34,14 +39,24 @@
             </script>
         <?php
         }
-    } elseif (isset($_GET['hapuspd'])) {
+    } elseif (isset($_GET['hapuspd']) && isset($_GET['noreg'])) {
         $id = $_GET['hapuspd'];
+        $noreg = $_GET['noreg'];
+
+        $noreg_exp = explode("-", $noreg);
+        $noreg_imp = implode("", $noreg_exp);
+
         $data = mysqli_query($mysqli, "SELECT a.*,b.* FROM tb_mohon_pd a JOIN tb_pelanggan b ON a.id_pelanggan = b.idpel WHERE a.id_mohon = $id");
         $row = $data->fetch_assoc();
-        $delete = "DELETE FROM tb_mohon_pd WHERE id_mohon =$id";
+        $delete = "DELETE FROM tb_mohon_pd WHERE id_mohon ='$id'";
         $query = mysqli_query($mysqli, $delete) or die(mysqli_error($mysqli));
+        // var_dump($delete);
 
-        if ($query) { ?>
+        if ($query) {
+            $delete2 = "DELETE FROM tb_survey_lap_masuk WHERE noreg ='$noreg_imp'";
+            $query2 = mysqli_query($mysqli, $delete2) or die(mysqli_error($mysqli));
+            // var_dump($delete);
+        ?>
             <script>
                 Swal.fire({
                     icon: 'success',
@@ -52,9 +67,15 @@
                 })
             </script>
         <?php
+
         }
     } elseif (isset($_GET['hapusps'])) {
         $id = $_GET['hapusps'];
+        $noreg = $_GET['noreg'];
+
+        $noreg_exp = explode("-", $noreg);
+        $noreg_imp = implode("", $noreg_exp);
+
         $data = mysqli_query($mysqli, "SELECT a.*,b.* FROM tb_mohon_multiguna a JOIN tb_pelanggan b ON a.id_pelanggan = b.idpel WHERE a.id_mohon = $id");
         $row = $data->fetch_assoc();
         $delete = "DELETE FROM tb_mohon_multiguna WHERE id_mohon =$id";

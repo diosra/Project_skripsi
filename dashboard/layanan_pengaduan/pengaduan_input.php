@@ -177,7 +177,7 @@ if (isset($_POST['save'])) {
             Swal.fire({
                 icon: 'success',
                 title: 'Sukses.',
-                text: 'Data Laporan anda berhasil terkirim! anda akan segera dihubungi oleh operator kami dengan nomor handphone yang sudah anda masukkan'
+                text: 'Data Laporan anda berhasil terkirim! anda akan segera dihubungi oleh operator kami dengan Email yang sudah anda masukkan'
             }).then((result) => {
                 window.location = "pengaduan_input.php";
             })

@@ -85,7 +85,7 @@
                                                 <a href="header.php?page=peledit&edit=<?php echo $row['id_pelanggan'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                             </div> -->
                                             <div class="col mt-2">
-                                                <a href="header.php?page=hapusmohonyanbung&hapuspb=<?php echo $row['id_mohon'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
+                                                <a href="header.php?page=hapusmohonyanbung&hapuspb=<?php echo $row['id_mohon'] ?>&noreg=<?php echo $row['no_registrasi'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                             </div>
                                         </div>
                                     </td>

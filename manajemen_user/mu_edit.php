@@ -60,61 +60,6 @@
         </div>
         <!-- Form Utama -->
         <div class="card-body">
-            <!-- PHP - Query Tombol Ubah dan SweetAlert -->
-            <?php
-            if (isset($_POST['ubah'])) {
-                $id_u = $_POST['id'];
-                $nama = $_POST['nama'];
-                $tgl_lahir = $_POST['tgl_lahir'];
-                $alamat = $_POST['alamat'];
-                $jenis_kelamin = $_POST['jenis_kelamin'];
-                $email = $_POST['email'];
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-                $posisi = $_POST['posisi'];
-                $t_check = $_POST['t_check'];
-
-                // if (!empty($_FILES['foto']['tmp_name'])) {
-                //     $ext = strtolower(substr($_FILES['foto']['name'], -3));
-                //     if ($ext == 'gif') {
-                //         $ext = ".gif";
-                //     } elseif ($ext == 'jpg') {
-                //         $ext = ".jpg";
-                //     } elseif ($ext == 'jpeg') {
-                //         $ext = ".jpeg";
-                //     } else {
-                //         $ext = ".png";
-                //     }
-                //     // proses upload file ke folder gambar 
-                //     move_uploaded_file($_FILES['foto']['tmp_name'], "gambar/" . basename(($id_u) . $ext));
-                // }
-
-                $update = "UPDATE tb_data_user SET nama='$nama', tgl_lahir='$tgl_lahir', alamat='$alamat', jenis_kelamin='$jenis_kelamin', email='$email', username='$username', password='$password', level='$posisi', t_check='$t_check' WHERE id=$id_u";
-                $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
-
-                if ($query) {
-                    if ($posisi == 4 && $t_check == 2) {
-                        $insert2 = "INSERT INTO tb_teknisi_pengaduan (id, no_teknisi,nama, alamat, tgl_lahir) VALUES ('$id_u', '$no_teknisi', '$nama', '$alamat','$tgl_lahir')";
-                        $query = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
-                    } else {
-                        $delete1 = "DELETE FROM tb_teknisi_pengaduan WHERE id = $id_u";
-                        $query = mysqli_query($mysqli, $delete1) or die(mysqli_error($mysqli));
-                    }
-            ?>
-                    <script>
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Sukses.',
-                            text: 'Sukses Mengubah Data User'
-                        }).then((result) => {
-                            window.location = "header.php?page=user";
-                        })
-                    </script>
-            <?php
-                }
-            }
-            ?>
-
             <!-- PHP - Query Select untuk data ditampilkan di form -->
             <?php
             $nama = '';
@@ -260,6 +205,85 @@
 
 </div>
 <!-- /.container-fluid -->
+
+<!-- PHP - Query Tombol Ubah dan SweetAlert -->
+<?php
+if (isset($_POST['ubah'])) {
+    $id_u = $_POST['id'];
+    $nama = $_POST['nama'];
+    $tgl_lahir = $_POST['tgl_lahir'];
+    $alamat = $_POST['alamat'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $posisi = $_POST['posisi'];
+    $t_check = $_POST['t_check'];
+
+    // if (!empty($_FILES['foto']['tmp_name'])) {
+    //     $ext = strtolower(substr($_FILES['foto']['name'], -3));
+    //     if ($ext == 'gif') {
+    //         $ext = ".gif";
+    //     } elseif ($ext == 'jpg') {
+    //         $ext = ".jpg";
+    //     } elseif ($ext == 'jpeg') {
+    //         $ext = ".jpeg";
+    //     } else {
+    //         $ext = ".png";
+    //     }
+    //     // proses upload file ke folder gambar 
+    //     move_uploaded_file($_FILES['foto']['tmp_name'], "gambar/" . basename(($id_u) . $ext));
+    // }
+
+    $update = "UPDATE tb_data_user SET nama='$nama', tgl_lahir='$tgl_lahir', alamat='$alamat', jenis_kelamin='$jenis_kelamin', email='$email', username='$username', password='$password', level='$posisi', t_check='$t_check' WHERE id=$id_u";
+    $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
+    // var_dump($update);
+
+    if ($query) {
+        if ($posisi == 5) {
+            $namaPosisi = "Petugas Survey";
+            $update2 = "UPDATE tb_petugas_survey SET nama='$nama', alamat='$alamat', tgl_lahir='$tgl_lahir' WHERE id=$id_u";
+        } elseif ($posisi == 4 && $t_check == 2) {
+            $namaPosisi = "Teknisi Pelayanan Pengaduan";
+            $update2 = "UPDATE tb_teknisi_pengaduan SET nama='$nama', alamat='$alamat', tgl_lahir='$tgl_lahir' WHERE id=$id_u";
+        } elseif ($posisi == 4 && $t_check == 1) {
+            $namaPosisi = "Teknisi Pelayanan Penyambungan";
+            $update2 = "UPDATE tb_teknisi_penyambungan SET nama='$nama', alamat='$alamat', tgl_lahir='$tgl_lahir' WHERE id=$id_u";
+        } elseif ($posisi == 1) {
+            $namaPosisi = "Admin";
+        } elseif ($posisi == 2) {
+            $namaPosisi = "Pegawai";
+        } elseif ($posisi == 3) {
+            $namaPosisi = "Operator";
+        }
+        $query = mysqli_query($mysqli, $update2) or die(mysqli_error($mysqli));
+        // var_dump($update2);
+?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses.',
+                text: 'Sukses Mengubah Data User <?php echo $namaPosisi ?>'
+            }).then((result) => {
+                window.location = "header.php?page=user";
+            })
+        </script>
+    <?php
+    } else {
+    ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: 'Gagal Mengubah Data User, Log : <?php die(mysqli_error($mysqli)) ?>'
+            }).then((result) => {
+                window.location = "header.php?page=user";
+            })
+        </script>
+<?php
+    }
+}
+?>
 
 </div>
 <!-- End of Main Content -->

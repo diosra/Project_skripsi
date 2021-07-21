@@ -123,7 +123,7 @@
                                     } else {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="btn btn-danger rounded">
+                                            <a class="btn btn-danger rounded" href="header.php?page=surveytambah&idsurveymlta=<?php echo $row['id_mlta'] ?>&fasa=<?php echo $row['fasa'] ?>&idm=<?php echo $row['no_registrasi'] ?>">
                                                 Pilih Petugas
                                             </a>
                                         </td>

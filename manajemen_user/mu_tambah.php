@@ -24,6 +24,7 @@
     </script>
 
     <?php
+    //No Teknisi Pengaduan
     extract($_POST);
     $queryambil = mysqli_query($mysqli, "SELECT max(no_teknisi) as TekTerbesar FROM tb_teknisi_pengaduan");
     $dataambil = mysqli_fetch_array($queryambil);
@@ -32,9 +33,32 @@
     $urutan = (int) substr($no_teknisi, 3, 3);
     $urutan++;
 
-    $huruf = "TPP";
+    $huruf = "TekPen";
     $no_teknisi = $huruf . sprintf("%03s", $urutan);
 
+    //No Teknisi Penyambungan
+    extract($_POST);
+    $queryambil = mysqli_query($mysqli, "SELECT max(no_teknisi) as Tek2Terbesar FROM tb_teknisi_penyambungan");
+    $dataambil = mysqli_fetch_array($queryambil);
+    $no_teknisi2 = @$dataambil['Tek2Terbesar'];
+
+    $urutan = (int) substr($no_teknisi2, 3, 3);
+    $urutan++;
+
+    $huruf = "TekYan";
+    $no_teknisi2 = $huruf . sprintf("%03s", $urutan);
+
+    // No Petugas Survey
+    extract($_POST);
+    $queryambil = mysqli_query($mysqli, "SELECT max(no_petugas_survey) as SurTerbesar FROM tb_petugas_survey");
+    $dataambil = mysqli_fetch_array($queryambil);
+    $no_survey = @$dataambil['SurTerbesar'];
+
+    $urutan = (int) substr($no_survey, 3, 3);
+    $urutan++;
+
+    $huruf = "P_survey";
+    $no_survey = $huruf . sprintf("%03s", $urutan);
     ?>
 
 </head>
@@ -156,7 +180,6 @@ include_once 'footer.php';
 <?php
 if (isset($_POST['save'])) {
 
-
     $nama = $_POST['nama'];
     $tgl_lahir = $_POST['tgl_lahir'];
     $alamat = $_POST['alamat'];
@@ -189,16 +212,40 @@ if (isset($_POST['save'])) {
     if ($query) {
         if ($level == 4 && $t_check == 2) {
             $insert2 = "INSERT INTO tb_teknisi_pengaduan (id, no_teknisi,nama, alamat, tgl_lahir) VALUES ('" . mysqli_insert_id($mysqli) . "', '$no_teknisi', '$nama', '$alamat','$tgl_lahir')";
-            $query = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
+            $namaPosisi = "Teknisi Pelayanan Pengaduan";
+        } elseif ($level == 4 && $t_check == 1) {
+            $insert2 = "INSERT INTO tb_teknisi_penyambungan (id, no_teknisi,nama, alamat, tgl_lahir) VALUES ('" . mysqli_insert_id($mysqli) . "', '$no_teknisi2', '$nama', '$alamat','$tgl_lahir')";
+            $namaPosisi = "Teknisi Pelayanan Penyambungan";
+        } elseif ($level == 5) {
+            $insert2 = "INSERT INTO tb_petugas_survey (id, no_petugas_survey, nama, alamat, tgl_lahir) VALUES ('" . mysqli_insert_id($mysqli) . "', '$no_survey', '$nama', '$alamat','$tgl_lahir')";
+            $namaPosisi = "Petugas Survey";
+        } elseif ($level == "1") {
+            $namaPosisi = "Admin";
+        } elseif ($level == "2") {
+            $namaPosisi = "Pegawai";
+        } elseif ($level == "3") {
+            $namaPosisi = "Operator";
         }
+        $query = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
 ?>
         <script>
             Swal.fire({
                 icon: 'success',
                 title: 'Sukses.',
-                text: 'Sukses Menambahkan Data User'
+                text: 'Sukses Menambahkan Data User <?php echo $namaPosisi ?>'
             }).then((result) => {
-                x
+                window.location = "header.php?page=user";
+            })
+        </script>
+    <?php
+    } else {
+    ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: 'Gagal Menambahkan Data User, Log : <?php die(mysqli_error($mysqli)) ?>'
+            }).then((result) => {
                 window.location = "header.php?page=user";
             })
         </script>

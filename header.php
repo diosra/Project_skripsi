@@ -880,6 +880,13 @@ if (!isset($_SESSION['username'])) {
                                 include "teknisi/survey/form_laporan.php";
                                 break;
 
+                            case 'surveytambah':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/input_survey.php";
+                                break;
+                            case 'sendemailsurvey':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/send.php";
+                                break;
+
                                 //case untuk halaman CRUD
                             case 'pelinput':
                                 include "pelayanan_penyambungan/pelanggan/pel_input.php";
