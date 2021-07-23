@@ -130,7 +130,7 @@
                             <th class="text-center">Nama</th>
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Jenis Transaksi</th>
-                            <th class="text-center">Tanggal Mohon</th>
+                            <th class="text-center">Tanggal Permohonan</th>
                             <th class="text-center">Tarif Baru</th>
                             <th class="text-center">Daya Baru</th>
                             <th class="text-center">Fasa Baru</th>
@@ -154,20 +154,27 @@
                             }
                         } else {
                             echo '<a href="header.php?page=cpb1phasa"></a>';
-                            $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pasang_baru a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pb_1phs c ON a.id_pasang_baru = c.id_pasang_baru WHERE a.fasa_baru = '1 FASA'") or die($mysqli->error);
+
+                            //AMBIL QUERY RESULT YANG ATAS APABILA PEMILIHAN TEKNISI SUDAH SELESAI
+
+                            // $result = $mysqli->query("SELECT a.*, b.* FROM tb_mohon_pb a JOIN tb_pasang_baru b ON a.id_mohon = b.id_mohon WHERE b.fasa_baru = '1 Fasa' && b.status_survey = '3' && b.status_teknisi = '3'") or die($mysqli->error);
+
+                            //INI HANYA CONTOH QUERY SEMENTARA UNTUK MENAMPILKAN
+
+                            $result = $mysqli->query("SELECT a.*, b.* FROM tb_mohon_pb a JOIN tb_pasang_baru b ON a.id_mohon = b.id_mohon WHERE b.fasa_baru = '1 Fasa'") or die($mysqli->error);
                         }
                         // kode untuk isi Filter - END
 
                         $no = 1;
 
-                        $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tb_harga WHERE KODE = 'PB 1 FASA'");
-                        $hargaB = "";
-                        $n = 0;
-                        while ($hargaambil = $harga->fetch_array()) {
-                            $n = $n + $hargaambil[0];
-                        }
-                        $hargaB = $hargaB .
-                            "<td class='align-middle'>Rp." . number_format($n, 0, ',', '.') . "</td>";
+                        // $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tb_harga WHERE KODE = 'PB 1 FASA'");
+                        // $hargaB = "";
+                        // $n = 0;
+                        // while ($hargaambil = $harga->fetch_array()) {
+                        //     $n = $n + $hargaambil[0];
+                        // }
+                        // $hargaB = $hargaB .
+                        //     "<td class='align-middle'>Rp." . number_format($n, 0, ',', '.') . "</td>";
 
                         $hitungrow = mysqli_num_rows($result);
                         if ($hitungrow > 0) {
@@ -178,14 +185,15 @@
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
-                                    <td class="align-middle">Pasang Baru</td>
-                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
-                                    <td class="align-middle"><?php echo $row['tarif_baru']; ?></td>
-                                    <td class="align-middle"><?php echo $row['daya_baru']; ?></td>
+                                    <td class="align-middle"><?php echo $row['jenis_transaksi']; ?></td>
+                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_masuk'])); ?></td>
+                                    <td class="align-middle"><?php echo $row['tarif']; ?></td>
+                                    <td class="align-middle"><?php echo $row['daya']; ?></td>
                                     <td class="align-middle"><?php echo $row['fasa_baru']; ?></td>
                                     <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
+                                    <td class="align-middle">Rp. <?php echo number_format($row['total'], 0, ',', '.') ?></td>
                                     <?php
-                                    echo $hargaB;
+                                    // echo $hargaB;
                                     ?>
                                 </tr>
                             <?php } ?>

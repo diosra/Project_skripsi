@@ -47,6 +47,7 @@ if (isset($_POST['savepb'])) {
     $id = $_POST['id'];
     $nama = $_POST['nama'];
     $id_petugas = $_POST['id_petugas_survey'];
+    $noreg = $_POST['noreg'];
     $fasa = $_GET['fasa'];
 
     $update = "UPDATE tb_pasang_baru SET petugas_survey='$nama', status_survey='1' WHERE id_pasang_baru = $id";
@@ -55,7 +56,7 @@ if (isset($_POST['savepb'])) {
 
     if ($query && $send) {
         $tipeSurvey = "Survey Pasang Baru";
-        $insert = "INSERT INTO tb_survey_lap_masuk (id_yanbung,id_petugas,pegawai_acc, tipe) VALUES ('$id','$id_petugas','1', '$tipeSurvey')";
+        $insert = "INSERT INTO tb_survey_lap_masuk (id_yanbung,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
         $query2 = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 
@@ -133,15 +134,16 @@ if (isset($_POST['savepb'])) {
     $id = $_POST['id'];
     $nama = $_POST['nama'];
     $id_petugas = $_POST['id_petugas_survey'];
+    $noreg = $_POST['noreg'];
     $fasa = $_GET['fasa'];
 
-    $update = "UPDATE tb_pasang_baru SET petugas_survey='$nama', status_survey='1' WHERE id_pasang_baru = $id";
+    $update = "UPDATE tb_multiguna SET petugas_survey='$nama', status_survey='1' WHERE id_mlta = $id";
     $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
     // var_dump($update);
 
     if ($query && $send) {
-        $tipeSurvey = "Survey Pasang Baru";
-        $insert = "INSERT INTO tb_survey_lap_masuk (id_pasang_baru,id_petugas,pegawai_acc, tipe) VALUES ('$id','$id_petugas','1', '$tipeSurvey')";
+        $tipeSurvey = "Survey Penyambungan Sementara";
+        $insert = "INSERT INTO tb_survey_lap_masuk (id_yanbung,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
         $query2 = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 
@@ -153,7 +155,7 @@ if (isset($_POST['savepb'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Petugas Survey dan Mengirimkan Email!'
                 }).then((result) => {
-                    window.location = "header.php?page=pb1phasa";
+                    window.location = "header.php?page=multiguna1phasa";
                 })
             </script>
         <?php
@@ -165,7 +167,7 @@ if (isset($_POST['savepb'])) {
                     title: 'Sukses.',
                     text: 'Sukses Menambahkan Petugas Survey dan Mengirimkan Email!'
                 }).then((result) => {
-                    window.location = "header.php?page=pb3phasa";
+                    window.location = "header.php?page=multiguna3phasa";
                 })
             </script>
 <?php

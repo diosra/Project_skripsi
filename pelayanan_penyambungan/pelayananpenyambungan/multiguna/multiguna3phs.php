@@ -51,6 +51,57 @@
         </div>
     </div>
 
+    <!-- Modal dialog untuk Dalam Proses Survey-->
+    <div id="get-data3" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Laporan Progres Sementara Petugas</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi_proses">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal dialog untuk Selesai Survey-->
+    <div id="get-data4" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Laporan Hasil Survey</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi_selesai">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal dialog untuk Dalam Proses (belum ada progres dari petugas)Survey-->
+    <div id="get-data5" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Petugas Survey</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi_petugas">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Multiguna 3 Phasa</u></h1>
@@ -81,7 +132,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa = '3 FASA' && a.status_pembayaran = '1'");
+                        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.*,d.*, e.*, f.no_petugas_survey FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan LEFT JOIN tb_laporan_survey d ON d.id_yanbung = b.id_mlta LEFT JOIN tb_survey_lap_masuk e ON e.id_yanbung = b.id_mlta LEFT JOIN tb_petugas_survey f ON f.no_petugas_survey = e.id_petugas WHERE fasa = '3 FASA' && a.status_pembayaran = '1'");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
@@ -107,7 +158,7 @@
                                     if ($row['status_survey'] == "1") {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="btn btn-warning rounded">
+                                            <a class="open-modal5 btn btn-warning rounded" data-toggle="modal" data-id="<?php echo $row['id_survey_lap'] ?>">
                                                 Dalam Proses
                                             </a>
                                         </td>
@@ -115,7 +166,15 @@
                                     } elseif ($row['status_survey'] == "2") {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="btn btn-success rounded">
+                                            <a class="open-modal3 btn btn-warning rounded" data-toggle="modal" data-id="<?php echo $row['id_mlta'] ?>" href="#">
+                                                Survey Masih Dalam Proses
+                                            </a>
+                                        </td>
+                                    <?php
+                                    } elseif ($row['status_survey'] == "3") {
+                                    ?>
+                                        <td class="align-middle text-center">
+                                            <a class="open-modal4 btn btn-success rounded" data-toggle="modal" data-id="<?php echo $row['id_laporan'] ?>" href="#">
                                                 Selesai
                                             </a>
                                         </td>
@@ -132,7 +191,7 @@
                                     ?>
 
                                     <?php
-                                    if ($row['status_survey'] == "0" || $row['status_survey'] == "1") {
+                                    if ($row['status_survey'] == "0" || $row['status_survey'] == "1" || $row['status_survey'] == "2") {
                                     ?>
                                         <td class="align-middle text-center">
                                             <button class="btn btn-secondary rounded" disabled>
@@ -140,7 +199,7 @@
                                             </button>
                                         </td>
                                         <?php
-                                    } elseif ($row['status_survey'] == "2") {
+                                    } elseif ($row['status_survey'] == "3") {
                                         if ($row['status_teknisi'] == "1") {
                                         ?>
                                             <td class="align-middle text-center">
@@ -210,6 +269,51 @@
     })
 </script>
 
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal3', function(e) {
+            e.preventDefault();
+            $("#get-data3").modal('show');
+            $.post('pelayanan_penyambungan/pelayananpenyambungan/multiguna/view_proses_survey.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi_proses").html(html);
+                });
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal4', function(e) {
+            e.preventDefault();
+            $("#get-data4").modal('show');
+            $.post('pelayanan_penyambungan/pelayananpenyambungan/multiguna/view_survey_selesai.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi_selesai").html(html);
+                });
+        });
+    })
+</script>
+
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal5', function(e) {
+            e.preventDefault();
+            $("#get-data5").modal('show');
+            $.post('pelayanan_penyambungan/pelayananpenyambungan/multiguna/view_petugas.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi_petugas").html(html);
+                });
+        });
+    })
+</script>
+
 </div>
 <!-- End of Main Content -->
 
@@ -222,7 +326,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [1, 3, 4, 5, 6, 7]
+            "targets": [1, 3, 5, 6, 7, 8]
         }]
     });
 </script>

@@ -313,6 +313,262 @@
         </div>
         <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
     <?php
+    } elseif ($level == 5) {
+    ?>
+        <!-- Jumlah Data Pengaduan Masuk untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_pasang_baru a JOIN tb_survey_lap_masuk b ON a.id_pasang_baru = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Pasang Baru' && c.nama = '$nama' && a.status_survey = 1");
+        $hitungrow2 = mysqli_num_rows($data);
+        ?>
+
+        <!-- Jumlah Data Pengaduan Progres untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data2 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_pasang_baru a JOIN tb_survey_lap_masuk b ON a.id_pasang_baru = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Pasang Baru' && c.nama = '$nama' && a.status_survey = 2");
+        $hitungrow3 = mysqli_num_rows($data2);
+        ?>
+
+        <!-- Jumlah Data Pengaduan Selesai untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data3 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_pasang_baru a JOIN tb_survey_lap_masuk b ON a.id_pasang_baru = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Pasang Baru' && c.nama = '$nama' && a.status_survey = 3");
+        $hitungrow4 = mysqli_num_rows($data3);
+        ?>
+
+        <!-- Baris Pasang Baru -->
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Survey Pasang Baru Masuk
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow2 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Survey Pasang Baru yang masih dalam proses
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow3 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Survey Pasang Baru yang sudah diselesaikan
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow4 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jumlah Data Pengaduan Masuk untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_perubahan_daya a JOIN tb_survey_lap_masuk b ON a.id_perubahan_daya = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Perubahan Daya' && c.nama = '$nama' && a.status_survey = 1");
+        $hitungrow2 = mysqli_num_rows($data);
+        ?>
+
+        <!-- Jumlah Data Pengaduan Progres untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data2 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_perubahan_daya a JOIN tb_survey_lap_masuk b ON a.id_perubahan_daya = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Perubahan Daya' && c.nama = '$nama' && a.status_survey = 2");
+        $hitungrow3 = mysqli_num_rows($data2);
+        ?>
+
+        <!-- Jumlah Data Pengaduan Selesai untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data3 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_perubahan_daya a JOIN tb_survey_lap_masuk b ON a.id_perubahan_daya = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Perubahan Daya' && c.nama = '$nama' && a.status_survey = 3");
+        $hitungrow4 = mysqli_num_rows($data3);
+        ?>
+
+        <!-- Baris Perubahan Daya -->
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Survey Perubahan Daya Masuk
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow2 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Survey Perubahan Daya yang masih dalam proses
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow3 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Survey Perubahan Daya yang sudah diselesaikan
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow4 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jumlah Data Pengaduan Masuk untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_multiguna a JOIN tb_survey_lap_masuk b ON a.id_mlta = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Penyambungan Sementara' && c.nama = '$nama' && a.status_survey = 1");
+        $hitungrow2 = mysqli_num_rows($data);
+        ?>
+
+        <!-- Jumlah Data Pengaduan Progres untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data2 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_multiguna a JOIN tb_survey_lap_masuk b ON a.id_mlta = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Penyambungan Sementara' && c.nama = '$nama' && a.status_survey = 2");
+        $hitungrow3 = mysqli_num_rows($data2);
+        ?>
+
+        <!-- Jumlah Data Pengaduan Selesai untuk teknisi pengaduan -->
+        <?php
+        $nama = $_SESSION['nama'];
+        $data3 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_multiguna a JOIN tb_survey_lap_masuk b ON a.id_mlta = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Penyambungan Sementara' && c.nama = '$nama' && a.status_survey = 3");
+        $hitungrow4 = mysqli_num_rows($data3);
+        ?>
+
+        <!-- Baris Multiguna -->
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-secondary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Survey Sambung Sementara Masuk
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow2 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-secondary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Survey Sambung Sementara yang masih dalam proses
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow3 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-secondary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Data Survey Sambung Sementara yang sudah diselesaikan
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo $hitungrow4 ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-database fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+    <?php
     }
     ?>
 

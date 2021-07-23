@@ -660,7 +660,14 @@ if (!isset($_SESSION['username'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="header.php?page=laporansurvey">
                             <i class="fas fa-user-friends"></i></i>
-                            <span>Menu Data Survey</span></a>
+                            <span>Menu Data Survey Masuk dan Progres</span></a>
+                    </li>
+
+                    <!-- Nav Item - Menu Teknisi Pengaduan -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=laporansurveyselesai">
+                            <i class="fas fa-user-friends"></i></i>
+                            <span>Menu Data Survey Selesai</span></a>
                     </li>
                 <?php
                 }
@@ -833,6 +840,11 @@ if (!isset($_SESSION['username'])) {
                                 include "pelayanan_penyambungan/laporancetak/multiguna/mcmultiguna3phasa.php";
                                 break;
 
+                                //case untuk input progress petugas survey
+                            case 'progressurvey':
+                                include "teknisi/survey/form_input_progress.php";
+                                break;
+
                                 //case untuk halaman laporan teknisi yanbung
                             case 'laporanyan':
                                 include "teknisi/yanbung/form_laporan.php";
@@ -878,6 +890,9 @@ if (!isset($_SESSION['username'])) {
                                 //case untuk halaman laporan Petugas Survey
                             case 'laporansurvey':
                                 include "teknisi/survey/form_laporan.php";
+                                break;
+                            case 'laporansurveyselesai':
+                                include "teknisi/survey/form_laporan_selesai.php";
                                 break;
 
                             case 'surveytambah':

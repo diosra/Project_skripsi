@@ -19,7 +19,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Masuk dan Progres Survey</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Survey Selesai</u></h1>
     </div>
 
     <!-- Modal dialog untuk deskripsi -->
@@ -106,6 +106,23 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal dialog untuk deskripsi -->
+    <div id="get-data5" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Laporan Petugas Survey</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi5">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup Deskripsi</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
@@ -124,34 +141,37 @@
                             <th class="text-center">Tanggal Permohonan Masuk</th>
                             <th class="text-center">Tipe Survey</th>
                             <th class="text-center">Deskripsi Pengajuan</th>
-                            <th class="text-center">Aksi</th>
+                            <th class="text-center">Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $nama = $_SESSION['nama'];
-                        $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.* FROM 
+                        $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.* FROM 
                         tb_survey_lap_masuk a 
                         JOIN tb_pasang_baru b ON a.id_yanbung = b.id_pasang_baru 
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
                         JOIN tb_mohon_pb d ON b.id_mohon = d.id_mohon
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2') && b.status_teknisi = '0'");
+                        JOIN tb_laporan_survey e ON e.id_survey_lap = a.id_survey_lap
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_survey = '3' && b.status_teknisi = '0'");
 
-                        $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.* FROM 
+                        $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
                         tb_survey_lap_masuk a 
                         JOIN tb_perubahan_daya b ON a.id_yanbung = b.id_perubahan_daya 
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
                         JOIN tb_mohon_pd d ON b.id_mohon = d.id_mohon
                         JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2') && b.status_teknisi = '0'");
+                        JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_survey = '3' && b.status_teknisi = '0'");
 
-                        $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.* FROM 
+                        $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
                         tb_survey_lap_masuk a 
                         JOIN tb_multiguna b ON a.id_yanbung = b.id_mlta 
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
                         JOIN tb_mohon_multiguna d ON b.id_mohon = d.id_mohon
                         JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2') && b.status_teknisi = '0'");
+                        JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_survey = '3' && b.status_teknisi = '0'");
 
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
@@ -193,7 +213,7 @@
                                     } elseif ($row['status_survey'] == "3") {
                                     ?>
                                         <td class=" align-middle text-center">
-                                            <a class="btn btn-success rounded">
+                                            <a class="open-modal7 btn btn-success rounded" data-toggle="modal" data-id="<?php echo $row['id_laporan'] ?>" href="#">
                                                 Selesai
                                             </a>
                                         </td>
@@ -247,7 +267,7 @@
                                     } elseif ($row['status_survey'] == "3") {
                                     ?>
                                         <td class=" align-middle text-center">
-                                            <a class="btn btn-success rounded">
+                                            <a class="open-modal8 btn btn-success rounded" data-toggle="modal" data-id="<?php echo $row['id_laporan'] ?>" href="#">
                                                 Selesai
                                             </a>
                                         </td>
@@ -298,10 +318,10 @@
                                             </a>
                                         </td>
                                     <?php
-                                    } elseif ($row['status_survey'] == "3") {
+                                    } elseif ($row3['status_survey'] == "3") {
                                     ?>
                                         <td class=" align-middle text-center">
-                                            <a class="btn btn-success rounded">
+                                            <a class="open-modal9 btn btn-success rounded" data-toggle="modal" data-id="<?php echo $row3['id_laporan'] ?>" href="#">
                                                 Selesai
                                             </a>
                                         </td>
@@ -427,6 +447,53 @@
     })
 </script>
 
+<!-- Script Modal Deskripsi Selesai PB -->
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal7', function(e) {
+            e.preventDefault();
+            $("#get-data5").modal('show');
+            $.post('teknisi/survey/view_laporan_selesai_pb.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi5").html(html);
+                });
+        });
+    })
+</script>
+
+<!-- Script Modal Deskripsi Selesai PD -->
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal8', function(e) {
+            e.preventDefault();
+            $("#get-data5").modal('show');
+            $.post('teknisi/survey/view_laporan_selesai_pd.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi5").html(html);
+                });
+        });
+    })
+</script>
+
+<!-- Script Modal Deskripsi Selesai MLTA -->
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal9', function(e) {
+            e.preventDefault();
+            $("#get-data5").modal('show');
+            $.post('teknisi/survey/view_laporan_selesai_mlta.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi5").html(html);
+                });
+        });
+    })
+</script>
 
 <?php
 include_once 'footer.php';

@@ -107,12 +107,12 @@ if ($_POST['id']) {
                 <div class="col">
                     <label for="">Tanggal Mulai</label>
                     <input type="text" value="' .
-                date('d-M-Y', strtotime($row_view['tgl_mulai'])) . '" class="form-control" readonly>
+                date('d-M-Y', strtotime($row_view['tgl_mulai_pemakaian'])) . '" class="form-control" readonly>
                 </div>
                 <div class="col">
                     <label for="">Tanggal Selesai</label>
                     <input type="text" value="' .
-                date('d-M-Y', strtotime($row_view['tgl_selesai'])) . '" class="form-control" readonly>
+                date('d-M-Y', strtotime($row_view['tgl_selesai_pemakaian'])) . '" class="form-control" readonly>
                 </div>
             </div>
             <div class="form-group mt-3">

@@ -30,7 +30,7 @@
     $dataambil = mysqli_fetch_array($queryambil);
     $no_teknisi = @$dataambil['TekTerbesar'];
 
-    $urutan = (int) substr($no_teknisi, 3, 3);
+    $urutan = (int) substr($no_teknisi, 6, 3);
     $urutan++;
 
     $huruf = "TekPen";
@@ -42,7 +42,7 @@
     $dataambil = mysqli_fetch_array($queryambil);
     $no_teknisi2 = @$dataambil['Tek2Terbesar'];
 
-    $urutan = (int) substr($no_teknisi2, 3, 3);
+    $urutan = (int) substr($no_teknisi2, 6, 3);
     $urutan++;
 
     $huruf = "TekYan";
@@ -54,7 +54,7 @@
     $dataambil = mysqli_fetch_array($queryambil);
     $no_survey = @$dataambil['SurTerbesar'];
 
-    $urutan = (int) substr($no_survey, 3, 3);
+    $urutan = (int) substr($no_survey, 8, 3);
     $urutan++;
 
     $huruf = "P_survey";
@@ -79,6 +79,10 @@
         <!-- Form Utama -->
         <div class="card-body">
             <form action="header.php?page=inputuser" method="post" name="form1" enctype="multipart/form-data">
+
+                <input type="hidden" value="<?php echo $no_teknisi ?>">
+                <input type="hidden" value="<?php echo $no_teknisi2 ?>">
+                <input type="hidden" value="<?php echo $no_survey ?>">
 
                 <div class="form-group">
                     <label for="">Nama</label>

@@ -513,7 +513,7 @@ if (isset($_POST['save'])) {
     <?php
     }
 
-    $insert = "INSERT INTO tb_mohon_multiguna (no_registrasi,id_pelanggan, daya, tgl_mulai, tgl_selesai, pemakaian,lamahari,total,peruntukan,tgl_masuk) VALUES ('$noRegistrasi','$idplg', '$daya', '$tglmulai', '$tglselesai', '$pemakaian','$ambilLamaHari Hari', '$totalBiaya', '$peruntukan','$tgl_masuk')";
+    $insert = "INSERT INTO tb_mohon_multiguna (no_registrasi,id_pelanggan, daya, tgl_mulai_pemakaian, tgl_selesai_pemakaian, pemakaian,lamahari,total,peruntukan,tgl_masuk) VALUES ('$noRegistrasi','$idplg', '$daya', '$tglmulai', '$tglselesai', '$pemakaian','$ambilLamaHari Hari', '$totalBiaya', '$peruntukan','$tgl_masuk')";
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
     // var_dump($insert);
 
