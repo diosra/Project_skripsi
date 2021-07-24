@@ -58,6 +58,12 @@ if ($_POST['id']) {
                         </div>
                     </div>
                 </div>
+
+                <!-- buat nampilkan menu status pembayaran lama-->
+                <!-- <hr class="my-3">
+            
+            Status Pembayaran : ' . $b . ' <br>
+            ' . $a . ' -->
             </body>
 
             </html>
@@ -106,31 +112,38 @@ if ($_POST['id']) {
                 <label for="">Peruntukan</label>
                 <input type="text" value="' . $row_view['peruntukan'] . '" class="form-control" readonly>
             </div>
-            <div class="form-group">
-                <label for="">Daya Lama</label>
-                <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Daya Lama</label>
+                        <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Tarif Lama</label>
+                        <input type="text" value="' . $row_view['tarif_lama'] . '" class="form-control" readonly>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="">Tarif Lama</label>
-                <input type="text" value="' . $row_view['tarif_lama'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Daya Baru</label>
-                <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Tarif Baru</label>
-                <input type="text" value="' . $row_view['tarif_baru'] . '" class="form-control" readonly>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Daya Baru</label>
+                        <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Tarif Baru</label>
+                        <input type="text" value="' . $row_view['tarif_baru'] . '" class="form-control" readonly>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="">Total Biaya</label>
                 <input type="text" value="Rp.' . number_format($row_view['total'], 0, ',', '.') . '" class="form-control" readonly>
             </div>
-
-            <hr class="my-3">
-            
-            Status Pembayaran : ' . $b . ' <br>
-            ' . $a . '
 		';
             } elseif ($ambilproduk == "PRABAYAR") {
                 echo '
@@ -142,21 +155,33 @@ if ($_POST['id']) {
                 <label for="">Peruntukan</label>
                 <input type="text" value="' . $row_view['peruntukan'] . '" class="form-control" readonly>
             </div>
-                        <div class="form-group">
-                <label for="">Daya Lama</label>
-                <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
+           <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Daya Lama</label>
+                        <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Tarif Lama</label>
+                        <input type="text" value="' . $row_view['tarif_lama'] . '" class="form-control" readonly>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="">Tarif Lama</label>
-                <input type="text" value="' . $row_view['tarif_lama'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Daya Baru</label>
-                <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Tarif Baru</label>
-                <input type="text" value="' . $row_view['tarif_baru'] . '" class="form-control" readonly>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Daya Baru</label>
+                        <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Tarif Baru</label>
+                        <input type="text" value="' . $row_view['tarif_baru'] . '" class="form-control" readonly>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="">Token</label>
@@ -166,11 +191,6 @@ if ($_POST['id']) {
                 <label for="">Total Biaya</label>
                 <input type="text" value="Rp.' . number_format($row_view['total'], 0, ',', '.') . '" class="form-control" readonly>
             </div>
-
-            <hr class="my-3">
-            
-            Status Pembayaran : ' . $b . ' <br>
-            ' . $a . '
 		';
             }
         }

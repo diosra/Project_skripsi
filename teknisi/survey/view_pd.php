@@ -7,7 +7,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT a.*, b.*, c.*, d.* FROM tb_mohon_pd a JOIN tb_perubahan_daya b ON a.id_mohon = b.id_mohon JOIN tb_survey_lap_masuk c ON b.id_perubahan_daya = c.id_yanbung JOIN tb_pelanggan d ON a.id_pelanggan = d.idpel WHERE c.id_yanbung ='$id'");
+    $view = $mysqli->query("SELECT a.*, b.*, c.*, d.* FROM tb_mohon_pd a JOIN tb_perubahan_daya b ON a.id_mohon = b.id_mohon JOIN tb_survey_lap_masuk c ON a.id_mohon = c.id_mohon_survey JOIN tb_pelanggan d ON a.id_pelanggan = d.idpel WHERE c.id_mohon_survey ='$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -64,6 +64,6 @@ if ($_POST['id']) {
         }
     } else {
         echo
-        "Error di " . $view . " " . $mysqli->error;
+        "Error di  " . $view . " " . $mysqli->error;
     }
 }

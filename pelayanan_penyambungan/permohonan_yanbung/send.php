@@ -56,7 +56,7 @@ if (isset($_POST['savepb'])) {
 
     if ($query && $send) {
         $tipeSurvey = "Survey Pasang Baru";
-        $insert = "INSERT INTO tb_survey_lap_masuk (id_yanbung,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
+        $insert = "INSERT INTO tb_survey_lap_masuk (id_mohon_survey,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
         $query2 = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 
@@ -97,9 +97,9 @@ if (isset($_POST['savepb'])) {
     $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
     // var_dump($update);
 
-    if ($query) {
+    if ($query && $send) {
         $tipeSurvey = "Survey Perubahan Daya";
-        $insert = "INSERT INTO tb_survey_lap_masuk (id_yanbung,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
+        $insert = "INSERT INTO tb_survey_lap_masuk (id_mohon_survey,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
         $query2 = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 
@@ -143,7 +143,7 @@ if (isset($_POST['savepb'])) {
 
     if ($query && $send) {
         $tipeSurvey = "Survey Penyambungan Sementara";
-        $insert = "INSERT INTO tb_survey_lap_masuk (id_yanbung,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
+        $insert = "INSERT INTO tb_survey_lap_masuk (id_mohon_survey,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
         $query2 = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 

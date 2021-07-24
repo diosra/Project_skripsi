@@ -7,7 +7,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT a.*, b.*, c.id_mohon, c.jenis_transaksi FROM tb_laporan_survey a JOIN tb_mohon_pd b ON a.id_mohon_survey = b.id_mohon JOIN tb_perubahan_daya c ON a.id_mohon_survey = c.id_mohon WHERE a.id_survey_lap ='$id'");
+    $view = $mysqli->query("SELECT a.id_mohon, b.*,c.*, d.* FROM tb_mohon_multiguna a JOIN tb_laporan_survey b ON a.id_mohon = b.id_mohon_survey JOIN tb_survey_lap_masuk c ON a.id_mohon = c.id_mohon_survey JOIN tb_petugas_survey d ON c.id_petugas = d.no_petugas_survey WHERE a.id_mohon ='$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -15,6 +15,10 @@ if ($_POST['id']) {
             $row_view = $view->fetch_assoc();
             //menampilkan data dengan table
             echo '
+            <div class="form-group">
+                <label for="">Nama Petugas Survey</label>
+                <input type="text" value="' . $row_view['nama'] . '" class="form-control" readonly>
+            </div>
             <div class="form-group">
                 <label for="">Tanggal Memulai Survey</label>
                 <input type="text" value="' .
@@ -24,10 +28,7 @@ if ($_POST['id']) {
                 <label for="">Laporan Sementara Petugas Survey</label>
                 <textarea class="form-control" cols="10" rows="3" readonly>' . $row_view['laporan'] . '</textarea>
             </div>
-
-            <a class="btn btn-warning rounded float-right" href="header.php?page=progressurvey&status=' . $row_view['status_survey'] . '&id=' . $row_view['id_survey_lap'] . '&jt=' . $row_view['jenis_transaksi'] . '">
-                Edit Status Survey
-            </a>
+            
 		';
         }
     } else {

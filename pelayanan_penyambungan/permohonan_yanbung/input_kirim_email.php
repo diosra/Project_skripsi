@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pilih Petugas Survey</title>
+    <title>Kirim Email Konfirmasi</title>
 
     <script src="pelayanan_penyambungan/pelayananpenyambungan/process.js"></script> <!-- Load file process.js -->
 
@@ -20,62 +20,32 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Form Pilih Petugas Survey</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Form Kirim Email Konfirmasi</u></h1>
     </div>
 
     <!-- PHP - Query Select untuk data ditampilkan di form -->
     <?php
-    if (isset($_GET['idsurveypb']) && isset($_GET['fasa']) && isset($_GET['idm'])) {
+    if (isset($_GET['idsurveypb'])) {
         $id = $_GET['idsurveypb'];
-        $fasa = $_GET['fasa'];
-        $idmohon = $_GET['idm'];
-
-        $noreg_exp = explode("-", $idmohon);
-        $noreg_imp = implode("", $noreg_exp);
 
         $result = $mysqli->query("SELECT email FROM tb_mohon_pb WHERE id_mohon = '$id'") or die($mysqli->error);
 
-        // if ($fasa == "1 Fasa") {
-        //     $result = $mysqli->query("SELECT a.*, b.* FROM tb_mohon_pb a JOIN tb_pasang_baru b ON a.id_mohon = b.id_mohon WHERE a.id_mohon = '$id'") or die($mysqli->error);
-        // } else {
-        //     $result = $mysqli->query("SELECT a.*, b.* FROM tb_mohon_pb a JOIN tb_pasang_baru b ON a.id_mohon = b.id_mohon WHERE a.id_mohon = '$id'") or die($mysqli->error);
-        // }
-
         if ($result->num_rows) {
             $row = $result->fetch_array();
             $email = $row['email'];
         }
-    } elseif (isset($_GET['idsurveypd']) && isset($_GET['fasa']) && isset($_GET['idm'])) {
+    } elseif (isset($_GET['idsurveypd'])) {
         $id = $_GET['idsurveypd'];
-        $fasa = $_GET['fasa'];
-        $idmohon = $_GET['idm'];
-
-        $noreg_exp = explode("-", $idmohon);
-        $noreg_imp = implode("", $noreg_exp);
-
-        if ($fasa == "1 Fasa") {
-            $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_perubahan_daya b JOIN tb_mohon_pd a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa_lama = '1 FASA' && a.status_pembayaran = '1' && a.no_registrasi = '$idmohon'") or die($mysqli->error);
-        } else {
-            $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_perubahan_daya b JOIN tb_mohon_pd a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa_lama = '3 FASA' && a.status_pembayaran = '1' && a.no_registrasi = '$idmohon'") or die($mysqli->error);
-        }
+        $result = $mysqli->query("SELECT a.* , b.* FROM tb_mohon_pd a JOIN tb_pelanggan b ON b.idpel = a.id_pelanggan WHERE a.id_mohon = '$id'") or die($mysqli->error);
 
         if ($result->num_rows) {
             $row = $result->fetch_array();
             $email = $row['email'];
         }
-    } elseif (isset($_GET['idsurveymlta']) && isset($_GET['fasa'])) {
+    } elseif (isset($_GET['idsurveymlta'])) {
         $id = $_GET['idsurveymlta'];
-        $fasa = $_GET['fasa'];
-        $idmohon = $_GET['idm'];
 
-        $noreg_exp = explode("-", $idmohon);
-        $noreg_imp = implode("", $noreg_exp);
-
-        if ($fasa == "1 Fasa") {
-            $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa = '1 FASA' && a.status_pembayaran = '1' && a.no_registrasi = '$idmohon'") or die($mysqli->error);
-        } else {
-            $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa = '3 FASA' && a.status_pembayaran = '1' && a.no_registrasi = '$idmohon'") or die($mysqli->error);
-        }
+        $result = $mysqli->query("SELECT a.*, b.idpel, b.email FROM tb_mohon_multiguna a JOIN tb_pelanggan b ON b.idpel = a.id_pelanggan WHERE a.id_mohon = '$id'") or die($mysqli->error);
 
         // $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa = '1 FASA' && a.status_pembayaran = '1'") or die($mysqli->error);
 
@@ -90,16 +60,8 @@
     <div class="card shadow mb-4">
         <!-- Form Utama -->
         <div class="card-body">
-            <form action="header.php?page=sendemailsurvey&id=<?php echo $id ?>&fasa=<?php echo $fasa ?>" method="post" name="form1">
+            <form action="header.php?page=sendemailkonfirmasi&id=<?php echo $id ?>" method="post" name="form1">
                 <!-- <input type="text" name="id" value="<?php echo $id; ?>"> -->
-
-                <div class="form-group">
-                    <label for="">Cari Data Petugas Survey</label>
-                    <input type="text" id="petsur" class="form-control" required>
-                    <button type="button" id="btn-search" class="btn btn-primary mt-2">Cari</button>
-                </div>
-
-                <input type="hidden" name="id_petugas_survey" id="id_petugas_survey">
 
                 <?php
                 if (isset($_GET['idsurveypb'])) {
@@ -119,14 +81,6 @@
                 <?php
                 }
                 ?>
-
-                <div class="form-group">
-                    <label for="">Nama Petugas Survey</label>
-                    <input type="text" id="nama" name="nama" class="form-control" required readonly>
-                </div>
-
-                <hr class="my-3">
-                <h2 class="mb-3"><u>Kirim Pesan Email</u></h2>
 
                 <div class="form-group">
                     <label>Email Pelanggan</label>

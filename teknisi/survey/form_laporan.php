@@ -130,28 +130,28 @@
                     <tbody>
                         <?php
                         $nama = $_SESSION['nama'];
-                        $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.* FROM 
+                        $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.id_mohon, d.jenis_transaksi FROM 
                         tb_survey_lap_masuk a 
-                        JOIN tb_pasang_baru b ON a.id_yanbung = b.id_pasang_baru 
-                        JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_mohon_pb d ON b.id_mohon = d.id_mohon
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2') && b.status_teknisi = '0'");
+                        JOIN tb_mohon_pb b ON a.id_mohon_survey = b.id_mohon 
+                        JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey
+                        JOIN tb_pasang_baru d ON b.id_mohon = d.id_mohon 
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2')");
 
                         $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.* FROM 
                         tb_survey_lap_masuk a 
-                        JOIN tb_perubahan_daya b ON a.id_yanbung = b.id_perubahan_daya 
+                        JOIN tb_mohon_pd b ON a.id_mohon_survey = b.id_mohon 
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_mohon_pd d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2') && b.status_teknisi = '0'");
+                        JOIN tb_perubahan_daya d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2')");
 
                         $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.* FROM 
                         tb_survey_lap_masuk a 
-                        JOIN tb_multiguna b ON a.id_yanbung = b.id_mlta 
+                        JOIN tb_mohon_multiguna b ON a.id_mohon_survey = b.id_mohon 
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_mohon_multiguna d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2') && b.status_teknisi = '0'");
+                        JOIN tb_multiguna d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2')");
 
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
@@ -169,7 +169,7 @@
                                     <td class="align-middle"><?php echo date('d-M-Y', strtotime($row['tgl_masuk'])); ?></td>
                                     <td class="align-middle"><?php echo $row['tipe']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row['id_yanbung'] ?>" class="open-modal btn btn-primary" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_mohon_survey'] ?>" class="open-modal btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
@@ -198,6 +198,14 @@
                                             </a>
                                         </td>
                                     <?php
+                                    } elseif ($row['status_survey'] == "4") {
+                                    ?>
+                                        <td class=" align-middle text-center">
+                                            <a class="btn btn-danger rounded">
+                                                Ditolak
+                                            </a>
+                                        </td>
+                                    <?php
                                     } else {
                                     ?>
                                         <td class="align-middle text-center">
@@ -223,7 +231,7 @@
                                     <td class="align-middle"><?php echo date('d-M-Y', strtotime($row['tgl_masuk'])); ?></td>
                                     <td class="align-middle"><?php echo $row['tipe']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row['id_yanbung'] ?>" class="open-modal2 btn btn-primary" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_mohon_survey'] ?>" class="open-modal2 btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
@@ -252,6 +260,14 @@
                                             </a>
                                         </td>
                                     <?php
+                                    } elseif ($row['status_survey'] == "4") {
+                                    ?>
+                                        <td class=" align-middle text-center">
+                                            <a class="btn btn-danger rounded">
+                                                Ditolak
+                                            </a>
+                                        </td>
+                                    <?php
                                     } else {
                                     ?>
                                         <td class="align-middle text-center">
@@ -277,7 +293,7 @@
                                     <td class="align-middle"><?php echo date('d-M-Y', strtotime($row3['tgl_masuk'])); ?></td>
                                     <td class="align-middle"><?php echo $row3['tipe']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row3['id_yanbung'] ?>" class="open-modal3 btn btn-primary" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row3['id_mohon_survey'] ?>" class="open-modal3 btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
@@ -298,11 +314,19 @@
                                             </a>
                                         </td>
                                     <?php
-                                    } elseif ($row['status_survey'] == "3") {
+                                    } elseif ($row3['status_survey'] == "3") {
                                     ?>
                                         <td class=" align-middle text-center">
                                             <a class="btn btn-success rounded">
                                                 Selesai
+                                            </a>
+                                        </td>
+                                    <?php
+                                    } elseif ($row3['status_survey'] == "4") {
+                                    ?>
+                                        <td class=" align-middle text-center">
+                                            <a class="btn btn-danger rounded">
+                                                Ditolak
                                             </a>
                                         </td>
                                     <?php

@@ -15,6 +15,10 @@
         function show1() {
             document.getElementById('tgl_cek').style.display = 'block';
             document.getElementById("tgl_cek2").required = true;
+            document.getElementById('form_tolak').style.display = 'none';
+            document.getElementById('kotak_tolak').required = false;
+            document.getElementById('form_laporan').style.display = 'block';
+            document.getElementById("kotak_laporan").required = true;
         }
     </script>
     <script type="text/javascript">
@@ -23,6 +27,22 @@
             document.getElementById('tgl_cek_a').style.display = 'block';
             document.getElementById("tgl_cek2").required = false;
             document.getElementById("tgl_cek3").required = true;
+            document.getElementById('form_tolak').style.display = 'none';
+            document.getElementById('kotak_tolak').required = false;
+            document.getElementById('form_laporan').style.display = 'block';
+            document.getElementById("kotak_laporan").required = true;
+        }
+    </script>
+    <script type="text/javascript">
+        function show3() {
+            document.getElementById('tgl_cek').style.display = 'block';
+            document.getElementById('tgl_cek_a').style.display = 'none';
+            document.getElementById('form_tolak').style.display = 'block';
+            document.getElementById('form_laporan').style.display = 'none';
+            document.getElementById('kotak_tolak').required = true;
+            document.getElementById("tgl_cek2").required = true;
+            document.getElementById("tgl_cek3").required = false;
+            document.getElementById("kotak_laporan").required = false;
         }
     </script>
 
@@ -46,12 +66,12 @@
                 </div>
                 <?php
                 $id = $_GET['id'];
-                $result = $mysqli->query("SELECT a.* , b.* , c.*  FROM tb_survey_lap_masuk a JOIN tb_pasang_baru b ON a.id_yanbung = b.id_pasang_baru JOIN tb_mohon_pb c ON c.id_mohon = b.id_mohon WHERE id_survey_lap = $id") or die($mysqli->error);
+                $result = $mysqli->query("SELECT a.* , b.* , c.*  FROM tb_survey_lap_masuk a JOIN tb_mohon_pb b ON a.id_mohon_survey = b.id_mohon JOIN tb_pasang_baru c ON c.id_mohon = b.id_mohon WHERE id_survey_lap = $id && jenis_transaksi = 'Pasang Baru'") or die($mysqli->error);
 
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
                     $id_p = $row['id_survey_lap'];
-                    $id_pen = $row['id_pasang_baru'];
+                    $id_pen1 = $row['id_mohon'];
                     $no_registrasi = $row['no_registrasi'];
                     $identitas = $row['identitas'];
                     $nama = $row['nama'];
@@ -71,12 +91,12 @@
                 </div>
                 <?php
                 $id = $_GET['id'];
-                $result = $mysqli->query("SELECT a.* , b.* , c.* , d.*  FROM tb_survey_lap_masuk a JOIN tb_pasang_baru b ON a.id_yanbung = b.id_pasang_baru JOIN tb_mohon_pb c ON c.id_mohon = b.id_mohon JOIN tb_laporan_survey d ON d.id_yanbung = b.id_pasang_baru WHERE a.id_survey_lap = $id") or die($mysqli->error);
+                $result = $mysqli->query("SELECT a.* , b.* , c.* , d.*  FROM tb_survey_lap_masuk a JOIN tb_mohon_pb b ON a.id_mohon_survey = b.id_mohon JOIN tb_pasang_baru c ON c.id_mohon = b.id_mohon JOIN tb_laporan_survey d ON d.id_mohon_survey = b.id_mohon WHERE a.id_survey_lap = $id") or die($mysqli->error);
 
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
                     $id_p = $row['id_survey_lap'];
-                    $id_sur = $row['id_pasang_baru'];
+                    $id_mohon = $row['id_mohon'];
                     $no_registrasi = $row['no_registrasi'];
                     $identitas = $row['identitas'];
                     $nama = $row['nama'];
@@ -101,12 +121,12 @@
                 </div>
                 <?php
                 $id = $_GET['id'];
-                $result = $mysqli->query("SELECT a.* , b.* , c.*, d.*  FROM tb_survey_lap_masuk a JOIN tb_perubahan_daya b ON a.id_yanbung = b.id_perubahan_daya JOIN tb_mohon_pd c ON c.id_mohon = b.id_mohon JOIN tb_pelanggan d ON c.id_pelanggan=d.idpel WHERE id_survey_lap = $id") or die($mysqli->error);
+                $result = $mysqli->query("SELECT a.* , b.* , c.*, d.idpel, d.identitas, d.nama, d.alamat FROM tb_survey_lap_masuk a JOIN tb_mohon_pd b ON a.id_mohon_survey = b.id_mohon JOIN tb_perubahan_daya c ON c.id_mohon = b.id_mohon JOIN tb_pelanggan d ON b.id_pelanggan=d.idpel WHERE id_survey_lap = $id && jenis_transaksi = 'Perubahan Daya'") or die($mysqli->error);
 
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
                     $id_p = $row['id_survey_lap'];
-                    $id_pen = $row['id_perubahan_daya'];
+                    $id_pen2 = $row['id_mohon'];
                     $no_registrasi = $row['no_registrasi'];
                     $identitas = $row['identitas'];
                     $nama = $row['nama'];
@@ -129,12 +149,12 @@
                 </div>
                 <?php
                 $id = $_GET['id'];
-                $result = $mysqli->query("SELECT a.* , b.* , c.*, d.*, e.* FROM tb_survey_lap_masuk a JOIN tb_perubahan_daya b ON a.id_yanbung = b.id_perubahan_daya JOIN tb_mohon_pd c ON c.id_mohon = b.id_mohon JOIN tb_pelanggan d ON c.id_pelanggan=d.idpel JOIN tb_laporan_survey e ON e.id_yanbung = b.id_perubahan_daya WHERE a.id_survey_lap = $id") or die($mysqli->error);
+                $result = $mysqli->query("SELECT a.* , b.* , c.*, d.idpel, d.identitas, d.nama, d.alamat, e.* FROM tb_survey_lap_masuk a JOIN tb_mohon_pd b ON a.id_mohon_survey = b.id_mohon JOIN tb_perubahan_daya c ON c.id_mohon = b.id_mohon JOIN tb_pelanggan d ON b.id_pelanggan=d.idpel JOIN tb_laporan_survey e ON e.id_mohon_survey = b.id_mohon WHERE a.id_survey_lap = $id") or die($mysqli->error);
 
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
                     $id_p = $row['id_survey_lap'];
-                    $id_sur = $row['id_perubahan_daya'];
+                    $id_mohon = $row['id_mohon'];
                     $no_registrasi = $row['no_registrasi'];
                     $identitas = $row['identitas'];
                     $nama = $row['nama'];
@@ -162,12 +182,12 @@
                 </div>
                 <?php
                 $id = $_GET['id'];
-                $result = $mysqli->query("SELECT a.* , b.* , c.*, d.*  FROM tb_survey_lap_masuk a JOIN tb_multiguna b ON a.id_yanbung = b.id_mlta JOIN tb_mohon_multiguna c ON c.id_mohon = b.id_mohon JOIN tb_pelanggan d ON c.id_pelanggan=d.idpel WHERE id_survey_lap = $id") or die($mysqli->error);
+                $result = $mysqli->query("SELECT a.* , b.* , c.*, d.idpel, d.identitas, d.nama, d.alamat FROM tb_survey_lap_masuk a JOIN tb_mohon_multiguna b ON a.id_mohon_survey = b.id_mohon JOIN tb_multiguna c ON c.id_mohon = b.id_mohon JOIN tb_pelanggan d ON b.id_pelanggan=d.idpel WHERE id_survey_lap = $id") or die($mysqli->error);
 
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
                     $id_p = $row['id_survey_lap'];
-                    $id_pen = $row['id_mlta'];
+                    $id_pen3 = $row['id_mohon'];
                     $no_registrasi = $row['no_registrasi'];
                     $identitas = $row['identitas'];
                     $nama = $row['nama'];
@@ -188,12 +208,12 @@
                 </div>
     <?php
                 $id = $_GET['id'];
-                $result = $mysqli->query("SELECT a.* , b.* , c.*, d.*, e.*  FROM tb_survey_lap_masuk a JOIN tb_multiguna b ON a.id_yanbung = b.id_mlta JOIN tb_mohon_multiguna c ON c.id_mohon = b.id_mohon JOIN tb_pelanggan d ON c.id_pelanggan=d.idpel JOIN tb_laporan_survey e ON e.id_yanbung = b.id_mlta WHERE a.id_survey_lap = $id") or die($mysqli->error);
+                $result = $mysqli->query("SELECT a.* , b.* , c.*, d.idpel, d.identitas, d.nama, d.alamat, e.*  FROM tb_survey_lap_masuk a JOIN tb_mohon_multiguna b ON a.id_mohon_survey = b.id_mohon JOIN tb_multiguna c ON c.id_mohon = b.id_mohon JOIN tb_pelanggan d ON b.id_pelanggan=d.idpel JOIN tb_laporan_survey e ON e.id_mohon_survey = b.id_mohon WHERE a.id_survey_lap = $id") or die($mysqli->error);
 
                 if ($result->num_rows) {
                     $row = $result->fetch_array();
                     $id_p = $row['id_survey_lap'];
-                    $id_sur = $row['id_mlta'];
+                    $id_mohon = $row['id_mohon'];
                     $no_registrasi = $row['no_registrasi'];
                     $identitas = $row['identitas'];
                     $nama = $row['nama'];
@@ -466,15 +486,61 @@
                     $ambilstatus = $_GET['status'];
                     if ($ambilstatus == "2") {
                 ?>
-                        <input type="hidden" name="id_sur" value="<?php echo $id_sur; ?>">
                         <input type="hidden" name="id_lap" value="<?php echo $id_laporan; ?>">
+                        <input type="hidden" name="id_mohon" value="<?php echo $id_mohon; ?>">
 
                         <div class="form-group">
-                            <label for="">Laporan Progres Sementara</label>
-                            <textarea name="laporan" placeholder="Masukkan Laporan Progres" class="form-control" cols="10" rows="3" required><?php echo $laporan ?></textarea>
+                            <label for="">Status</label> <br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="selesai" onclick="show1();" required>
+                                <label class="form-check-label" id="exampleRadios1">
+                                    Selesai
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="tolak" onclick="show3();">
+                                <label class="form-check-label" id="exampleRadios2">
+                                    Tolak
+                                </label>
+                            </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group" id="form_laporan">
+                            <label for="">Laporan Progres</label>
+                            <textarea name="laporan" id="kotak_laporan" placeholder="Masukkan Laporan Progres" class="form-control" cols="10" rows="3" required><?php echo $laporan ?></textarea>
+                        </div>
+
+                        <div class="form-group" style="display: none;" id="form_tolak">
+                            <label for="">Alasan Penolakan</label>
+                            <textarea name="alasan_tolak" id="kotak_tolak" placeholder="Masukkan Alasan Penolakan" class="form-control" cols="10" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group" id="tgl_cek_a" style="display: none;">
+                            <label for="">Tanggal Mulai Survey</label>
+                            <input type="date" id="tgl_cek3" name="tgl_mulai2" class="form-control">
+                        </div>
+
+                        <div class="form-group row" id="tgl_cek" style="display: none;">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="">Tanggal Mulai Survey</label>
+                                    <input type="date" value="<?php echo $tgl_mulai ?>" id="tgl_cek2" name="tgl_mulai" class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="">Tanggal Selesai Survey</label>
+                                    <input type="date" id="tgl_cek2" name="tgl_selesai" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <label for="">Laporan Progres Sementara</label>
+                            <textarea name="laporan" placeholder="Masukkan Laporan Progres" class="form-control" cols="10" rows="3" required><?php echo $laporan ?></textarea>
+                        </div> -->
+
+                        <!-- <div class="form-group row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="">Tanggal Mulai Survey</label>
@@ -487,17 +553,7 @@
                                     <input type="date" name="tgl_selesai" class="form-control">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Status</label> <br>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" value="selesai" required>
-                                <label class="form-check-label" id="exampleRadios1">
-                                    Selesai
-                                </label>
-                            </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row float-right">
                             <div class="col">
@@ -510,12 +566,22 @@
                     } elseif ($ambilstatus == "1") {
                     ?>
                         <input type="hidden" name="id_surveylap" value="<?php echo $id_p; ?>">
-                        <input type="hidden" name="id_yanbung" value="<?php echo $id_pen; ?>">
 
-                        <div class="form-group">
-                            <label for="">Laporan Progres</label>
-                            <textarea name="laporan" placeholder="Masukkan Laporan Progres" class="form-control" cols="10" rows="3" required></textarea>
-                        </div>
+                        <?php
+                        if ($jentra == "Pasang Baru") {
+                        ?>
+                            <input type="hidden" name="id_ms" value="<?php echo $id_pen1; ?>">
+                        <?php
+                        } elseif ($jentra == "Perubahan Daya") {
+                        ?>
+                            <input type="hidden" name="id_ms" value="<?php echo $id_pen2; ?>">
+                        <?php
+                        } elseif ($jentra == "Sambung Sementara") {
+                        ?>
+                            <input type="hidden" name="id_ms" value="<?php echo $id_pen3; ?>">
+                        <?php
+                        }
+                        ?>
 
                         <div class="form-group">
                             <label for="">Status</label> <br>
@@ -531,6 +597,22 @@
                                     Belum Selesai
                                 </label>
                             </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="tolak" onclick="show3();">
+                                <label class="form-check-label" id="exampleRadios2">
+                                    Tolak
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="form_laporan">
+                            <label for="">Laporan Progres</label>
+                            <textarea name="laporan" id="kotak_laporan" placeholder="Masukkan Laporan Progres" class="form-control" cols="10" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group" style="display: none;" id="form_tolak">
+                            <label for="">Alasan Penolakan</label>
+                            <textarea name="alasan_tolak" id="kotak_tolak" placeholder="Masukkan Alasan Penolakan" class="form-control" cols="10" rows="3" required></textarea>
                         </div>
 
                         <div class="form-group" id="tgl_cek_a" style="display: none;">
@@ -584,32 +666,36 @@ include_once 'footer.php';
 <?php
 if (isset($_POST['save'])) {
     $id_surveylap = $_POST['id_surveylap'];
-    $id_yanbung = $_POST['id_yanbung'];
+    $id_ms = $_POST['id_ms'];
     $laporan = $_POST['laporan'];
     $tgl_mulai = $_POST['tgl_mulai'];
     $tgl_mulai2 = $_POST['tgl_mulai2'];
     $tgl_selesai = $_POST['tgl_selesai'];
     $status = $_POST['status'];
+    $alasantolak = $_POST['alasan_tolak'];
 
     if ($status == "selesai") {
         $statuskonversi = 3;
-    } else {
+    } elseif ($status == "belum selesai") {
         $statuskonversi = 2;
+    } elseif ($status == "tolak") {
+        $statuskonversi = 4;
     }
 
     if ($status == "selesai") {
-        $insert = "INSERT INTO tb_laporan_survey (id_survey_lap,id_yanbung, laporan,tgl_mulai, tgl_selesai, status) VALUES ('$id_surveylap','$id_yanbung','$laporan','$tgl_mulai','$tgl_selesai', '$statuskonversi')";
+        $insert = "INSERT INTO tb_laporan_survey (id_survey_lap,id_mohon_survey, laporan,tgl_mulai, tgl_selesai, status) VALUES ('$id_surveylap','$id_ms','$laporan','$tgl_mulai','$tgl_selesai', '$statuskonversi')";
         $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 
         $jentra = $_GET['jt'];
 
-        if ($jentra == "Pasang Baru") {
-            $update = "UPDATE tb_pasang_baru SET status_survey='$statuskonversi' WHERE id_pasang_baru = $id_yanbung";
-        } elseif ($jentra == "Perubahan Daya") {
-            $update = "UPDATE tb_perubahan_daya SET status_survey='$statuskonversi' WHERE id_perubahan_daya = $id_yanbung";
-        } elseif ($jentra == "Sambung Sementara") {
-            $update = "UPDATE tb_multiguna SET status_survey='$statuskonversi' WHERE id_mlta = $id_yanbung";
+        //tambahkan tag query dalam kurung
+        if ($query && $jentra == "Pasang Baru") {
+            $update = "UPDATE tb_mohon_pb SET status_survey='$statuskonversi' WHERE id_mohon = $id_ms";
+        } elseif ($query && $jentra == "Perubahan Daya") {
+            $update = "UPDATE tb_mohon_pd SET status_survey='$statuskonversi' WHERE id_mohon = $id_ms";
+        } elseif ($query && $jentra == "Sambung Sementara") {
+            $update = "UPDATE tb_mohon_multiguna SET status_survey='$statuskonversi' WHERE id_mohon = $id_ms";
         }
 
         $query2 = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
@@ -626,18 +712,19 @@ if (isset($_POST['save'])) {
         </script>
     <?php
     } elseif ($status == "belum selesai") {
-        $insert = "INSERT INTO tb_laporan_survey (id_survey_lap,id_yanbung, laporan,tgl_mulai, status) VALUES ('$id_surveylap','$id_yanbung','$laporan','$tgl_mulai2', '$statuskonversi')";
+        $insert = "INSERT INTO tb_laporan_survey (id_survey_lap,id_mohon_survey, laporan,tgl_mulai, status) VALUES ('$id_surveylap','$id_ms','$laporan','$tgl_mulai2', '$statuskonversi')";
         $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 
         $jentra = $_GET['jt'];
 
+        //tambahkan tag query dalam kurung
         if ($query && $jentra == "Pasang Baru") {
-            $update = "UPDATE tb_pasang_baru SET status_survey='$statuskonversi' WHERE id_pasang_baru = $id_yanbung";
+            $update = "UPDATE tb_mohon_pb SET status_survey='$statuskonversi' WHERE id_mohon = $id_ms";
         } elseif ($query && $jentra == "Perubahan Daya") {
-            $update = "UPDATE tb_perubahan_daya SET status_survey='$statuskonversi' WHERE id_perubahan_daya = $id_yanbung";
+            $update = "UPDATE tb_mohon_pd SET status_survey='$statuskonversi' WHERE id_mohon = $id_ms";
         } elseif ($query && $jentra == "Sambung Sementara") {
-            $update = "UPDATE tb_multiguna SET status_survey='$statuskonversi' WHERE id_mlta = $id_yanbung";
+            $update = "UPDATE tb_mohon_multiguna SET status_survey='$statuskonversi' WHERE id_mohon = $id_ms";
         }
 
         $query2 = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
@@ -653,36 +740,69 @@ if (isset($_POST['save'])) {
             })
         </script>
     <?php
+    } elseif ($status == "tolak") {
+        $insert = "INSERT INTO tb_laporan_survey (id_survey_lap,id_mohon_survey,tgl_mulai, tgl_selesai, status,alasan_penolakan) VALUES ('$id_surveylap','$id_ms','$tgl_mulai','$tgl_selesai', '$statuskonversi', '$alasantolak')";
+        $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
+        // var_dump($insert);
+
+        $jentra = $_GET['jt'];
+
+        //tambahkan tag query dalam kurung
+        if ($query && $jentra == "Pasang Baru") {
+            $update = "UPDATE tb_mohon_pb SET status_survey='$statuskonversi' WHERE id_mohon = $id_ms";
+        } elseif ($query && $jentra == "Perubahan Daya") {
+            $update = "UPDATE tb_mohon_pd SET status_survey='$statuskonversi' WHERE id_mohon = $id_ms";
+        } elseif ($query && $jentra == "Sambung Sementara") {
+            $update = "UPDATE tb_mohon_multiguna SET status_survey='$statuskonversi' WHERE id_mohon = $id_ms";
+        }
+
+        $query2 = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
+        // var_dump($update);
+    ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses.',
+                text: 'Sukses Menambahkan Laporan yang ditolak!'
+            }).then((result) => {
+                window.location = "header.php?page=laporansurvey";
+            })
+        </script>
+    <?php
     }
 } elseif (isset($_POST['save2'])) {
     $id_laporan = $_POST['id_lap'];
-    $id_sur = $_POST['id_sur'];
+    $id_mohon = $_POST['id_mohon'];
     $laporan = $_POST['laporan'];
     $tgl_mulai = $_POST['tgl_mulai'];
     $tgl_selesai = $_POST['tgl_selesai'];
     $status = $_POST['status'];
+    $alasantolak = $_POST['alasan_tolak'];
 
     if ($status == "selesai") {
         $statuskonversi = 3;
-    } else {
-        $statuskonversi = 2;
+    } elseif ($status == "tolak") {
+        $statuskonversi = 4;
     }
 
-    $update = "UPDATE tb_laporan_survey SET laporan = '$laporan', tgl_mulai='$tgl_mulai', tgl_selesai='$tgl_selesai', status='$statuskonversi' WHERE id_laporan = $id_laporan";
-    $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
+    if ($status == "selesai") {
+        $update = "UPDATE tb_laporan_survey SET laporan='$laporan', tgl_selesai = '$tgl_selesai', status = '$statuskonversi' , alasan_penolakan = 'Diterima' WHERE id_laporan = $id_laporan";
+        $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
+        // var_dump($update);
 
-    if ($query && $status == "selesai") {
         $jentra = $_GET['jt'];
 
-        if ($jentra == "Pasang Baru") {
-            $update2 = "UPDATE tb_pasang_baru SET status_survey='$statuskonversi' WHERE id_pasang_baru = $id_sur";
-        } elseif ($jentra == "Perubahan Daya") {
-            $update2 = "UPDATE tb_perubahan_daya SET status_survey='$statuskonversi' WHERE id_perubahan_daya = $id_sur";
-        } elseif ($jentra == "Sambung Sementara") {
-            $update2 = "UPDATE tb_multiguna SET status_survey='$statuskonversi' WHERE id_mlta = $id_sur";
+        //tambahkan tag query dalam kurung
+        if ($query && $jentra == "Pasang Baru") {
+            $update2 = "UPDATE tb_mohon_pb SET status_survey='$statuskonversi' WHERE id_mohon = $id_mohon";
+        } elseif ($query && $jentra == "Perubahan Daya") {
+            $update2 = "UPDATE tb_mohon_pd SET status_survey='$statuskonversi' WHERE id_mohon = $id_mohon";
+        } elseif ($query && $jentra == "Sambung Sementara") {
+            $update2 = "UPDATE tb_mohon_multiguna SET status_survey='$statuskonversi' WHERE id_mohon = $id_mohon";
         }
-        $query = mysqli_query($mysqli, $update2) or die(mysqli_error($mysqli));
 
+        $query2 = mysqli_query($mysqli, $update2) or die(mysqli_error($mysqli));
+        // var_dump($update2);
     ?>
         <script>
             Swal.fire({
@@ -691,6 +811,35 @@ if (isset($_POST['save'])) {
                 text: 'Sukses Menambahkan Laporan yang sudah selesai!'
             }).then((result) => {
                 window.location = "header.php?page=laporansurveyselesai";
+            })
+        </script>
+    <?php
+    } elseif ($status == "tolak") {
+        $update = "UPDATE tb_laporan_survey SET laporan='Ditolak', tgl_selesai = '$tgl_selesai', status = '$statuskonversi', alasan_penolakan = '$alasantolak' WHERE id_laporan = $id_laporan";
+        $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
+        // var_dump($update);
+
+        $jentra = $_GET['jt'];
+
+        //tambahkan tag query dalam kurung
+        if ($query && $jentra == "Pasang Baru") {
+            $update2 = "UPDATE tb_mohon_pb SET status_survey='$statuskonversi' WHERE id_mohon = $id_mohon";
+        } elseif ($query && $jentra == "Perubahan Daya") {
+            $update2 = "UPDATE tb_mohon_pd SET status_survey='$statuskonversi' WHERE id_mohon = $id_mohon";
+        } elseif ($query && $jentra == "Sambung Sementara") {
+            $update2 = "UPDATE tb_mohon_multiguna SET status_survey='$statuskonversi' WHERE id_mohon = $id_mohon";
+        }
+
+        $query2 = mysqli_query($mysqli, $update2) or die(mysqli_error($mysqli));
+        // var_dump($update2);
+    ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses.',
+                text: 'Sukses Menambahkan Laporan yang ditolak!'
+            }).then((result) => {
+                window.location = "header.php?page=laporansurvey";
             })
         </script>
 <?php

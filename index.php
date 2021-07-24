@@ -318,21 +318,21 @@
         <!-- Jumlah Data Pengaduan Masuk untuk teknisi pengaduan -->
         <?php
         $nama = $_SESSION['nama'];
-        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_pasang_baru a JOIN tb_survey_lap_masuk b ON a.id_pasang_baru = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Pasang Baru' && c.nama = '$nama' && a.status_survey = 1");
+        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_mohon_pb a JOIN tb_survey_lap_masuk b ON a.id_mohon = b.id_mohon_survey JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Pasang Baru' && c.nama = '$nama' && a.status_survey = 1");
         $hitungrow2 = mysqli_num_rows($data);
         ?>
 
         <!-- Jumlah Data Pengaduan Progres untuk teknisi pengaduan -->
         <?php
         $nama = $_SESSION['nama'];
-        $data2 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_pasang_baru a JOIN tb_survey_lap_masuk b ON a.id_pasang_baru = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Pasang Baru' && c.nama = '$nama' && a.status_survey = 2");
+        $data2 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_mohon_pb a JOIN tb_survey_lap_masuk b ON a.id_mohon = b.id_mohon_survey JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Pasang Baru' && c.nama = '$nama' && a.status_survey = 2");
         $hitungrow3 = mysqli_num_rows($data2);
         ?>
 
         <!-- Jumlah Data Pengaduan Selesai untuk teknisi pengaduan -->
         <?php
         $nama = $_SESSION['nama'];
-        $data3 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_pasang_baru a JOIN tb_survey_lap_masuk b ON a.id_pasang_baru = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Pasang Baru' && c.nama = '$nama' && a.status_survey = 3");
+        $data3 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_mohon_pb a JOIN tb_survey_lap_masuk b ON a.id_mohon = b.id_mohon_survey JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Pasang Baru' && c.nama = '$nama' && a.status_survey = 3");
         $hitungrow4 = mysqli_num_rows($data3);
         ?>
 
@@ -402,21 +402,21 @@
         <!-- Jumlah Data Pengaduan Masuk untuk teknisi pengaduan -->
         <?php
         $nama = $_SESSION['nama'];
-        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_perubahan_daya a JOIN tb_survey_lap_masuk b ON a.id_perubahan_daya = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Perubahan Daya' && c.nama = '$nama' && a.status_survey = 1");
+        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_mohon_pd a JOIN tb_survey_lap_masuk b ON a.id_mohon = b.id_mohon_survey JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Perubahan Daya' && c.nama = '$nama' && a.status_survey = 1");
         $hitungrow2 = mysqli_num_rows($data);
         ?>
 
         <!-- Jumlah Data Pengaduan Progres untuk teknisi pengaduan -->
         <?php
         $nama = $_SESSION['nama'];
-        $data2 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_perubahan_daya a JOIN tb_survey_lap_masuk b ON a.id_perubahan_daya = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Perubahan Daya' && c.nama = '$nama' && a.status_survey = 2");
+        $data2 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_mohon_pd a JOIN tb_survey_lap_masuk b ON a.id_mohon = b.id_mohon_survey JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Perubahan Daya' && c.nama = '$nama' && a.status_survey = 2");
         $hitungrow3 = mysqli_num_rows($data2);
         ?>
 
         <!-- Jumlah Data Pengaduan Selesai untuk teknisi pengaduan -->
         <?php
         $nama = $_SESSION['nama'];
-        $data3 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_perubahan_daya a JOIN tb_survey_lap_masuk b ON a.id_perubahan_daya = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Perubahan Daya' && c.nama = '$nama' && a.status_survey = 3");
+        $data3 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_mohon_pd a JOIN tb_survey_lap_masuk b ON a.id_mohon = b.id_mohon_survey JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Perubahan Daya' && c.nama = '$nama' && a.status_survey = 3");
         $hitungrow4 = mysqli_num_rows($data3);
         ?>
 
@@ -486,21 +486,21 @@
         <!-- Jumlah Data Pengaduan Masuk untuk teknisi pengaduan -->
         <?php
         $nama = $_SESSION['nama'];
-        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_multiguna a JOIN tb_survey_lap_masuk b ON a.id_mlta = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Penyambungan Sementara' && c.nama = '$nama' && a.status_survey = 1");
+        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_mohon_multiguna a JOIN tb_survey_lap_masuk b ON a.id_mohon = b.id_mohon_survey JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Penyambungan Sementara' && c.nama = '$nama' && a.status_survey = 1");
         $hitungrow2 = mysqli_num_rows($data);
         ?>
 
         <!-- Jumlah Data Pengaduan Progres untuk teknisi pengaduan -->
         <?php
         $nama = $_SESSION['nama'];
-        $data2 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_multiguna a JOIN tb_survey_lap_masuk b ON a.id_mlta = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Penyambungan Sementara' && c.nama = '$nama' && a.status_survey = 2");
+        $data2 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_mohon_multiguna a JOIN tb_survey_lap_masuk b ON a.id_mohon = b.id_mohon_survey JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Penyambungan Sementara' && c.nama = '$nama' && a.status_survey = 2");
         $hitungrow3 = mysqli_num_rows($data2);
         ?>
 
         <!-- Jumlah Data Pengaduan Selesai untuk teknisi pengaduan -->
         <?php
         $nama = $_SESSION['nama'];
-        $data3 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_multiguna a JOIN tb_survey_lap_masuk b ON a.id_mlta = b.id_yanbung JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Penyambungan Sementara' && c.nama = '$nama' && a.status_survey = 3");
+        $data3 = mysqli_query($mysqli, "SELECT a.* , b.*, c.* FROM tb_mohon_multiguna a JOIN tb_survey_lap_masuk b ON a.id_mohon = b.id_mohon_survey JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE b.pegawai_acc = 1 && b.tipe = 'Survey Penyambungan Sementara' && c.nama = '$nama' && a.status_survey = 3");
         $hitungrow4 = mysqli_num_rows($data3);
         ?>
 

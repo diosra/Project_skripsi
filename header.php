@@ -896,10 +896,16 @@ if (!isset($_SESSION['username'])) {
                                 break;
 
                             case 'surveytambah':
-                                include "pelayanan_penyambungan/pelayananpenyambungan/input_survey.php";
+                                include "pelayanan_penyambungan/permohonan_yanbung/input_survey.php";
                                 break;
                             case 'sendemailsurvey':
-                                include "pelayanan_penyambungan/pelayananpenyambungan/send.php";
+                                include "pelayanan_penyambungan/permohonan_yanbung/send.php";
+                                break;
+                            case 'kirimkonfirmasi':
+                                include "pelayanan_penyambungan/permohonan_yanbung/input_kirim_email.php";
+                                break;
+                            case 'sendemailkonfirmasi':
+                                include "pelayanan_penyambungan/permohonan_yanbung/send_konfirmasi.php";
                                 break;
 
                                 //case untuk halaman CRUD

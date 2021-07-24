@@ -127,11 +127,6 @@ if ($_POST['id']) {
                 <label for="">Total Biaya</label>
                 <input type="text" value="Rp.' . number_format($row_view['total'], 0, ',', '.') . '" class="form-control" readonly>
             </div>
-
-            <hr class="my-3">
-            
-            Status Pembayaran : ' . $b . ' <br>
-            ' . $a . '
 		';
         }
     } else {

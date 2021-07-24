@@ -7,7 +7,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT a.*, b.* FROM tb_laporan_survey a JOIN tb_multiguna b ON a.id_yanbung = b.id_mlta WHERE a.id_survey_lap ='$id'");
+    $view = $mysqli->query("SELECT a.*, b.*, c.id_mohon, c.jenis_transaksi FROM tb_laporan_survey a JOIN tb_mohon_multiguna b ON a.id_mohon_survey = b.id_mohon JOIN tb_multiguna c ON a.id_mohon_survey = c.id_mohon WHERE a.id_survey_lap ='$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {

@@ -123,6 +123,23 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal dialog untuk penolakan Survey-->
+    <div id="get-data7" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Alasan Penolakan Survey</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi_ditolak">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
@@ -149,29 +166,29 @@
                         $nama = $_SESSION['nama'];
                         $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.* FROM 
                         tb_survey_lap_masuk a 
-                        JOIN tb_pasang_baru b ON a.id_yanbung = b.id_pasang_baru 
+                        JOIN tb_mohon_pb b ON a.id_mohon_survey = b.id_mohon 
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_mohon_pb d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pasang_baru d ON b.id_mohon = d.id_mohon
                         JOIN tb_laporan_survey e ON e.id_survey_lap = a.id_survey_lap
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_survey = '3' && b.status_teknisi = '0'");
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '3' ||  b.status_survey = '4')");
 
                         $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
                         tb_survey_lap_masuk a 
-                        JOIN tb_perubahan_daya b ON a.id_yanbung = b.id_perubahan_daya 
+                        JOIN tb_mohon_pd b ON a.id_mohon_survey = b.id_mohon 
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_mohon_pd d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
+                        JOIN tb_perubahan_daya d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
                         JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_survey = '3' && b.status_teknisi = '0'");
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '3' ||  b.status_survey = '4')");
 
                         $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
                         tb_survey_lap_masuk a 
-                        JOIN tb_multiguna b ON a.id_yanbung = b.id_mlta 
+                        JOIN tb_mohon_multiguna b ON a.id_mohon_survey = b.id_mohon 
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_mohon_multiguna d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
+                        JOIN tb_multiguna d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
                         JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_survey = '3' && b.status_teknisi = '0'");
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '3' ||  b.status_survey = '4')");
 
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
@@ -189,7 +206,7 @@
                                     <td class="align-middle"><?php echo date('d-M-Y', strtotime($row['tgl_masuk'])); ?></td>
                                     <td class="align-middle"><?php echo $row['tipe']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row['id_yanbung'] ?>" class="open-modal btn btn-primary" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_mohon_survey'] ?>" class="open-modal btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
@@ -221,8 +238,8 @@
                                     } else {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="btn btn-danger rounded">
-                                                Error
+                                            <a class="open-modal7 btn btn-danger rounded" data-toggle="modal" data-id="<?php echo $row['id_laporan'] ?>" href="#">
+                                                Ditolak
                                             </a>
                                         </td>
                                     <?php
@@ -243,7 +260,7 @@
                                     <td class="align-middle"><?php echo date('d-M-Y', strtotime($row['tgl_masuk'])); ?></td>
                                     <td class="align-middle"><?php echo $row['tipe']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row['id_yanbung'] ?>" class="open-modal2 btn btn-primary" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_mohon_survey'] ?>" class="open-modal2 btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
@@ -275,8 +292,8 @@
                                     } else {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="btn btn-danger rounded">
-                                                Error
+                                            <a class="open-modal7 btn btn-danger rounded" data-toggle="modal" data-id="<?php echo $row['id_laporan'] ?>" href="#">
+                                                Ditolak
                                             </a>
                                         </td>
                                     <?php
@@ -297,7 +314,7 @@
                                     <td class="align-middle"><?php echo date('d-M-Y', strtotime($row3['tgl_masuk'])); ?></td>
                                     <td class="align-middle"><?php echo $row3['tipe']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row3['id_yanbung'] ?>" class="open-modal3 btn btn-primary" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row3['id_mohon_survey'] ?>" class="open-modal3 btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
@@ -329,8 +346,8 @@
                                     } else {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="btn btn-danger rounded">
-                                                Error
+                                            <a class="open-modal7 btn btn-danger rounded" data-toggle="modal" data-id="<?php echo $row3['id_laporan'] ?>" href="#">
+                                                Ditolak
                                             </a>
                                         </td>
                                     <?php

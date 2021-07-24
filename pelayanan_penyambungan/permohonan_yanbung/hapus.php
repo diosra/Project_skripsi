@@ -27,7 +27,10 @@
         $delete = "DELETE FROM tb_mohon_pb WHERE id_mohon =$id";
         $query = mysqli_query($mysqli, $delete) or die(mysqli_error($mysqli));
 
-        if ($query) { ?>
+        if ($query) {
+            $delete2 = "DELETE FROM tb_survey_lap_masuk WHERE noreg ='$noreg_imp'";
+            $query2 = mysqli_query($mysqli, $delete2) or die(mysqli_error($mysqli));
+    ?>
             <script>
                 Swal.fire({
                     icon: 'success',
@@ -81,7 +84,10 @@
         $delete = "DELETE FROM tb_mohon_multiguna WHERE id_mohon =$id";
         $query = mysqli_query($mysqli, $delete) or die(mysqli_error($mysqli));
 
-        if ($query) { ?>
+        if ($query) {
+            $delete2 = "DELETE FROM tb_survey_lap_masuk WHERE noreg ='$noreg_imp'";
+            $query2 = mysqli_query($mysqli, $delete2) or die(mysqli_error($mysqli));
+        ?>
             <script>
                 Swal.fire({
                     icon: 'success',

@@ -233,72 +233,7 @@ if (isset($_POST['save'])) {
     $tgl_masuk = $_POST['tgl_masuk'];
     $fasalama = $_POST['fasalama'];
 
-    if ($dayalama <= "1300" && $daya == "2200") {
-        $hargaMaterai = 0;
-        $hargaPenyambungan = 937;
-
-        if ($produk_layanan == "PASCABAYAR") {
-            $hargaUJL = $daya * 141;
-            $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
-        } elseif ($produk_layanan == "PRABAYAR") {
-            $hargaToken = $_POST['token'];
-            $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
-        }
-    } elseif ($dayalama <= "2200" && $daya >= "3500") {
-        $hargaPenyambungan = 969;
-
-        if ($daya >= "6600") {
-            $hargaMaterai = 10000;
-        } else {
-            $hargaMaterai = 0;
-        }
-
-        if ($daya <= "900") {
-            $hargaUJL = $daya * 72;
-        } elseif ($daya == "1300") {
-            $hargaUJL = $daya * 133;
-        } elseif ($daya == "2200") {
-            $hargaUJL = $daya * 141;
-        } elseif ($daya == "3500" || $daya <= "5500") {
-            $hargaUJL = $daya * 157;
-        } elseif ($daya >= "6600") {
-            $hargaUJL = $daya * 140;
-        }
-
-        if ($produk_layanan == "PASCABAYAR") {
-            $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
-        } elseif ($produk_layanan == "PRABAYAR") {
-            $hargaToken = $_POST['token'];
-            $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
-        }
-    } elseif ($dayalama >= "2200" && $daya >= "2200") {
-        $hargaPenyambungan = 969;
-
-        if ($daya >= "6600") {
-            $hargaMaterai = 10000;
-        } else {
-            $hargaMaterai = 0;
-        }
-
-        if ($daya <= "900") {
-            $hargaUJL = $daya * 72;
-        } elseif ($daya == "1300") {
-            $hargaUJL = $daya * 133;
-        } elseif ($daya == "2200") {
-            $hargaUJL = $daya * 141;
-        } elseif ($daya == "3500" || $daya <= "5500") {
-            $hargaUJL = $daya * 157;
-        } elseif ($daya >= "6600") {
-            $hargaUJL = $daya * 140;
-        }
-
-        if ($produk_layanan == "PASCABAYAR") {
-            $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
-        } elseif ($produk_layanan == "PRABAYAR") {
-            $hargaToken = $_POST['token'];
-            $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
-        }
-    } else {
+    if ($daya <= $dayalama) {
         $hargaMaterai = 0;
         $hargaPenyambungan = 0;
 
@@ -318,7 +253,74 @@ if (isset($_POST['save'])) {
             $totalBiaya = (($daya - $dayalama) * 0) + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
             $hargaToken = $_POST['token'];
-            $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
+            $totalBiaya = (($daya - $dayalama) * 0) + $hargaToken + $hargaMaterai;
+        }
+    } elseif ($daya >= $dayalama) {
+        if ($dayalama <= "1300" && $daya == "2200") {
+            $hargaMaterai = 0;
+            $hargaPenyambungan = 937;
+
+            if ($produk_layanan == "PASCABAYAR") {
+                $hargaUJL = $daya * 141;
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
+            } elseif ($produk_layanan == "PRABAYAR") {
+                $hargaToken = $_POST['token'];
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
+            }
+        } elseif ($dayalama <= "2200" && $daya >= "3500") {
+            $hargaPenyambungan = 969;
+
+            if ($daya >= "6600") {
+                $hargaMaterai = 10000;
+            } else {
+                $hargaMaterai = 0;
+            }
+
+            if ($daya <= "900") {
+                $hargaUJL = $daya * 72;
+            } elseif ($daya == "1300") {
+                $hargaUJL = $daya * 133;
+            } elseif ($daya == "2200") {
+                $hargaUJL = $daya * 141;
+            } elseif ($daya == "3500" || $daya <= "5500") {
+                $hargaUJL = $daya * 157;
+            } elseif ($daya >= "6600") {
+                $hargaUJL = $daya * 140;
+            }
+
+            if ($produk_layanan == "PASCABAYAR") {
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
+            } elseif ($produk_layanan == "PRABAYAR") {
+                $hargaToken = $_POST['token'];
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
+            }
+        } elseif ($dayalama >= "2200" && $daya >= "2200") {
+            $hargaPenyambungan = 969;
+
+            if ($daya >= "6600") {
+                $hargaMaterai = 10000;
+            } else {
+                $hargaMaterai = 0;
+            }
+
+            if ($daya <= "900") {
+                $hargaUJL = $daya * 72;
+            } elseif ($daya == "1300") {
+                $hargaUJL = $daya * 133;
+            } elseif ($daya == "2200") {
+                $hargaUJL = $daya * 141;
+            } elseif ($daya == "3500" || $daya <= "5500") {
+                $hargaUJL = $daya * 157;
+            } elseif ($daya >= "6600") {
+                $hargaUJL = $daya * 140;
+            }
+
+            if ($produk_layanan == "PASCABAYAR") {
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
+            } elseif ($produk_layanan == "PRABAYAR") {
+                $hargaToken = $_POST['token'];
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
+            }
         }
     }
 
@@ -379,8 +381,6 @@ if (isset($_POST['save'])) {
         }
         $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));;
         // var_dump($insert2);
-
-
 ?>
         <script>
             Swal.fire({
@@ -388,7 +388,7 @@ if (isset($_POST['save'])) {
                 title: 'Sukses',
                 text: 'Sukses Menambahkan Data Mohon Perubahan Daya!'
             }).then((result) => {
-                window.location = "menu_pd.php";
+                // window.location = "menu_pd.php";
             })
         </script>
     <?php
@@ -401,7 +401,7 @@ if (isset($_POST['save'])) {
                 title: 'Gagal!',
                 text: 'Gagal Menambahkan Data Mohon Perubahan Daya!'
             }).then((result) => {
-                window.location = "menu_pd.php";
+                // window.location = "menu_pd.php";
             })
         </script>
 <?php

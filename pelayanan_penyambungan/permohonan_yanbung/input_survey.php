@@ -25,7 +25,7 @@
 
     <!-- PHP - Query Select untuk data ditampilkan di form -->
     <?php
-    if (isset($_GET['idsurveypb']) && isset($_GET['fasa']) && isset($_GET['idm'])) {
+    if (isset($_GET['idsurveypb']) && isset($_GET['fasa'])) {
         $id = $_GET['idsurveypb'];
         $fasa = $_GET['fasa'];
         $idmohon = $_GET['idm'];
@@ -34,12 +34,6 @@
         $noreg_imp = implode("", $noreg_exp);
 
         $result = $mysqli->query("SELECT email FROM tb_mohon_pb WHERE id_mohon = '$id'") or die($mysqli->error);
-
-        // if ($fasa == "1 Fasa") {
-        //     $result = $mysqli->query("SELECT a.*, b.* FROM tb_mohon_pb a JOIN tb_pasang_baru b ON a.id_mohon = b.id_mohon WHERE a.id_mohon = '$id'") or die($mysqli->error);
-        // } else {
-        //     $result = $mysqli->query("SELECT a.*, b.* FROM tb_mohon_pb a JOIN tb_pasang_baru b ON a.id_mohon = b.id_mohon WHERE a.id_mohon = '$id'") or die($mysqli->error);
-        // }
 
         if ($result->num_rows) {
             $row = $result->fetch_array();
@@ -53,11 +47,7 @@
         $noreg_exp = explode("-", $idmohon);
         $noreg_imp = implode("", $noreg_exp);
 
-        if ($fasa == "1 Fasa") {
-            $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_perubahan_daya b JOIN tb_mohon_pd a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa_lama = '1 FASA' && a.status_pembayaran = '1' && a.no_registrasi = '$idmohon'") or die($mysqli->error);
-        } else {
-            $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_perubahan_daya b JOIN tb_mohon_pd a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa_lama = '3 FASA' && a.status_pembayaran = '1' && a.no_registrasi = '$idmohon'") or die($mysqli->error);
-        }
+        $result = $mysqli->query("SELECT a.* , b.* FROM tb_mohon_pd a JOIN tb_pelanggan b ON b.idpel = a.id_pelanggan WHERE a.id_mohon = '$id'") or die($mysqli->error);
 
         if ($result->num_rows) {
             $row = $result->fetch_array();
@@ -71,11 +61,7 @@
         $noreg_exp = explode("-", $idmohon);
         $noreg_imp = implode("", $noreg_exp);
 
-        if ($fasa == "1 Fasa") {
-            $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa = '1 FASA' && a.status_pembayaran = '1' && a.no_registrasi = '$idmohon'") or die($mysqli->error);
-        } else {
-            $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa = '3 FASA' && a.status_pembayaran = '1' && a.no_registrasi = '$idmohon'") or die($mysqli->error);
-        }
+        $result = $mysqli->query("SELECT a.*, b.* FROM tb_mohon_multiguna a JOIN tb_pelanggan b ON b.idpel = a.id_pelanggan WHERE a.id_mohon = '$id'") or die($mysqli->error);
 
         // $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE fasa = '1 FASA' && a.status_pembayaran = '1'") or die($mysqli->error);
 
