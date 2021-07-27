@@ -2,7 +2,7 @@ function search() {
     $.ajax({
         type: "POST", // Method pengiriman data bisa dengan GET atau POST
         url: "pelayanan_penyambungan/pelayananpenyambungan/search.php", // Isi dengan url/path file php yang dituju
-        data: { no_petugas_survey: $("#petsur").val() }, // data yang akan dikirim ke file proses
+        data: { no_teknisi: $("#tekyan").val() }, // data yang akan dikirim ke file proses
         dataType: "json",
         beforeSend: function (e) {
             if (e && e.overrideMimeType) {
@@ -11,13 +11,13 @@ function search() {
         },
         success: function (response) {
             if (response.status == "success") {
-                $("#id_petugas_survey").val(response.id_survey);
+                $("#id_teknisi").val(response.id_teknisi);
                 $("#nama").val(response.nama);
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Gagal!',
-                    text: 'Petugas Survey Tidak Ditemukan!'
+                    text: 'Teknisi Tidak Ditemukan!'
                 })
             }
         },

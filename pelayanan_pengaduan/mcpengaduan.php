@@ -17,7 +17,24 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800 font-weight-bold"><u>Menu Cetak Laporan Pengaduan Pelanggan</u></h1>
+    <h1 class="h3 mb-2 text-gray-800 font-weight-bold"><u>Menu Cetak Data Laporan Pengaduan Pelanggan</u></h1>
+
+    <!-- Modal dialog untuk deskripsi -->
+    <div id="get-data" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Deskripsi Lengkap Laporan</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
@@ -46,12 +63,20 @@
                                     <option value="" disabled selected>
                                         <-- Pilih -->
                                     </option>
+                                    <option value="4">Per Tanggal Laporan Masuk</option>
                                     <option value="1">Per Bulan Laporan Masuk</option>
                                     <option value="2">Per Tahun Laporan Masuk</option>
                                     <option value="3">Per Jenis Gangguan</option>
                                 </select> <br>
 
-                                <div id="form-bulan" style="display: none;">
+                                <div id="form-tanggal">
+                                    <label>Dari Tanggal</label>
+                                    <input type="date" name="tanggal" class="form-control" placeholder="Input Tanggal" />
+                                    <label>Sampai Tanggal</label>
+                                    <input type="date" name="tanggal2" class="form-control" placeholder="Input Tanggal" />
+                                </div>
+
+                                <div id="form-bulan">
                                     <label>Bulan</label><br>
                                     <select name="bulan" class="form-control">
                                         <option value="">Pilih</option>
@@ -70,7 +95,7 @@
                                     </select>
                                 </div>
 
-                                <div id="form-tahun" style="display: none;">
+                                <div id="form-tahun">
                                     <label>Tahun</label><br>
                                     <select name="tahun" class="form-control">
                                         <option value="">Pilih</option>
@@ -84,7 +109,7 @@
                                     </select>
                                 </div>
 
-                                <div id="form-gangguan" style="display: none;">
+                                <div id="form-gangguan">
                                     <label>Jenis Gangguan</label><br>
                                     <select name="gangguan" class="form-control">
                                         <option value="">Pilih</option>
@@ -128,6 +153,13 @@
                         ?>
                         <a type="submit" href="pelayanan_pengaduan/lpengaduan.php?filter=3&gangguan=<?= $_GET["gangguan"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
                     </form>
+                <?php elseif ($filter == 4) : ?>
+                    <form action="POST">
+                        <?php
+                        $gangguan = $_GET['gangguan'];
+                        ?>
+                        <a type="submit" href="pelayanan_pengaduan/lpengaduan.php?filter=4&tanggal=<?= $_GET["tanggal"] ?>&sampaitanggal=<?= $_GET["tanggal2"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
+                    </form>
                 <?php endif ?>
             <?php else : ?>
                 <div>
@@ -148,10 +180,7 @@
                             <th class="text-center">Nama Pelapor</th>
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Tanggal Masuk Pengaduan</th>
-                            <th class="text-center">Jenis Gangguan</th>
-                            <th class="text-center">Teknisi</th>
-                            <th class="text-center">Tanggal Mulai Perbaikan</th>
-                            <th class="text-center">Tanggal Selesai Perbaikan</th>
+                            <th class="text-center">Deskripsi Lengkap</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -167,9 +196,11 @@
                             } elseif ($filter == '2') {
                                 echo '<a href="header.php?page=cetakpengaduan&filter=2&tahun=' . $_GET['tahun'] . '"></a>';
                                 $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
-                            } else {
-                                echo '<a href="header.php?page=cetakpengaduan&filter=3&gangguan=' . $_GET['gangguan'] . '"></a>';
+                            } elseif ($filter == '3') {
+                                // echo '<a href="header.php?page=cetakpengaduan&filter=3&gangguan=' . $_GET['gangguan'] . '"></a>';
                                 $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND gangguan ='" . $_GET['gangguan'] . "'") or die($mysqli->error);
+                            } elseif ($filter == '4') {
+                                $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND DATE(tgl_masuk_laporan) BETWEEN '" . $_GET['tanggal'] . "' AND '" . $_GET['tanggal2'] . "'") or die($mysqli->error);
                             }
                         } else {
                             echo '<a href="header.php?page=cetakpengaduan"></a>';
@@ -188,10 +219,11 @@
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_masuk_laporan'])); ?></td>
-                                    <td class="align-middle"><?php echo $row['gangguan'] ?></td>
-                                    <td class="align-middle"><?php echo $row['teknisi']; ?></td>
-                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mulai'])); ?></td>
-                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_selesai'])); ?></td>
+                                    <td class="align-middle text-center">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_pengaduan'] ?>" class="open-modal btn btn-primary" href="#">
+                                            <i class='fas fa-sticky-note fa-2x'></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         <?php } ?>
@@ -207,6 +239,21 @@
 </div>
 <!-- End of Main Content -->
 
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal', function(e) {
+            e.preventDefault();
+            $("#get-data").modal('show');
+            $.post('pelayanan_pengaduan/view_data_laporan.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi").html(html);
+                });
+        });
+    })
+</script>
+
 <?php
 include_once 'footer.php';
 ?>
@@ -216,7 +263,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [3, 7, 8, 9]
+            "targets": [2, 3, 4, 6]
         }]
     });
 </script>
@@ -224,19 +271,27 @@ include_once 'footer.php';
 <!-- Script untuk filter toggle filter berdasarkan pilihan -->
 <script>
     $(document).ready(function() {
+        $('#form-bulan, #form-tahun, #form-gangguan, #form-tanggal').hide();
         $('#filter').change(function() {
             if ($(this).val() == '1') {
                 $('#form-bulan, #form-tahun').show();
                 $('#form-gangguan').hide();
+                $('#form-tanggal').hide();
             } else if ($(this).val() == '2') {
                 $('#form-bulan').hide();
                 $('#form-gangguan').hide();
+                $('#form-tanggal').hide();
                 $('#form-tahun').show();
+            } else if ($(this).val() == '3') {
+                $('#form-bulan, #form-tahun').hide();
+                $('#form-tanggal').hide();
+                $('#form-gangguan').show();
             } else {
                 $('#form-bulan, #form-tahun').hide();
-                $('#form-gangguan').show();
+                $('#form-gangguan').hide();
+                $('#form-tanggal').show();
             }
-            $('#form-bulan select, #form-tahun select, #form-gangguan select').val('');
+            $('#form-bulan select, #form-tahun select, #form-gangguan select, #form-tanggal input').val('');
         })
     })
 </script>

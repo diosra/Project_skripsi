@@ -3,26 +3,37 @@ include '../koneksi.php';
 
 $no = 1;
 
-$bln = array(
-    '01' => 'JANUARI',
-    '02' => 'FEBRUARI',
-    '03' => 'MARER',
-    '04' => 'APRIL',
-    '05' => 'MEI',
-    '06' => 'JUNI',
-    '07' => 'JULI',
-    '08' => 'AGUSTUS',
-    '09' => 'SEPTEMBER',
-    '10' => 'OKTOBER',
-    '11' => 'NOVEMBER',
-    '12' => 'DESEMBER'
-);
+function tgl_indo2($tanggal2)
+{
+    $bulan2 = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan2 = explode('-', $tanggal2);
+
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+
+    return $pecahkan2[0] . ' ' . $bulan2[(int)$pecahkan2[1]] . ' ' . $pecahkan2[2];
+}
 
 if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     $filter = $_GET['filter'];
 
     if ($filter == '1') {
         $nama_bulan = array('', 'JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEMBER');
+
         $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND MONTH(tgl_masuk_laporan)='" . $_GET['bulan'] . "' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
 
         $bulanA = $_GET['bulan'];
@@ -36,15 +47,21 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $tahunA = $_GET['tahun'];
         $jumlah = mysqli_num_rows($result);
         $mulaitgl = date('Y', strtotime($tahunA));
-    } else {
+    } elseif ($filter == '3') {
         $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND gangguan ='" . $_GET['gangguan'] . "'") or die($mysqli->error);
 
         $gangguanA = $_GET['gangguan'];
         $jumlah = mysqli_num_rows($result);
+    } else {
+        $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND DATE(tgl_masuk_laporan) BETWEEN '" . $_GET['tanggal'] . "' AND '" . $_GET['sampaitanggal'] . "'") or die($mysqli->error);
+
+        $tgl1 = tgl_indo2(date('d-m-Y', strtotime($_GET['tanggal'])));
+        $tgl2 = tgl_indo2(date('d-m-Y', strtotime($_GET['sampaitanggal'])));
+
+        $jumlah = mysqli_num_rows($result);
     }
 } else {
     $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai'") or die($mysqli->error);
-
 
     $jumlah = mysqli_num_rows($result);
 }
@@ -74,28 +91,41 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     <h3>
         <center>
-            <!-- LAPORAN PENGADUAN PELANGGAN -->
-            <?php
-            if ($filter == 1) {
-            ?>
-                LAPORAN PENGADUAN PELANGGAN <br>
-                BULAN <?php echo $mulaitgl ?>
 
             <?php
-            } elseif ($filter == 2) {
+            if (isset($_GET['filter']) && !empty($_GET['filter'])) {
+                $filter = $_GET['filter'];
+
+                if ($filter == 1) {
             ?>
+                    LAPORAN PENGADUAN PELANGGAN <br>
+                    BULAN <?php echo $mulaitgl ?>
+
+                <?php
+                } elseif ($filter == 2) {
+                ?>
+                    LAPORAN PENGADUAN PELANGGAN <br>
+                    TAHUN <?php echo $mulaitgl ?>
+                <?php
+                } elseif ($filter == 3) {
+                ?>
+                    LAPORAN PENGADUAN PELANGGAN <br>
+                    DENGAN JENIS GANGGUAN : <br>
+                    "<?php echo $gangguanA ?>"
+                <?php
+                } else {
+                ?>
+                    LAPORAN PENGADUAN PELANGGAN <br>
+                    <?php echo $tgl1 ?> s.d <?php echo $tgl2 ?>
+                <?php
+                }
+            } else {
+                ?>
                 LAPORAN PENGADUAN PELANGGAN <br>
-                TAHUN <?php echo $mulaitgl ?>
-            <?php
-            } elseif ($filter == 3) {
-            ?>
-                LAPORAN PENGADUAN PELANGGAN <br>
-                DENGAN JENIS GANGGUAN : <br>
-                "<?php echo $gangguanA ?>"
             <?php
             }
             ?>
-            <br>
+
         </center>
     </h3>
     <div class="row">
@@ -111,7 +141,6 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             <th style="text-align: center; font-size: 18px;">Alamat</th>
                             <th style="text-align: center; font-size: 18px;">Tanggal Masuk Pengaduan</th>
                             <th style="text-align: center; font-size: 18px;">Jenis Gangguan</th>
-                            <th style="text-align: center; font-size: 18px;">Teknisi</th>
                             <th style="text-align: center; font-size: 18px;">Tanggal Mulai Perbaikan</th>
                             <th style="text-align: center; font-size: 18px;">Tanggal Selesai Perbaikan</th>
                         </tr>
@@ -134,7 +163,6 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                                     <td align="center"><?php echo $tampil['alamat']; ?></td>
                                     <td align="center"><?php echo $newdate ?></td>
                                     <td align="center"><?php echo $tampil['gangguan']; ?></td>
-                                    <td align="center"><?php echo $tampil['teknisi']; ?></td>
                                     <td align="center"><?php echo $newdate2; ?></td>
                                     <td align="center"><?php echo $newdate3; ?></td>
                                 </tr>

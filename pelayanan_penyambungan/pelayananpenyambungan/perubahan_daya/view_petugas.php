@@ -8,7 +8,7 @@ if ($_POST['id']) {
     $id = $_POST['id'];
     //query standart select where id
     // $view = $mysqli->query("SELECT a.*, b.*,c.* FROM tb_laporan_survey a JOIN tb_survey_lap_masuk b ON b.id_survey_lap = a.id_survey_lap JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE a.id_laporan ='$id'");
-    $view = $mysqli->query("SELECT a.*,b.*,c.* FROM tb_perubahan_daya a JOIN tb_survey_lap_masuk b ON a.id_perubahan_daya = b.id_yanbung JOIN tb_petugas_survey c ON b.id_petugas = c.no_petugas_survey WHERE b.id_survey_lap = '$id'");
+    $view = $mysqli->query("SELECT a.*,b.*,c.* FROM tb_perubahan_daya a JOIN tb_tekyan_lap_masuk b ON a.id_perubahan_daya = b.id_yanbung JOIN tb_teknisi_penyambungan c ON b.id_teknisi = c.no_teknisi WHERE b.id_tekyanlap = '$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -17,7 +17,7 @@ if ($_POST['id']) {
             //menampilkan data dengan table
             echo '
             <div class="form-group">
-                <label for="">Nama Petugas Survey</label>
+                <label for="">Nama Teknisi</label>
                 <input type="text" value="' . $row_view['nama'] . '" class="form-control" readonly>
             </div>
 		';

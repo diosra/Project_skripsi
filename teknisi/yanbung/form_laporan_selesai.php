@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Petugas Survey</title>
+    <title>Teknisi Pelayanan Penyambungan</title>
 </head>
 
 </html>
@@ -19,7 +19,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Survey Selesai</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Teknisi Pelayanan Penyambungan Selesai</u></h1>
     </div>
 
     <!-- Modal dialog untuk deskripsi -->
@@ -48,57 +48,6 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body" id="deskripsi">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup Deskripsi</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal dialog untuk deskripsi -->
-    <div id="get-data2" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Laporan Sementara Survey</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body" id="deskripsi2">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup Deskripsi</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal dialog untuk deskripsi -->
-    <div id="get-data3" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Laporan Sementara Survey</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body" id="deskripsi3">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup Deskripsi</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal dialog untuk deskripsi -->
-    <div id="get-data4" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Laporan Sementara Survey</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body" id="deskripsi4">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup Deskripsi</button>
@@ -112,7 +61,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Laporan Petugas Survey</h4>
+                    <h4 class="modal-title">Laporan Teknisi</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body" id="deskripsi5">
@@ -124,22 +73,6 @@
         </div>
     </div>
 
-    <!-- Modal dialog untuk penolakan Survey-->
-    <div id="get-data7" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Alasan Penolakan Survey</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body" id="deskripsi_ditolak">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
@@ -156,7 +89,7 @@
                             <th class="text-center">Nama</th>
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Tanggal Permohonan Masuk</th>
-                            <th class="text-center">Tipe Survey</th>
+                            <th class="text-center">Tugas</th>
                             <th class="text-center">Deskripsi Pengajuan</th>
                             <th class="text-center">Status</th>
                         </tr>
@@ -164,31 +97,31 @@
                     <tbody>
                         <?php
                         $nama = $_SESSION['nama'];
-                        $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.* FROM 
-                        tb_survey_lap_masuk a 
-                        JOIN tb_mohon_pb b ON a.id_mohon_survey = b.id_mohon 
-                        JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_pasang_baru d ON b.id_mohon = d.id_mohon
-                        JOIN tb_laporan_survey e ON e.id_survey_lap = a.id_survey_lap
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '3' ||  b.status_survey = '4') ORDER BY e.id_laporan ASC");
+                        $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.no_teknisi, d.*, e.* FROM 
+                        tb_tekyan_lap_masuk a 
+                        JOIN tb_pasang_baru b ON a.id_yanbung = b.id_pasang_baru 
+                        JOIN tb_teknisi_penyambungan c ON a.id_teknisi = c.no_teknisi 
+                        JOIN tb_mohon_pb d ON b.id_mohon = d.id_mohon
+                        JOIN tb_laporan_tekyan e ON e.id_tekyanlap = a.id_tekyanlap
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_teknisi = '3'");
 
-                        $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
-                        tb_survey_lap_masuk a 
-                        JOIN tb_mohon_pd b ON a.id_mohon_survey = b.id_mohon 
-                        JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_perubahan_daya d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
-                        JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '3' ||  b.status_survey = '4') ORDER BY f.id_laporan ASC");
+                        $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.no_teknisi, d.*, e.*, f.* FROM 
+                        tb_tekyan_lap_masuk a 
+                        JOIN tb_perubahan_daya b ON a.id_yanbung = b.id_perubahan_daya 
+                        JOIN tb_teknisi_penyambungan c ON a.id_teknisi = c.no_teknisi 
+                        JOIN tb_mohon_pd d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
+                        JOIN tb_laporan_tekyan f ON f.id_tekyanlap = a.id_tekyanlap
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_teknisi = '3'");
 
-                        $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
-                        tb_survey_lap_masuk a 
-                        JOIN tb_mohon_multiguna b ON a.id_mohon_survey = b.id_mohon 
-                        JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_multiguna d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
-                        JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '3' ||  b.status_survey = '4') ORDER BY f.id_laporan ASC");
+                        $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.no_teknisi, d.*, e.*, f.* FROM 
+                        tb_tekyan_lap_masuk a 
+                        JOIN tb_multiguna b ON a.id_yanbung = b.id_mlta 
+                        JOIN tb_teknisi_penyambungan c ON a.id_teknisi = c.no_teknisi 
+                        JOIN tb_mohon_multiguna d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
+                        JOIN tb_laporan_tekyan f ON f.id_tekyanlap = a.id_tekyanlap
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_teknisi = '3'");
 
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
@@ -206,28 +139,28 @@
                                     <td class="align-middle"><?php echo date('d-M-Y', strtotime($row['tgl_masuk'])); ?></td>
                                     <td class="align-middle"><?php echo $row['tipe']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row['id_mohon_survey'] ?>" class="open-modal btn btn-primary" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_yanbung'] ?>" class="open-modal btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
                                     <?php
-                                    if ($row['status_survey'] == "1") {
+                                    if ($row['status_teknisi'] == "1") {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="btn btn-danger rounded" href="header.php?page=progressurvey&status=<?php echo $row['status_survey'] ?>&id=<?php echo $row['id_survey_lap'] ?>&jt=<?php echo $row['jenis_transaksi'] ?>">
+                                            <a class="btn btn-danger rounded" href="header.php?page=progresteknisi&status=<?php echo $row['status_teknisi'] ?>&id=<?php echo $row['id_tekyanlap'] ?>&jt=<?php echo $row['jenis_transaksi'] ?>">
                                                 Belum di Proses
                                             </a>
                                         </td>
                                     <?php
-                                    } elseif ($row['status_survey'] == "2") {
+                                    } elseif ($row['status_teknisi'] == "2") {
                                     ?>
                                         <td class=" align-middle text-center">
-                                            <a class="open-modal4 btn btn-warning rounded" data-toggle="modal" data-id="<?php echo $row['id_survey_lap'] ?>" href="#">
-                                                Survey Masih Dalam Proses
+                                            <a class="open-modal4 btn btn-warning rounded" data-toggle="modal" data-id="<?php echo $row['id_tekyanlap'] ?>" href="#">
+                                                Belum Selesai
                                             </a>
                                         </td>
                                     <?php
-                                    } elseif ($row['status_survey'] == "3") {
+                                    } elseif ($row['status_teknisi'] == "3") {
                                     ?>
                                         <td class=" align-middle text-center">
                                             <a class="open-modal7 btn btn-success rounded" data-toggle="modal" data-id="<?php echo $row['id_laporan'] ?>" href="#">
@@ -235,11 +168,19 @@
                                             </a>
                                         </td>
                                     <?php
+                                    } elseif ($row['status_teknisi'] == "4") {
+                                    ?>
+                                        <td class=" align-middle text-center">
+                                            <a class="btn btn-danger rounded">
+                                                Ditolak
+                                            </a>
+                                        </td>
+                                    <?php
                                     } else {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="open-modal7 btn btn-danger rounded" data-toggle="modal" data-id="<?php echo $row['id_laporan'] ?>" href="#">
-                                                Ditolak
+                                            <a class="btn btn-danger rounded">
+                                                Error
                                             </a>
                                         </td>
                                     <?php
@@ -260,20 +201,20 @@
                                     <td class="align-middle"><?php echo date('d-M-Y', strtotime($row['tgl_masuk'])); ?></td>
                                     <td class="align-middle"><?php echo $row['tipe']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row['id_mohon_survey'] ?>" class="open-modal2 btn btn-primary" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_yanbung'] ?>" class="open-modal2 btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
                                     <?php
-                                    if ($row['status_survey'] == "1") {
+                                    if ($row['status_teknisi'] == "1") {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="btn btn-danger rounded" href="header.php?page=progressurvey&status=<?php echo $row['status_survey'] ?>&id=<?php echo $row['id_survey_lap'] ?>&jt=<?php echo $row['jenis_transaksi'] ?>">
+                                            <a class="btn btn-danger rounded" href="header.php?page=progressurvey&status=<?php echo $row['status_teknisi'] ?>&id=<?php echo $row['id_survey_lap'] ?>&jt=<?php echo $row['jenis_transaksi'] ?>">
                                                 Belum di Proses
                                             </a>
                                         </td>
                                     <?php
-                                    } elseif ($row['status_survey'] == "2") {
+                                    } elseif ($row['status_teknisi'] == "2") {
                                     ?>
                                         <td class="align-middle text-center">
                                             <a class="open-modal5 btn btn-warning rounded" data-toggle="modal" data-id="<?php echo $row['id_survey_lap'] ?>" href="#">
@@ -281,7 +222,7 @@
                                             </a>
                                         </td>
                                     <?php
-                                    } elseif ($row['status_survey'] == "3") {
+                                    } elseif ($row['status_teknisi'] == "3") {
                                     ?>
                                         <td class=" align-middle text-center">
                                             <a class="open-modal8 btn btn-success rounded" data-toggle="modal" data-id="<?php echo $row['id_laporan'] ?>" href="#">
@@ -314,20 +255,20 @@
                                     <td class="align-middle"><?php echo date('d-M-Y', strtotime($row3['tgl_masuk'])); ?></td>
                                     <td class="align-middle"><?php echo $row3['tipe']; ?></td>
                                     <td class="align-middle text-center">
-                                        <a data-toggle="modal" data-id="<?php echo $row3['id_mohon_survey'] ?>" class="open-modal3 btn btn-primary" href="#">
+                                        <a data-toggle="modal" data-id="<?php echo $row3['id_yanbung'] ?>" class="open-modal3 btn btn-primary" href="#">
                                             <i class='fas fa-sticky-note fa-2x'></i>
                                         </a>
                                     </td>
                                     <?php
-                                    if ($row3['status_survey'] == "1") {
+                                    if ($row3['status_teknisi'] == "1") {
                                     ?>
                                         <td class="align-middle text-center">
-                                            <a class="btn btn-danger rounded" href="header.php?page=progressurvey&status=<?php echo $row3['status_survey'] ?>&id=<?php echo $row3['id_survey_lap'] ?>&jt=<?php echo $row3['jenis_transaksi'] ?>">
+                                            <a class="btn btn-danger rounded" href="header.php?page=progressurvey&status=<?php echo $row3['status_teknisi'] ?>&id=<?php echo $row3['id_survey_lap'] ?>&jt=<?php echo $row3['jenis_transaksi'] ?>">
                                                 Belum di Proses
                                             </a>
                                         </td>
                                     <?php
-                                    } elseif ($row3['status_survey'] == "2") {
+                                    } elseif ($row3['status_teknisi'] == "2") {
                                     ?>
                                         <td class="align-middle text-center">
                                             <a class="open-modal6 btn btn-warning rounded" data-toggle="modal" data-id="<?php echo $row3['id_survey_lap'] ?>" href="#">
@@ -335,7 +276,7 @@
                                             </a>
                                         </td>
                                     <?php
-                                    } elseif ($row3['status_survey'] == "3") {
+                                    } elseif ($row3['status_teknisi'] == "3") {
                                     ?>
                                         <td class=" align-middle text-center">
                                             <a class="open-modal9 btn btn-success rounded" data-toggle="modal" data-id="<?php echo $row3['id_laporan'] ?>" href="#">
@@ -374,7 +315,7 @@
         $(document).on('click', '.open-modal', function(e) {
             e.preventDefault();
             $("#get-data").modal('show');
-            $.post('teknisi/survey/view.php', {
+            $.post('teknisi/yanbung/view.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -390,7 +331,7 @@
         $(document).on('click', '.open-modal2', function(e) {
             e.preventDefault();
             $("#get-data").modal('show');
-            $.post('teknisi/survey/view_pd.php', {
+            $.post('teknisi/yanbung/view_pd.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -406,7 +347,7 @@
         $(document).on('click', '.open-modal3', function(e) {
             e.preventDefault();
             $("#get-data").modal('show');
-            $.post('teknisi/survey/view_mlta.php', {
+            $.post('teknisi/yanbung/view_mlta.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -422,7 +363,7 @@
         $(document).on('click', '.open-modal4', function(e) {
             e.preventDefault();
             $("#get-data2").modal('show');
-            $.post('teknisi/survey/view_laporan_pb.php', {
+            $.post('teknisi/yanbung/view_laporan_pb.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -438,7 +379,7 @@
         $(document).on('click', '.open-modal5', function(e) {
             e.preventDefault();
             $("#get-data3").modal('show');
-            $.post('teknisi/survey/view_laporan_pd.php', {
+            $.post('teknisi/yanbung/view_laporan_pd.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -454,7 +395,7 @@
         $(document).on('click', '.open-modal6', function(e) {
             e.preventDefault();
             $("#get-data4").modal('show');
-            $.post('teknisi/survey/view_laporan_mlta.php', {
+            $.post('teknisi/yanbung/view_laporan_mlta.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -464,13 +405,13 @@
     })
 </script>
 
-<!-- Script Modal Deskripsi Selesai PB -->
+<!-- Script Modal laporan selesai PB -->
 <script>
     $(function() {
         $(document).on('click', '.open-modal7', function(e) {
             e.preventDefault();
             $("#get-data5").modal('show');
-            $.post('teknisi/survey/view_laporan_selesai_pb.php', {
+            $.post('teknisi/yanbung/view_laporan_selesai_pb.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -480,13 +421,13 @@
     })
 </script>
 
-<!-- Script Modal Deskripsi Selesai PD -->
+<!-- Script Modal laporan selesai PD -->
 <script>
     $(function() {
         $(document).on('click', '.open-modal8', function(e) {
             e.preventDefault();
             $("#get-data5").modal('show');
-            $.post('teknisi/survey/view_laporan_selesai_pd.php', {
+            $.post('teknisi/yanbung/view_laporan_selesai_pd.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -496,13 +437,13 @@
     })
 </script>
 
-<!-- Script Modal Deskripsi Selesai MLTA -->
+<!-- Script Modal laporan selesai MLTA -->
 <script>
     $(function() {
         $(document).on('click', '.open-modal9', function(e) {
             e.preventDefault();
             $("#get-data5").modal('show');
-            $.post('teknisi/survey/view_laporan_selesai_mlta.php', {
+            $.post('teknisi/yanbung/view_laporan_selesai_mlta.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {

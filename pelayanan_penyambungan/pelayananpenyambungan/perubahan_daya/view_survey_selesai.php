@@ -7,7 +7,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT a.*, b.*,c.* FROM tb_laporan_survey a JOIN tb_survey_lap_masuk b ON b.id_survey_lap = a.id_survey_lap JOIN tb_petugas_survey c ON c.no_petugas_survey = b.id_petugas WHERE a.id_laporan ='$id'");
+    $view = $mysqli->query("SELECT a.*, b.*,c.* FROM tb_laporan_tekyan a JOIN tb_tekyan_lap_masuk b ON b.id_tekyanlap = a.id_tekyanlap JOIN tb_teknisi_penyambungan c ON c.no_teknisi = b.id_teknisi WHERE a.id_laporan ='$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -16,16 +16,16 @@ if ($_POST['id']) {
             //menampilkan data dengan table
             echo '
             <div class="form-group">
-                <label for="">Petugas Survey</label>
+                <label for="">Nama Teknisi</label>
                 <input type="text" value="' . $row_view['nama'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
-                <label for="">Tanggal Mulai Survey</label>
+                <label for="">Tanggal Mulai</label>
                 <input type="text" value="' .
                 date('d-M-Y', strtotime($row_view['tgl_mulai'])) . '" class="form-control" readonly>
             </div>
             <div class="form-group">
-                <label for="">Tanggal Selesai Survey</label>
+                <label for="">Tanggal Selesai</label>
                 <input type="text" value="' .
                 date('d-M-Y', strtotime($row_view['tgl_selesai'])) . '" class="form-control" readonly>
             </div>

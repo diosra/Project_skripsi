@@ -29,7 +29,7 @@ if ($_POST['id']) {
             </div>
             <div class="form-group">
                 <label for="">Daya yang dibutuhkan</label>
-                <input type="text" value="' . $row_view['daya'] . '" class="form-control" readonly>
+                <input type="text" value="' . $row_view['daya'] . ' VA" class="form-control" readonly>
             </div>
             <div class="row">
                 <div class="col">

@@ -17,7 +17,24 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800 font-weight-bold"><u>Menu Cetak Data Detail Pelanggan Perubahan Daya 1 Phasa</u></h1>
+    <h1 class="h3 mb-2 text-gray-800 font-weight-bold"><u>Menu Cetak Data Pelanggan Mengajukan Perubahan Daya 1 Phasa</u></h1>
+
+    <!-- Modal dialog untuk deskripsi -->
+    <div id="get-data" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Deskripsi Lengkap Laporan</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="deskripsi">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
@@ -46,9 +63,18 @@
                                     <option value="" disabled selected>
                                         <-- Pilih -->
                                     </option>
-                                    <option value="1">Per Bulan</option>
-                                    <option value="2">Per Tahun</option>
+                                    <option value="4">Per Tanggal Pengajuan</option>
+                                    <option value="1">Per Bulan Pengajuan</option>
+                                    <option value="2">Per Tahun Pengajuan</option>
+                                    <option value="3">Produk Layanan</option>
                                 </select> <br>
+
+                                <div id="form-tanggal">
+                                    <label>Dari Tanggal</label>
+                                    <input type="date" name="tanggal" class="form-control" placeholder="Input Tanggal" />
+                                    <label>Sampai Tanggal</label>
+                                    <input type="date" name="tanggal2" class="form-control" placeholder="Input Tanggal" />
+                                </div>
 
                                 <div id="form-bulan">
                                     <label>Bulan</label><br>
@@ -74,7 +100,7 @@
                                     <select name="tahun" class="form-control">
                                         <option value="">Pilih</option>
                                         <?php
-                                        $query = "SELECT YEAR(tgl_mohon) AS tahun FROM tb_perubahan_daya WHERE fasa_lama = '1 FASA' GROUP BY YEAR(tgl_mohon)"; // Tampilkan tahun sesuai di tabel transaksi
+                                        $query = "SELECT a.id_mohon, YEAR(tgl_masuk) AS tahun, b.* FROM tb_mohon_pd a JOIN tb_perubahan_daya b ON a.id_mohon = b.id_mohon WHERE fasa_lama = '1 FASA' GROUP BY YEAR(tgl_masuk)";
                                         $sql = mysqli_query($mysqli, $query); // Eksekusi/Jalankan query dari variabel $query
                                         while ($data = mysqli_fetch_array($sql)) { // Ambil semua data dari hasil eksekusi $sql
                                             echo '<option value="' . $data['tahun'] . '">' . $data['tahun'] . '</option>';
@@ -82,6 +108,16 @@
                                         ?>
                                     </select>
                                 </div>
+
+                                <div id="form-produk">
+                                    <label>Produk Layanan</label><br>
+                                    <select name="produk" class="form-control">
+                                        <option value="">Pilih</option>
+                                        <option value="PASCABAYAR">Pascabayar</option>
+                                        <option value="PRABAYAR">Prabayar</option>
+                                    </select>
+                                </div>
+
                                 <br>
                                 <button type="submit" class="btn btn-primary float-right"><i class="fas fa-search"></i> Tampilkan</button>
                             </form>
@@ -110,6 +146,22 @@
                         ?>
                         <a type="submit" href="pelayanan_penyambungan/laporancetak/perubahan_daya/laporan/lpd1phasa.php?filter=2&tahun=<?= $_GET["tahun"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
                     </form>
+                <?php elseif ($filter == 3) : ?>
+                    <form action="POST">
+                        <?php
+                        $bulan = $_GET['bulan'];
+                        $tahun = $_GET['tahun'];
+                        ?>
+                        <a type="submit" href="pelayanan_penyambungan/laporancetak/perubahan_daya/laporan/lpd1phasa.php?filter=3&produk=<?= $_GET["produk"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
+                    </form>
+                <?php elseif ($filter == 4) : ?>
+                    <form action="POST">
+                        <?php
+                        $bulan = $_GET['bulan'];
+                        $tahun = $_GET['tahun'];
+                        ?>
+                        <a type="submit" href="pelayanan_penyambungan/laporancetak/perubahan_daya/laporan/lpd1phasa.php?filter=4&tanggal=<?= $_GET["tanggal"] ?>&sampaitanggal=<?= $_GET["tanggal2"] ?>" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</a>
+                    </form>
                 <?php endif ?>
             <?php else : ?>
                 <div>
@@ -129,16 +181,8 @@
                             <th class="text-center">Identitas (KTP)</th>
                             <th class="text-center">Nama</th>
                             <th class="text-center">Alamat</th>
-                            <th class="text-center">Jenis Transaksi</th>
-                            <th class="text-center">Tanggal Mohon</th>
-                            <th class="text-center">Tarif Lama</th>
-                            <th class="text-center">Daya Lama</th>
-                            <th class="text-center">Tarif Baru</th>
-                            <th class="text-center">Daya Baru</th>
-                            <th class="text-center">Fasa Lama</th>
-                            <th class="text-center">Fasa Baru</th>
-                            <th class="text-center">Pekerjaan RAB</th>
-                            <th class="text-center">Total Biaya</th>
+                            <th class="text-center">Tanggal Pengajuan</th>
+                            <th class="text-center">Data Lengkap Laporan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -150,14 +194,19 @@
                             if ($filter == '1') {
                                 echo '<a href="header.php?page=cpd1phasa&filter=1&bulan=' . $_GET['bulan'] . '&tahun=' . $_GET['tahun'] . '"></a>';
                                 $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
-                            } else {
+
+                                $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '1 FASA' AND a.fasa_baru = '1 FASA' AND a.status_teknisi = '3' AND MONTH(tgl_masuk)='" . $_GET['bulan'] . "' AND YEAR(tgl_masuk)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                            } elseif ($filter == '2') {
                                 echo '<a href="header.php?page=cpd1phasa&filter=2&tahun=' . $_GET['tahun'] . '"></a>';
-                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                                $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '1 FASA' AND a.fasa_baru = '1 FASA' AND a.status_teknisi = '3' AND  YEAR(tgl_masuk)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                            } elseif ($filter == '3') {
+                                $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '1 FASA' AND a.fasa_baru = '1 FASA' AND a.status_teknisi = '3' AND b.produk_layanan='" . $_GET['produk'] . "'") or die($mysqli->error);
+                            } else {
+                                $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '1 FASA' AND a.fasa_baru = '1 FASA' AND a.status_teknisi = '3' AND DATE(tgl_masuk) BETWEEN '" . $_GET['tanggal'] . "' AND '" . $_GET['tanggal2'] . "'") or die($mysqli->error);
                             }
                         } else {
                             echo '<a href="header.php?page=cpd1phasa"></a>';
-                            $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '1 FASA'") or die($mysqli->error);
+                            $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '1 FASA' AND a.fasa_baru = '1 FASA' AND a.status_teknisi = '3'") or die($mysqli->error);
                         }
                         // kode untuk isi Filter - END
 
@@ -171,16 +220,12 @@
                                     <td class="align-middle"><?php echo $row['identitas']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
-                                    <td class="align-middle">Perubahan Daya</td>
-                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_mohon'])); ?></td>
-                                    <td class="align-middle"><?php echo $row['tarif_lama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['daya_lama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['tarif_baru']; ?></td>
-                                    <td class="align-middle"><?php echo $row['daya_baru']; ?></td>
-                                    <td class="align-middle"><?php echo $row['fasa_lama']; ?></td>
-                                    <td class="align-middle"><?php echo $row['fasa_baru']; ?></td>
-                                    <td class="align-middle"><?php echo $row['pekerjaan_rab']; ?></td>
-                                    <td class="align-middle">Rp. <?php echo number_format($row['total_biaya'], 0, ',', '.') ?></td>
+                                    <td class="align-middle"><?php echo date("d-M-Y", strtotime($row['tgl_masuk'])); ?></td>
+                                    <td class="align-middle text-center">
+                                        <a data-toggle="modal" data-id="<?php echo $row['id_perubahan_daya'] ?>" class="open-modal btn btn-primary" href="#">
+                                            <i class='fas fa-sticky-note fa-2x'></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php } ?>
                         <?php } ?>
@@ -196,6 +241,21 @@
 </div>
 <!-- End of Main Content -->
 
+<script>
+    $(function() {
+        $(document).on('click', '.open-modal', function(e) {
+            e.preventDefault();
+            $("#get-data").modal('show');
+            $.post('pelayanan_penyambungan/laporancetak/perubahan_daya/view_data_laporan.php', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $("#deskripsi").html(html);
+                });
+        });
+    })
+</script>
+
 <?php
 include_once 'footer.php';
 ?>
@@ -205,7 +265,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [3, 7, 8, 9]
+            "targets": [2, 3, 4, 6]
         }]
     });
 </script>
@@ -213,15 +273,28 @@ include_once 'footer.php';
 <!-- Script untuk filter toggle filter berdasarkan pilihan -->
 <script>
     $(document).ready(function() { // Ketika halaman selesai di load
-        $('#form-bulan, #form-tahun').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
+        $('#form-bulan, #form-tahun, #form-produk, #form-tanggal').hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
         $('#filter').change(function() { // Ketika user memilih filter
             if ($(this).val() == '1') { // Jika filter nya 2 (per bulan)
                 $('#form-bulan, #form-tahun').show(); // Tampilkan form bulan dan tahun
-            } else { // Jika filternya 3 (per tahun)
-                $('#form-bulan').hide(); // Sembunyikan form tanggal dan bulan
-                $('#form-tahun').show(); // Tampilkan form tahun
+                $('#form-produk').hide();
+                $('#form-tanggal').hide();
+            } else if ($(this).val() == '2') { // Jika filternya 3 (per tahun)
+                $('#form-bulan').hide();
+                $('#form-produk').hide();
+                $('#form-tanggal').hide();
+                $('#form-tahun').show();
+            } else if ($(this).val() == '3') {
+                $('#form-bulan').hide();
+                $('#form-tahun').hide();
+                $('#form-tanggal').hide();
+                $('#form-produk').show();
+            } else {
+                $('#form-bulan, #form-tahun').hide();
+                $('#form-produk').hide();
+                $('#form-tanggal').show();
             }
-            $('#form-bulan select, #form-tahun select').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
+            $('#form-bulan select, #form-tahun select, #form-produk select, #form-tanggal input').val(''); // Clear data pada textbox tanggal, combobox bulan & tahun
         })
     })
 </script>

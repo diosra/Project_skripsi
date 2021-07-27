@@ -11,7 +11,7 @@
 
     <title>Pilih Petugas Survey</title>
 
-    <script src="pelayanan_penyambungan/pelayananpenyambungan/process.js"></script> <!-- Load file process.js -->
+    <script src="pelayanan_penyambungan/permohonan_yanbung/process.js"></script> <!-- Load file process.js -->
 
 </head>
 

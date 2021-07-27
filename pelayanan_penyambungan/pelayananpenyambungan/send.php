@@ -46,17 +46,16 @@ $send = $mail->send();
 if (isset($_POST['savepb'])) {
     $id = $_POST['id'];
     $nama = $_POST['nama'];
-    $id_petugas = $_POST['id_petugas_survey'];
-    $noreg = $_POST['noreg'];
+    $id_teknisi = $_POST['id_teknisi'];
     $fasa = $_GET['fasa'];
 
-    $update = "UPDATE tb_mohon_pb SET petugas_survey='$nama', status_survey='1' WHERE id_mohon = $id";
+    $update = "UPDATE tb_pasang_baru SET teknisi='$nama', status_teknisi='1' WHERE id_pasang_baru = $id";
     $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
     // var_dump($update);
 
     if ($query && $send) {
-        $tipeSurvey = "Survey Pasang Baru";
-        $insert = "INSERT INTO tb_survey_lap_masuk (id_yanbung,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
+        $tipe = "Pasang Baru";
+        $insert = "INSERT INTO tb_tekyan_lap_masuk (id_yanbung,id_teknisi,pegawai_acc, tipe) VALUES ('$id','$id_teknisi','1', '$tipe')";
         $query2 = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 
@@ -66,9 +65,9 @@ if (isset($_POST['savepb'])) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Sukses Menambahkan Petugas Survey dan Mengirimkan Email!'
+                    text: 'Sukses Menambahkan Teknisi dan Mengirimkan Email!'
                 }).then((result) => {
-                    window.location = "header.php?page=mohonyanbungpb";
+                    window.location = "header.php?page=pb1phasa";
                 })
             </script>
         <?php
@@ -78,9 +77,9 @@ if (isset($_POST['savepb'])) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Sukses Menambahkan Petugas Survey dan Mengirimkan Email!'
+                    text: 'Sukses Menambahkan Teknisi dan Mengirimkan Email!'
                 }).then((result) => {
-                    window.location = "header.php?page=mohonyanbungpb";
+                    window.location = "header.php?page=pb3phasa";
                 })
             </script>
         <?php
@@ -89,17 +88,16 @@ if (isset($_POST['savepb'])) {
 } elseif (isset($_POST['savepd'])) {
     $id = $_POST['id'];
     $nama = $_POST['nama'];
-    $id_petugas = $_POST['id_petugas_survey'];
-    $noreg = $_POST['noreg'];
+    $id_teknisi = $_POST['id_teknisi'];
     $fasa = $_GET['fasa'];
 
-    $update = "UPDATE tb_mohon_pd SET petugas_survey='$nama', status_survey='1' WHERE id_mohon = $id";
+    $update = "UPDATE tb_perubahan_daya SET teknisi='$nama', status_teknisi='1' WHERE id_perubahan_daya = $id";
     $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
     // var_dump($update);
 
-    if ($query) {
-        $tipeSurvey = "Survey Perubahan Daya";
-        $insert = "INSERT INTO tb_survey_lap_masuk (id_yanbung,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
+    if ($query && $send) {
+        $tipe = "Perubahan Daya";
+        $insert = "INSERT INTO tb_tekyan_lap_masuk (id_yanbung,id_teknisi,pegawai_acc, tipe) VALUES ('$id','$id_teknisi','1', '$tipe')";
         $query2 = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 
@@ -109,9 +107,9 @@ if (isset($_POST['savepb'])) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Sukses Menambahkan Petugas Survey dan Mengirimkan Email!'
+                    text: 'Sukses Menambahkan Teknisi dan Mengirimkan Email!'
                 }).then((result) => {
-                    window.location = "header.php?page=mohonyanbungpd";
+                    window.location = "header.php?page=pd1phasa";
                 })
             </script>
         <?php
@@ -121,9 +119,9 @@ if (isset($_POST['savepb'])) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Sukses Menambahkan Petugas Survey dan Mengirimkan Email!'
+                    text: 'Sukses Menambahkan Teknisi dan Mengirimkan Email!'
                 }).then((result) => {
-                    window.location = "header.php?page=mohonyanbungpd";
+                    window.location = "header.php?page=pd3phasa";
                 })
             </script>
         <?php
@@ -133,17 +131,16 @@ if (isset($_POST['savepb'])) {
 } elseif (isset($_POST['savemlta'])) {
     $id = $_POST['id'];
     $nama = $_POST['nama'];
-    $id_petugas = $_POST['id_petugas_survey'];
-    $noreg = $_POST['noreg'];
+    $id_teknisi = $_POST['id_teknisi'];
     $fasa = $_GET['fasa'];
 
-    $update = "UPDATE tb_mohon_multiguna SET petugas_survey='$nama', status_survey='1' WHERE id_mohon = $id";
+    $update = "UPDATE tb_multiguna SET teknisi='$nama', status_teknisi='1' WHERE id_mlta = $id";
     $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
     // var_dump($update);
 
     if ($query && $send) {
-        $tipeSurvey = "Survey Penyambungan Sementara";
-        $insert = "INSERT INTO tb_survey_lap_masuk (id_yanbung,noreg,id_petugas,pegawai_acc, tipe) VALUES ('$id','$noreg','$id_petugas','1', '$tipeSurvey')";
+        $tipe = "Penyambungan Sementara";
+        $insert = "INSERT INTO tb_tekyan_lap_masuk (id_yanbung,id_teknisi,pegawai_acc, tipe) VALUES ('$id','$id_teknisi','1', '$tipe')";
         $query2 = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
         // var_dump($insert);
 
@@ -153,9 +150,9 @@ if (isset($_POST['savepb'])) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Sukses Menambahkan Petugas Survey dan Mengirimkan Email!'
+                    text: 'Sukses Menambahkan Teknisi dan Mengirimkan Email!'
                 }).then((result) => {
-                    window.location = "header.php?page=mohonyanbungps";
+                    window.location = "header.php?page=multiguna1phasa";
                 })
             </script>
         <?php
@@ -165,9 +162,9 @@ if (isset($_POST['savepb'])) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Sukses.',
-                    text: 'Sukses Menambahkan Petugas Survey dan Mengirimkan Email!'
+                    text: 'Sukses Menambahkan Teknisi dan Mengirimkan Email!'
                 }).then((result) => {
-                    window.location = "header.php?page=mohonyanbungps";
+                    window.location = "header.php?page=multiguna3phasa";
                 })
             </script>
 <?php

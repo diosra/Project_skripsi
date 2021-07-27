@@ -9,33 +9,67 @@ $no = 1;
 // $data = mysqli_query($mysqli, "SELECT b.no_registrasi, b.nama,a.tarif_lama, a.daya_lama, a.tarif_baru, a.daya_baru, a.fasa_lama, a.fasa_baru, c.pekerjaan_rab, c.total_biaya FROM tb_pd_1phs a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_1phs c ON a.id_pd_1phs = c.id_pd_1phs");
 // $jumlah = mysqli_num_rows($data);
 // }
+function tgl_indo2($tanggal2)
+{
+    $bulan2 = array(
+        1 =>   'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    );
+    $pecahkan2 = explode('-', $tanggal2);
 
-$bln = array(
-    '01' => 'Januari',
-    '02' => 'Februari',
-    '03' => 'Maret',
-    '04' => 'April',
-    '05' => 'Mei',
-    '06' => 'Juni',
-    '07' => 'Juli',
-    '08' => 'Agustus',
-    '09' => 'September',
-    '10' => 'Oktober',
-    '11' => 'November',
-    '12' => 'Desember'
-);
+    // variabel pecahkan 0 = tanggal
+    // variabel pecahkan 1 = bulan
+    // variabel pecahkan 2 = tahun
+
+    return $pecahkan2[0] . ' ' . $bulan2[(int)$pecahkan2[1]] . ' ' . $pecahkan2[2];
+}
 
 if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     $filter = $_GET['filter'];
 
     if ($filter == '1') {
-        $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '3 FASA' AND MONTH(tgl_mohon)='" . $_GET['bulan'] . "' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+        $nama_bulan = array('', 'JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEMBER');
+
+        $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '3 FASA' AND a.fasa_baru = '3 FASA' AND a.status_teknisi = '3' AND MONTH(tgl_masuk)='" . $_GET['bulan'] . "' AND YEAR(tgl_masuk)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+
+        $bulanA = $_GET['bulan'];
+        $tahunA = $_GET['tahun'];
+        $jumlah = mysqli_num_rows($result);
+
+        $mulaitgl = $nama_bulan[$_GET['bulan']] . ' ' . date('Y', strtotime($tahunA));
+    } elseif ($filter == '2') {
+        $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '3 FASA' AND a.fasa_baru = '3 FASA' AND a.status_teknisi = '3' AND  YEAR(tgl_masuk)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+
+        $tahunA = $_GET['tahun'];
+        $jumlah = mysqli_num_rows($result);
+        $mulaitgl = date('Y', strtotime($tahunA));
+    } elseif ($filter == '3') {
+        $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '3 FASA' AND a.fasa_baru = '3 FASA' AND a.status_teknisi = '3' AND b.produk_layanan='" . $_GET['produk'] . "'") or die($mysqli->error);
+
+        $produkA = $_GET['produk'];
+        $jumlah = mysqli_num_rows($result);
     } else {
-        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '3 FASA' AND YEAR(tgl_mohon)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '3 FASA' AND a.fasa_baru = '3 FASA' AND a.status_teknisi = '3' AND DATE(tgl_masuk) BETWEEN '" . $_GET['tanggal'] . "' AND '" . $_GET['sampaitanggal'] . "'") or die($mysqli->error);
+
+        $tgl1 = tgl_indo2(date('d-m-Y', strtotime($_GET['tanggal'])));
+        $tgl2 = tgl_indo2(date('d-m-Y', strtotime($_GET['sampaitanggal'])));
+
+        $jumlah = mysqli_num_rows($result);
     }
 } else {
-    $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_perubahan_daya a JOIN tb_pelanggan b ON a.id_pelanggan = b.id_pelanggan JOIN tb_detail_pd_3phs c ON a.id_perubahan_daya = c.id_perubahan_daya WHERE a.fasa_lama = '3 FASA'") or die($mysqli->error);
+    $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '3 FASA' AND a.fasa_baru = '3 FASA' AND a.status_teknisi = '3'") or die($mysqli->error);
+
+    $jumlah = mysqli_num_rows($result);
 }
 ?>
 
@@ -43,7 +77,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 <html>
 
 <head>
-    <title>LAPORAN DATA DETAIL PELANGGAN PD 3 PHASA</title>
+    <title>LAPORAN DATA PELANGGAN PD 3 FASA</title>
 </head>
 
 <script type="text/javascript">
@@ -61,7 +95,39 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 
     <h3>
         <center>
-            LAPORAN DATA DETAIL PELANGGAN PERUBAHAN DAYA 3 PHASA <br>
+
+            <?php
+            if (isset($_GET['filter']) && !empty($_GET['filter'])) {
+                $filter = $_GET['filter'];
+
+                if ($filter == 1) {
+            ?>
+                    LAPORAN DATA PELANGGAN PERUBAHAN DAYA 3 FASA <br>
+                    BULAN <?php echo $mulaitgl ?>
+                <?php
+                } elseif ($filter == 2) {
+                ?>
+                    LAPORAN DATA PELANGGAN PERUBAHAN DAYA 3 FASA <br>
+                    TAHUN <?php echo $mulaitgl ?>
+                <?php
+                } elseif ($filter == 3) {
+                ?>
+                    LAPORAN DATA PELANGGAN PERUBAHAN DAYA 3 FASA <br>
+                    PRODUK LAYANAN <?php echo $produkA ?>
+                <?php
+                } else {
+                    $spasi = "s.d"
+                ?>
+                    LAPORAN DATA PELANGGAN PERUBAHAN DAYA 3 FASA <br>
+                    PENGAJUAN <?php echo $tgl1 ?> s.d <?php echo $tgl2 ?>
+                <?php
+                }
+            } else {
+                ?>
+                LAPORAN DATA PELANGGAN PERUBAHAN DAYA 3 FASA <br>
+            <?php
+            }
+            ?>
         </center>
     </h3>
     <div class="row">
@@ -70,31 +136,35 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 <table border="1" cellspacing="0" width="100%">
                     <thead>
                         <tr style="background-color: darkgrey" height="30px">
-                            <th style="text-align: center; font-size: 18px;">No.</th>
-                            <th style="text-align: center; font-size: 18px;">No Registrasi</th>
-                            <th style="text-align: center; font-size: 18px;">Identitas</th>
-                            <th style="text-align: center; font-size: 18px;">Nama</th>
-                            <th style="text-align: center; font-size: 18px;">Alamat</th>
-                            <th style="text-align: center; font-size: 18px;">Jenis Transaksi</th>
-                            <th style="text-align: center; font-size: 18px;">Tanggal Mohon</th>
-                            <th style="text-align: center; font-size: 18px;">Tarif Lama</th>
-                            <th style="text-align: center; font-size: 18px;">Daya Lama</th>
-                            <th style="text-align: center; font-size: 18px;">Tarif Baru</th>
-                            <th style="text-align: center; font-size: 18px;">Daya Baru</th>
-                            <th style="text-align: center; font-size: 18px;">Fasa Lama</th>
-                            <th style="text-align: center; font-size: 18px;">Fasa Baru</th>
-                            <th style="text-align: center; font-size: 18px;">Pekerjaan RAB</th>
-                            <th style="text-align: center; font-size: 18px;">Total Biaya</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">No.</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">No Registrasi</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">Identitas</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">Nama Pelanggan</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">Alamat</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">Produk Layanan</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">Token</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">Tanggal Pengajuan</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">Tanggal Pengerjaan</th>
+                            <th colspan="2" style="text-align: center; font-size: 18px;">Tarif</th>
+                            <th colspan="2" style="text-align: center; font-size: 18px;">Daya</th>
+                            <th rowspan="2" style="text-align: center; font-size: 18px;">Total Biaya</th>
+                        </tr>
+                        <tr style="background-color: darkgrey">
+                            <th class="text-center">Lama</th>
+                            <th class="text-center">Baru</th>
+                            <th class="text-center">Lama</th>
+                            <th class="text-center">Baru</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <?php
                         $hitungrow = mysqli_num_rows($result);
-                        $total = 0;
+                        $totalSemua = 0;
                         if ($hitungrow > 0) {
                             while ($tampil = mysqli_fetch_array($result)) {
-                                $newdate = date("d-M-Y", strtotime($tampil['tgl_mohon']))
+                                $newdate = date("d-M-Y", strtotime($tampil['tgl_masuk']));
+                                $newdate2 = date("d-M-Y", strtotime($tampil['tgl_selesai']));
                         ?>
                                 <tr>
                                     <td align="center"><?php echo $no++; ?></td>
@@ -102,28 +172,27 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                                     <td align="center"><?php echo $tampil['identitas']; ?></td>
                                     <td align="center"><?php echo $tampil['nama']; ?></td>
                                     <td align="center"><?php echo $tampil['alamat']; ?></td>
-                                    <td align="center">Perubahan Daya</td>
+                                    <td align="center"><?php echo $tampil['produk_layanan']; ?></td>
+                                    <td align="center"><?php echo $tampil['token']; ?></td>
                                     <td align="center"><?php echo $newdate ?></td>
+                                    <td align="center"><?php echo $newdate2 ?></td>
                                     <td align="center"><?php echo $tampil['tarif_lama']; ?></td>
-                                    <td align="center"><?php echo $tampil['daya_lama']; ?></td>
                                     <td align="center"><?php echo $tampil['tarif_baru']; ?></td>
-                                    <td align="center"><?php echo $tampil['daya_baru']; ?></td>
-                                    <td align="center"><?php echo $tampil['fasa_lama']; ?></td>
-                                    <td align="center"><?php echo $tampil['fasa_baru']; ?></td>
-                                    <td align="center"><?php echo $tampil['pekerjaan_rab']; ?></td>
-                                    <td align="center">Rp.<?php echo number_format($tampil['total_biaya'], 0, ',', '.') ?></td>
+                                    <td align="center"><?php echo $tampil['daya_lama']; ?> VA</td>
+                                    <td align="center"><?php echo $tampil['daya_baru']; ?> VA</td>
+                                    <td align="center">Rp.<?php echo number_format($tampil['total'], 0, ',', '.') ?></td>
                                 </tr>
                             <?php
-                                $total += $tampil['total_biaya'];
+                                $totalSemua += $tampil['total'];
                             }
                             ?>
                             <tr>
-                                <td colspan="14" align="right" style="font-size: 23px;"><b>Jumlah Total Biaya</b></td>
-                                <td align="center">Rp.<?php echo number_format($total, 0, ',', '.')  ?></td>
+                                <td colspan="13" align="right" style="font-size: 23px;"><b>Jumlah Total Biaya</b></td>
+                                <td align="center">Rp. <?php echo number_format($totalSemua, 0, ',', '.') ?></td>
                             </tr>
                         <?php } else { ?>
                             <tr>
-                                <td colspan='15' align="center" style="text-transform: uppercase; font-size: 30px; background-color: lightblue;">Data dengan filter yang dipilih tidak ditemukan!</td>
+                                <td colspan='14' align="center" style="text-transform: uppercase; font-size: 30px; background-color: lightblue;">Data dengan filter yang dipilih tidak ditemukan!</td>
                             </tr>
                         <?php } ?>
 
@@ -132,6 +201,10 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
             </div>
         </div>
     </div>
+
+    <br>
+    <label>Jumlah Data : <?php echo "<b>" . $jumlah . "</b>"; ?></label>
+    <br>
 
     <?php
     function tgl_indo($tanggal)

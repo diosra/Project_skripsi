@@ -116,7 +116,7 @@ if ($_POST['id']) {
                 <div class="col">
                     <div class="form-group">
                         <label for="">Daya Lama</label>
-                        <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
+                        <input type="text" value="' . $row_view['daya_lama'] . ' VA" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col">
@@ -130,7 +130,7 @@ if ($_POST['id']) {
                 <div class="col">
                     <div class="form-group">
                         <label for="">Daya Baru</label>
-                        <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
+                        <input type="text" value="' . $row_view['daya_baru'] . ' VA" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col">
@@ -159,7 +159,7 @@ if ($_POST['id']) {
                 <div class="col">
                     <div class="form-group">
                         <label for="">Daya Lama</label>
-                        <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
+                        <input type="text" value="' . $row_view['daya_lama'] . ' VA" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col">
@@ -173,7 +173,7 @@ if ($_POST['id']) {
                 <div class="col">
                     <div class="form-group">
                         <label for="">Daya Baru</label>
-                        <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
+                        <input type="text" value="' . $row_view['daya_baru'] . ' VA" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col">

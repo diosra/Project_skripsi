@@ -304,11 +304,11 @@ if (!isset($_SESSION['username'])) {
                             <span>Menu Data Pelanggan</span></a>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="header.php?page=harga">
                             <i class="fas fa-file-invoice-dollar"></i>
                             <span>Menu Data Biaya RAB</span></a>
-                    </li>
+                    </li> -->
 
                     <!-- Divider -->
                     <hr class="sidebar-divider">
@@ -609,6 +609,13 @@ if (!isset($_SESSION['username'])) {
                             <i class="fas fa-user-friends"></i></i>
                             <span>Menu Data Teknisi Yanbung</span></a>
                     </li>
+
+                    <!-- Nav Item - Menu Teknisi Pengaduan -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=laporanteknisiselesai">
+                            <i class="fas fa-user-friends"></i></i>
+                            <span>Menu Data Pemasangan Selesai</span></a>
+                    </li>
                 <?php
                     //Menu Hak akses Teknisi Pelayanan Pengaduan
                 } elseif ($level == 4 && $tekcheck == 2) {
@@ -812,6 +819,18 @@ if (!isset($_SESSION['username'])) {
                                 break;
                             case 'multiguna3phasa':
                                 include "pelayanan_penyambungan/pelayananpenyambungan/multiguna/multiguna3phs.php";
+                                break;
+                            case 'teknisitambah':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/input_teknisi.php";
+                                break;
+                            case 'sendemailteknisi':
+                                include "pelayanan_penyambungan/pelayananpenyambungan/send.php";
+                                break;
+                            case 'progresteknisi':
+                                include "teknisi/yanbung/form_input_progress.php";
+                                break;
+                            case 'laporanteknisiselesai':
+                                include "teknisi/yanbung/form_laporan_selesai.php";
                                 break;
 
                                 //Case untuk Halaman Cetak

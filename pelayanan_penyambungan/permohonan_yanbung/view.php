@@ -110,7 +110,7 @@ if ($_POST['id']) {
                 <div class="col">
                     <div class="form-group">
                         <label for="">Daya</label>
-                        <input type="text" value="' . $row_view['daya'] . '" class="form-control" readonly>
+                        <input type="text" value="' . $row_view['daya'] . ' VA" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col">
@@ -139,7 +139,7 @@ if ($_POST['id']) {
                 <div class="col">
                     <div class="form-group">
                         <label for="">Daya</label>
-                        <input type="text" value="' . $row_view['daya'] . '" class="form-control" readonly>
+                        <input type="text" value="' . $row_view['daya'] . ' VA" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="col">

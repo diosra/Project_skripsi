@@ -7,7 +7,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT a.*, b.*, c.*, d.* FROM tb_mohon_multiguna a JOIN tb_multiguna b ON a.id_mohon = b.id_mohon JOIN tb_survey_lap_masuk c ON a.id_mohon = c.id_mohon_survey JOIN tb_pelanggan d ON a.id_pelanggan = d.idpel WHERE c.id_mohon_survey ='$id'");
+    $view = $mysqli->query("SELECT a.*, b.*, c.*, d.*, e.id_mohon_survey, e.tgl_selesai FROM tb_multiguna a JOIN tb_mohon_multiguna b ON a.id_mohon = b.id_mohon JOIN tb_tekyan_lap_masuk c ON a.id_mlta = c.id_yanbung JOIN tb_pelanggan d ON b.id_pelanggan = d.idpel JOIN tb_laporan_survey e ON e.id_mohon_survey = b.id_mohon WHERE a.id_mlta ='$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -18,6 +18,11 @@ if ($_POST['id']) {
             <div class="form-group">
                 <label for="">Jenis Transaksi</label>
                 <input type="text" value="' . $row_view['jenis_transaksi'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Tanggal Selesai Survey</label>
+                <input type="text" value="' .
+                date('d-M-Y', strtotime($row_view['tgl_selesai'])) . '" class="form-control" readonly>
             </div>
             <div class="form-group">
                 <label for="">Peruntukan</label>
@@ -48,6 +53,10 @@ if ($_POST['id']) {
             <div class="form-group">
                 <label for="">Pemakaian</label>
                 <input type="text" value="' . $row_view['pemakaian'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="">Pekerjaan RAB</label>
+                <input type="text" value="' . $row_view['pekerjaan_rab'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
                 <label for="">No Handphone</label>

@@ -30,7 +30,7 @@ if ($_POST['id']) {
             <div class="row">
                     <div class="col">
                         <label for="">Daya Lama</label>
-                        <input type="text" value="' . $row_view['daya_lama'] . '" class="form-control" readonly>
+                        <input type="text" value="' . $row_view['daya_lama'] . ' VA" class="form-control" readonly>
                     </div>
                     <div class="col">
                         <label for="">Tarif Lama</label>
@@ -40,7 +40,7 @@ if ($_POST['id']) {
             <div class="row mt-3">
                 <div class="col">
                     <label for="">Daya Baru</label>
-                    <input type="text" value="' . $row_view['daya_baru'] . '" class="form-control" readonly>
+                    <input type="text" value="' . $row_view['daya_baru'] . ' VA" class="form-control" readonly>
                 </div>
                 <div class="col">
                     <label for="">Tarif Baru</label>

@@ -371,7 +371,7 @@ if (isset($_POST['save'])) {
             Swal.fire({
                 icon: 'success',
                 title: 'Sukses',
-                text: 'Sukses Menambahkan Data Mohon Pasang Baru! Anda akan segera dihubungi melewati E-Mail'
+                text: 'Sukses Menambahkan Data Mohon Pasang Baru! Data anda akan segera kami cek dan akan kami hubungi melewati E-Mail!'
             }).then((result) => {
                 window.location = "menu_pb.php";
             })

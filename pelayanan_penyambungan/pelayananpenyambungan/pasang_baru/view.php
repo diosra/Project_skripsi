@@ -27,13 +27,19 @@ if ($_POST['id']) {
                 <label for="">Jenis Transaksi</label>
                 <input type="text" value="' . $row_view['jenis_transaksi'] . '" class="form-control" readonly>
             </div>
-            <div class="form-group">
-                <label for="">Daya</label>
-                <input type="text" value="' . $row_view['daya'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Tarif</label>
-                <input type="text" value="' . $row_view['tarif'] . '" class="form-control" readonly>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Daya</label>
+                        <input type="text" value="' . $row_view['daya'] . ' VA" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="">Tarif</label>
+                        <input type="text" value="' . $row_view['tarif'] . '" class="form-control" readonly>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="">Fasa Baru</label>
