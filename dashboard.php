@@ -28,10 +28,16 @@
         <!-- Sidebar -->
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #1B6C89;">
 
-            <div class="nav-item text-center mt-3 mb-3">
+            <!-- <div class="nav-item text-center mt-3 mb-3">
                 <a class="btn" href="login.php">
                     <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
                     <span class="text-success">Login</span>
+                </a>
+            </div> -->
+
+            <div class="m-3">
+                <a href="dashboard.php">
+                    <img src="img/logo.png" width="100%">
                 </a>
             </div>
 
@@ -120,13 +126,14 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <div class="d-flex justify-content-center">
-                            <!-- Header - Logo & Judul -->
+                        <!-- <div class="d-flex justify-content-center">
                             <div class="img-responsive">
                                 <h4 class="text-center mt-2 text-dark font-weight-bold text-sm-left text-md-left text-lg-left text-xl-left"><a href="index.php" class="border-right mr-3"><img src="img/logo.png" width="15%" class="mr-3"></a>Selamat Datang ke Aplikasi Pelayanan Penyambungan dan Pengaduan</h4>
                             </div>
-                        </div>
+                        </div> -->
 
+                        <!-- Header - Logo & Judul -->
+                        <h2 class="my-5 text-dark font-weight-bold mr-3">Selamat Datang ke Aplikasi Pelayanan Penyambungan dan Pengaduan</h2>
                     </ul>
                 </nav>
                 <!-- End of Topbar -->

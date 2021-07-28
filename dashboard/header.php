@@ -33,10 +33,16 @@ include '../../koneksi.php';
         <!-- Sidebar -->
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #1B6C89;">
 
-            <div class="nav-item text-center mt-3 mb-3">
+            <!-- <div class="nav-item text-center mt-3 mb-3">
                 <a class="btn" href="../../login.php">
                     <span style="color: white;"><i class="fas fa-user-alt fa-2x"></i></span> <br>
                     <span class="text-success">Login</span>
+                </a>
+            </div> -->
+
+            <div class="m-3">
+                <a href="../../dashboard.php">
+                    <img src="../../img/logo.png" width="100%">
                 </a>
             </div>
 
@@ -123,13 +129,6 @@ include '../../koneksi.php';
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                        <div class="d-flex justify-content-center">
-                            <!-- Header - Logo & Judul -->
-                            <div class="img-responsive">
-                                <a href="index.php" class="mr-3"><img src="../../img/logo.png" width="15%" class="mr-3"></a>
-                            </div>
-                        </div>
 
                     </ul>
                 </nav>
