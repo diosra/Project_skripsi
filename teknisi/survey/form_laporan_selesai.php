@@ -140,14 +140,15 @@
             </div>
         </div>
     </div>
-    <!-- Tabel Utama -->
+
+    <!-- Tabel Pasang Baru -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
-            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
+            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Pasang Baru</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
+                <table class="display table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
@@ -170,30 +171,10 @@
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
                         JOIN tb_pasang_baru d ON b.id_mohon = d.id_mohon
                         JOIN tb_laporan_survey e ON e.id_survey_lap = a.id_survey_lap
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '3' ||  b.status_survey = '4') ORDER BY e.id_laporan ASC");
-
-                        $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
-                        tb_survey_lap_masuk a 
-                        JOIN tb_mohon_pd b ON a.id_mohon_survey = b.id_mohon 
-                        JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_perubahan_daya d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
-                        JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '3' ||  b.status_survey = '4') ORDER BY f.id_laporan ASC");
-
-                        $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
-                        tb_survey_lap_masuk a 
-                        JOIN tb_mohon_multiguna b ON a.id_mohon_survey = b.id_mohon 
-                        JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
-                        JOIN tb_multiguna d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
-                        JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '3' ||  b.status_survey = '4') ORDER BY f.id_laporan ASC");
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_survey = '3'");
 
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
-                        $hitungrow2 = mysqli_num_rows($data2);
-                        $hitungrow3 = mysqli_num_rows($data3);
 
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
@@ -248,7 +229,51 @@
                                 </tr>
                             <?php } ?>
                         <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+
+    <!-- Tabel Perubahan Daya -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex">
+            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Perubahan Daya</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="display table table-bordered text-gray-900" id="dataTable2" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="text-center">No Registrasi</th>
+                            <th class="text-center">Identitas</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Alamat</th>
+                            <th class="text-center">Tanggal Permohonan Masuk</th>
+                            <th class="text-center">Tipe Survey</th>
+                            <th class="text-center">Deskripsi Pengajuan</th>
+                            <th class="text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <?php
+                        $nama = $_SESSION['nama'];
+
+                        $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
+                        tb_survey_lap_masuk a 
+                        JOIN tb_mohon_pd b ON a.id_mohon_survey = b.id_mohon 
+                        JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
+                        JOIN tb_perubahan_daya d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
+                        JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_survey = '3'");
+
+                        $no = 1;
+                        $hitungrow2 = mysqli_num_rows($data2);
+
                         if ($hitungrow2 > 0) {
                             while ($row = $data2->fetch_assoc()) { ?>
                                 <tr>
@@ -302,7 +327,51 @@
                                 </tr>
                             <?php } ?>
                         <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+
+    <!-- Tabel Multiguna -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex">
+            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Multiguna / Sambung Sementara</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="display table table-bordered text-gray-900" id="dataTable3" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="text-center">No Registrasi</th>
+                            <th class="text-center">Identitas</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Alamat</th>
+                            <th class="text-center">Tanggal Permohonan Masuk</th>
+                            <th class="text-center">Tipe Survey</th>
+                            <th class="text-center">Deskripsi Pengajuan</th>
+                            <th class="text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <?php
+                        $nama = $_SESSION['nama'];
+
+                        $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_petugas_survey, d.*, e.*, f.* FROM 
+                        tb_survey_lap_masuk a 
+                        JOIN tb_mohon_multiguna b ON a.id_mohon_survey = b.id_mohon 
+                        JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey 
+                        JOIN tb_multiguna d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON b.id_pelanggan = e.idpel
+                        JOIN tb_laporan_survey f ON f.id_survey_lap = a.id_survey_lap
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && b.status_survey = '3'");
+
+                        $no = 1;
+                        $hitungrow3 = mysqli_num_rows($data3);
+
                         if ($hitungrow3 > 0) {
                             while ($row3 = $data3->fetch_assoc()) { ?>
                                 <tr>
@@ -516,9 +585,36 @@
 include_once 'footer.php';
 ?>
 
+<!-- Script untuk Menampilkan 2 Tabel di 1 halaman -->
+<script>
+    $(document).ready(function() {
+        $('table.display').DataTable();
+    });
+</script>
+
 <!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
 <script>
     $('#dataTable').DataTable({
+        "columnDefs": [{
+            "orderable": false,
+            "targets": [4, 6, 7, 8]
+        }]
+    });
+</script>
+
+<!-- Script buat menghilangkan beberapa fitur sorting di datatables - Tabel 2 -->
+<script>
+    $('#dataTable2').DataTable({
+        "columnDefs": [{
+            "orderable": false,
+            "targets": [4, 6, 7, 8]
+        }]
+    });
+</script>
+
+<!-- Script buat menghilangkan beberapa fitur sorting di datatables - Tabel 2 -->
+<script>
+    $('#dataTable3').DataTable({
         "columnDefs": [{
             "orderable": false,
             "targets": [4, 6, 7, 8]

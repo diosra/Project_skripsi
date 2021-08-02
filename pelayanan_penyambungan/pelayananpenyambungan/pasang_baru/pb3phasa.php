@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pasang Baru 3 Phasa</title>
+    <title>Pasang Baru 3 Fasa</title>
 </head>
 
 </html>
@@ -15,7 +15,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Pasang Baru 3 Phasa</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Pasang Baru 3 Fasa</u></h1>
     </div>
 
     <!-- Modal dialog untuk deskripsi -->
@@ -37,7 +37,7 @@
 
     <!-- Modal dialog untuk detail biaya -->
     <div id="get-data2" class="modal fade" role="dialog">
-        <div class="modal-dialog mw-100 modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Detail Biaya RAB</h4>
@@ -129,7 +129,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.*,d.*, e.no_teknisi FROM tb_pasang_baru a JOIN tb_mohon_pb b ON a.id_mohon = b.id_mohon LEFT JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_pasang_baru LEFT JOIN tb_tekyan_lap_masuk d ON d.id_yanbung = a.id_pasang_baru LEFT JOIN tb_teknisi_penyambungan e ON e.no_teknisi = d.id_teknisi WHERE a.fasa_baru = '3 FASA' && b.status_pembayaran = '1' && b.status_survey = '3'");
+                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.*,d.*, e.no_teknisi FROM tb_pasang_baru a JOIN tb_mohon_pb b ON a.id_mohon = b.id_mohon LEFT JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_pasang_baru LEFT JOIN tb_tekyan_lap_masuk d ON d.id_yanbung = a.id_pasang_baru LEFT JOIN tb_teknisi_penyambungan e ON e.no_teknisi = d.id_teknisi WHERE a.fasa_baru = '3 FASA' && b.status_pembayaran = '1' && b.status_survey = '3' ORDER BY b.id_mohon ASC");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {

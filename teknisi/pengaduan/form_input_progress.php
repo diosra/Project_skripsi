@@ -43,7 +43,7 @@
         $status = $_GET['status'];
 
         if ($status == "Dalam Proses") {
-            $result = $mysqli->query("SELECT a.* , b.*  FROM tb_tekpen_lap_masuk a JOIN tb_pengaduan b ON a.id_pengaduan = b.id_pengaduan WHERE id_tekpenlap = $id") or die($mysqli->error);
+            $result = $mysqli->query("SELECT a.* , b.*, c.* FROM tb_tekpen_lap_masuk a JOIN tb_pengaduan b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = b.id_pelanggan WHERE id_tekpenlap = $id") or die($mysqli->error);
 
             if ($result->num_rows) {
                 $row = $result->fetch_array();
@@ -56,7 +56,7 @@
                 $deskripsi = $row['deskripsi'];
             }
         } elseif ($status == "belum selesai") {
-            $result = $mysqli->query("SELECT a.* , b.* , c.* FROM tb_tekpen_lap_masuk a JOIN tb_pengaduan b ON a.id_pengaduan = b.id_pengaduan JOIN tb_laporan_tekpen c ON a.id_pengaduan = c.id_pengaduan WHERE a.id_tekpenlap = $id") or die($mysqli->error);
+            $result = $mysqli->query("SELECT a.* , b.* , c.*, d.* FROM tb_tekpen_lap_masuk a JOIN tb_pengaduan b ON a.id_pengaduan = b.id_pengaduan JOIN tb_laporan_tekpen c ON a.id_pengaduan = c.id_pengaduan JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.id_tekpenlap = $id") or die($mysqli->error);
 
             if ($result->num_rows) {
                 $row = $result->fetch_array();
@@ -118,7 +118,7 @@
         </div>
         <!-- Form Utama -->
         <div class="card-body">
-            <form action="header.php?page=progres" method="post" name="form1">
+            <form action="header.php?page=progres&status=<?php echo $status ?>&id=<?php echo $id ?>" method="post" name="form1">
 
                 <?php
                 if (isset($_GET['status'])) {
@@ -127,6 +127,16 @@
                 ?>
                         <input type="hidden" name="id_pen" value="<?php echo $id_pen; ?>">
                         <input type="hidden" name="id_lap" value="<?php echo $id_laporan; ?>">
+
+                        <div class="form-group">
+                            <label for="">Status</label> <br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" value="selesai" required>
+                                <label class="form-check-label" id="exampleRadios1">
+                                    Selesai
+                                </label>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label for="">Laporan Progres</label>
@@ -148,15 +158,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="">Status</label> <br>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="status" value="selesai" required>
-                                <label class="form-check-label" id="exampleRadios1">
-                                    Selesai
-                                </label>
-                            </div>
-                        </div>
+
 
                         <div class="form-group row float-right">
                             <div class="col">
@@ -172,11 +174,6 @@
                         <input type="hidden" name="id_pen" value="<?php echo $id_pen; ?>">
 
                         <div class="form-group">
-                            <label for="">Laporan Progres</label>
-                            <textarea name="laporan" placeholder="Masukkan Laporan Progres" class="form-control" cols="10" rows="3" required></textarea>
-                        </div>
-
-                        <div class="form-group">
                             <label for="">Status</label> <br>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="status" value="selesai" onclick="show1();" required>
@@ -190,6 +187,11 @@
                                     Belum Selesai
                                 </label>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Laporan Progres</label>
+                            <textarea name="laporan" placeholder="Masukkan Laporan Progres" class="form-control" cols="10" rows="3" required></textarea>
                         </div>
 
                         <div class="form-group" id="tgl_cek_a" style="display: none;">
@@ -264,7 +266,7 @@ if (isset($_POST['save'])) {
                 title: 'Sukses.',
                 text: 'Sukses Menambahkan Laporan yang sudah selesai!'
             }).then((result) => {
-                window.location = "header.php?page=laporanpen";
+                window.location = "header.php?page=laporanpenselesai";
             })
         </script>
     <?php
@@ -282,7 +284,7 @@ if (isset($_POST['save'])) {
                 title: 'Sukses.',
                 text: 'Sukses Menambahkan Laporan yang masih dalam tahap progres!'
             }).then((result) => {
-                window.location = "header.php?page=laporanpen";
+                window.location = "header.php?page=laporanpenprogres";
             })
         </script>
     <?php
@@ -308,7 +310,7 @@ if (isset($_POST['save'])) {
                 title: 'Sukses.',
                 text: 'Sukses Menambahkan Laporan yang sudah selesai!'
             }).then((result) => {
-                window.location = "header.php?page=laporanpen";
+                window.location = "header.php?page=laporanpenselesai";
             })
         </script>
 <?php

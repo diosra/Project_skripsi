@@ -62,7 +62,7 @@
                     <tbody>
                         <?php
                         $nama = $_SESSION['nama'];
-                        $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_teknisi FROM tb_tekpen_lap_masuk a JOIN tb_pengaduan b ON a.id_pengaduan = b.id_pengaduan JOIN tb_teknisi_pengaduan c ON a.id_teknisi = c.id_teknisi  WHERE a.op_acc = 1 && c.nama = '$nama' && b.status = 'Dalam Proses'");
+                        $data = mysqli_query($mysqli, "SELECT a.* , b.* , c.id_teknisi, d.* FROM tb_tekpen_lap_masuk a JOIN tb_pengaduan b ON a.id_pengaduan = b.id_pengaduan JOIN tb_teknisi_pengaduan c ON a.id_teknisi = c.id_teknisi JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.op_acc = 1 && c.nama = '$nama' && b.status = 'Dalam Proses' ORDER BY b.tgl_masuk_laporan ASC");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {

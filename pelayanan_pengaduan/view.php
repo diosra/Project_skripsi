@@ -7,7 +7,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT * FROM tb_pengaduan WHERE id_pengaduan='$id'");
+    $view = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_pelanggan b ON a.id_pelanggan = b.idpel WHERE id_pengaduan='$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -15,6 +15,10 @@ if ($_POST['id']) {
             $row_view = $view->fetch_assoc();
             //menampilkan data dengan table
             echo '
+            <div class="form-group">
+                <label for="">ID Pelanggan</label>
+                <input type="text" value="' . $row_view['idpel'] . '" class="form-control" readonly>
+            </div>
             <div class="form-group">
                 <label for="">Jenis Gangguan</label>
                 <input type="text" value="' . $row_view['gangguan'] . '" class="form-control" readonly>
@@ -24,20 +28,12 @@ if ($_POST['id']) {
                 <input type="text" value="' . $row_view['nohp'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
+                <label for="">No Telpon</label>
+                <input type="text" value="' . $row_view['no_telp'] . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
                 <label for="">Email Pelapor</label>
                 <input type="text" value="' . $row_view['email'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Kabupaten</label>
-                <input type="text" value="' . $row_view['kabupaten'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Kecamatan</label>
-                <input type="text" value="' . $row_view['kecamatan'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Kelurahan</label>
-                <input type="text" value="' . $row_view['kelurahan'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
                 <label for="">Deskripsi Pengaduan</label>

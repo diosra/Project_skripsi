@@ -7,7 +7,7 @@ if ($_POST['id']) {
     //membuat variabel id berisi post['id']
     $id = $_POST['id'];
     //query standart select where id
-    $view = $mysqli->query("SELECT * FROM tb_pengaduan WHERE id_pengaduan='$id'");
+    $view = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_pelanggan b ON b.idpel = a.id_pelanggan WHERE id_pengaduan='$id'");
     //jika ada datanya
     if ($view) {
         if ($view->num_rows) {
@@ -18,18 +18,6 @@ if ($_POST['id']) {
             <div class="form-group">
                 <label for="">Jenis Gangguan</label>
                 <input type="text" value="' . $row_view['gangguan'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Kabupaten</label>
-                <input type="text" value="' . $row_view['kabupaten'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Kecamatan</label>
-                <input type="text" value="' . $row_view['kecamatan'] . '" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="">Kelurahan</label>
-                <input type="text" value="' . $row_view['kelurahan'] . '" class="form-control" readonly>
             </div>
             <div class="form-group">
                 <label for="">No Handphone</label>

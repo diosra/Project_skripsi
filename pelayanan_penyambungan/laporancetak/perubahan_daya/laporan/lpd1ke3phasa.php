@@ -47,7 +47,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $tahunA = $_GET['tahun'];
         $jumlah = mysqli_num_rows($result);
 
-        $mulaitgl = $nama_bulan[$_GET['bulan']] . ' ' . date('Y', strtotime($tahunA));
+        $mulaitgl = $nama_bulan[$_GET['bulan']];
     } elseif ($filter == '2') {
         $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai, d.* FROM tb_perubahan_daya a JOIN tb_mohon_pd b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_perubahan_daya JOIN tb_pelanggan d ON d.idpel = b.id_pelanggan WHERE a.fasa_lama = '1 FASA' AND a.fasa_baru = '3 FASA' AND a.status_teknisi = '3' AND  YEAR(tgl_masuk)='" . $_GET['tahun'] . "'") or die($mysqli->error);
 
@@ -103,7 +103,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 if ($filter == 1) {
             ?>
                     LAPORAN DATA PELANGGAN PERUBAHAN DAYA 1 FASA KE 3 FASA <br>
-                    BULAN <?php echo $mulaitgl ?>
+                    BULAN <?php echo $mulaitgl ?> <?php echo $tahunA ?>
                 <?php
                 } elseif ($filter == 2) {
                 ?>

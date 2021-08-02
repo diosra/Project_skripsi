@@ -27,7 +27,7 @@
     <?php
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        $result = $mysqli->query("SELECT * FROM tb_pengaduan WHERE id_pengaduan=$id") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_pelanggan b ON a.id_pelanggan = b.idpel WHERE id_pengaduan=$id") or die($mysqli->error);
 
         if ($result->num_rows) {
             $row = $result->fetch_array();

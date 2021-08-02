@@ -60,7 +60,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT * FROM tb_harga");
+                        $data = mysqli_query($mysqli, "SELECT * FROM tb_harga ORDER BY id_harga ASC");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {

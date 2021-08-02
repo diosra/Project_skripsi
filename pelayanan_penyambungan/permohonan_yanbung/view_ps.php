@@ -95,6 +95,11 @@ if ($_POST['id']) {
             }
 
             echo '
+             <div class="form-group">
+                <label for="">Tanggal Masuk</label>
+                <input type="text" value="' .
+                date('d-M-Y', strtotime($row_view['tgl_masuk'])) . '" class="form-control" readonly>
+            </div>
             <div class="form-group">
                 <label for="">Peruntukan</label>
                 <input type="text" value="' . $row_view['peruntukan'] . '" class="form-control" readonly>

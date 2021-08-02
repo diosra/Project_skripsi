@@ -23,6 +23,8 @@ function search() {
                     icon: 'error',
                     title: 'Gagal!',
                     text: 'ID Pelanggan Tidak Ditemukan!'
+                }).then((result) => {
+                    $('#id_pelanggan').val("");
                 })
             }
         },

@@ -61,7 +61,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT * FROM tb_pengaduan WHERE teknisi='' && status=''");
+                        $data = mysqli_query($mysqli, "SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_pelanggan b ON a.id_pelanggan = b.idpel WHERE teknisi='' && status='' ORDER BY a.tgl_masuk_laporan ASC");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {

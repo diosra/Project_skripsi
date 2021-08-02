@@ -34,26 +34,26 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     if ($filter == '1') {
         $nama_bulan = array('', 'JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEMBER');
 
-        $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND MONTH(tgl_masuk_laporan)='" . $_GET['bulan'] . "' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE a.status = 'Selesai' AND MONTH(tgl_masuk_laporan)='" . $_GET['bulan'] . "' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
 
         $bulanA = $_GET['bulan'];
         $tahunA = $_GET['tahun'];
 
         $jumlah = mysqli_num_rows($result);
-        $mulaitgl = $nama_bulan[$_GET['bulan']] . ' ' . date('Y', strtotime($tahunA));
+        $mulaitgl = $nama_bulan[$_GET['bulan']];
     } elseif ($filter == '2') {
-        $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan  WHERE a.status = 'Selesai' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
 
         $tahunA = $_GET['tahun'];
         $jumlah = mysqli_num_rows($result);
         $mulaitgl = date('Y', strtotime($tahunA));
     } elseif ($filter == '3') {
-        $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND gangguan ='" . $_GET['gangguan'] . "'") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan  WHERE a.status = 'Selesai' AND gangguan ='" . $_GET['gangguan'] . "'") or die($mysqli->error);
 
         $gangguanA = $_GET['gangguan'];
         $jumlah = mysqli_num_rows($result);
     } else {
-        $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND DATE(tgl_masuk_laporan) BETWEEN '" . $_GET['tanggal'] . "' AND '" . $_GET['sampaitanggal'] . "'") or die($mysqli->error);
+        $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan  WHERE a.status = 'Selesai' AND DATE(tgl_masuk_laporan) BETWEEN '" . $_GET['tanggal'] . "' AND '" . $_GET['sampaitanggal'] . "'") or die($mysqli->error);
 
         $tgl1 = tgl_indo2(date('d-m-Y', strtotime($_GET['tanggal'])));
         $tgl2 = tgl_indo2(date('d-m-Y', strtotime($_GET['sampaitanggal'])));
@@ -61,7 +61,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $jumlah = mysqli_num_rows($result);
     }
 } else {
-    $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai'") or die($mysqli->error);
+    $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan  WHERE a.status = 'Selesai'") or die($mysqli->error);
 
     $jumlah = mysqli_num_rows($result);
 }
@@ -99,7 +99,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 if ($filter == 1) {
             ?>
                     LAPORAN PENGADUAN PELANGGAN <br>
-                    BULAN <?php echo $mulaitgl ?>
+                    BULAN <?php echo $mulaitgl ?> <?php echo $tahunA ?>
 
                 <?php
                 } elseif ($filter == 2) {

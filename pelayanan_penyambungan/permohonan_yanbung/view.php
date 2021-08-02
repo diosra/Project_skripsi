@@ -99,6 +99,11 @@ if ($_POST['id']) {
             if ($ambilproduk == "PASCABAYAR") {
                 echo '
             <div class="form-group">
+                <label for="">Tanggal Masuk</label>
+                <input type="text" value="' .
+                    date('d-M-Y', strtotime($row_view['tgl_masuk'])) . '" class="form-control" readonly>
+            </div>
+            <div class="form-group">
                 <label for="">Produk Layanan</label>
                 <input type="text" value="' . $row_view['produk_layanan'] . '" class="form-control" readonly>
             </div>
@@ -127,6 +132,11 @@ if ($_POST['id']) {
 		';
             } elseif ($ambilproduk == "PRABAYAR") {
                 echo '
+                <div class="form-group">
+                <label for="">Tanggal Masuk</label>
+                <input type="text" value="' .
+                    date('d-M-Y', strtotime($row_view['tgl_masuk'])) . '" class="form-control" readonly>
+            </div>
             <div class="form-group">
                 <label for="">Produk Layanan</label>
                 <input type="text" value="' . $row_view['produk_layanan'] . '" class="form-control" readonly>

@@ -94,7 +94,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.*, b.id_laporan , b.laporan FROM tb_pengaduan a LEFT JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan WHERE a.status = 'belum selesai' || a.status = 'Dalam Proses'");
+                        $data = mysqli_query($mysqli, "SELECT a.*, b.id_laporan , b.laporan, c.* FROM tb_pengaduan a LEFT JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan LEFT JOIN tb_pelanggan c ON a.id_pelanggan = c.idpel WHERE a.status = 'belum selesai' || a.status = 'Dalam Proses' ORDER BY a.tgl_masuk_laporan ASC");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {

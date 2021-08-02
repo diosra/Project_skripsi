@@ -55,7 +55,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
         $tahunA = $_GET['tahun'];
         $jumlah = mysqli_num_rows($result);
 
-        $mulaitgl = $nama_bulan[$_GET['bulan']] . ' ' . date('Y', strtotime($tahunA));
+        $mulaitgl = $nama_bulan[$_GET['bulan']];
     } elseif ($filter == '2') {
         $result = $mysqli->query("SELECT a.*, b.*,c.id_yanbung, c.tgl_selesai FROM tb_pasang_baru a JOIN tb_mohon_pb b ON a.id_mohon = b.id_mohon JOIN tb_laporan_tekyan c ON c.id_yanbung = a.id_pasang_baru WHERE a.fasa_baru = '1 FASA' AND a.status_teknisi = '3' AND YEAR(tgl_masuk)='" . $_GET['tahun'] . "'") or die($mysqli->error);
 
@@ -111,7 +111,7 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                 if ($filter == 1) {
             ?>
                     LAPORAN DATA PELANGGAN PASANG BARU 1 FASA <br>
-                    BULAN <?php echo $mulaitgl ?>
+                    BULAN <?php echo $mulaitgl ?> <?php echo $tahunA ?>
                 <?php
                 } elseif ($filter == 2) {
                 ?>

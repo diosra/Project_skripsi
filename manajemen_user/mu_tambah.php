@@ -18,6 +18,7 @@
                     $("#t_check").show();
                 } else {
                     $("#t_check").hide();
+                    $("#t_check").required = false;
                 }
             });
         });
@@ -136,6 +137,7 @@
                     <label for="">Posisi</label>
                     <select name="level" id="posisi" class="form-control" required>
                         <option value="" disabled selected>Pilih</option>
+                        <option value="6">Manager</option>
                         <option value="1">Admin</option>
                         <option value="2">Pegawai</option>
                         <option value="3">Operator</option>
@@ -192,7 +194,6 @@ if (isset($_POST['save'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $level = $_POST['level'];
-    $t_check = $_POST['t_check'];
     $getId = mysqli_fetch_row(mysqli_query($mysqli, "SELECT max(id) from tb_data_user"));
 
     if (!empty($_FILES['foto']['tmp_name'])) {
@@ -210,8 +211,24 @@ if (isset($_POST['save'])) {
         move_uploaded_file($_FILES['foto']['tmp_name'], "gambar/" . basename(($getId[0] + 1) . $ext));
     }
 
-    $insert = "INSERT INTO tb_data_user (nama, tgl_lahir, alamat,jenis_kelamin, email, username, password, level, t_check, foto) VALUES ('$nama','$tgl_lahir' ,'$alamat', '$jenis_kelamin', '$email','$username', '$password', '$level', '$t_check', '" . ($getId[0] + 1) . $ext . "')";
+    if ($level == 4) {
+        $t_check = $_POST['t_check'];
+        $insert = "INSERT INTO tb_data_user (nama, tgl_lahir, alamat,jenis_kelamin, email, username, password, level, t_check, foto) VALUES ('$nama','$tgl_lahir' ,'$alamat', '$jenis_kelamin', '$email','$username', '$password', '$level', '$t_check', '" . ($getId[0] + 1) . $ext . "')";
+    } else {
+        $insert = "INSERT INTO tb_data_user (nama, tgl_lahir, alamat,jenis_kelamin, email, username, password, level, foto) VALUES ('$nama','$tgl_lahir' ,'$alamat', '$jenis_kelamin', '$email','$username', '$password', '$level', '" . ($getId[0] + 1) . $ext . "')";
+    }
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
+    // var_dump($insert);
+
+    if ($level == 1) {
+        $namaPosisi = "Admin";
+    } elseif ($level == "2") {
+        $namaPosisi = "Pegawai";
+    } elseif ($level == "3") {
+        $namaPosisi = "Operator";
+    } elseif ($level == "6") {
+        $namaPosisi = "Manager";
+    }
 
     if ($query) {
         if ($level == 4 && $t_check == 2) {
@@ -223,15 +240,23 @@ if (isset($_POST['save'])) {
         } elseif ($level == 5) {
             $insert2 = "INSERT INTO tb_petugas_survey (id, no_petugas_survey, nama, alamat, tgl_lahir) VALUES ('" . mysqli_insert_id($mysqli) . "', '$no_survey', '$nama', '$alamat','$tgl_lahir')";
             $namaPosisi = "Petugas Survey";
-        } elseif ($level == "1") {
-            $namaPosisi = "Admin";
-        } elseif ($level == "2") {
-            $namaPosisi = "Pegawai";
-        } elseif ($level == "3") {
-            $namaPosisi = "Operator";
-        }
-        $query = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
+
+            $query = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
+        } else {
 ?>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses.',
+                    text: 'Sukses Menambahkan Data User <?php echo $namaPosisi ?>'
+                }).then((result) => {
+                    window.location = "header.php?page=user";
+                })
+            </script>
+        <?php
+        }
+
+        ?>
         <script>
             Swal.fire({
                 icon: 'success',

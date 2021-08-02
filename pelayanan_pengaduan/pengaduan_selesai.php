@@ -77,7 +77,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "select * from tb_pengaduan WHERE status='selesai'");
+                        $data = mysqli_query($mysqli, "SELECT a.*, b.*, c.id_pengaduan, c.tgl_selesai from tb_pengaduan a JOIN tb_pelanggan b ON b.idpel = a.id_pelanggan JOIN tb_laporan_tekpen c ON c.id_pengaduan = a.id_pengaduan WHERE c.status='selesai' ORDER BY c.tgl_selesai ASC");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {

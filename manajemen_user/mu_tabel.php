@@ -56,6 +56,8 @@
                                     $posisi = "Teknisi Pelayanan Pengaduan";
                                 } elseif ($row['level'] == 5 && $row['t_check'] == 0) {
                                     $posisi = "Petugas Survey";
+                                } elseif ($row['level'] == 6 && $row['t_check'] == 0) {
+                                    $posisi = "Manager";
                                 }
                         ?>
                                 <tr>

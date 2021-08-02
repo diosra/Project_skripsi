@@ -245,6 +245,35 @@ if (!isset($_SESSION['username'])) {
                         </div>
                     </div>
                 <?php
+                } elseif ($level == 6) {
+                ?>
+                    <div class="nav-item text-center mt-3 mb-3">
+                        <button role="button" type="button" class="btn" data-toggle="dropdown">
+                            <span>
+                                <img class="img-profile rounded-circle" width="45%" src="gambar/<?php echo $_SESSION['foto']; ?>" onerror="this.onerror=null;gambarerror(this);">
+                            </span>
+                        </button>
+                        <p class="text-success small font-weight-bold">Manager</p>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <span class="d-none d-lg-inline text-gray-900 small">
+                                <div class="text-center">
+                                    <p style="font-size: medium;"><b>Nama</b> : <br> <?php echo $_SESSION['nama'] ?></p>
+                                </div>
+                            </span>
+                            <!-- <hr>
+                            <a style="color: black;" class="dropdown-item text-center" href="header.php?page=foto&id=<?php echo $_SESSION['id'] ?>">
+                                <i class="fas fa-portrait mr-1 text-gray-900 fa-1x"></i>
+                                Foto Profile
+                            </a> -->
+                            <hr>
+                            <a style="color: red;" class="dropdown-item text-center" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-1 text-gray-900 fa-1x"></i>
+                                Log Out
+                            </a>
+                        </div>
+                    </div>
+                <?php
                 } else {
                 ?>
                     <div class="nav-item text-center mt-3 mb-3">
@@ -304,21 +333,14 @@ if (!isset($_SESSION['username'])) {
                             <span>Menu Data Pelanggan</span></a>
                     </li>
 
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="header.php?page=harga">
                             <i class="fas fa-file-invoice-dollar"></i>
-                            <span>Menu Data Biaya RAB</span></a>
-                    </li> -->
+                            <span>Menu Data Detail <br> Pekerjaan RAB</span></a>
+                    </li>
 
                     <!-- Divider -->
                     <hr class="sidebar-divider">
-
-                    <!-- Nav Item - Menu Permohonan Pelayanan Penyambungan -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="header.php?page=mohonyanbung">
-                            <i class="fas fa-user-friends"></i></i>
-                            <span>Menu Data Permohonan <br> Pelayanan Penyambungan </span></a>
-                    </li> -->
 
                     <!-- Nav Item - Menu Data Permohonan Pelayanan Penyambungan -->
                     <li class="nav-item">
@@ -389,12 +411,12 @@ if (!isset($_SESSION['username'])) {
                                                 <?php if ($page == 'pb1phasa') {
                                                     echo 'active';
                                                 } ?>" href="header.php?page=pb1phasa">Pasang Baru 1
-                                                    <br> Phasa</a>
+                                                    <br> Fasa</a>
                                                 <a class="collapse-item font-weight-bold 
                                                 <?php if ($page == 'pb3phasa') {
                                                     echo 'active';
                                                 } ?>" href="header.php?page=pb3phasa">Pasang Baru 3
-                                                    <br> Phasa</a>
+                                                    <br> Fasa</a>
                                             </div>
                                         </div>
                                     </li>
@@ -413,12 +435,12 @@ if (!isset($_SESSION['username'])) {
                                                 <?php if ($page == 'pd1phasa') {
                                                     echo 'active';
                                                 } ?>" href="header.php?page=pd1phasa">Perubahan
-                                                    Daya 1 <br> Phasa</a>
+                                                    Daya 1 <br> Fasa</a>
                                                 <a class="collapse-item font-weight-bold 
                                                 <?php if ($page == 'pd3phasa') {
                                                     echo 'active';
                                                 } ?>" href="header.php?page=pd3phasa">Perubahan
-                                                    Daya 3 <br> Phasa</a>
+                                                    Daya 3 <br> Fasa</a>
                                             </div>
                                         </div>
                                     </li>
@@ -437,12 +459,12 @@ if (!isset($_SESSION['username'])) {
                                                 <?php if ($page == 'multiguna1phasa') {
                                                     echo 'active';
                                                 } ?>" href="header.php?page=multiguna1phasa">Multiguna 1
-                                                    Phasa</a>
+                                                    Fasa</a>
                                                 <a class="collapse-item font-weight-bold 
                                                 <?php if ($page == 'multiguna3phasa') {
                                                     echo 'active';
                                                 } ?>" href="header.php?page=multiguna3phasa">Multiguna 3
-                                                    Phasa</a>
+                                                    Fasa</a>
                                             </div>
                                         </div>
                                     </li>
@@ -460,21 +482,37 @@ if (!isset($_SESSION['username'])) {
                             <i class="fas fa-print"></i>
                             <span>Menu Cetak</span>
                         </a>
+
                         <div id="collapseA" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=cpelanggan">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Menu Cetak <br> Data Pelanggan
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
                                     <!-- Link Menu Halaman Cetak Pasang Baru -->
                                     <li class="nav-item">
-                                        <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseB" aria-expanded="true" aria-controls="collapseB">
+                                        <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseQ" aria-expanded="true" aria-controls="collapseQ">
                                             <i class="fas fa-chevron-circle-right"></i>
                                             <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Pasang Baru</span>
                                         </a>
-                                        <div id="collapseB" class="collapse" aria-labelledby="headingThree">
+                                        <div id="collapseQ" class="collapse" aria-labelledby="headingThree">
                                             <div class="bg-light py-2 collapse-inner rounded">
-                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpb1phasa">Pasang Baru 1
-                                                    Phasa</a>
-                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpb3phasa">Pasang Baru 3
-                                                    Phasa</a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpb1phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Pasang Baru 1 <br> Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpb3phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Pasang Baru 3 <br> Fasa
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
@@ -490,14 +528,22 @@ if (!isset($_SESSION['username'])) {
                                         </a>
                                         <div id="collapseC" class="collapse" aria-labelledby="headingFour">
                                             <div class="bg-light py-2 collapse-inner rounded">
-                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd1phasa">Perubahan
-                                                    Daya 1 <br> Phasa</a>
-                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd1ke3phasa">Perubahan
-                                                    Daya 1 <br> Phasa ke 3 Phasa</a>
-                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd3phasa">Perubahan Daya 3 <br>
-                                                    Phasa</a>
-                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd3ke1phasa">Perubahan
-                                                    Daya 3 <br> Phasa ke 1 Phasa</a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd1phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Perubahan Daya <br> 1 Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd1ke3phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Perubahan Daya <br> 1 Fasa ke 3 Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd3phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Perubahan Daya <br> 3 Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd3ke1phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Perubahan Daya <br> 3 Fasa ke 1 Fasa
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
@@ -512,13 +558,51 @@ if (!isset($_SESSION['username'])) {
                                         </a>
                                         <div id="collapseE" class="collapse" aria-labelledby="headingFour">
                                             <div class="bg-light py-2 collapse-inner rounded">
-                                                <a class="collapse-item font-weight-bold" href="header.php?page=cmlta1phasa">Multiguna 1
-                                                    Phasa</a>
-                                                <a class="collapse-item font-weight-bold" href="header.php?page=cmlta3phasa">Multiguna 3
-                                                    Phasa</a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cmlta1phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Multiguna 1 Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cmlta3phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Multiguna 3 Fasa
+                                                </a>
                                             </div>
                                         </div>
                                     </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=clpetugassurveypb">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Laporan Petugas <br> Survey
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=clteknisipb">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Laporan Teknisi <br>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=clpbtolak">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Laporan Data <br> Pengajuan <br> Ditolak
+                                            </span>
+                                        </a>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -672,9 +756,159 @@ if (!isset($_SESSION['username'])) {
 
                     <!-- Nav Item - Menu Teknisi Pengaduan -->
                     <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=laporansurveyditolak">
+                            <i class="fas fa-user-friends"></i></i>
+                            <span>Menu Data Survey Ditolak</span></a>
+                    </li>
+
+                    <!-- Nav Item - Menu Teknisi Pengaduan -->
+                    <li class="nav-item">
                         <a class="nav-link" href="header.php?page=laporansurveyselesai">
                             <i class="fas fa-user-friends"></i></i>
                             <span>Menu Data Survey Selesai</span></a>
+                    </li>
+                <?php
+                } elseif ($level == 6) {
+                ?>
+                    <!-- Nav Item - Menu Cetak -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
+                            <i class="fas fa-print"></i>
+                            <span>Menu Cetak</span>
+                        </a>
+
+                        <div id="collapseA" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=cpelanggan">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Menu Cetak <br> Data Pelanggan
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <!-- Link Menu Halaman Cetak Pasang Baru -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseQ" aria-expanded="true" aria-controls="collapseQ">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Pasang Baru</span>
+                                        </a>
+                                        <div id="collapseQ" class="collapse" aria-labelledby="headingThree">
+                                            <div class="bg-light py-2 collapse-inner rounded">
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpb1phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Pasang Baru 1 <br> Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpb3phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Pasang Baru 3 <br> Fasa
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <!-- Link Menu Halaman Cetak Perubahan Daya -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseC" aria-expanded="true" aria-controls="collapseC">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Perubahan
+                                                Daya</span>
+                                        </a>
+                                        <div id="collapseC" class="collapse" aria-labelledby="headingFour">
+                                            <div class="bg-light py-2 collapse-inner rounded">
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd1phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Perubahan Daya <br> 1 Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd1ke3phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Perubahan Daya <br> 1 Fasa ke 3 Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd3phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Perubahan Daya <br> 3 Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cpd3ke1phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Perubahan Daya <br> 3 Fasa ke 1 Fasa
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <!-- Link Menu Halaman Cetak Multiguna -->
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="#" data-toggle="collapse" data-target="#collapseE" aria-expanded="true" aria-controls="collapseE">
+                                            <i class="fas fa-chevron-circle-right"></i>
+                                            <span class="font-weight-bolder text-capitalize">Menu Cetak <br> Multiguna</span>
+                                        </a>
+                                        <div id="collapseE" class="collapse" aria-labelledby="headingFour">
+                                            <div class="bg-light py-2 collapse-inner rounded">
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cmlta1phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Multiguna 1 Fasa
+                                                </a>
+                                                <a class="collapse-item font-weight-bold" href="header.php?page=cmlta3phasa">
+                                                    <i class="fas fa-circle fa-xs"></i>
+                                                    Multiguna 3 Fasa
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=clpetugassurveypb">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Laporan Petugas <br> Survey
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=clteknisipb">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Laporan Teknisi <br>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=clpbtolak">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Laporan Data <br> Pengajuan <br> Ditolak
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=cetakpengaduan">
+                                            <i class="fas fa-copy"></i>
+                                            <span class="font-weight-bolder text-capitalize">Cetak Laporan <br> Pengaduan</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
                     </li>
                 <?php
                 }
@@ -858,10 +1092,44 @@ if (!isset($_SESSION['username'])) {
                             case 'cmlta3phasa':
                                 include "pelayanan_penyambungan/laporancetak/multiguna/mcmultiguna3phasa.php";
                                 break;
+                            case 'clpetugassurveypb':
+                                include "pelayanan_penyambungan/laporancetak/pasang_baru/mcpspb.php";
+                                break;
+                            case 'clteknisipb':
+                                include "pelayanan_penyambungan/laporancetak/pasang_baru/mcteknisipb.php";
+                                break;
+                            case 'clpbtolak':
+                                include "pelayanan_penyambungan/laporancetak/pasang_baru/mcpbtolak.php";
+                                break;
+                            case 'clpetugassurveypd':
+                                include "pelayanan_penyambungan/laporancetak/perubahan_daya/mcpspd.php";
+                                break;
+                            case 'clteknisipd':
+                                include "pelayanan_penyambungan/laporancetak/perubahan_daya/mcteknisipd.php";
+                                break;
+                            case 'clpdtolak':
+                                include "pelayanan_penyambungan/laporancetak/perubahan_daya/mcpdtolak.php";
+                                break;
+                            case 'clpetugassurveymlta':
+                                include "pelayanan_penyambungan/laporancetak/multiguna/mcpsmlta.php";
+                                break;
+                            case 'clteknisimlta':
+                                include "pelayanan_penyambungan/laporancetak/multiguna/mcteknisimlta.php";
+                                break;
+                            case 'clmltatolak':
+                                include "pelayanan_penyambungan/laporancetak/multiguna/mcmltatolak.php";
+                                break;
+                            case 'cpelanggan':
+                                include "pelayanan_penyambungan/laporancetak/pelanggan/mcpelanggan.php";
+                                break;
+
 
                                 //case untuk input progress petugas survey
                             case 'progressurvey':
                                 include "teknisi/survey/form_input_progress.php";
+                                break;
+                            case 'laporansurveyditolak':
+                                include "teknisi/survey/form_laporan_tolak.php";
                                 break;
 
                                 //case untuk halaman laporan teknisi yanbung

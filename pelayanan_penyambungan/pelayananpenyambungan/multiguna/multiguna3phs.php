@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Multiguna 3 Phasa</title>
+    <title>Multiguna 3 Fasa</title>
 
     <?php
     $pageSkr = 'multiguna3phasa';
@@ -36,7 +36,7 @@
 
     <!-- Modal dialog untuk detail biaya -->
     <div id="get-data2" class="modal fade" role="dialog">
-        <div class="modal-dialog mw-100 modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Detail Biaya RAB</h4>
@@ -104,7 +104,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Multiguna 3 Phasa</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Multiguna 3 Fasa</u></h1>
     </div>
 
     <!-- Tabel Utama -->
@@ -132,7 +132,7 @@
                     <tbody>
                         <?php
                         // $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.*,d.*, e.*, f.no_petugas_survey FROM tb_mohon_multiguna b JOIN tb_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = b.id_pelanggan LEFT JOIN tb_laporan_survey d ON d.id_mohon_survey = b.id_mohon LEFT JOIN tb_survey_lap_masuk e ON e.id_mohon_survey = b.id_mohon LEFT JOIN tb_petugas_survey f ON f.no_petugas_survey = e.id_petugas WHERE a.fasa = '3 FASA' && b.status_pembayaran = '1' && b.status_survey = '3'");
-                        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.*,d.*, e.*, f.no_teknisi FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan LEFT JOIN tb_laporan_tekyan d ON d.id_yanbung = b.id_mlta LEFT JOIN tb_tekyan_lap_masuk e ON e.id_yanbung = b.id_mlta LEFT JOIN tb_teknisi_penyambungan f ON f.no_teknisi = e.id_teknisi WHERE b.fasa = '3 FASA' && a.status_pembayaran = '1' && a.status_survey = '3'");
+                        $data = mysqli_query($mysqli, "SELECT a.* , b.*, c.*,d.*, e.*, f.no_teknisi FROM tb_multiguna b JOIN tb_mohon_multiguna a ON b.id_mohon = a.id_mohon JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan LEFT JOIN tb_laporan_tekyan d ON d.id_yanbung = b.id_mlta LEFT JOIN tb_tekyan_lap_masuk e ON e.id_yanbung = b.id_mlta LEFT JOIN tb_teknisi_penyambungan f ON f.no_teknisi = e.id_teknisi WHERE b.fasa = '3 FASA' && a.status_pembayaran = '1' && a.status_survey = '3' ORDER BY a.id_mohon ASC");
 
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);

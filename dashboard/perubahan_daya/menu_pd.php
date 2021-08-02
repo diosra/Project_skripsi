@@ -14,20 +14,7 @@
     <?php
     $pageSkr = 'pd';
     include_once '../header.php';
-
-    extract($_POST);
-    $queryambil = mysqli_query($mysqli, "SELECT max(no_registrasi) as RegTerbesar FROM tb_mohon_pd");
-    $dataambil = mysqli_fetch_array($queryambil);
-    $noRegistrasi = @$dataambil['RegTerbesar'];
-
-    $urutan = (int) substr($noRegistrasi, 7, 5);
-    $urutan++;
-
-    $huruf = "NRG-PD-";
-    $noRegistrasi = $huruf . sprintf("%05s", $urutan);
     ?>
-
-
     <script type="text/javascript">
         function prola() {
             var tipe = document.getElementById('produk').value;
@@ -43,6 +30,7 @@
     </script>
 
     <script src="process.js"></script> <!-- Load file process.js -->
+    <script src="hitung.js"></script> <!-- Load file process.js -->
 </head>
 
 <!-- Begin Page Content -->
@@ -71,7 +59,7 @@
     <div class="card shadow mb-4">
         <!-- Form Utama -->
         <div class="card-body">
-            <form action="menu_pd.php" method="post" name="form1">
+            <form action="../send.php" method="post" name="form1">
 
                 <h3 class="mb-4"><u>Data Pemohon</u></h3>
 
@@ -82,35 +70,35 @@
 
                 <div class="form-group">
                     <label for="">Identitas (No KTP)</label> <br>
-                    <input type="text" class="form-control" value="" id="ktp" required readonly="readonly">
+                    <input type="text" name="identitas" class="form-control" value="" id="ktp" required readonly="readonly">
                 </div>
 
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" id="nama" class="form-control" readonly="readonly" required>
+                    <input type="text" name="nama" id="nama" class="form-control" readonly="readonly" required>
                 </div>
 
                 <div class="form-group">
                     <label for="">Alamat</label>
-                    <textarea class="form-control" id="alamat" cols="10" rows="3" required readonly="readonly"></textarea>
+                    <textarea class="form-control" name="alamat" id="alamat" cols="10" rows="3" required readonly="readonly"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="">Email</label>
-                    <input type="email" class="form-control" id="email" required readonly="readonly">
+                    <input type="email" name="email" class="form-control" id="email" required readonly="readonly">
                 </div>
 
                 <div class="form-group row">
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. HP</label>
-                            <input type="number" id="nohp" class="form-control" value="" required readonly="readonly">
+                            <input type="number" name="nohp" id="nohp" class="form-control" value="" required readonly="readonly">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. Telp</label>
-                            <input type="number" id="notelp" class="form-control" value="" required readonly="readonly">
+                            <input type="number" name="notelp" id="notelp" class="form-control" value="" required readonly="readonly">
                         </div>
                     </div>
                 </div>
@@ -170,7 +158,7 @@
 
                 <div class="form-group">
                     <label for="">Daya</label>
-                    <select name="daya_baru" class="form-control" required>
+                    <select name="daya_baru" id="daya_baru" class="form-control" required>
                         <option disabled selected>Pilih</option>
                         <option>450</option>
                         <option>900</option>
@@ -191,11 +179,17 @@
 
                 <input type="hidden" name="tgl_masuk" value="<?php echo date("Y-m-d"); ?>">
 
+                <div class="form-group">
+                    <label for="">Total Biaya</label>
+                    <input type="text" id="biaya" name="biaya" class="form-control" readonly>
+                    <a type="button" id="btn-hitung" class="btn btn-primary mt-2">Hitung</a>
+                </div>
+
                 <div class="form-group row float-right">
                     <div class="col">
                         <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
 
-                        <button type="submit" class="btn btn-primary tesboot" name="save"><i class="fas fa-save"></i> Simpan</button>
+                        <button type="submit" class="btn btn-primary tesboot" name="savepd"><i class="fas fa-save"></i> Simpan</button>
                     </div>
                 </div>
             </form>
@@ -220,194 +214,6 @@ include_once '../footer.php';
         document.getElementById('nama').value = prdName[x].nama;
     }
 </script>
-
-<!-- PHP - Query Tombol Save dan SweetAlert -->
-<?php
-if (isset($_POST['save'])) {
-    $idplg = $_POST['idplg'];
-    $dayalama = $_POST['daya_lama'];
-    $tariflama = $_POST['tarif_lama'];
-    $produk_layanan = $_POST['produk_layanan'];
-    $daya = $_POST['daya_baru'];
-    $peruntukan = $_POST['peruntukan'];
-    $tgl_masuk = $_POST['tgl_masuk'];
-    $fasalama = $_POST['fasalama'];
-
-    if ($daya <= $dayalama) {
-        $hargaMaterai = 0;
-        $hargaPenyambungan = 0;
-
-        if ($daya <= "900") {
-            $hargaUJL = $daya * 72;
-        } elseif ($daya == "1300") {
-            $hargaUJL = $daya * 133;
-        } elseif ($daya == "2200") {
-            $hargaUJL = $daya * 141;
-        } elseif ($daya == "3500" || $daya <= "5500") {
-            $hargaUJL = $daya * 157;
-        } elseif ($daya >= "6600") {
-            $hargaUJL = $daya * 140;
-        }
-
-        if ($produk_layanan == "PASCABAYAR") {
-            $totalBiaya = (($daya - $dayalama) * 0) + $hargaUJL + $hargaMaterai;
-        } elseif ($produk_layanan == "PRABAYAR") {
-            $hargaToken = $_POST['token'];
-            $totalBiaya = (($daya - $dayalama) * 0) + $hargaToken + $hargaMaterai;
-        }
-    } elseif ($daya >= $dayalama) {
-        if ($dayalama <= "1300" && $daya == "2200") {
-            $hargaMaterai = 0;
-            $hargaPenyambungan = 937;
-
-            if ($produk_layanan == "PASCABAYAR") {
-                $hargaUJL = $daya * 141;
-                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
-            } elseif ($produk_layanan == "PRABAYAR") {
-                $hargaToken = $_POST['token'];
-                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
-            }
-        } elseif ($dayalama <= "2200" && $daya >= "3500") {
-            $hargaPenyambungan = 969;
-
-            if ($daya >= "6600") {
-                $hargaMaterai = 10000;
-            } else {
-                $hargaMaterai = 0;
-            }
-
-            if ($daya <= "900") {
-                $hargaUJL = $daya * 72;
-            } elseif ($daya == "1300") {
-                $hargaUJL = $daya * 133;
-            } elseif ($daya == "2200") {
-                $hargaUJL = $daya * 141;
-            } elseif ($daya == "3500" || $daya <= "5500") {
-                $hargaUJL = $daya * 157;
-            } elseif ($daya >= "6600") {
-                $hargaUJL = $daya * 140;
-            }
-
-            if ($produk_layanan == "PASCABAYAR") {
-                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
-            } elseif ($produk_layanan == "PRABAYAR") {
-                $hargaToken = $_POST['token'];
-                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
-            }
-        } elseif ($dayalama >= "2200" && $daya >= "2200") {
-            $hargaPenyambungan = 969;
-
-            if ($daya >= "6600") {
-                $hargaMaterai = 10000;
-            } else {
-                $hargaMaterai = 0;
-            }
-
-            if ($daya <= "900") {
-                $hargaUJL = $daya * 72;
-            } elseif ($daya == "1300") {
-                $hargaUJL = $daya * 133;
-            } elseif ($daya == "2200") {
-                $hargaUJL = $daya * 141;
-            } elseif ($daya == "3500" || $daya <= "5500") {
-                $hargaUJL = $daya * 157;
-            } elseif ($daya >= "6600") {
-                $hargaUJL = $daya * 140;
-            }
-
-            if ($produk_layanan == "PASCABAYAR") {
-                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
-            } elseif ($produk_layanan == "PRABAYAR") {
-                $hargaToken = $_POST['token'];
-                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
-            }
-        }
-    }
-
-    // Penentuan Tarif Berdasarkan Daya
-    if ($daya <= "2200") {
-        $tarif = "R-1";
-    } elseif ($daya == "3500" || $daya <= "5500") {
-        $tarif = "R-2";
-    } elseif ($daya >= "6600") {
-        $tarif = "R-3";
-    }
-
-    if ($produk_layanan == "PASCABAYAR") {
-        $insert = "INSERT INTO tb_mohon_pd (no_registrasi,id_pelanggan, daya_lama,tarif_lama, produk_layanan, daya_baru,tarif_baru,total,peruntukan,tgl_masuk) 
-        VALUES 
-        ('$noRegistrasi','$idplg', '$dayalama','$tariflama','$produk_layanan','$daya','$tarif','$totalBiaya', '$peruntukan', '$tgl_masuk')";
-    } elseif ($produk_layanan == "PRABAYAR") {
-        $token = $_POST['token'];
-        $t = "T";
-
-        $insert = "INSERT INTO tb_mohon_pd (no_registrasi,id_pelanggan, daya_lama,tarif_lama, produk_layanan, daya_baru,tarif_baru,total,token,peruntukan,tgl_masuk) 
-        VALUES 
-        ('$noRegistrasi','$idplg', '$dayalama','$tariflama','$produk_layanan','$daya','$tarif$t','$totalBiaya','$token', '$peruntukan', '$tgl_masuk')";
-    }
-    $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));;
-    // var_dump($insert);
-
-    if ($query) {
-        if ($daya <= "5500") {
-            $fasa = "1 Fasa";
-        } elseif ($daya >= "6600") {
-            $fasa = "3 Fasa";
-        }
-
-        if ($fasalama == "1 Fasa" && $fasa == "3 Fasa") {
-            $pekerjaanRAB = "PD 1 Fasa ke 3 Fasa";
-        } elseif ($fasalama == "3 Fasa" && $fasa == "1 Fasa") {
-            $pekerjaanRAB = "PD 3 Fasa ke 1 Fasa";
-        } elseif ($fasalama == "1 Fasa" && $fasa == "1 Fasa") {
-            $pekerjaanRAB = "PD 1 Fasa";
-        } elseif ($fasalama == "3 Fasa" && $fasa == "3 Fasa") {
-            $pekerjaanRAB = "PD 3 Fasa";
-        }
-
-        if ($produk_layanan == "PASCABAYAR") {
-            if ($daya <= "5500") {
-                $insert2 = "INSERT INTO tb_perubahan_daya (id_mohon,jenis_transaksi,daya_lama,tarif_lama,daya_baru,tarif_baru,fasa_lama,fasa_baru,pekerjaan_rab) VALUES ('" . mysqli_insert_id($mysqli) . "','Perubahan Daya','$dayalama','$tariflama','$daya','$tarif','$fasalama','$fasa','$pekerjaanRAB')";
-            } elseif ($daya >= "6600") {
-                $insert2 = "INSERT INTO tb_perubahan_daya (id_mohon,jenis_transaksi,daya_lama,tarif_lama,daya_baru,tarif_baru,fasa_lama,fasa_baru,pekerjaan_rab) VALUES ('" . mysqli_insert_id($mysqli) . "','Perubahan Daya','$dayalama','$tariflama','$daya','$tarif','$fasalama','$fasa','$pekerjaanRAB')";
-            }
-        } elseif ($produk_layanan == "PRABAYAR") {
-            $t = "T";
-            if ($daya <= "5500") {
-                $insert2 = "INSERT INTO tb_perubahan_daya (id_mohon,jenis_transaksi,daya_lama,tarif_lama,daya_baru,tarif_baru,fasa_lama,fasa_baru,pekerjaan_rab) VALUES ('" . mysqli_insert_id($mysqli) . "','Perubahan Daya','$dayalama','$tariflama','$daya','$tarif$t','$fasalama','$fasa','$pekerjaanRAB')";
-            } elseif ($daya >= "6600") {
-                $insert2 = "INSERT INTO tb_perubahan_daya (id_mohon,jenis_transaksi,daya_lama,tarif_lama,daya_baru,tarif_baru,fasa_lama,fasa_baru,pekerjaan_rab) VALUES ('" . mysqli_insert_id($mysqli) . "','Perubahan Daya','$dayalama','$tariflama','$daya','$tarif$t','$fasalama','$fasa','$pekerjaanRAB')";
-            }
-        }
-        $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));;
-        // var_dump($insert2);
-?>
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Sukses',
-                text: 'Sukses Menambahkan Data Mohon Perubahan Daya! Data anda akan segera kami cek dan akan kami hubungi melewati E-Mail!'
-            }).then((result) => {
-                window.location = "menu_pd.php";
-            })
-        </script>
-    <?php
-    } else {
-
-    ?>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Gagal!',
-                text: 'Gagal Menambahkan Data Mohon Perubahan Daya!'
-            }).then((result) => {
-                window.location = "menu_pd.php";
-            })
-        </script>
-<?php
-    }
-}
-?>
 
 
 </html>

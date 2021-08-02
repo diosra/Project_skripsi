@@ -15,12 +15,16 @@ function search() {
                 $("#nama").val(response.nama);
                 $("#alamat").val(response.alamat);
                 $("#nohp").val(response.nohp);
+                $("#notelpon").val(response.notelpon);
                 $("#email").val(response.email);
+                $("#idpel").val(response.idpel);
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Gagal!',
                     text: 'ID Pelanggan Tidak Ditemukan!'
+                }).then((result) => {
+                    $('#id_pelanggan').val("");
                 })
             }
         },

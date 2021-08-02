@@ -90,14 +90,14 @@
         </div>
     </div>
 
-    <!-- Tabel Utama -->
+    <!-- Tabel Pasang Baru -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex">
-            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
+            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Pasang Baru</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
+                <table class="display table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
@@ -121,26 +121,8 @@
                         JOIN tb_mohon_pb d ON b.id_mohon = d.id_mohon 
                         WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_teknisi = '1' || b.status_teknisi = '2')");
 
-                        $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.no_teknisi, d.*, e.* FROM 
-                        tb_tekyan_lap_masuk a 
-                        JOIN tb_perubahan_daya b ON a.id_yanbung = b.id_perubahan_daya 
-                        JOIN tb_teknisi_penyambungan c ON a.id_teknisi = c.no_teknisi 
-                        JOIN tb_mohon_pd d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_teknisi = '1' || b.status_teknisi = '2')");
-
-                        $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.no_teknisi, d.*, e.* FROM 
-                        tb_tekyan_lap_masuk a 
-                        JOIN tb_multiguna b ON a.id_yanbung = b.id_mlta 
-                        JOIN tb_teknisi_penyambungan c ON a.id_teknisi = c.no_teknisi 
-                        JOIN tb_mohon_multiguna d ON b.id_mohon = d.id_mohon
-                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_teknisi = '1' || b.status_teknisi = '2')");
-
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
-                        $hitungrow2 = mysqli_num_rows($data2);
-                        $hitungrow3 = mysqli_num_rows($data3);
 
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
@@ -203,7 +185,50 @@
                                 </tr>
                             <?php } ?>
                         <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+
+    <!-- Tabel Perubahan Daya -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex">
+            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Perubahan Daya</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="display table table-bordered text-gray-900" id="dataTable2" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="text-center">No Registrasi</th>
+                            <th class="text-center">Identitas</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Alamat</th>
+                            <th class="text-center">Tanggal Permohonan Masuk</th>
+                            <th class="text-center">Tugas</th>
+                            <th class="text-center">Deskripsi Pengajuan</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <?php
+                        $nama = $_SESSION['nama'];
+
+                        $data2 = mysqli_query($mysqli, "SELECT a.* , b.* , c.no_teknisi, d.*, e.* FROM 
+                        tb_tekyan_lap_masuk a 
+                        JOIN tb_perubahan_daya b ON a.id_yanbung = b.id_perubahan_daya 
+                        JOIN tb_teknisi_penyambungan c ON a.id_teknisi = c.no_teknisi 
+                        JOIN tb_mohon_pd d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_teknisi = '1' || b.status_teknisi = '2')");
+
+                        $no = 1;
+                        $hitungrow2 = mysqli_num_rows($data2);
+
                         if ($hitungrow2 > 0) {
                             while ($row = $data2->fetch_assoc()) { ?>
                                 <tr>
@@ -265,7 +290,49 @@
                                 </tr>
                             <?php } ?>
                         <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <hr style="border-top: 1px solid #8c8b8b; border-bottom: 1px solid #fff;">
+
+    <!-- Tabel Multiguna -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex">
+            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Multiguna / Sambung Sementara</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="display table table-bordered text-gray-900" id="dataTable3" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th class="text-center">No Registrasi</th>
+                            <th class="text-center">Identitas</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Alamat</th>
+                            <th class="text-center">Tanggal Permohonan Masuk</th>
+                            <th class="text-center">Tugas</th>
+                            <th class="text-center">Deskripsi Pengajuan</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <?php
+                        $nama = $_SESSION['nama'];
+                        $data3 = mysqli_query($mysqli, "SELECT a.* , b.* , c.no_teknisi, d.*, e.* FROM 
+                        tb_tekyan_lap_masuk a 
+                        JOIN tb_multiguna b ON a.id_yanbung = b.id_mlta 
+                        JOIN tb_teknisi_penyambungan c ON a.id_teknisi = c.no_teknisi 
+                        JOIN tb_mohon_multiguna d ON b.id_mohon = d.id_mohon
+                        JOIN tb_pelanggan e ON d.id_pelanggan = e.idpel
+                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_teknisi = '1' || b.status_teknisi = '2')");
+
+                        $no = 1;
+                        $hitungrow3 = mysqli_num_rows($data3);
+
                         if ($hitungrow3 > 0) {
                             while ($row3 = $data3->fetch_assoc()) { ?>
                                 <tr>
@@ -332,7 +399,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <!-- /.container-fluid -->
 
@@ -440,9 +506,36 @@
 include_once 'footer.php';
 ?>
 
+<!-- Script untuk Menampilkan 2 Tabel di 1 halaman -->
+<script>
+    $(document).ready(function() {
+        $('table.display').DataTable();
+    });
+</script>
+
 <!-- Script buat menghilangkan beberapa fitur sorting di datatables -->
 <script>
     $('#dataTable').DataTable({
+        "columnDefs": [{
+            "orderable": false,
+            "targets": [4, 6, 7, 8]
+        }]
+    });
+</script>
+
+<!-- Script buat menghilangkan beberapa fitur sorting di datatables - Tabel 2 -->
+<script>
+    $('#dataTable2').DataTable({
+        "columnDefs": [{
+            "orderable": false,
+            "targets": [4, 6, 7, 8]
+        }]
+    });
+</script>
+
+<!-- Script buat menghilangkan beberapa fitur sorting di datatables - Tabel 2 -->
+<script>
+    $('#dataTable3').DataTable({
         "columnDefs": [{
             "orderable": false,
             "targets": [4, 6, 7, 8]

@@ -31,88 +31,123 @@ if ($_POST['id']) {
 
             if ($fasa == "1 Fasa") {
                 $pekerjaan = "Multiguna Pelanggan 1 Fasa";
-                $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tb_harga WHERE KODE = 'MULTIGUNA PELANGGAN 1 FASA'");
+                $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tb_harga WHERE KODE = 'MULTIGUNA PELANGGAN 1 FASA' ORDER BY id_harga ASC");
                 $hargaB = "";
+                $hargaB2 = "";
                 $n = 0;
                 while ($hargaambil = $harga->fetch_array()) {
                     $hargaB = $hargaB . "<td class='align-middle'>Rp." . number_format($hargaambil[0], 0, ',', '.') . "</td>";
                     $n = $n + $hargaambil[0];
                 }
 
-                $hargaB = $hargaB .
+                $hargaB2 = $hargaB2 .
                     "<td class='align-middle'>Rp." . number_format($n, 0, ',', '.') . "</td>";
+
+                $querytb_harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN, URAIAN FROM tb_harga WHERE KODE = 'MULTIGUNA PELANGGAN 1 FASA' ORDER BY id_harga ASC");
+                $querynama = "";
+                $querycolumn = "";
+                $querycolumnharga = "";
+                $querycolumnharga2 = "";
+                $no = 1;
+                $coldata = mysqli_num_rows($querytb_harga);
+                $querycolumn = $querycolumn . "<th scope='col' class='text-center'>Detail Biaya</th>";
+                $querycolumnharga = $querycolumnharga . "<td  class='align-middle text-center'>Total Biaya</td>";
+                $querycolumnharga2 = $querycolumnharga2 . "<th scope='col' class='text-center'>Harga Per satuan</th>";
+                while ($uraianambil = $querytb_harga->fetch_array()) {
+                    $querynama = $querynama . "
+                    <td class='text-center'>Detail " . $no++ . " <i class='fas fa-info-circle' tabindex='0' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='top' data-content='" . $uraianambil[1] . "'></i>
+                    </td>
+                    <td class='align-middle'>Rp." . number_format($uraianambil[0], 0, ',', '.') . "</td>       
+                    </tr>
+                    ";
+                }
 
                 echo '
             <div class="form-group">
                 <label for="">Pekerjaan RAB</label>
-                <input type="text" value="' . $pekerjaan . '" class="form-control w-25" readonly>
+                <input type="text" value="' . $pekerjaan . '" class="form-control" readonly>
             </div>
             
             <hr>
 
+            <h5>Detail Pekerjaan RAB</h5>
+
             <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+            
+            <thead>
+                <th scope="col" class="text-center">Detail Uraian</th>
+                <th scope="col" class="text-center">Harga</th>
+            </thead>
+            <tbody>
+            <tr>
+                ' . $querynama . ' 
+            </tr>
                         <tr>
-                            <th colspan="3" class="text-center">Detail Biaya</th>
-                            <th rowspan="2" class="align-middle text-center">Total Biaya</th>
+                        ' . $querycolumnharga . '
+                        ' . $hargaB2 . '
                         </tr>
-                        <tr>
-                            <th class="text-center">Detail 1 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="MCB"></i></th>
-                            <th class="text-center">Detail 2 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Segel Plastik"></i></th>
-                            <th class="text-center">Detail 3 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Multiguna Pelanggan"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                                <tr>
-                                    ' . $hargaB . '
-                                </tr>
                     </tbody>
-                </table>
+            </table>
 		';
             } elseif ($fasa == "3 Fasa") {
                 $pekerjaan = "Multiguna Pelanggan 3 Fasa";
-                $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tb_harga WHERE KODE = 'MULTIGUNA PELANGGAN 3 FASA'");
+                $harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN FROM tb_harga WHERE KODE = 'MULTIGUNA PELANGGAN 3 FASA' ORDER BY id_harga ASC");
                 $hargaB = "";
+                $hargaB2 = "";
                 $n = 0;
                 while ($hargaambil = $harga->fetch_array()) {
                     $hargaB = $hargaB . "<td class='align-middle'>Rp." . number_format($hargaambil[0], 0, ',', '.') . "</td>";
                     $n = $n + $hargaambil[0];
                 }
 
-                $hargaB = $hargaB .
+                $hargaB2 = $hargaB2 .
                     "<td class='align-middle'>Rp." . number_format($n, 0, ',', '.') . "</td>";
+
+                $querytb_harga = mysqli_query($mysqli, "SELECT HARGA_SATUAN, URAIAN FROM tb_harga WHERE KODE = 'MULTIGUNA PELANGGAN 3 FASA' ORDER BY id_harga ASC");
+                $querynama = "";
+                $querycolumn = "";
+                $querycolumnharga = "";
+                $querycolumnharga2 = "";
+                $no = 1;
+                $coldata = mysqli_num_rows($querytb_harga);
+                $querycolumn = $querycolumn . "<th scope='col' class='text-center'>Detail Biaya</th>";
+                $querycolumnharga = $querycolumnharga . "<td  class='align-middle text-center'>Total Biaya</td>";
+                $querycolumnharga2 = $querycolumnharga2 . "<th scope='col' class='text-center'>Harga Per satuan</th>";
+                while ($uraianambil = $querytb_harga->fetch_array()) {
+                    $querynama = $querynama . "
+                    <td class='text-center'>Detail " . $no++ . " <i class='fas fa-info-circle' tabindex='0' data-container='body' data-toggle='popover' data-trigger='focus' data-placement='top' data-content='" . $uraianambil[1] . "'></i>
+                    </td>
+                    <td class='align-middle'>Rp." . number_format($uraianambil[0], 0, ',', '.') . "</td>       
+                    </tr>
+                    ";
+                }
 
                 echo '
             <div class="form-group">
                 <label for="">Pekerjaan RAB</label>
-                <input type="text" value="' . $pekerjaan . '" class="form-control w-25" readonly>
+                <input type="text" value="' . $pekerjaan . '" class="form-control" readonly>
             </div>
             
             <hr>
+            
+            <h5>Detail Pekerjaan RAB</h5>
 
-            <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+             <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
+            
+            <thead>
+                <th scope="col" class="text-center">Detail Uraian</th>
+                <th scope="col" class="text-center">Harga</th>
+            </thead>
+            <tbody>
+            <tr>
+                ' . $querynama . ' 
+            </tr>
                         <tr>
-                            <th colspan="8" class="text-center">Detail Biaya</th>
-                            <th rowspan="2" class="align-middle text-center">Total Biaya</th>
+                        ' . $querycolumnharga . '
+                        ' . $hargaB2 . '
                         </tr>
-                        <tr>
-                            <th class="text-center">Detail 1 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="MCB"></i></th>
-                            <th class="text-center">Detail 2 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Segel Plastik"></i></th>
-                            <th class="text-center">Detail 3 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="NFA2X-T;3X35+1X35;0,6/1kV;OH"></i></th>
-                            <th class="text-center">Detail 4 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Material Adjustable Dead End Assembly (25 - 35 sqmm) : Non Steinles Steel Strip +Yorke"></i></th>
-                            <th class="text-center">Detail 5 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="CCO 3T3 (16/35 sqmm - 16/35 sqmm)"></i></th>
-                            <th class="text-center">Detail 6 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Isolasi Scotch / Rubber Tape 1 KV ( Dimension : 19 mm x 20,1 m x 0.177 mm )"></i></th>
-                            <th class="text-center">Detail 7 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Penarikan SR 3 Phase"></i></th>
-                            <th class="text-center">Detail 8 <br> <i class="fas fa-info-circle" tabindex="0" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="Pasang Kotak APP Langsung + Pipa Perlengkapan"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                                <tr>
-                                    ' . $hargaB . '
-                                </tr>
                     </tbody>
-                </table>
+            </table>
 		';
             } else {
                 echo

@@ -14,22 +14,12 @@
     <?php
     $pageSkr = 'mg';
     include_once '../header.php';
-
-    extract($_POST);
-    $queryambil = mysqli_query($mysqli, "SELECT max(no_registrasi) as RegTerbesar FROM tb_mohon_multiguna");
-    $dataambil = mysqli_fetch_array($queryambil);
-    $noRegistrasi = @$dataambil['RegTerbesar'];
-
-    $urutan = (int) substr($noRegistrasi, 7, 5);
-    $urutan++;
-
-    $huruf = "NRG-PS-";
-    $noRegistrasi = $huruf . sprintf("%05s", $urutan);
     ?>
 
     <script src="process.js"></script> <!-- Load file process.js -->
     <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src="hitung.js"></script> <!-- Load file process.js -->
 </head>
 
 <!-- Begin Page Content -->
@@ -58,7 +48,7 @@
     <div class="card shadow mb-4">
         <!-- Form Utama -->
         <div class="card-body">
-            <form action="menu_mg.php" method="post" name="form1">
+            <form action="../send.php" method="post" name="form1">
 
                 <h3 class="mb-4"><u>Data Pemohon</u></h3>
 
@@ -68,35 +58,35 @@
 
                 <div class="form-group">
                     <label for="">Identitas (No KTP)</label> <br>
-                    <input type="text" class="form-control" value="" id="ktp" required readonly="readonly">
+                    <input type="text" name="identitas" class="form-control" value="" id="ktp" required readonly="readonly">
                 </div>
 
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="text" id="nama" class="form-control" readonly="readonly" required>
+                    <input type="text" name="nama" id="nama" class="form-control" readonly="readonly" required>
                 </div>
 
                 <div class="form-group">
                     <label for="">Alamat</label>
-                    <textarea class="form-control" id="alamat" cols="10" rows="3" required readonly="readonly"></textarea>
+                    <textarea class="form-control" name="alamat" id="alamat" cols="10" rows="3" required readonly="readonly"></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="">Email</label>
-                    <input type="email" class="form-control" id="email" required readonly="readonly">
+                    <input type="email" name="email" class="form-control" id="email" required readonly="readonly">
                 </div>
 
                 <div class="form-group row">
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. HP</label>
-                            <input type="number" id="nohp" class="form-control" value="" required readonly="readonly">
+                            <input type="number" name="nohp" id="nohp" class="form-control" value="" required readonly="readonly">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="">No. Telp</label>
-                            <input type="number" id="notelp" class="form-control" value="" required readonly="readonly">
+                            <input type="number" name="notelp" id="notelp" class="form-control" value="" required readonly="readonly">
                         </div>
                     </div>
                 </div>
@@ -117,7 +107,7 @@
 
                 <div class="form-group">
                     <label for="">Daya yang dibutuhkan</label>
-                    <select name="daya" class="form-control" required>
+                    <select name="daya" id="daya" class="form-control" required>
                         <option value="" disabled selected>Pilih</option>
                         <option>450</option>
                         <option>900</option>
@@ -154,7 +144,7 @@
 
                 <div class="form-group">
                     <label for="">Pemakaian</label>
-                    <select name="pemakaian" class="form-control" required>
+                    <select name="pemakaian" id="pemakaian" class="form-control" required>
                         <option value="" disabled selected>Pilih</option>
                         <option>12 Jam/Hari</option>
                         <option>24 Jam/Hari</option>
@@ -163,11 +153,28 @@
 
                 <input type="hidden" name="tgl_masuk" value="<?php echo date("Y-m-d"); ?>">
 
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Total Biaya</label>
+                            <input type="text" id="biaya" name="biaya" class="form-control" readonly>
+                        </div>
+                        <a type="button" id="btn-hitung" class="btn btn-primary mt-2">Hitung</a>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Total Lama Hari</label>
+                            <input type="text" id="lama" name="lama" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="form-group row float-right">
                     <div class="col">
                         <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> Reset</button>
 
-                        <button type="submit" class="btn btn-primary tesboot" name="save"><i class="fas fa-save"></i> Simpan</button>
+                        <button type="submit" class="btn btn-primary tesboot" name="savemlta"><i class="fas fa-save"></i> Simpan</button>
                     </div>
                 </div>
             </form>
@@ -273,293 +280,6 @@ include_once '../footer.php';
         return e;
     }
 </script> -->
-
-<!-- PHP - Query Tombol Save dan SweetAlert -->
-<?php
-if (isset($_POST['save'])) {
-    $idplg = $_POST['idplg'];
-    $daya = $_POST['daya'];
-    $tglmulai = $_POST['tgl_mulai'];
-    $tglselesai = $_POST['tgl_selesai'];
-    $pemakaian = $_POST['pemakaian'];
-    $peruntukan = $_POST['peruntukan'];
-    $tgl_masuk = $_POST['tgl_masuk'];
-
-    $tgl_awal = date_create($tglmulai);
-    $tgl_akhir = date_create($tglselesai);
-    $diff = date_diff($tgl_awal, $tgl_akhir);
-    $ambilLamaHari = $diff->d;
-
-    $biayaKWH = 1650;
-    if ($daya >= "7700") {
-        $PPN = 10;
-        $persenPPN = $PPN / 100;
-    } else {
-        $PPN = 0;
-        $persenPPN = $PPN / 100;
-    }
-
-    $arr12 = [
-        //450 per 1 hari dan 12 jam
-        "5",
-        //900
-        "11",
-        //1300
-        "16",
-        //2200
-        "26",
-        //3500
-        "42",
-        //4400
-        "53",
-        //5500
-        "66",
-        //6600
-        "79",
-        //7700
-        "92",
-        //10600
-        "127",
-        //11000
-        "132",
-        //13200
-        "158",
-        //16500
-        "198",
-        //23000
-        "276"
-    ];
-
-    $arr24 = [
-        //450 per 1 hari dan 24 jam
-        "11",
-        //900
-        "22",
-        //1300
-        "31",
-        //2200
-        "53",
-        //3500
-        "84",
-        //4400
-        "106",
-        //5500
-        "132",
-        //6600
-        "158",
-        //7700
-        "185",
-        //10600
-        "254",
-        //11000
-        "264",
-        //13200
-        "317",
-        //16500
-        "396",
-        //23000
-        "552"
-    ];
-
-    if ($pemakaian == "12 Jam/Hari") {
-        if ($daya == "450") {
-            $eDib = $arr12[0];
-        } elseif ($daya == "900") {
-            $eDib = $arr12[1];
-        } elseif ($daya == "1300") {
-            $eDib = $arr12[2];
-        } elseif ($daya == "2200") {
-            $eDib = $arr12[3];
-        } elseif ($daya == "3500") {
-            $eDib = $arr12[4];
-        } elseif ($daya == "4400") {
-            $eDib = $arr12[5];
-        } elseif ($daya == "5500") {
-            $eDib = $arr12[6];
-        } elseif ($daya == "6600") {
-            $eDib = $arr12[7];
-        } elseif ($daya == "7700") {
-            $eDib = $arr12[8];
-        } elseif ($daya == "10600") {
-            $eDib = $arr12[9];
-        } elseif ($daya == "11000") {
-            $eDib = $arr12[10];
-        } elseif ($daya == "13200") {
-            $eDib = $arr12[11];
-        } elseif ($daya == "16500") {
-            $eDib = $arr12[12];
-        } elseif ($daya == "23000") {
-            $eDib = $arr12[13];
-        }
-    } else {
-        if ($daya == "450") {
-            $eDib = $arr24[0];
-        } elseif ($daya == "900") {
-            $eDib = $arr24[1];
-        } elseif ($daya == "1300") {
-            $eDib = $arr24[2];
-        } elseif ($daya == "2200") {
-            $eDib = $arr24[3];
-        } elseif ($daya == "3500") {
-            $eDib = $arr24[4];
-        } elseif ($daya == "4400") {
-            $eDib = $arr24[5];
-        } elseif ($daya == "5500") {
-            $eDib = $arr24[6];
-        } elseif ($daya == "6600") {
-            $eDib = $arr24[7];
-        } elseif ($daya == "7700") {
-            $eDib = $arr24[8];
-        } elseif ($daya == "10600") {
-            $eDib = $arr24[9];
-        } elseif ($daya == "11000") {
-            $eDib = $arr24[10];
-        } elseif ($daya == "13200") {
-            $eDib = $arr24[11];
-        } elseif ($daya == "16500") {
-            $eDib = $arr24[12];
-        } elseif ($daya == "23000") {
-            $eDib = $arr24[13];
-        }
-    }
-
-    if ($ambilLamaHari == "1") {
-        $eDibA = $eDib * $ambilLamaHari;
-
-        if ($eDibA <= "80") {
-            $emin = 80;
-        } else {
-            $emin = $eDib * $ambilLamaHari;
-        }
-
-        $PPJ = 8;
-        $persenPPJ = $PPJ / 100;
-        $biayaMaterai = 0;
-
-        $total1 = $emin * $biayaKWH;
-        $total2 = $persenPPJ * $total1;
-        $total3 = $persenPPN * $total1;
-        $totalBiaya = $total1 + $total2 + $total3 + $biayaMaterai;
-    } elseif ($ambilLamaHari == "2" || $ambilLamaHari == "3") {
-        $eDibA = $eDib * $ambilLamaHari;
-
-        if ($eDibA <= "150") {
-            $emin = 150;
-        } else {
-            $emin = $eDib * $ambilLamaHari;
-        }
-
-        $PPJ = 8;
-        $persenPPJ = $PPJ / 100;
-        $biayaMaterai = 0;
-
-        $total1 = $emin * $biayaKWH;
-        $total2 = $persenPPJ * $total1;
-        $total3 = $persenPPN * $total1;
-        $totalBiaya = $total1 + $total2 + $total3 + $biayaMaterai;
-    } elseif ($ambilLamaHari == "4" || $ambilLamaHari <= "7") {
-        $eDibA = $eDib * $ambilLamaHari;
-
-        if ($eDibA <= "300") {
-            $emin = 300;
-        } else {
-            $emin = $eDib * $ambilLamaHari;
-        }
-
-        $PPJ = 8;
-        $persenPPJ = $PPJ / 100;
-        if (($ambilLamaHari == "5" || $ambilLamaHari <= "30") && $daya >= "23000") {
-            $biayaMaterai = 10000;
-        } else {
-            $biayaMaterai = 0;
-        }
-
-        $total1 = $emin * $biayaKWH;
-        $total2 = $persenPPJ * $total1;
-        $total3 = $persenPPN * $total1;
-        $totalBiaya = $total1 + $total2 + $total3 + $biayaMaterai;
-    } elseif ($ambilLamaHari == "8" || $ambilLamaHari <= "30") {
-        $eDibA = $eDib * $ambilLamaHari;
-
-        if ($eDibA <= "500") {
-            $emin = 500;
-        } else {
-            $emin = $eDib * $ambilLamaHari;
-        }
-        $PPJ = 8;
-        $persenPPJ = $PPJ / 100;
-
-        if ($ambilLamaHari == "5" && $daya >= "23000") {
-            $biayaMaterai = 10000;
-        } else {
-            $biayaMaterai = 0;
-        }
-
-        $total1 = $emin * $biayaKWH;
-        $total2 = $persenPPJ * $total1;
-        $total3 = $persenPPN * $total1;
-        $totalBiaya = $total1 + $total2 + $total3 + $biayaMaterai;
-    } elseif ($ambilLamaHari >= "31") {
-?>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Gagal!',
-                text: 'Gagal Menambahkan Data, Lama Hari tidak boleh melebihi 30 hari!'
-            }).then((result) => {
-                window.location = "menu_mg.php";
-            })
-        </script>
-    <?php
-    }
-
-    $insert = "INSERT INTO tb_mohon_multiguna (no_registrasi,id_pelanggan, daya, tgl_mulai_pemakaian, tgl_selesai_pemakaian, pemakaian,lamahari,total,peruntukan,tgl_masuk) VALUES ('$noRegistrasi','$idplg', '$daya', '$tglmulai', '$tglselesai', '$pemakaian','$ambilLamaHari Hari', '$totalBiaya', '$peruntukan','$tgl_masuk')";
-    $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-    // var_dump($insert);
-
-    if ($query) {
-        if ($daya <= "5500" || $daya == "7700") {
-            $fasa = "1 Fasa";
-        } elseif ($daya == "6600" || $daya >= "10600") {
-            $fasa = "3 Fasa";
-        }
-
-        if ($fasa == "1 Fasa") {
-            $pekerjaanRAB = "Multiguna Pelanggan 1 Fasa";
-        } else {
-            $pekerjaanRAB = "Multiguna Pelanggan 3 Fasa";
-        }
-
-        $insert2 = "INSERT INTO tb_multiguna (id_mohon,jenis_transaksi, daya, fasa, pekerjaan_rab) VALUES ('" . mysqli_insert_id($mysqli) . "','Sambung Sementara', '$daya', '$fasa', '$pekerjaanRAB')";
-        $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
-        // var_dump($insert2);
-    ?>
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Sukses',
-                text: 'Sukses Menambahkan Data Mohon Sambung Sementara! Data anda akan segera kami cek dan akan kami hubungi melewati E-Mail!'
-            }).then((result) => {
-                window.location = "menu_mg.php";
-            })
-        </script>
-    <?php
-    } else {
-    ?>
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Gagal!',
-                text: 'Gagal Menambahkan Data Mohon Multiguna / Penyambungan Sementara!'
-            }).then((result) => {
-                window.location = "menu_mg.php";
-            })
-        </script>
-<?php
-    }
-}
-
-?>
 
 
 </html>

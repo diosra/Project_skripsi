@@ -62,9 +62,11 @@
         <!-- Form Utama -->
         <div class="card-body">
 
-            <form action="pengaduan_input.php" method="post" name="form1">
+            <form action="send.php" method="post" name="form1">
 
                 <input type="text" name="no_registrasi" class="form-control" value="<?php echo $noLaporan ?>" hidden readonly>
+
+                <input type="hidden" id="idpel" name="idpel" class="form-control" required readonly>
 
                 <div class="form-group">
                     <label for="">No KTP</label>
@@ -81,9 +83,19 @@
                     <input type="text" id="email" name="email" class="form-control" required readonly>
                 </div>
 
-                <div class="form-group">
-                    <label for="">No Handphone</label>
-                    <input type="number" id="nohp" name="nohp" class="form-control" required readonly>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">No Handphone</label>
+                            <input type="number" id="nohp" name="nohp" class="form-control" required readonly>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">No Telpon</label>
+                            <input type="number" id="notelpon" name="no_telp" class="form-control" required readonly>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -91,7 +103,7 @@
                     <textarea name="alamat" class="form-control" id="alamat" cols="10" rows="3" required readonly></textarea>
                 </div>
 
-                <div class="row form-group">
+                <!-- <div class="row form-group">
                     <div class="col">
                         <div class="form-group">
                             <label for="">Kabupaten/Kota</label>
@@ -110,7 +122,7 @@
                             <input type="text" name="kelurahan" class="form-control" required required>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label for="">Jenis Gangguan</label>
@@ -150,42 +162,5 @@
 <?php
 include_once '../footer.php';
 ?>
-
-<!-- PHP - Query Tombol Save dan SweetAlert -->
-<?php
-if (isset($_POST['save'])) {
-    $gangguan = $_POST['gangguan'];
-    $identitas = $_POST['identitas'];
-    $nama = $_POST['nama'];
-    $nohp = $_POST['nohp'];
-    $email = $_POST['email'];
-    $alamat = $_POST['alamat'];
-    $kabupaten = $_POST['kabupaten'];
-    $kecamatan = $_POST['kecamatan'];
-    $kelurahan = $_POST['kelurahan'];
-    $deskripsi = $_POST['deskripsi'];
-    $tgl_masuk_laporan = $_POST['tgl_masuk_laporan'];
-
-    $insert = "INSERT INTO tb_pengaduan (gangguan,no_laporan,identitas, nama,nohp,email, alamat, kabupaten,kecamatan,kelurahan, deskripsi, tgl_masuk_laporan) VALUES ('$gangguan','$noLaporan','$identitas', '$nama', '$nohp','$email', '$alamat','$kabupaten', '$kecamatan', '$kelurahan', '$deskripsi', '$tgl_masuk_laporan')";
-    $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
-
-    if ($query) {
-        $insert2 = "INSERT INTO tb_tekpen_lap_masuk (id_pengaduan,op_acc) values ('" . mysqli_insert_id($mysqli) . "', '0')";
-        $query2 = mysqli_query($mysqli, $insert2) or die(mysqli_error($mysqli));
-?>
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Sukses.',
-                text: 'Data Laporan anda berhasil terkirim! anda akan segera dihubungi oleh operator kami dengan Email yang sudah anda masukkan'
-            }).then((result) => {
-                window.location = "pengaduan_input.php";
-            })
-        </script>
-<?php
-    }
-}
-?>
-
 
 </html>

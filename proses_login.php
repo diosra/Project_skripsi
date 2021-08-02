@@ -116,6 +116,18 @@ if (isset($_POST['log'])) {
         })
       </script>
     <?php
+    } elseif ($level == 6 && $tekcheck == 0) {
+    ?>
+      <script>
+        Swal.fire({
+          icon: 'success',
+          title: 'Sukses.',
+          text: 'Login sebagai Manager Berhasil! Selamat Datang : <?php echo $nama_asli ?>'
+        }).then((result) => {
+          window.location = "index.php";
+        })
+      </script>
+    <?php
     }
   } else {
     ?>

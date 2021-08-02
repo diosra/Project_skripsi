@@ -192,19 +192,19 @@
                             if ($filter == '1') {
                                 echo '<a href="header.php?page=cetakpengaduan&filter=1&bulan=' . $_GET['bulan'] . '&tahun=' . $_GET['tahun'] . '"></a>';
                                 $nama_bulan = array('', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember');
-                                $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND MONTH(tgl_masuk_laporan)='" . $_GET['bulan'] . "' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE a.status = 'Selesai' AND MONTH(tgl_masuk_laporan)='" . $_GET['bulan'] . "' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
                             } elseif ($filter == '2') {
                                 echo '<a href="header.php?page=cetakpengaduan&filter=2&tahun=' . $_GET['tahun'] . '"></a>';
-                                $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
+                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE a.status = 'Selesai' AND YEAR(tgl_masuk_laporan)='" . $_GET['tahun'] . "'") or die($mysqli->error);
                             } elseif ($filter == '3') {
                                 // echo '<a href="header.php?page=cetakpengaduan&filter=3&gangguan=' . $_GET['gangguan'] . '"></a>';
-                                $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND gangguan ='" . $_GET['gangguan'] . "'") or die($mysqli->error);
+                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE a.status = 'Selesai' AND gangguan ='" . $_GET['gangguan'] . "'") or die($mysqli->error);
                             } elseif ($filter == '4') {
-                                $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai' AND DATE(tgl_masuk_laporan) BETWEEN '" . $_GET['tanggal'] . "' AND '" . $_GET['tanggal2'] . "'") or die($mysqli->error);
+                                $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE a.status = 'Selesai' AND DATE(tgl_masuk_laporan) BETWEEN '" . $_GET['tanggal'] . "' AND '" . $_GET['tanggal2'] . "'") or die($mysqli->error);
                             }
                         } else {
                             echo '<a href="header.php?page=cetakpengaduan"></a>';
-                            $result = $mysqli->query("SELECT a.*, b.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan  WHERE a.status = 'Selesai'") or die($mysqli->error);
+                            $result = $mysqli->query("SELECT a.*, b.*, c.* FROM tb_pengaduan a JOIN tb_laporan_tekpen b ON a.id_pengaduan = b.id_pengaduan JOIN tb_pelanggan c ON c.idpel = a.id_pelanggan WHERE a.status = 'Selesai'") or die($mysqli->error);
                         }
                         // kode untuk isi Filter - END
 
