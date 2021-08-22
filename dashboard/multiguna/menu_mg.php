@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Multiguna / Penyambungan Sementara</title>
+    <title>Penyambungan Sementara</title>
 
     <?php
     $pageSkr = 'mg';

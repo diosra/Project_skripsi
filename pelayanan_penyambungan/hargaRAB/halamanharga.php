@@ -37,10 +37,10 @@
 
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3 d-flex">
+        <!-- <div class="card-header py-3 d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
             <a class="btn btn-primary p-2 mr-2" href="header.php?page=inputharga"><i class="fas fa-plus-circle"></i> Tambah</a>
-        </div>
+        </div> -->
 
         <div class="card-body">
             <div class="table-responsive">
@@ -55,7 +55,7 @@
                             <th class="text-center">Harga Satuan</th>
                             <!-- <th class="text-center">Status Petugas Survey</th>
                             <th class="text-center">Status Petugas Teknisi</th> -->
-                            <th class="text-center">Action</th>
+                            <!-- <th class="text-center">Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -72,14 +72,14 @@
                                     <!-- <td class="align-middle"><?php echo $row['TIPE']; ?></td> -->
                                     <td class="align-middle"><?php echo $row['SATUAN']; ?></td>
                                     <td class="align-middle">Rp. <?php echo number_format($row['HARGA_SATUAN'], 0, ',', '.') ?></td>
-                                    <td class="align-middle text-center">
+                                    <!-- <td class="align-middle text-center">
                                         <div class="col">
                                             <a href="header.php?page=editharga&edit=<?php echo $row['id_harga'] ?>" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-edit"></i></a>
                                         </div>
                                         <div class="col mt-2">
                                             <a href="header.php?page=hapusharga&hapus=<?php echo $row['id_harga'] ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus Data" id="remove"><i class="fas fa-user-minus"></i></a>
                                         </div>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             <?php } ?>
                         <?php } ?>
@@ -135,7 +135,7 @@ include_once 'footer.php';
     $('#dataTable').DataTable({
         "columnDefs": [{
             "orderable": false,
-            "targets": [1, 2, 3, 4, 5]
+            "targets": [1, 2, 3, 4]
         }]
     });
 </script>

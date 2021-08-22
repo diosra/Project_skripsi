@@ -28,7 +28,7 @@
         <div class="row">
             <!-- Jumlah Data Pelanggan -->
             <?php
-            $data = mysqli_query($mysqli, "select * from tb_pelanggan");
+            $data = mysqli_query($mysqli, "SELECT a.* , b.id_mohon, b.status_survey FROM tb_pelanggan a JOIN tb_mohon_pb b ON a.id_mohon = b.id_mohon WHERE b.status_survey = '3' && b.status_pembayaran = '1'");
             $hitungrow = mysqli_num_rows($data);
             ?>
             <div class="col-xl-3 col-md-6 mb-4">

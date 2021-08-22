@@ -82,7 +82,7 @@
                             <!-- Link Menu Halaman Multiguna -->
                             <li class="nav-item">
                                 <a class="collapse-item" href="dashboard/multiguna/menu_mg.php">
-                                    <span class="font-weight-bolder text-capitalize">Multiguna</span>
+                                    <span class="font-weight-bolder text-capitalize">Penyambungan <br> Sementara</span>
                                 </a>
                             </li>
                         </ul>

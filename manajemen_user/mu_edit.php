@@ -166,6 +166,7 @@
                     <select name="posisi" id="posisi" class="form-control" required>
                         <option value="" disabled selected>Pilih</option>
                         <option value="<?php echo $posisi; ?>" disabled>Pilihan Sebelum nya : <?php echo $levelnya ?></option>
+                        <option value="6">Manager</option>
                         <option value="1">Admin</option>
                         <option value="2">Pegawai</option>
                         <option value="3">Operator</option>
@@ -220,45 +221,51 @@ if (isset($_POST['ubah'])) {
     $posisi = $_POST['posisi'];
     $t_check = $_POST['t_check'];
 
-    // if (!empty($_FILES['foto']['tmp_name'])) {
-    //     $ext = strtolower(substr($_FILES['foto']['name'], -3));
-    //     if ($ext == 'gif') {
-    //         $ext = ".gif";
-    //     } elseif ($ext == 'jpg') {
-    //         $ext = ".jpg";
-    //     } elseif ($ext == 'jpeg') {
-    //         $ext = ".jpeg";
-    //     } else {
-    //         $ext = ".png";
-    //     }
-    //     // proses upload file ke folder gambar 
-    //     move_uploaded_file($_FILES['foto']['tmp_name'], "gambar/" . basename(($id_u) . $ext));
-    // }
+    if ($posisi == "1") {
+        $namaPosisi = "Admin";
+    } elseif ($posisi == "2") {
+        $namaPosisi = "Pegawai";
+    } elseif ($posisi == "3") {
+        $namaPosisi = "Operator";
+    } elseif ($posisi == "6") {
+        $namaPosisi = "Manager";
+    }
 
-    $update = "UPDATE tb_data_user SET nama='$nama', tgl_lahir='$tgl_lahir', alamat='$alamat', jenis_kelamin='$jenis_kelamin', email='$email', username='$username', password='$password', level='$posisi', t_check='$t_check' WHERE id=$id_u";
+    if ($posisi == 4) {
+        $t_check = $_POST['t_check'];
+        $update = "UPDATE tb_data_user SET nama='$nama', tgl_lahir='$tgl_lahir', alamat='$alamat', jenis_kelamin='$jenis_kelamin', email='$email', username='$username', password='$password', level='$posisi', t_check='$t_check' WHERE id=$id_u";
+    } else {
+        $update = "UPDATE tb_data_user SET nama='$nama', tgl_lahir='$tgl_lahir', alamat='$alamat', jenis_kelamin='$jenis_kelamin', email='$email', username='$username', password='$password', level='$posisi' WHERE id=$id_u";
+    }
     $query = mysqli_query($mysqli, $update) or die(mysqli_error($mysqli));
     // var_dump($update);
 
     if ($query) {
-        if ($posisi == 5) {
+        if ($posisi == "5") {
             $namaPosisi = "Petugas Survey";
             $update2 = "UPDATE tb_petugas_survey SET nama='$nama', alamat='$alamat', tgl_lahir='$tgl_lahir' WHERE id=$id_u";
-        } elseif ($posisi == 4 && $t_check == 2) {
+        } elseif ($posisi == "4" && $t_check == "2") {
             $namaPosisi = "Teknisi Pelayanan Pengaduan";
             $update2 = "UPDATE tb_teknisi_pengaduan SET nama='$nama', alamat='$alamat', tgl_lahir='$tgl_lahir' WHERE id=$id_u";
-        } elseif ($posisi == 4 && $t_check == 1) {
+        } elseif ($posisi == "4" && $t_check == "1") {
             $namaPosisi = "Teknisi Pelayanan Penyambungan";
             $update2 = "UPDATE tb_teknisi_penyambungan SET nama='$nama', alamat='$alamat', tgl_lahir='$tgl_lahir' WHERE id=$id_u";
-        } elseif ($posisi == 1) {
-            $namaPosisi = "Admin";
-        } elseif ($posisi == 2) {
-            $namaPosisi = "Pegawai";
-        } elseif ($posisi == 3) {
-            $namaPosisi = "Operator";
-        }
-        $query = mysqli_query($mysqli, $update2) or die(mysqli_error($mysqli));
-        // var_dump($update2);
+        } else {
 ?>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses.',
+                    text: 'Sukses Mengubah Data User <?php echo $namaPosisi ?>'
+                }).then((result) => {
+                    window.location = "header.php?page=user";
+                })
+            </script>
+        <?php
+        }
+        // var_dump($update2);
+        $query = mysqli_query($mysqli, $update2) or die(mysqli_error($mysqli));
+        ?>
         <script>
             Swal.fire({
                 icon: 'success',

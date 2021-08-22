@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Permohonan Penerangan Sementara</title>
+    <title>Permohonan Penyambungan Sementara</title>
 </head>
 
 </html>
@@ -19,7 +19,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Permohonan Pelanggan mengajukan Penerangan Sementara</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Permohonan Pelanggan mengajukan Penyambungan Sementara</u></h1>
     </div>
 
     <!-- Modal dialog untuk deskripsi -->

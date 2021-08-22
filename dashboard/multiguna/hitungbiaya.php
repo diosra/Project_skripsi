@@ -5,15 +5,39 @@ $tglmulai = $_POST['tgl_mulai'];
 $tglselesai = $_POST['tgl_selesai'];
 $pemakaian = $_POST['pemakaian'];
 
+$ambil = "SELECT * FROM tb_harga_penyambungan WHERE kode = 'MLTA' || kode = 'PPN' || kode = 'PPJ' || kode = 'MATERAI'";
+$qambil = mysqli_query($mysqli, $ambil);
+$arrData2[] = '';
+while ($data = mysqli_fetch_array($qambil)) {
+    $TData = $data[3];
+    $arrData2[] = $TData;
+}
+
+/*
+Biaya perKWH
+var_dump($arrData2[1]);
+
+Biaya PPN
+var_dump($arrData2[2]);
+
+Biaya PPJ
+var_dump($arrData2[3]);
+
+Biaya Materai
+var_dump($arrData2[4]);
+*/
+
 $tgl_awal = date_create($tglmulai);
 $tgl_akhir = date_create($tglselesai);
 $diff = date_diff($tgl_awal, $tgl_akhir);
 $ambilLamaHari = $diff->d;
 $konvhari = "$ambilLamaHari Hari";
 
-$biayaKWH = 1650;
+// $biayaKWH = 1650;
+$biayaKWH = $arrData2[1];
 if ($daya >= "7700") {
-    $PPN = 10;
+    // $PPN = 10;
+    $PPN = $arrData2[2];
     $persenPPN = $PPN / 100;
 } else {
     $PPN = 0;
@@ -153,7 +177,8 @@ if ($ambilLamaHari == "1") {
         $emin = $eDib * $ambilLamaHari;
     }
 
-    $PPJ = 8;
+    // $PPJ = 8;
+    $PPJ = $arrData2[3];
     $persenPPJ = $PPJ / 100;
     $biayaMaterai = 0;
 
@@ -171,7 +196,8 @@ if ($ambilLamaHari == "1") {
         $emin = $eDib * $ambilLamaHari;
     }
 
-    $PPJ = 8;
+    // $PPJ = 8;
+    $PPJ = $arrData2[3];
     $persenPPJ = $PPJ / 100;
     $biayaMaterai = 0;
 
@@ -189,10 +215,12 @@ if ($ambilLamaHari == "1") {
         $emin = $eDib * $ambilLamaHari;
     }
 
-    $PPJ = 8;
+    // $PPJ = 8;
+    $PPJ = $arrData2[3];
     $persenPPJ = $PPJ / 100;
     if (($ambilLamaHari == "5" || $ambilLamaHari <= "30") && $daya >= "23000") {
-        $biayaMaterai = 10000;
+        // $biayaMaterai = 10000;
+        $biayaMaterai = $arrData2[4];
     } else {
         $biayaMaterai = 0;
     }
@@ -210,11 +238,12 @@ if ($ambilLamaHari == "1") {
     } else {
         $emin = $eDib * $ambilLamaHari;
     }
-    $PPJ = 8;
+    // $PPJ = 8;
+    $PPJ = $arrData2[3];
     $persenPPJ = $PPJ / 100;
 
     if ($ambilLamaHari == "5" && $daya >= "23000") {
-        $biayaMaterai = 10000;
+        $biayaMaterai = $arrData2[4];
     } else {
         $biayaMaterai = 0;
     }

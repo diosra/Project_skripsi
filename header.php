@@ -317,11 +317,25 @@ if (!isset($_SESSION['username'])) {
                     </li>
 
                     <!-- Nav Item - Menu Data Teknisi Pelayanan Pengaduan -->
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=survey">
+                            <i class="fas fa-user-friends"></i></i>
+                            <span>Data Petugas Survey</span></a>
+                    </li>
+
+                    <!-- Nav Item - Menu Data Teknisi Pelayanan Pengaduan -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=tekyan">
+                            <i class="fas fa-user-friends"></i></i>
+                            <span>Data Teknisi Pelayanan Penyambungan</span></a>
+                    </li>
+
+                    <!-- Nav Item - Menu Data Teknisi Pelayanan Pengaduan -->
+                    <li class="nav-item">
                         <a class="nav-link" href="header.php?page=tekpen">
                             <i class="fas fa-user-friends"></i></i>
                             <span>Data Teknisi Pelayanan Pengaduan</span></a>
-                    </li> -->
+                    </li>
                 <?php
                     //Menu Hak akses Pegawai
                 } elseif ($level == 2) {
@@ -381,7 +395,7 @@ if (!isset($_SESSION['username'])) {
                                         <a class="collapse-item" href="header.php?page=mohonyanbungps">
                                             <i class="fas fa-user-friends"></i></i>
                                             <span class="font-weight-bolder text-capitalize">
-                                                Menu Data <br> Permohonan Penerangan <br> Sementara
+                                                Menu Data <br> Permohonan <br> Penyambungan <br> Sementara
                                             </span>
                                         </a>
                                     </li>
@@ -587,7 +601,7 @@ if (!isset($_SESSION['username'])) {
                                         <a class="collapse-item" href="header.php?page=clteknisipb">
                                             <i class="fas fa-user-friends"></i></i>
                                             <span class="font-weight-bolder text-capitalize">
-                                                Laporan Teknisi <br>
+                                                Laporan Teknisi <br> Pelayanan <br> Penyambungan
                                             </span>
                                         </a>
                                     </li>
@@ -770,6 +784,61 @@ if (!isset($_SESSION['username'])) {
                 <?php
                 } elseif ($level == 6) {
                 ?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="header.php?page=harga_manajer">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Menu Data Detail <br> Biaya Penyambungan & Pekerjaan RAB</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseAA" aria-expanded="true" aria-controls="collapseAA">
+                            <i class="fas fa-print"></i>
+                            <span>Menu Data Persetujuan Penugasan</span>
+                        </a>
+
+                        <div id="collapseAA" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <ul class="navbar-nav bg-white accordion" id="accordionSidebar">
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=m_petugassurvey">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Petugas Survey
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=m_tekyan">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Teknisi <br> Pelayanan <br> Penyambungan
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <hr style="margin-left: 20px; margin-right: 20px;">
+
+                                    <li class="nav-item">
+                                        <a class="collapse-item" href="header.php?page=m_tekpen">
+                                            <i class="fas fa-user-friends"></i></i>
+                                            <span class="font-weight-bolder text-capitalize">
+                                                Teknisi <br> Pelayanan Pengaduan
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <hr class="sidebar-divider d-none d-md-block">
+
+
                     <!-- Nav Item - Menu Cetak -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseA" aria-expanded="true" aria-controls="collapseA">
@@ -881,7 +950,7 @@ if (!isset($_SESSION['username'])) {
                                         <a class="collapse-item" href="header.php?page=clteknisipb">
                                             <i class="fas fa-user-friends"></i></i>
                                             <span class="font-weight-bolder text-capitalize">
-                                                Laporan Teknisi <br>
+                                                Laporan Teknisi <br> Pelayanan <br> Penyambungan
                                             </span>
                                         </a>
                                     </li>
@@ -991,6 +1060,9 @@ if (!isset($_SESSION['username'])) {
                             case 'harga':
                                 include "pelayanan_penyambungan/hargaRAB/halamanharga.php";
                                 break;
+                            case 'harga_manajer':
+                                include "pelayanan_penyambungan/hargaRAB/halamanharga_manajer.php";
+                                break;
                             case 'inputharga':
                                 include "pelayanan_penyambungan/hargaRAB/tambah.php";
                                 break;
@@ -999,6 +1071,24 @@ if (!isset($_SESSION['username'])) {
                                 break;
                             case 'hapusharga':
                                 include "pelayanan_penyambungan/hargaRAB/hapus.php";
+                                break;
+                            case 'inputhargamanajer':
+                                include "pelayanan_penyambungan/hargaRAB/tambah_harga_manajer.php";
+                                break;
+                            case 'edithargamanajer':
+                                include "pelayanan_penyambungan/hargaRAB/edit_harga_manajer.php";
+                                break;
+                            case 'hapushargamanajer':
+                                include "pelayanan_penyambungan/hargaRAB/hapus_harga_manajer.php";
+                                break;
+                            case 'm_petugassurvey':
+                                include "persetujuan_penugasan_manajer/petugas_survey.php";
+                                break;
+                            case 'm_tekyan':
+                                include "persetujuan_penugasan_manajer/tekyan.php";
+                                break;
+                            case 'm_tekpen':
+                                include "persetujuan_penugasan_manajer/tekpen.php";
                                 break;
 
                             case 'mohonyanbungpb':
@@ -1019,6 +1109,15 @@ if (!isset($_SESSION['username'])) {
 
                             case 'foto':
                                 include "manajemen_user/editfoto.php";
+                                break;
+                            case 'survey':
+                                include "manajemen_user/tabel_ps.php";
+                                break;
+                            case 'tekyan':
+                                include "manajemen_user/tabel_tekyan.php";
+                                break;
+                            case 'tekpen':
+                                include "manajemen_user/tabel_tekpen.php";
                                 break;
 
                                 // Case untuk halaman Manajemen User dan CRUD nya

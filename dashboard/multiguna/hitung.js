@@ -23,6 +23,7 @@ function hitungbiaya() {
         },
         error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
             // alert(xhr.responseText);
+            // console.log(xhr.responseText);
             Swal.fire({
                 icon: 'error',
                 title: 'Gagal!',

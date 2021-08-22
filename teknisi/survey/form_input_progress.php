@@ -14,6 +14,8 @@
     <script type="text/javascript">
         function show1() {
             document.getElementById('tgl_cek').style.display = 'block';
+            document.getElementById('tgl_cek_a').style.display = 'none';
+            document.getElementById("tgl_cek3").required = false;
             document.getElementById("tgl_cek2").required = true;
             document.getElementById('form_tolak').style.display = 'none';
             document.getElementById('kotak_tolak').required = false;

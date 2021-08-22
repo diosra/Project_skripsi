@@ -26,6 +26,14 @@ include('../phpmailer/PHPMailer.php');
 include('../phpmailer/SMTP.php');
 include '../koneksi.php';
 
+$ambil = "SELECT * FROM tb_harga_penyambungan";
+$qambil = mysqli_query($mysqli, $ambil);
+$arrData2[] = '';
+while ($data = mysqli_fetch_array($qambil)) {
+    $TData = $data[3];
+    $arrData2[] = $TData;
+}
+
 $email_pengirim = 'pln.up3.bjm@gmail.com'; // Isikan dengan email pengirim
 $nama_pengirim = 'pln up3'; // Isikan dengan nama pengirim
 $email_penerima = $_POST['email']; // Ambil email penerima dari inputan form
@@ -72,11 +80,13 @@ if (isset($_POST['savepb'])) {
 
     //Perhitungan Biaya Berdasarkan produk
     if ($daya == "450") {
-        $hargaPenyambungan = 421000;
+        // $hargaPenyambungan = 421000;
+        $hargaPenyambungan = $arrData2[1];
         $hargaMaterai = 0;
 
         if ($produk_layanan == "PASCABAYAR") {
-            $hargaUJL = $daya * 72;
+            // $hargaUJL = $daya * 72;
+            $hargaUJL = $daya * $arrData2[9];
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
             $hargaToken = $_POST['token'];
@@ -85,52 +95,62 @@ if (isset($_POST['savepb'])) {
 
         $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
     } elseif ($daya == "900") {
-        $hargaPenyambungan = 843000;
+        // $hargaPenyambungan = 843000;
+        $hargaPenyambungan = $arrData2[2];
         $hargaMaterai = 0;
 
         if ($produk_layanan == "PASCABAYAR") {
-            $hargaUJL = $daya * 72;
+            // $hargaUJL = $daya * 72;
+            $hargaUJL = $daya * $arrData2[9];
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
             $hargaToken = $_POST['token'];
             $totalBiaya = $hargaPenyambungan + $hargaToken + $hargaMaterai;
         }
     } elseif ($daya == "1300") {
-        $hargaPenyambungan = 1218000;
+        // $hargaPenyambungan = 1218000;
+        $hargaPenyambungan = $arrData2[3];
         $hargaMaterai = 0;
 
         if ($produk_layanan == "PASCABAYAR") {
-            $hargaUJL = $daya * 133;
+            // $hargaUJL = $daya * 133;
+            $hargaUJL = $daya * $arrData2[10];
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
             $hargaToken = $_POST['token'];
             $totalBiaya = $hargaPenyambungan + $hargaToken + $hargaMaterai;
         }
     } elseif ($daya == "2200") {
-        $hargaPenyambungan = 2062000;
+        // $hargaPenyambungan = 2062000;
+        $hargaPenyambungan = $arrData2[4];
         $hargaMaterai = 0;
 
         if ($produk_layanan == "PASCABAYAR") {
-            $hargaUJL = $daya * 141;
+            // $hargaUJL = $daya * 141;
+            $hargaUJL = $daya * $arrData2[11];
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
             $hargaToken = $_POST['token'];
             $totalBiaya = $hargaPenyambungan + $hargaToken + $hargaMaterai;
         }
     } elseif ($daya >= "3500") {
-        $hargaPenyambungan = $daya * 969;
+        // $hargaPenyambungan = $daya * 969;
+        $hargaPenyambungan = $daya * $arrData2[5];
 
         if ($daya >= "5500") {
-            $hargaMaterai = 10000;
+            // $hargaMaterai = 10000;
+            $hargaMaterai = $arrData2[16];
         } elseif ($daya <= "4400") {
             $hargaMaterai = 0;
         }
 
         if ($produk_layanan == "PASCABAYAR") {
             if ($daya == "3500" || $daya <= "5500") {
-                $hargaUJL = $daya * 157;
+                // $hargaUJL = $daya * 157;
+                $hargaUJL = $daya * $arrData2[12];
             } elseif ($daya >= 6600) {
-                $hargaUJL = $daya * 140;
+                // $hargaUJL = $daya * 140;
+                $hargaUJL = $daya * $arrData2[13];
             }
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
@@ -187,15 +207,20 @@ if (isset($_POST['savepb'])) {
         $hargaPenyambungan = 0;
 
         if ($daya <= "900") {
-            $hargaUJL = $daya * 72;
+            // $hargaUJL = $daya * 72;
+            $hargaUJL = $daya * $arrData2[9];
         } elseif ($daya == "1300") {
-            $hargaUJL = $daya * 133;
+            // $hargaUJL = $daya * 133;
+            $hargaUJL = $daya * $arrData2[10];
         } elseif ($daya == "2200") {
-            $hargaUJL = $daya * 141;
+            // $hargaUJL = $daya * 141;
+            $hargaUJL = $daya * $arrData2[11];
         } elseif ($daya == "3500" || $daya <= "5500") {
-            $hargaUJL = $daya * 157;
+            // $hargaUJL = $daya * 157;
+            $hargaUJL = $daya * $arrData2[12];
         } elseif ($daya >= "6600") {
-            $hargaUJL = $daya * 140;
+            // $hargaUJL = $daya * 140;
+            $hargaUJL = $daya * $arrData2[13];
         }
 
         if ($produk_layanan == "PASCABAYAR") {
@@ -207,34 +232,58 @@ if (isset($_POST['savepb'])) {
     } elseif ($daya >= $dayalama) {
         if ($dayalama <= "1300" && $daya == "2200") {
             $hargaMaterai = 0;
-            $hargaPenyambungan = 937;
+            // $hargaPenyambungan = 937;
+            $hargaPenyambungan = $arrData2[6];
 
             if ($produk_layanan == "PASCABAYAR") {
-                $hargaUJL = $daya * 141;
+                // $hargaUJL = $daya * 141;
+                $hargaUJL = $daya * $arrData2[11];
                 $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
             } elseif ($produk_layanan == "PRABAYAR") {
                 $hargaToken = $_POST['token'];
                 $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
             }
+        } elseif ($dayalama <= "900" && $daya <= "2200") {
+            $hargaMaterai = 0;
+            // $hargaPenyambungan = 937;
+            $hargaPenyambungan = $arrData2[6];
+
+            if ($produk_layanan == "PASCABAYAR") {
+                // $hargaUJL = $daya * 141;
+                $hargaUJL = $daya * $arrData2[11];
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
+                $konv = "Rp." . number_format($totalBiaya, 0, ',', '.') . "";
+            } elseif ($produk_layanan == "PRABAYAR") {
+                $hargaToken = $_POST['token'];
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
+                $konv = "Rp." . number_format($totalBiaya, 0, ',', '.') . "";
+            }
         } elseif ($dayalama <= "2200" && $daya >= "3500") {
-            $hargaPenyambungan = 969;
+            // $hargaPenyambungan = 969;
+            $hargaPenyambungan = $arrData2[7];
 
             if ($daya >= "6600") {
-                $hargaMaterai = 10000;
+                // $hargaMaterai = 10000;
+                $hargaMaterai = $arrData2[16];
             } else {
                 $hargaMaterai = 0;
             }
 
             if ($daya <= "900") {
-                $hargaUJL = $daya * 72;
+                // $hargaUJL = $daya * 72;
+                $hargaUJL = $daya * $arrData2[9];
             } elseif ($daya == "1300") {
-                $hargaUJL = $daya * 133;
+                // $hargaUJL = $daya * 133;
+                $hargaUJL = $daya * $arrData2[10];
             } elseif ($daya == "2200") {
-                $hargaUJL = $daya * 141;
+                // $hargaUJL = $daya * 141;
+                $hargaUJL = $daya * $arrData2[11];
             } elseif ($daya == "3500" || $daya <= "5500") {
-                $hargaUJL = $daya * 157;
+                // $hargaUJL = $daya * 157;
+                $hargaUJL = $daya * $arrData2[12];
             } elseif ($daya >= "6600") {
-                $hargaUJL = $daya * 140;
+                // $hargaUJL = $daya * 140;
+                $hargaUJL = $daya * $arrData2[13];
             }
 
             if ($produk_layanan == "PASCABAYAR") {
@@ -244,24 +293,30 @@ if (isset($_POST['savepb'])) {
                 $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
             }
         } elseif ($dayalama >= "2200" && $daya >= "2200") {
-            $hargaPenyambungan = 969;
+            // $hargaPenyambungan = 969;
+            $hargaPenyambungan = $arrData2[7];
 
             if ($daya >= "6600") {
-                $hargaMaterai = 10000;
+                $hargaMaterai = $arrData2[16];
             } else {
                 $hargaMaterai = 0;
             }
 
             if ($daya <= "900") {
-                $hargaUJL = $daya * 72;
+                // $hargaUJL = $daya * 72;
+                $hargaUJL = $daya * $arrData2[9];
             } elseif ($daya == "1300") {
-                $hargaUJL = $daya * 133;
+                // $hargaUJL = $daya * 133;
+                $hargaUJL = $daya * $arrData2[10];
             } elseif ($daya == "2200") {
-                $hargaUJL = $daya * 141;
+                // $hargaUJL = $daya * 141;
+                $hargaUJL = $daya * $arrData2[11];
             } elseif ($daya == "3500" || $daya <= "5500") {
-                $hargaUJL = $daya * 157;
+                // $hargaUJL = $daya * 157;
+                $hargaUJL = $daya * $arrData2[12];
             } elseif ($daya >= "6600") {
-                $hargaUJL = $daya * 140;
+                // $hargaUJL = $daya * 140;
+                $hargaUJL = $daya * $arrData2[13];
             }
 
             if ($produk_layanan == "PASCABAYAR") {
@@ -313,9 +368,11 @@ if (isset($_POST['savepb'])) {
     $diff = date_diff($tgl_awal, $tgl_akhir);
     $ambilLamaHari = $diff->d;
 
-    $biayaKWH = 1650;
+    // $biayaKWH = 1650;
+    $biayaKWH = $arrData2[8];
     if ($daya >= "7700") {
-        $PPN = 10;
+        // $PPN = 10;
+        $PPN = $arrData2[14];
         $persenPPN = $PPN / 100;
     } else {
         $PPN = 0;
@@ -455,7 +512,8 @@ if (isset($_POST['savepb'])) {
             $emin = $eDib * $ambilLamaHari;
         }
 
-        $PPJ = 8;
+        // $PPJ = 8;
+        $PPJ = $arrData2[15];
         $persenPPJ = $PPJ / 100;
         $biayaMaterai = 0;
 
@@ -472,7 +530,8 @@ if (isset($_POST['savepb'])) {
             $emin = $eDib * $ambilLamaHari;
         }
 
-        $PPJ = 8;
+        // $PPJ = 8;
+        $PPJ = $arrData2[15];
         $persenPPJ = $PPJ / 100;
         $biayaMaterai = 0;
 
@@ -489,10 +548,11 @@ if (isset($_POST['savepb'])) {
             $emin = $eDib * $ambilLamaHari;
         }
 
-        $PPJ = 8;
+        // $PPJ = 8;
+        $PPJ = $arrData2[15];
         $persenPPJ = $PPJ / 100;
         if (($ambilLamaHari == "5" || $ambilLamaHari <= "30") && $daya >= "23000") {
-            $biayaMaterai = 10000;
+            $biayaMaterai = $arrData2[16];
         } else {
             $biayaMaterai = 0;
         }
@@ -509,11 +569,12 @@ if (isset($_POST['savepb'])) {
         } else {
             $emin = $eDib * $ambilLamaHari;
         }
-        $PPJ = 8;
+        // $PPJ = 8;
+        $PPJ = $arrData2[15];
         $persenPPJ = $PPJ / 100;
 
         if ($ambilLamaHari == "5" && $daya >= "23000") {
-            $biayaMaterai = 10000;
+            $biayaMaterai = $arrData2[16];
         } else {
             $biayaMaterai = 0;
         }
@@ -524,7 +585,6 @@ if (isset($_POST['savepb'])) {
         $totalBiaya = $total1 + $total2 + $total3 + $biayaMaterai;
     }
 }
-
 
 $mail = new PHPMailer;
 $mail->isSMTP();
@@ -573,6 +633,14 @@ if (isset($_POST['savepb'])) {
     $huruf2 = "PLG";
     $id_pelanggan = $huruf2 . sprintf("%05s", $urutan2);
 
+    // $queryambil3 = mysqli_query($mysqli, "SELECT max(no_kontrak) as nokontrakmax FROM tb_pelanggan");
+    // $dataambil3 = mysqli_fetch_array($queryambil3);
+    // $no_kontrak = @$dataambil3['nokontrakmax'];
+    // $urutan3 = (int) substr($no_kontrak, 4, 5);
+    // $urutan3++;
+    // $huruf3 = "KON-";
+    // $no_kontrak = $huruf3 . sprintf("%05s", $urutan3);
+
     $nama = $_POST['nama'];
     $alamat = $_POST['alamat'];
     $nohp = $_POST['nohp'];
@@ -585,11 +653,13 @@ if (isset($_POST['savepb'])) {
 
     //Perhitungan Biaya Berdasarkan produk
     if ($daya == "450") {
-        $hargaPenyambungan = 421000;
+        // $hargaPenyambungan = 421000;
+        $hargaPenyambungan = $arrData2[1];
         $hargaMaterai = 0;
 
         if ($produk_layanan == "PASCABAYAR") {
-            $hargaUJL = $daya * 72;
+            // $hargaUJL = $daya * 72;
+            $hargaUJL = $daya * $arrData2[9];
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
             $hargaToken = $_POST['token'];
@@ -598,52 +668,62 @@ if (isset($_POST['savepb'])) {
 
         $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
     } elseif ($daya == "900") {
-        $hargaPenyambungan = 843000;
+        // $hargaPenyambungan = 843000;
+        $hargaPenyambungan = $arrData2[2];
         $hargaMaterai = 0;
 
         if ($produk_layanan == "PASCABAYAR") {
-            $hargaUJL = $daya * 72;
+            // $hargaUJL = $daya * 72;
+            $hargaUJL = $daya * $arrData2[9];
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
             $hargaToken = $_POST['token'];
             $totalBiaya = $hargaPenyambungan + $hargaToken + $hargaMaterai;
         }
     } elseif ($daya == "1300") {
-        $hargaPenyambungan = 1218000;
+        // $hargaPenyambungan = 1218000;
+        $hargaPenyambungan = $arrData2[3];
         $hargaMaterai = 0;
 
         if ($produk_layanan == "PASCABAYAR") {
-            $hargaUJL = $daya * 133;
+            // $hargaUJL = $daya * 133;
+            $hargaUJL = $daya * $arrData2[10];
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
             $hargaToken = $_POST['token'];
             $totalBiaya = $hargaPenyambungan + $hargaToken + $hargaMaterai;
         }
     } elseif ($daya == "2200") {
-        $hargaPenyambungan = 2062000;
+        // $hargaPenyambungan = 2062000;
+        $hargaPenyambungan = $arrData2[4];
         $hargaMaterai = 0;
 
         if ($produk_layanan == "PASCABAYAR") {
-            $hargaUJL = $daya * 141;
+            // $hargaUJL = $daya * 141;
+            $hargaUJL = $daya * $arrData2[11];
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
             $hargaToken = $_POST['token'];
             $totalBiaya = $hargaPenyambungan + $hargaToken + $hargaMaterai;
         }
     } elseif ($daya >= "3500") {
-        $hargaPenyambungan = $daya * 969;
+        // $hargaPenyambungan = $daya * 969;
+        $hargaPenyambungan = $daya * $arrData2[5];
 
         if ($daya >= "5500") {
-            $hargaMaterai = 10000;
+            // $hargaMaterai = 10000;
+            $hargaMaterai = $arrData2[16];
         } elseif ($daya <= "4400") {
             $hargaMaterai = 0;
         }
 
         if ($produk_layanan == "PASCABAYAR") {
             if ($daya == "3500" || $daya <= "5500") {
-                $hargaUJL = $daya * 157;
-            } elseif ($daya >= 6600) {
-                $hargaUJL = $daya * 140;
+                // $hargaUJL = $daya * 157;
+                $hargaUJL = $daya * $arrData2[12];
+            } elseif ($daya >= "6600") {
+                // $hargaUJL = $daya * 140;
+                $hargaUJL = $daya * $arrData2[13];
             }
             $totalBiaya = $hargaPenyambungan + $hargaUJL + $hargaMaterai;
         } elseif ($produk_layanan == "PRABAYAR") {
@@ -767,15 +847,20 @@ if (isset($_POST['savepb'])) {
         $hargaPenyambungan = 0;
 
         if ($daya <= "900") {
-            $hargaUJL = $daya * 72;
+            // $hargaUJL = $daya * 72;
+            $hargaUJL = $daya * $arrData2[9];
         } elseif ($daya == "1300") {
-            $hargaUJL = $daya * 133;
+            // $hargaUJL = $daya * 133;
+            $hargaUJL = $daya * $arrData2[10];
         } elseif ($daya == "2200") {
-            $hargaUJL = $daya * 141;
+            // $hargaUJL = $daya * 141;
+            $hargaUJL = $daya * $arrData2[11];
         } elseif ($daya == "3500" || $daya <= "5500") {
-            $hargaUJL = $daya * 157;
+            // $hargaUJL = $daya * 157;
+            $hargaUJL = $daya * $arrData2[12];
         } elseif ($daya >= "6600") {
-            $hargaUJL = $daya * 140;
+            // $hargaUJL = $daya * 140;
+            $hargaUJL = $daya * $arrData2[13];
         }
 
         if ($produk_layanan == "PASCABAYAR") {
@@ -787,34 +872,58 @@ if (isset($_POST['savepb'])) {
     } elseif ($daya >= $dayalama) {
         if ($dayalama <= "1300" && $daya == "2200") {
             $hargaMaterai = 0;
-            $hargaPenyambungan = 937;
+            // $hargaPenyambungan = 937;
+            $hargaPenyambungan = $arrData2[6];
 
             if ($produk_layanan == "PASCABAYAR") {
-                $hargaUJL = $daya * 141;
+                // $hargaUJL = $daya * 141;
+                $hargaUJL = $daya * $arrData2[11];
                 $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
             } elseif ($produk_layanan == "PRABAYAR") {
                 $hargaToken = $_POST['token'];
                 $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
             }
+        } elseif ($dayalama <= "900" && $daya <= "2200") {
+            $hargaMaterai = 0;
+            // $hargaPenyambungan = 937;
+            $hargaPenyambungan = $arrData2[6];
+
+            if ($produk_layanan == "PASCABAYAR") {
+                // $hargaUJL = $daya * 141;
+                $hargaUJL = $daya * $arrData2[11];
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaUJL + $hargaMaterai;
+                $konv = "Rp." . number_format($totalBiaya, 0, ',', '.') . "";
+            } elseif ($produk_layanan == "PRABAYAR") {
+                $hargaToken = $_POST['token'];
+                $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
+                $konv = "Rp." . number_format($totalBiaya, 0, ',', '.') . "";
+            }
         } elseif ($dayalama <= "2200" && $daya >= "3500") {
-            $hargaPenyambungan = 969;
+            // $hargaPenyambungan = 969;
+            $hargaPenyambungan = $arrData2[7];
 
             if ($daya >= "6600") {
-                $hargaMaterai = 10000;
+                // $hargaMaterai = 10000;
+                $hargaMaterai = $arrData2[16];
             } else {
                 $hargaMaterai = 0;
             }
 
             if ($daya <= "900") {
-                $hargaUJL = $daya * 72;
+                // $hargaUJL = $daya * 72;
+                $hargaUJL = $daya * $arrData2[9];
             } elseif ($daya == "1300") {
-                $hargaUJL = $daya * 133;
+                // $hargaUJL = $daya * 133;
+                $hargaUJL = $daya * $arrData2[10];
             } elseif ($daya == "2200") {
-                $hargaUJL = $daya * 141;
+                // $hargaUJL = $daya * 141;
+                $hargaUJL = $daya * $arrData2[11];
             } elseif ($daya == "3500" || $daya <= "5500") {
-                $hargaUJL = $daya * 157;
+                // $hargaUJL = $daya * 157;
+                $hargaUJL = $daya * $arrData2[12];
             } elseif ($daya >= "6600") {
-                $hargaUJL = $daya * 140;
+                // $hargaUJL = $daya * 140;
+                $hargaUJL = $daya * $arrData2[13];
             }
 
             if ($produk_layanan == "PASCABAYAR") {
@@ -824,24 +933,30 @@ if (isset($_POST['savepb'])) {
                 $totalBiaya = (($daya - $dayalama) * $hargaPenyambungan) + $hargaToken + $hargaMaterai;
             }
         } elseif ($dayalama >= "2200" && $daya >= "2200") {
-            $hargaPenyambungan = 969;
+            // $hargaPenyambungan = 969;
+            $hargaPenyambungan = $arrData2[7];
 
             if ($daya >= "6600") {
-                $hargaMaterai = 10000;
+                $hargaMaterai = $arrData2[16];
             } else {
                 $hargaMaterai = 0;
             }
 
             if ($daya <= "900") {
-                $hargaUJL = $daya * 72;
+                // $hargaUJL = $daya * 72;
+                $hargaUJL = $daya * $arrData2[9];
             } elseif ($daya == "1300") {
-                $hargaUJL = $daya * 133;
+                // $hargaUJL = $daya * 133;
+                $hargaUJL = $daya * $arrData2[10];
             } elseif ($daya == "2200") {
-                $hargaUJL = $daya * 141;
+                // $hargaUJL = $daya * 141;
+                $hargaUJL = $daya * $arrData2[11];
             } elseif ($daya == "3500" || $daya <= "5500") {
-                $hargaUJL = $daya * 157;
+                // $hargaUJL = $daya * 157;
+                $hargaUJL = $daya * $arrData2[12];
             } elseif ($daya >= "6600") {
-                $hargaUJL = $daya * 140;
+                // $hargaUJL = $daya * 140;
+                $hargaUJL = $daya * $arrData2[13];
             }
 
             if ($produk_layanan == "PASCABAYAR") {
@@ -960,9 +1075,11 @@ if (isset($_POST['savepb'])) {
     $diff = date_diff($tgl_awal, $tgl_akhir);
     $ambilLamaHari = $diff->d;
 
-    $biayaKWH = 1650;
+    // $biayaKWH = 1650;
+    $biayaKWH = $arrData2[8];
     if ($daya >= "7700") {
-        $PPN = 10;
+        // $PPN = 10;
+        $PPN = $arrData2[14];
         $persenPPN = $PPN / 100;
     } else {
         $PPN = 0;
@@ -1102,7 +1219,8 @@ if (isset($_POST['savepb'])) {
             $emin = $eDib * $ambilLamaHari;
         }
 
-        $PPJ = 8;
+        // $PPJ = 8;
+        $PPJ = $arrData2[15];
         $persenPPJ = $PPJ / 100;
         $biayaMaterai = 0;
 
@@ -1119,7 +1237,8 @@ if (isset($_POST['savepb'])) {
             $emin = $eDib * $ambilLamaHari;
         }
 
-        $PPJ = 8;
+        // $PPJ = 8;
+        $PPJ = $arrData2[15];
         $persenPPJ = $PPJ / 100;
         $biayaMaterai = 0;
 
@@ -1136,10 +1255,12 @@ if (isset($_POST['savepb'])) {
             $emin = $eDib * $ambilLamaHari;
         }
 
-        $PPJ = 8;
+        // $PPJ = 8;
+        $PPJ = $arrData2[15];
         $persenPPJ = $PPJ / 100;
         if (($ambilLamaHari == "5" || $ambilLamaHari <= "30") && $daya >= "23000") {
-            $biayaMaterai = 10000;
+            // $biayaMaterai = 10000;
+            $biayaMaterai = $arrData2[16];
         } else {
             $biayaMaterai = 0;
         }
@@ -1156,11 +1277,13 @@ if (isset($_POST['savepb'])) {
         } else {
             $emin = $eDib * $ambilLamaHari;
         }
-        $PPJ = 8;
+        // $PPJ = 8;
+        $PPJ = $arrData2[15];
         $persenPPJ = $PPJ / 100;
 
         if ($ambilLamaHari == "5" && $daya >= "23000") {
-            $biayaMaterai = 10000;
+            // $biayaMaterai = 10000;
+            $biayaMaterai = $arrData2[16];
         } else {
             $biayaMaterai = 0;
         }

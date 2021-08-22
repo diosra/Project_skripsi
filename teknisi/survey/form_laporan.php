@@ -136,7 +136,7 @@
                         JOIN tb_mohon_pb b ON a.id_mohon_survey = b.id_mohon 
                         JOIN tb_petugas_survey c ON a.id_petugas = c.no_petugas_survey
                         JOIN tb_pasang_baru d ON b.id_mohon = d.id_mohon 
-                        WHERE a.pegawai_acc = 1 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2')");
+                        WHERE a.pegawai_acc = 2 && c.nama = '$nama' && (b.status_survey = '1' || b.status_survey = '2')");
 
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);

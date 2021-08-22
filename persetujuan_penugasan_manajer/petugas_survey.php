@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pelanggan</title>
+    <title>Penugasan</title>
 </head>
 
 </html>
@@ -19,7 +19,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Pelanggan</u></h1>
+        <h1 class="h3 mb-0 text-gray-800 font-weight-bold"><u>Data Penugasan Petugas Survey</u></h1>
     </div>
 
     <!-- Modal dialog untuk deskripsi -->
@@ -27,7 +27,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Deskripsi Lengkap Pelanggan</h4>
+                    <h4 class="modal-title">Data Pengerjaan Petugas</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body" id="deskripsi">
@@ -41,18 +41,14 @@
 
     <!-- Tabel Utama -->
     <div class="card shadow mb-4">
-        <!-- <div class="card-header py-3 d-flex">
-            <h4 class="m-0 font-weight-bold text-primary mr-auto p-2">Navigasi</h4>
-            <a class="btn btn-primary p-2 mr-2" href="header.php?page=pelinput"><i class="fas fa-plus-circle"></i> Tambah</a>
-        </div> -->
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered text-gray-900" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
-                            <th class="text-center">Identitas (KTP)</th>
-                            <th class="text-center">Nama</th>
+                            <th class="text-center">ID Petugas Survey</th>
+                            <th class="text-center">Nama Petugas</th>
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Deskripsi Lengkap</th>
                             <th class="text-center">Action</th>
@@ -60,14 +56,14 @@
                     </thead>
                     <tbody>
                         <?php
-                        $data = mysqli_query($mysqli, "SELECT a.* , b.id_mohon, b.status_survey FROM tb_pelanggan a JOIN tb_mohon_pb b ON a.id_mohon = b.id_mohon WHERE b.status_survey = '3' && b.status_pembayaran = '1'");
+                        $data = mysqli_query($mysqli, "SELECT a.*, b.* FROM tb_petugas_survey a JOIN tb_survey_lap_masuk b ON a.no_petugas_survey = b.id_petugas WHERE pegawai_acc = '1'");
                         $no = 1;
                         $hitungrow = mysqli_num_rows($data);
                         if ($hitungrow > 0) {
                             while ($row = $data->fetch_assoc()) { ?>
                                 <tr>
                                     <td class="align-middle text-center"><?php echo $no++ ?></td>
-                                    <td class="align-middle"><?php echo $row['identitas']; ?></td>
+                                    <td class="align-middle"><?php echo $row['no_petugas_survey']; ?></td>
                                     <td class="align-middle"><?php echo $row['nama']; ?></td>
                                     <td class="align-middle"><?php echo $row['alamat']; ?></td>
                                     <td class="align-middle text-center">
@@ -105,7 +101,7 @@
         $(document).on('click', '.open-modal', function(e) {
             e.preventDefault();
             $("#get-data").modal('show');
-            $.post('pelayanan_penyambungan/pelanggan/view.php', {
+            $.post('persetujuan_penugasan_manajer/view.php', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {

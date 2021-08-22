@@ -220,7 +220,7 @@ if (isset($_POST['save'])) {
     $query = mysqli_query($mysqli, $insert) or die(mysqli_error($mysqli));
     // var_dump($insert);
 
-    if ($level == 1) {
+    if ($level == "1") {
         $namaPosisi = "Admin";
     } elseif ($level == "2") {
         $namaPosisi = "Pegawai";

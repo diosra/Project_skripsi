@@ -29,7 +29,14 @@ function search() {
             }
         },
         error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
-            alert(xhr.responseText);
+            // alert(xhr.responseText);
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: 'ID Pelanggan Tidak Ditemukan!'
+            }).then((result) => {
+                $('#id_pelanggan').val("");
+            })
         }
     });
 }

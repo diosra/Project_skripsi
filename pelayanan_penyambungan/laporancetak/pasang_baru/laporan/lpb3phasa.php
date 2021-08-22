@@ -139,7 +139,6 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             <th style="text-align: center; font-size: 18px;">Tanggal Pengerjaan</th>
                             <th style="text-align: center; font-size: 18px;">Tarif</th>
                             <th style="text-align: center; font-size: 18px;">Daya</th>
-                            <th style="text-align: center; font-size: 18px;">Fasa</th>
                             <th style="text-align: center; font-size: 18px;">Total Biaya</th>
                         </tr>
                     </thead>
@@ -164,7 +163,6 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                                     <td align="center"><?php echo $newdate2 ?></td>
                                     <td align="center"><?php echo $tampil['tarif']; ?></td>
                                     <td align="center"><?php echo $tampil['daya']; ?></td>
-                                    <td align="center"><?php echo $tampil['fasa_baru']; ?></td>
                                     <td align="center">Rp. <?php echo number_format($tampil['total'], 0, ',', '.') ?></td>
                                 </tr>
                             <?php
@@ -172,12 +170,12 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
                             }
                             ?>
                             <tr>
-                                <td colspan="12" align="right" style="font-size: 23px;"><b>Jumlah Total Biaya</b></td>
+                                <td colspan="11" align="right" style="font-size: 23px;"><b>Jumlah Total Biaya</b></td>
                                 <td align="center">Rp. <?php echo number_format($totalSemua, 0, ',', '.') ?></td>
                             </tr>
                         <?php } else { ?>
                             <tr>
-                                <td colspan='13' align="center" style="text-transform: uppercase; font-size: 30px; background-color: lightblue;">Data dengan filter yang dipilih tidak ditemukan!</td>
+                                <td colspan='12' align="center" style="text-transform: uppercase; font-size: 30px; background-color: lightblue;">Data dengan filter yang dipilih tidak ditemukan!</td>
                             </tr>
                         <?php } ?>
 

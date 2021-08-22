@@ -15,6 +15,8 @@
         function show1() {
             document.getElementById('tgl_cek').style.display = 'block';
             document.getElementById("tgl_cek2").required = true;
+            document.getElementById('tgl_cek_a').style.display = 'none';
+            document.getElementById("tgl_cek3").required = false;
         }
     </script>
     <script type="text/javascript">
